@@ -1,0 +1,14 @@
+/*
+############     _components-index.scss      ############
+component specific, BEM (Block, Element, Modifier)
+@media for each component should be contained with the component.
+*/
+
+/* ---- Base Components ---- */
+
+
+/* ---- Project Components ---- */
+@use "project-components/footer";
+@use "project-components/home";
+@use "project-components/main-template";
+@use "project-components/page-not-found";
