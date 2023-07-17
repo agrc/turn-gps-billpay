@@ -1,0 +1,20 @@
+@use "@utahdts/utah-design-system/css/index.scss" as class-vars;
+
+#{class-vars.$base-class} {
+  .footer-agency-information {
+    &__image-title-wrapper {
+      display: flex;
+      position: relative;
+      align-items: baseline;
+    }
+    &__title-image {
+      max-width: 150px;
+      padding-right: 5px;
+      &>img {
+        width: auto;
+        height: 50px;
+      }
+    }
+  }
+}
+

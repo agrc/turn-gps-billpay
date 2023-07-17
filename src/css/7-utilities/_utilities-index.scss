@@ -1,0 +1,10 @@
+/*
+############     _utilities.scss      ############
+utility classes, atomic css
+*/
+
+.content-width {
+  width: 100%;
+  max-width: var(--content-width);
+  padding-top: 10px;
+}

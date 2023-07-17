@@ -1,0 +1,51 @@
+/*
+############     _settings-index.scss      ############
+variables and settings
+*/
+
+:root .utah-design-system {
+  --primary-color: #1a6179;
+  --primary-color-dark: #1c2e40;
+  --primary-color-light: #eef4fa;
+  --gray-on-primary-color: #474747;
+  --secondary-color: #503854;
+  --secondary-color-dark: #205162;
+  --secondary-color-light: #edf5f8;
+  --gray-on-secondary-color: #474747;
+  --accent-color: #ffc748;
+  --accent-color-dark: #745a1e;
+  --accent-color-light: #fff9ec;
+  --gray-on-accent-color: #474747;
+
+  --main-width: 700px;
+  --main-width-wide: 900px;
+  --main-left-width: 200px;
+  --main-right-width: 200px;
+  --main-padding: var(--spacing-2xl) var(--spacing-xl);
+  --main-padding-small: var(--spacing-xl) var(--spacing);
+}
+
+.logo-text {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 3em;
+  font-weight: bold;
+  line-height: .8;
+  color: #fff;
+  text-align: left;
+  letter-spacing: .2em;
+}
+
+.logo-text > span {
+  display: block;
+  position: relative;
+  top: -88px;
+  left: 40px ;
+  font-size: .5em;
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+.utah-design-system .footer-agency-information__title-image > img {
+  width: 20%;
+}

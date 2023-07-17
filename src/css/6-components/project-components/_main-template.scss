@@ -1,0 +1,129 @@
+@use "@utahdts/utah-design-system/css/index.scss" as class-vars;
+@use "@utahdts/utah-design-system/css/index.scss" as media-size-vars;
+
+#{class-vars.$base-class} {
+  .main-template {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: var(--main-width-wide);
+    justify-content: center;
+    align-items: flex-start;
+
+    &__wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__side-panel-left {
+      border-right: 1px solid var(--gray-border);
+      padding: var(--main-padding);
+      width: var(--main-left-width);
+      min-width: var(--main-left-width);
+    }
+    &__right-group {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    &__content {
+      flex: 1 1 auto;
+      max-width: var(--main-width);
+      min-width: 0;
+      padding: var(--main-padding);
+
+      h1 {
+        margin: calc(-1 * var(--spacing-xs)) 0 0 0;
+      }
+      code {
+        svg {
+          height: 10px;
+        }
+      }
+      table {
+        .props-code-wrapper {
+          display: flex;
+          flex-direction: row;
+          gap: var(--spacing-xs);
+          flex-wrap: wrap;
+        }
+      }
+    }
+    &__side-panel-right{
+      position: sticky;
+      top: 0;
+      border-left: 1px solid var(--gray-border);
+      padding: var(--main-padding);
+      width: var(--main-right-width);
+      min-width: var(--main-right-width);
+    }
+
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #{class-vars.$base-class} {
+    .main-template {
+      &__content {
+        max-width: calc(100vw - (6 * var(--spacing-xl)) - (var(--main-left-width)) - (var(--main-right-width)));
+      }
+    }
+  }
+}
+@media screen and (max-width: #{media-size-vars.$media-size-desktop-small}) {
+  #{class-vars.$base-class} {
+    .main-template {
+      &__side-panel-left,
+      &__side-panel-right {
+        min-width: calc(var(--main-left-width) - 50px);
+      }
+      &__content {
+        max-width: calc(100vw - (2 * var(--spacing-xl)) - (var(--main-left-width)) - (var(--main-right-width)) - 100px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: #{media-size-vars.$media-size-tablet-landscape}) {
+  #{class-vars.$base-class} {
+    .main-template {
+      &__right-group {
+        flex-direction: column;
+      }
+      &__side-panel-left {
+        padding: var(--main-padding-small);
+      }
+      &__content {
+        order: 2;
+        max-width: calc(100vw - (2 * var(--spacing)) - (var(--main-left-width)) - 50px);
+        padding: var(--main-padding-small);
+      }
+      &__side-panel-right {
+        order: 1;
+        position: relative;
+
+        // border-left: none;
+        // padding-bottom: 0;
+
+        border-left: 4px solid var(--gray-border);
+        padding-bottom: 0;
+        padding-top: 0;
+        padding-left: var(--spacing);
+        margin-left: var(--spacing);
+        margin-top: var(--spacing-xl);
+      }
+    }
+  }
+}
+@media screen and (max-width: #{media-size-vars.$media-size-tablet-portrait}) {
+  #{class-vars.$base-class} {
+    .main-template {
+      &__side-panel-left {
+        display: none;
+      }
+      &__content {
+        max-width: calc(100vw - (2 * var(--spacing)));
+      }
+    }
+  }
+}
