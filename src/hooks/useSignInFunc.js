@@ -9,7 +9,7 @@ import { useFirebaseApp } from 'reactfire';
 export default function useSignInFunc() {
   const oAuthProvider = useMemo(
     () => {
-      const oAuthProvider = new OAuthProvider('oidc.utah-id');
+      const oAuthProvider = new OAuthProvider('oidc.utahid');
       oAuthProvider.addScope('profile');
       oAuthProvider.addScope('email');
       return oAuthProvider;

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useUser } from 'reactfire';
-import { useCurrentMenuItem, VerticalMenu } from '@utahdts/utah-design-system';
+import { VerticalMenu } from '@utahdts/utah-design-system';
 
 import HomeLanding from '../pageElements/HomeLanding';
 import Page404 from '../pageElements/Page404';
@@ -11,35 +11,12 @@ import Registration from '../pageElements/Registration';
 import useUtahHeader from '../../hooks/useUtahHeader';
 import pageUrls from '../../enums/pageUrls';
 import AdminLanding from '../pageElements/AdminLanding';
+import { menuSecondary } from './menuSecondary';
+import useCurrentMenuItem from '../../hooks/useCurrentMenuItem';
 
 
 const propTypes = {};
 const defaultProps = {};
-
-export const menuSecondary = {
-  header: 'Menu',
-  id: 'left-nav-pages',
-  menuItems: [
-    {
-      id: 'pages__system-information',
-      title: 'System Information',
-      link: pageUrls.home,
-      parentLinks: [pageUrls.home]
-    },
-    {
-      id: 'pages__terms-conditions',
-      title: 'Terms and Conditions',
-      link: pageUrls.termsAndConditions,
-      parentLinks: [pageUrls.home]
-    },
-    {
-      id: 'pages__registration',
-      title: 'Registration',
-      link: pageUrls.registration,
-      parentLinks: [pageUrls.home]
-    }
-  ]
-};
 
 function Routing() {
   useUtahHeader();
@@ -77,8 +54,8 @@ function Routing() {
             <>
               <Route path={pageUrls.admin} element={<AdminLanding />} />
             </>
-           )
-           : <Route path='*' element={<Page404 />} />
+          )
+          : <Route path='*' element={<Page404 />} />
       }
       <Route path='*' element={<Page404 />} />
     </Routes>
