@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    max-width: var(--main-width-wide);
     justify-content: center;
     align-items: flex-start;
 
@@ -28,7 +27,7 @@
     }
     &__content {
       flex: 1 1 auto;
-      max-width: var(--main-width);
+      width: 100%;
       min-width: 0;
       padding: var(--main-padding);
 

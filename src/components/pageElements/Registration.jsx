@@ -10,7 +10,9 @@ import { useEffect, useState } from 'react';
 // import { useFunctions, useUser } from 'reactfire';
 // eslint-disable-next-line no-unused-vars
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Button } from '../formElements/Buttons';
+import { Button } from '@utahdts/utah-design-system';
+import { Link } from 'react-router-dom';
+import pageUrls from '../../enums/pageUrls';
 
 const propTypes = {};
 const defaultProps = {};
@@ -37,7 +39,7 @@ function Registration() {
   //   },
   //   staleTime: Infinity,
   // });
-  
+
   const defaultValues = {
     username: '',
     password: '',
@@ -48,8 +50,8 @@ function Registration() {
       resolver: yupResolver(registrationSchema),
       defaultValues,
     });
-  
-  
+
+
   useEffect(() => {
     setFocus('organization');
   }, [setFocus]);
@@ -82,7 +84,7 @@ function Registration() {
     'Nevada',
   ];
   const [selectedState, setSelectedState] = useState(stateList[0]);
-  
+
   return (
     <div>
       <div className="home-banner">
@@ -205,7 +207,7 @@ function Registration() {
               onChange={setSelectedState}
             ></Select>
           </div>
-          
+
           <Input
             label="Zip Code"
             required={true}
@@ -227,6 +229,10 @@ function Registration() {
             as={ErrorMessageTag}
           />
           <div className="flex">
+            <Link to={pageUrls.termsAndConditions} className='button button--primary-color button--solid' style={{ display: 'inline-flex' }}>
+              <span className='button--icon button--icon-left'><span className='utds-icon-before-arrow-left' aria-hidden='true' style={{ fontSize: '.9rem' }} /></span>
+              Back
+            </Link>
             {/*<Button*/}
             {/*  type="button"*/}
             {/*  style="secondary"*/}
@@ -236,8 +242,13 @@ function Registration() {
             {/*>*/}
             {/*  Back*/}
             {/*</Button>*/}
-            <Button type="submit" state={status}>
-              Save
+            <Button
+              appearance="outlined"
+              color="primary"
+              type="submit"
+              onClick={() => { alert('alert') }}
+            >
+              Submit
             </Button>
           </div>
         </form>

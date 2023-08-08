@@ -7,6 +7,9 @@
 // import layoutScreenshot from '../../../static/images/screenshots/layout.webp';
 // import LightBox from '../lightbox/LightBox';
 
+import { Link } from 'react-router-dom';
+import pageUrls from '../../enums/pageUrls';
+
 const propTypes = {};
 const defaultProps = {};
 
@@ -35,6 +38,18 @@ function TermsConditions() {
         </ol>
 
         <p><b>By continuing, I am agreeing to the terms and conditions above.</b></p>
+
+        <p className='mb-auto'>
+          <Link to={pageUrls.home} className='button button--primary-color button--solid' style={{ display: 'inline-flex' }}>
+            <span className='button--icon button--icon-left'><span className='utds-icon-before-arrow-left' aria-hidden='true' style={{ fontSize: '.9rem' }} /></span>
+            Back
+          </Link>
+          <Link to={pageUrls.registration} className='button button--primary-color button--solid' style={{ display: 'inline-flex' }}>
+            I Agree
+            <span className='button--icon button--icon-right'><span className='utds-icon-after-arrow-right' aria-hidden='true' style={{ fontSize: '.9rem' }} /></span>
+          </Link>
+        </p>
+
       </div>
     </div>
   );
