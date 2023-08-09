@@ -25,7 +25,6 @@
   },
   "hosting": {
     "public": "dist",
-    "target": "turn-gps-test-dev",
     "ignore": [
       "firebase.json",
       "**/.*",
