@@ -19,7 +19,7 @@
     "fb:deploy": "firebase deploy --only functions",
     "start": "npm run dev",
     "test": "vitest --silent --coverage --ui --open",
-    "test:ci": "firebase emulators:exec --only storage 'FIREBASE_STORAGE_EMULATOR_HOST=127.0.0.1:9199 npm run test'",
+    "test:ci": "npm run test",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
@@ -64,7 +64,7 @@
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "@vitejs/plugin-react-swc": "3.3.2",
-    "@vitest/coverage-c8": "0.33.0",
+    "@vitest/coverage-v8": "0.34.1",
     "@vitest/ui": "0.33.0",
     "@xstate/inspect": "0.8.0",
     "@xstate/react": "3.2.2",
