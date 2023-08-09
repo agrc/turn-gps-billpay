@@ -5,6 +5,10 @@ const schema = gql`
     "A simple type for getting started!"
     hello: String
   }
+  
+  type Query {
+    version: String
+  }
 `;
 
 export default schema;

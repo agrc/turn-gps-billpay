@@ -1,6 +1,9 @@
+import {version} from './package.json';
+
 const resolverFunctions = {
   Query: {
-    hello: () => 'world'
+    hello: () => 'world',
+    version: () => version
   }
 };
 
