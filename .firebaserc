@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "ut-dts-agrc-turn-gps-dev"
-  }
+    "turn-gps-test-dev": "turn-gps-test"
+  },
+  "targets": {
+    "ut-dts-agrc-turn-gps-dev": {
+      "hosting": {
+        "turn-gps-test-dev": [
+          "turn-gps-test"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
