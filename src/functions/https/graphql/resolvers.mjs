@@ -1,9 +1,9 @@
-import {version} from './package.json';
+import packageJSON from './../../../../package.json' assert {type: 'json'};
 
 const resolverFunctions = {
   Query: {
     hello: () => 'world',
-    version: () => version
+    version: () => packageJSON.version
   }
 };
 

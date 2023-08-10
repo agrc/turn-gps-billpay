@@ -1,20 +1,21 @@
 import { auth, https, logger } from 'firebase-functions/v1';
+import { error, info } from 'firebase-functions/logger';
 import { getFirestore } from 'firebase-admin/firestore';
 import setupFirebase from '../firebase.mjs';
 
 setupFirebase();
 const db = getFirestore();
 
-const getProfile = https.onCall(async (_, context) => {
-  if (!context.auth) {
-    logger.warn('unauthenticated request', { structuredData: true });
+export const getProfile = async (authData) => {
+  if (!authData) {
+    info('unauthenticated request', { structuredData: true });
 
     throw new auth.HttpsError('unauthenticated', 'You must log in');
   }
 
   let profile = {
-    displayName: context.auth.token.displayName,
-    email: context.auth.token.email,
+    displayName: authData.token.displayName,
+    email: authData.token.email,
     license: '',
     seal: '',
   };
@@ -22,12 +23,12 @@ const getProfile = https.onCall(async (_, context) => {
   try {
     const snapshot = await db
       .collection('submitters')
-      .doc(context.auth.uid)
+      .doc(authData.uid)
       .get();
 
     profile = snapshot.data();
-  } catch (error) {
-    logger.error('error querying profile', error, context.auth, {
+  } catch (errorMessage) {
+    error('error querying profile', errorMessage, authData, {
       structuredData: true,
     });
   }
@@ -44,6 +45,4 @@ const getProfile = https.onCall(async (_, context) => {
   }
 
   return profile;
-});
-
-export default getProfile;
+};
