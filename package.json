@@ -2,7 +2,7 @@
   "name": "@ugrc/turn-gps-billpay-app",
   "description": "A React app for the UGRC TURN GPS Bill Pay",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.0-0",
   "license": "MIT",
   "author": "UGRC",
   "main": "./src/functions/index.mjs",
@@ -18,7 +18,7 @@
     "fb:serve": "firebase emulators:start --only functions",
     "fb:deploy": "firebase deploy --only functions",
     "start": "npm run dev",
-    "test": "vitest --silent --coverage --ui --open",
+    "test": "vitest --silent --coverage --ui --open --passWithNoTests",
     "test:ci": "npm run test",
     "coverage": "vitest run --coverage"
   },
