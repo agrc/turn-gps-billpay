@@ -17,12 +17,12 @@ export default defineConfig({
       hosts: ['*.utah.gov', '*.local.utah.gov', '127.0.0.1', 'localhost', '::1'],
     }),
   ],
-  server: {
-    https: true,
-    host: 'gps.local.utah.gov',
-    port: 9201,
-    open: true,
-  },
+  // server: {
+  //   https: true,
+  //   host: 'gps.local.utah.gov',
+  //   port: 9201,
+  //   open: true,
+  // },
   preview: {
     port: 8080,
   },
