@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase-admin/app';
 import { debug } from 'firebase-functions/logger';
-import { runWith, auth } from 'firebase-functions/v1'; // v2 does not support this yet
+import { auth } from 'firebase-functions/v1'; // v2 does not support this yet
 import { https, setGlobalOptions  } from 'firebase-functions/v2';
 import server from './https/graphql/server.mjs';
 
@@ -11,8 +11,7 @@ initializeApp();
 setGlobalOptions({ serviceAccount: process.env.FUNCTION_SA, vpcConnector: process.env.FUNCTION_VPC });
 
 // auth
-export const onCreateUser = runWith({serviceAccount: process.env.FUNCTION_SA})
-  .auth.user().onCreate(async (user) => {
+export const onCreateUser = auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
     const createUser = (await import('./auth/onCreate.mjs')).createUser;
   
