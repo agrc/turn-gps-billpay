@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-3](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-2...v1.0.0-3) (2023-08-22)
+
+
+### 🐛 Bug Fixes
+
+* modify environment variable names ([6f714d1](https://github.com/agrc/turn-gps-billpay/commit/6f714d1fee3f609bf723f47d12a0dfc0c6ec78b6))
+
 ## [1.0.0-2](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-1...v1.0.0-2) (2023-08-22)
 
 
