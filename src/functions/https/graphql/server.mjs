@@ -26,10 +26,10 @@ async function gqlServer() {
   // the other routes and use() calls. See the Express.js docs.
   app.use(errors.express);
 
-  app.listen(process.env.PORT);
+  app.listen(process.env.GRAPHQL_PORT);
 
-  if (process.env.isRunningLocal) {
-    console.log('🚀🙂😀😃 Server is running on:' + ' ' + `http://localhost:${process.env.PORT}`);
+  if (process.env.LOCAL) {
+    console.log('🚀🙂😀😃 Server is running on:' + ' ' + `http://localhost:${process.env.GRAPHQL_PORT}`);
   }
 
   return app;
