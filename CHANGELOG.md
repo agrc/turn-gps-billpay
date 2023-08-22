@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-2](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-1...v1.0.0-2) (2023-08-22)
+
+
+### 🚀 Features
+
+* add graphql query that uses database connection ([775912b](https://github.com/agrc/turn-gps-billpay/commit/775912b8f41a802a7601d0221be3438710ed8b36))
+
 ## [1.0.0-1](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-0...v1.0.0-1) (2023-08-10)
 
 
