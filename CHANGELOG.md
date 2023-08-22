@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-4](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-3...v1.0.0-4) (2023-08-22)
+
+
+### 🐛 Bug Fixes
+
+* remove runwith option for onCreateUser ([b524a11](https://github.com/agrc/turn-gps-billpay/commit/b524a114504a49c96ccf17a758bf242b3e04cbf2))
+
 ## [1.0.0-3](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-2...v1.0.0-3) (2023-08-22)
 
 
