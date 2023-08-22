@@ -2,7 +2,7 @@
   "name": "@ugrc/turn-gps-billpay-app",
   "description": "A React app for the UGRC TURN GPS Bill Pay",
   "private": true,
-  "version": "1.0.0-2",
+  "version": "1.0.0-3",
   "license": "MIT",
   "author": "UGRC",
   "main": "./src/functions/index.mjs",
