@@ -18,11 +18,13 @@
     "fb:serve": "firebase emulators:start --only functions",
     "fb:deploy": "firebase deploy --only functions",
     "start": "npm run dev",
+    "graphql": "node src/functions/index.mjs",
     "test": "vitest --silent --coverage --ui --open --passWithNoTests",
     "test:ci": "npm run test",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@google-cloud/error-reporting": "3.0.5",
     "@headlessui/react": "1.7.16",
     "@heroicons/react": "2.0.18",
     "@hookform/error-message": "2.0.1",
@@ -36,6 +38,7 @@
     "base64-stream": "1.0.0",
     "camelcase": "7.0.1",
     "clsx": "1.2.1",
+    "dotenv": "16.3.1",
     "express": "4.18.2",
     "firebase": "9.23.0",
     "firebase-admin": "11.10.1",
