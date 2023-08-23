@@ -131,3 +131,4 @@ dist
 /.idea/
 /.firebase/*
 /src/functions/indexWindows.mjs
+/db.secret.local
