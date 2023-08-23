@@ -49,5 +49,5 @@ export const graphQl = https.onRequest({ secrets: ["database"] },expressServer);
 if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
   expressServer.listen(port);
-  console.log(`🚀 Server ready at http://localhost:${process.env.GRAPHQL_PORT}`);
+  console.log('🚀🙂😀😃 Server is running on:' + ' ' + `http://localhost:${process.env.GRAPHQL_PORT}`);
 }
