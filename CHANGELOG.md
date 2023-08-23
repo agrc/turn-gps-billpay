@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-10](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-9...v1.0.0-10) (2023-08-23)
+
+
+### 🐛 Bug Fixes
+
+* change server start message ([1ff2afd](https://github.com/agrc/turn-gps-billpay/commit/1ff2afd6ff30d978c36d52f57ca71bb941d9c3ff))
+
 ## [1.0.0-9](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-8...v1.0.0-9) (2023-08-23)
 
 
