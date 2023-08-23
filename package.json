@@ -24,7 +24,6 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@google-cloud/error-reporting": "3.0.5",
     "@headlessui/react": "1.7.16",
     "@heroicons/react": "2.0.18",
     "@hookform/error-message": "2.0.1",

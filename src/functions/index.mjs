@@ -2,9 +2,7 @@ import { initializeApp } from 'firebase-admin/app';
 import { debug } from 'firebase-functions/logger';
 import { auth } from 'firebase-functions/v1'; // v2 does not support this yet
 import { https, setGlobalOptions  } from 'firebase-functions/v2';
-import server from './https/graphql/server.mjs';
-
-const gqlServer = server();
+import { expressServer } from './https/graphql/server.mjs';
 
 initializeApp();
 
@@ -46,4 +44,10 @@ export const getProfile = https.onCall(
   }
 );
 
-export const graphQl = https.onRequest(gqlServer);
+export const graphQl = https.onRequest(expressServer);
+
+if (process.env.LOCAL) {
+  const port = process.env.PORT || process.env.GRAPHQL_PORT;
+  expressServer.listen(port);
+  console.log(`🚀 Server ready at http://localhost:${process.env.GRAPHQL_PORT}`);
+}
