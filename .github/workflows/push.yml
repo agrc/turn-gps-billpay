@@ -51,9 +51,14 @@ jobs:
     steps:
       - name: 👇 Populate .env file
         run: |
+          ls -la
+          mkdir -p turn-gps-billpay/turn-gps-billpay
+          cd turn-gps-billpay/turn-gps-billpay 
           touch .env
           echo FUNCTION_VPN=$FUNCTION_VPN >> .env
           echo FUNCTION_SA=$FUNCTION_SA >> .env
+          ls -la
+          cat .env
       - name: 🚀 Deploy
         uses: agrc/firebase-website-deploy-composite-action@v1
         with:
