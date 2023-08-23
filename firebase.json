@@ -5,7 +5,6 @@
     "runtime": "nodejs18",
     "ignore": [
       ".emulator-data",
-      ".env",
       ".git",
       ".github",
       ".husky",
