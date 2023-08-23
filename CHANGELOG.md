@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-8](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-7...v1.0.0-8) (2023-08-23)
+
+
+### 🐛 Bug Fixes
+
+* secret changes ([664648a](https://github.com/agrc/turn-gps-billpay/commit/664648a4d5b9b9bacd4d9ba357a42377168c3e21))
+
 ## [1.0.0-7](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-6...v1.0.0-7) (2023-08-23)
 
 
