@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-5](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-4...v1.0.0-5) (2023-08-23)
+
+
+### 🐛 Bug Fixes
+
+* graphql config ([df8fee4](https://github.com/agrc/turn-gps-billpay/commit/df8fee4e66aded10c132e28f0b550b666860ccc9))
+
 ## [1.0.0-4](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-3...v1.0.0-4) (2023-08-22)
 
 
