@@ -1,6 +1,6 @@
 import sql from 'mssql';
 
-const DB = process.env.DB ? JSON.parse(process.env.DB) : {};
+const DB = process.env.database ? JSON.parse(process.env.database) : {};
 const sqlConfig = {
   user: DB.user,
   password: DB.password,

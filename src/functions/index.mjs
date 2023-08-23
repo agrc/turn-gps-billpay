@@ -44,7 +44,7 @@ export const getProfile = https.onCall(
   }
 );
 
-export const graphQl = https.onRequest({ secrets: ["DB"] },expressServer);
+export const graphQl = https.onRequest({ secrets: ["database"] },expressServer);
 
 if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
