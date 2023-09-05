@@ -63,8 +63,8 @@ jobs:
           VITE_FIREBASE_STORAGE_BUCKET: ${{ vars.VITE_FIREBASE_STORAGE_BUCKET }}
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APPID: ${{ vars.VITE_FIREBASE_APPID }}
-          FUNCTION_VPC: ${{ env.FUNCTION_VPC }}
-          FUNCTION_SA: ${{ env.FUNCTION_SA }}
+          VITE_FUNCTION_VPC: ${{ env.FUNCTION_VPC }}
+          VITE_FUNCTION_SA: ${{ env.FUNCTION_SA }}
 
   deploy-prod:
     name: Deploy to production
@@ -101,5 +101,5 @@ jobs:
           VITE_API_ORIGIN: ${{ secrets.VITE_API_ORIGIN }}
           VITE_DISCOVER_KEY: ${{ secrets.VITE_DISCOVER_KEY }}
           VITE_API_KEY: ${{ secrets.VITE_UGRC_API_KEY }}
-          FUNCTION_VPC: ${{ env.FUNCTION_VPC }}
-          FUNCTION_SA: ${{ env.FUNCTION_SA }}
+          VITE_FUNCTION_VPC: ${{ env.FUNCTION_VPC }}
+          VITE_FUNCTION_SA: ${{ env.FUNCTION_SA }}
