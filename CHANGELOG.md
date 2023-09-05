@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-17](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-16...v1.0.0-17) (2023-09-05)
+
+
+### 🐛 Bug Fixes
+
+* Try dynamic .env file ([eb57173](https://github.com/agrc/turn-gps-billpay/commit/eb57173a20f97af66d863b1254a1086d0d09c730))
+
 ## [1.0.0-16](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-15...v1.0.0-16) (2023-09-05)
 
 
