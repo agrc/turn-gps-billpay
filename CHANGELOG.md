@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-16](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-15...v1.0.0-16) (2023-09-05)
+
+
+### 🐛 Bug Fixes
+
+* Try VITE_ environment vars ([792d4b3](https://github.com/agrc/turn-gps-billpay/commit/792d4b37c9fad5709bc58ebc787a8694e4f5d6e4))
+
 ## [1.0.0-15](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-14...v1.0.0-15) (2023-09-05)
 
 
