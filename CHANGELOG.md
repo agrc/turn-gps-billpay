@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-21](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-20...v1.0.0-21) (2023-09-05)
+
+
+### 🐛 Bug Fixes
+
+* update runtime options ([f67752c](https://github.com/agrc/turn-gps-billpay/commit/f67752ce252b1e6d303a621cb048d1d335b478c7))
+
 ## [1.0.0-20](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-19...v1.0.0-20) (2023-09-05)
 
 
