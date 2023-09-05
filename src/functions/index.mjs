@@ -5,8 +5,8 @@ import { https, setGlobalOptions, params  } from 'firebase-functions/v2';
 import { expressServer } from './https/graphql/server.mjs';
 
 initializeApp();
-const vpc = params.defineString("VITE_FUNCTION_VPC");
-const serviceAccount = params.defineString("VITE_FUNCTION_SA");
+const vpc = params.defineString("FUNCTION_VPC");
+const serviceAccount = params.defineString("FUNCTION_SA");
 setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc });
 
 // auth
