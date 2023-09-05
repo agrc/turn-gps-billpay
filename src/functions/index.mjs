@@ -10,8 +10,7 @@ const serviceAccount = params.defineString("FUNCTION_SA");
 setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc });
 
 // auth
-export const onCreateUser = runWith({serviceAccount: serviceAccount})
-  .auth.user().onCreate(async (user) => {
+export const onCreateUser = auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
     const createUser = (await import('./auth/onCreate.mjs')).createUser;
   
@@ -46,7 +45,7 @@ export const getProfile = https.onCall(
   }
 );
 
-export const graphQl = https.onRequest({ secrets: ["database", "vpc"], vpcConnector: vpc },expressServer);
+export const graphQl = https.onRequest({ secrets: ["database"], vpcConnector: vpc, serviceAccount: serviceAccount },expressServer);
 
 if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
