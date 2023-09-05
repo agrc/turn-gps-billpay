@@ -5,7 +5,8 @@ import { https, setGlobalOptions  } from 'firebase-functions/v2';
 import { expressServer } from './https/graphql/server.mjs';
 
 initializeApp();
-setGlobalOptions({ serviceAccount: process.env.FUNCTION_SA, vpcConnector: process.env.FUNCTION_VPC });
+const vpc = process.env.vpc ? JSON.parse(process.env.vpc): {};
+setGlobalOptions({ serviceAccount: vpc.serviceAccount, vpcConnector: vpc.vpc });
 
 // auth
 export const onCreateUser = runWith({serviceAccount: process.env.FUNCTION_SA})
@@ -44,7 +45,7 @@ export const getProfile = https.onCall(
   }
 );
 
-export const graphQl = https.onRequest({ secrets: ["database"] },expressServer);
+export const graphQl = https.onRequest({ secrets: ["database", "vpc"] },expressServer);
 
 if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
