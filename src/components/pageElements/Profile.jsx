@@ -7,7 +7,7 @@ const defaultProps = {};
 function Profile() {
   
   const functions = useFunctions();
-  const getProfile = httpsCallable(functions, 'functions-httpsGetProfile');
+  const getProfile = httpsCallable(functions, 'getProfile');
   const { data: user } = useUser();
   
   console.log('user', user);

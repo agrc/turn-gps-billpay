@@ -1,4 +1,21 @@
 import sql from 'mssql';
+import CacheableLookup from 'cacheable-lookup';
+
+const cacheable = new CacheableLookup();
+cacheable.servers = [
+  '8.8.8.8', // google
+  '8.8.4.4', // google
+  '204.113.19.5', // ns1 state of utah
+  '204.113.4.5', // ns2 state of utah
+];
+
+cacheable.lookupAsync("yahoo.com")
+  .then(response => {
+    console.log(response);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 const DB = process.env.database ? JSON.parse(process.env.database) : {};
 const sqlConfig = {
