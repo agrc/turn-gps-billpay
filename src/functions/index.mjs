@@ -1,11 +1,11 @@
 import { initializeApp } from 'firebase-admin/app';
 import { debug } from 'firebase-functions/logger';
 import {auth, runWith} from 'firebase-functions/v1'; // v2 does not support this yet
-import { https, setGlobalOptions  } from 'firebase-functions/v2';
+import { https, setGlobalOptions, params  } from 'firebase-functions/v2';
 import { expressServer } from './https/graphql/server.mjs';
 
 initializeApp();
-const vpc = process.env.vpc ? JSON.parse(process.env.vpc): {};
+const vpc = params.defineString("vpc");
 setGlobalOptions({ serviceAccount: vpc.serviceAccount, vpcConnector: vpc.vpc });
 
 // auth
@@ -45,7 +45,7 @@ export const getProfile = https.onCall(
   }
 );
 
-export const graphQl = https.onRequest({ secrets: ["database", "vpc"] },expressServer);
+export const graphQl = https.onRequest({ secrets: ["database", "vpc"], vpcConnector: vpc.vpc },expressServer);
 
 if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
