@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-12](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-11...v1.0.0-12) (2023-09-05)
+
+
+### 🐛 Bug Fixes
+
+* Add cacheable dns ([1675b84](https://github.com/agrc/turn-gps-billpay/commit/1675b84f073a66414a323d58bda9588474f1cef6))
+
 ## [1.0.0-11](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-10...v1.0.0-11) (2023-08-23)
 
 
