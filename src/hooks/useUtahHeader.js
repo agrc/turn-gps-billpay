@@ -75,6 +75,7 @@ export default function useUtahHeader() {
           tabletLandscape: 1024,
         },
         showTitle: true,
+        skipLinkUrl: '.main-template',
         size: sizes.MEDIUM,
         title: 'TURN GPS Bill Pay',
         titleURL: '/',
