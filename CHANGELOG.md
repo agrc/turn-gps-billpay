@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-13](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-12...v1.0.0-13) (2023-09-05)
+
+
+### 🐛 Bug Fixes
+
+* Add VPC secret ([f606424](https://github.com/agrc/turn-gps-billpay/commit/f60642444fb6ba362b593e79a45a96a42465f23c))
+
 ## [1.0.0-12](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-11...v1.0.0-12) (2023-09-05)
 
 
