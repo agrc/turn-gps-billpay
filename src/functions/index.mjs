@@ -7,7 +7,7 @@ import { expressServer } from './https/graphql/server.mjs';
 initializeApp();
 const vpc = params.defineString("FUNCTION_VPC");
 const serviceAccount = params.defineString("FUNCTION_SA");
-setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc });
+setGlobalOptions({ serviceAccount: serviceAccount.value(), vpcConnector: vpc.value() });
 
 // auth
 export const onCreateUser = auth.user().onCreate(async (user) => {
@@ -45,7 +45,7 @@ export const getProfile = https.onCall(
   }
 );
 
-export const graphQl = https.onRequest({ secrets: ["database"], vpcConnector: vpc, serviceAccount: serviceAccount },expressServer);
+export const graphQl = https.onRequest({ secrets: ["database"] },expressServer);
 
 if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
