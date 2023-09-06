@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-23](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-22...v1.0.0-23) (2023-09-06)
+
+
+### 🐛 Bug Fixes
+
+* remove .value() from params ([64bfffc](https://github.com/agrc/turn-gps-billpay/commit/64bfffc9e9515a1e9c49726403a9d84688de29ec))
+
 ## [1.0.0-22](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-21...v1.0.0-22) (2023-09-06)
 
 
