@@ -9,9 +9,9 @@ cacheable.servers = [
   '204.113.4.5', // ns2 state of utah
 ];
 
-cacheable.lookupAsync("yahoo.com")
+cacheable.lookupAsync("itdb002gp")
   .then(response => {
-    console.log(response);
+    console.log('itdb002gp', response.address);
   })
   .catch((error) => {
     console.error(error);
@@ -48,7 +48,7 @@ export const getRoleGroups =  async () => {
 export const getRoles =  async () => {
   try {
     await sql.connect(sqlConfig);
-    const result = await sql.query`select * from [TPPDBAccounting].[dbo].[Roles]`;
+    const result = await sql.query`select roleName, description from [TPPDBAccounting].[dbo].[Roles]`;
     console.dir(result);
     return result?.recordset;
   } catch (err) {

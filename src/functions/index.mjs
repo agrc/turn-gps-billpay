@@ -1,13 +1,10 @@
 import { initializeApp } from 'firebase-admin/app';
 import { debug } from 'firebase-functions/logger';
-import {auth, runWith} from 'firebase-functions/v1'; // v2 does not support this yet
-import { https, setGlobalOptions, params  } from 'firebase-functions/v2';
+import {auth} from 'firebase-functions/v1'; // v2 does not support this yet
+import { https  } from 'firebase-functions/v2';
 import { expressServer } from './https/graphql/server.mjs';
 
 initializeApp();
-const vpc = params.defineString("FUNCTION_VPC");
-const serviceAccount = params.defineString("FUNCTION_SA");
-setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc });
 
 // auth
 export const onCreateUser = auth.user().onCreate(async (user) => {
