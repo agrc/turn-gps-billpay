@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-27](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-26...v1.0.0-27) (2023-09-07)
+
+
+### 🐛 Bug Fixes
+
+* Add postinstall script ([3defb95](https://github.com/agrc/turn-gps-billpay/commit/3defb95d3491e83e5adf0475478b4ba1b485374f))
+
 ## [1.0.0-26](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-25...v1.0.0-26) (2023-09-07)
 
 
