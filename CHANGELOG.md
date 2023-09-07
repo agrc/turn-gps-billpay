@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-28](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-27...v1.0.0-28) (2023-09-07)
+
+
+### 🐛 Bug Fixes
+
+* try uppercase username ([8620adf](https://github.com/agrc/turn-gps-billpay/commit/8620adfcf4ed9c0292856d47420b03b27d4836d4))
+
 ## [1.0.0-27](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-26...v1.0.0-27) (2023-09-07)
 
 
