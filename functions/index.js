@@ -7,8 +7,11 @@ import {expressServer} from "./https/graphql/server.js";
 initializeApp();
 
 const vpc = 'projects/ut-dts-shared-vpc-dev/locations/us-central1/connectors/dts-shared-vpc-connector'
+const vpcEgress = 'ALL_TRAFFIC';
 const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gserviceaccount.com';
-setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc });// auth
+setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress });
+
+// auth
 export const onCreateUser = auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
     const createUser = (await import('./auth/onCreate')).createUser;

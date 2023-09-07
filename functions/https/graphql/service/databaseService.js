@@ -19,7 +19,7 @@ cacheable.lookupAsync("itdb002gp")
 
 const DB = process.env.database ? JSON.parse(process.env.database) : {};
 const sqlConfig = {
-  user: DB.user.toUpperCase(),
+  user: DB.user,
   password: DB.password,
   database: DB.name,
   server: DB.server,
