@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-26](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-25...v1.0.0-26) (2023-09-07)
+
+
+### 🐛 Bug Fixes
+
+* Add codebase default ([bacec9f](https://github.com/agrc/turn-gps-billpay/commit/bacec9f55b89e15bf1351c6ab049915211ed38ad))
+
 ## [1.0.0-25](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-24...v1.0.0-25) (2023-09-07)
 
 
