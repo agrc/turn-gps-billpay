@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase-admin/app';
 import { debug } from 'firebase-functions/logger';
-import {auth} from 'firebase-functions/v1'; // v2 does not support this yet
+import {auth, runWith} from 'firebase-functions/v1'; // v2 does not support this yet
 import {https, setGlobalOptions} from 'firebase-functions/v2';
 import {expressServer} from "./https/graphql/server.js";
 
@@ -12,7 +12,12 @@ const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gse
 setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress });
 
 // auth
-export const onCreateUser = auth.user().onCreate(async (user) => {
+export const onCreateUser = runWith({
+    serviceAccount: serviceAccount,
+    vpcConnector: vpc,
+    vpcConnectorEgressSettings: vpcEgress
+  })
+  .auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
     const createUser = (await import('./auth/onCreate')).createUser;
   
