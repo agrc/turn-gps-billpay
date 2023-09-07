@@ -13,6 +13,7 @@
     "dev:vite": "vite",
     "build": "vite build",
     "cleaninstall_win": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/cleaninstall_win.ps1",
+    "postinstall": "cd functions && npm install",
     "preview": "vite preview",
     "lint": "eslint ./ --ext .js,.mjs,.jsx --ignore-path ./.eslintignore",
     "lint:fix": "eslint ./ --ext .js,.mjs,.jsx --quiet --fix --ignore-path ./.eslintignore",
