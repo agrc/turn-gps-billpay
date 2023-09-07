@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-29](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-28...v1.0.0-29) (2023-09-07)
+
+
+### 🐛 Bug Fixes
+
+* try all traffic vpc egress ([df222b9](https://github.com/agrc/turn-gps-billpay/commit/df222b93d5f6844253f920f76d30e3f81342c71e))
+
 ## [1.0.0-28](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-27...v1.0.0-28) (2023-09-07)
 
 
