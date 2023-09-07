@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-30](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-29...v1.0.0-30) (2023-09-07)
+
+
+### 🐛 Bug Fixes
+
+* Add vpc to auth onCreate function ([f10e4f5](https://github.com/agrc/turn-gps-billpay/commit/f10e4f5c84b4d8b0bd2087690bab20c87c93eaba))
+
 ## [1.0.0-29](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-28...v1.0.0-29) (2023-09-07)
 
 
