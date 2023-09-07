@@ -2,8 +2,8 @@ import express from 'express';
 import {ApolloServer} from 'apollo-server-express';
 import 'dotenv/config'
 
-import schema from './schema.mjs';
-import resolvers from './resolvers.mjs';
+import schema from './schema.js';
+import resolvers from './resolvers.js';
 
 export const apolloServer = new ApolloServer({
   typeDefs: schema,

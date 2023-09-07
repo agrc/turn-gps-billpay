@@ -1,15 +1,17 @@
 import { initializeApp } from 'firebase-admin/app';
 import { debug } from 'firebase-functions/logger';
 import {auth} from 'firebase-functions/v1'; // v2 does not support this yet
-import { https  } from 'firebase-functions/v2';
-import { expressServer } from './https/graphql/server.mjs';
+import {https, setGlobalOptions} from 'firebase-functions/v2';
+import {expressServer} from "./https/graphql/server.js";
 
 initializeApp();
 
-// auth
+const vpc = 'projects/ut-dts-shared-vpc-dev/locations/us-central1/connectors/dts-shared-vpc-connector'
+const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gserviceaccount.com';
+setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc });// auth
 export const onCreateUser = auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
-    const createUser = (await import('./auth/onCreate.mjs')).createUser;
+    const createUser = (await import('./auth/onCreate')).createUser;
   
     const result = await createUser(user);
   
@@ -32,7 +34,7 @@ export const getProfile = https.onCall(
     }
 
     debug('[https::getProfile] importing createKey');
-    const getProfile = (await import('./https/getProfile.mjs')).getProfile;
+    const getProfile = (await import('./https/getProfile')).getProfile;
 
     const result = await getProfile(request.auth);
 

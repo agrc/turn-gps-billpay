@@ -1,7 +1,6 @@
 {
   "functions": {
-    "source": ".",
-    "codebase": "src",
+    "source": "functions",
     "runtime": "nodejs18",
     "ignore": [
       ".emulator-data",
