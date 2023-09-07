@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-25](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-24...v1.0.0-25) (2023-09-07)
+
+
+### 🐛 Bug Fixes
+
+* Move to standard firebase function format ([5a558c3](https://github.com/agrc/turn-gps-billpay/commit/5a558c3dd47121cb53674aba8afac18625271f92))
+
 ## [1.0.0-24](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-23...v1.0.0-24) (2023-09-06)
 
 
