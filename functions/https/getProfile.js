@@ -1,7 +1,7 @@
 import { auth, https, logger } from 'firebase-functions/v1';
 import { error, info } from 'firebase-functions/logger';
 import { getFirestore } from 'firebase-admin/firestore';
-import setupFirebase from '../firebase.mjs';
+import setupFirebase from '../firebase';
 
 setupFirebase();
 const db = getFirestore();

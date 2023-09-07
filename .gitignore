@@ -130,5 +130,4 @@ dist
 .pnp.*
 /.idea/
 /.firebase/*
-/src/functions/indexWindows.mjs
-/db.secret.local
+*.secret.local

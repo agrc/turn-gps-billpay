@@ -1,5 +1,5 @@
-import packageJSON from './../../../../package.json' assert {type: 'json'};
-import {getRoleGroups, getRoles} from "./service/databaseService.mjs";
+import packageJSON from './../../package.json' assert {type: 'json'};
+import {getRoleGroups, getRoles} from "./service/databaseService.js";
 
 const resolverFunctions = {
   Query: {
