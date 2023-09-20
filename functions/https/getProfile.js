@@ -12,6 +12,7 @@ export const getProfile = async (authData) => {
 
     throw new auth.HttpsError('unauthenticated', 'You must log in');
   }
+  logger.info('authData', authData)
 
   let profile = {
     displayName: authData.token.displayName,
