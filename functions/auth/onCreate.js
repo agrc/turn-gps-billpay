@@ -6,13 +6,14 @@ export const onCreate = async (user) => {
   info('[auth::user::onCreate] adding user', user, { structuredData: true });
 
   const data = {
+    uid: user.uid,
     email: user.email,
     displayName: user.displayName,
     created_at: new Date(),
   };
 
   try {
-    await db.collection('submitters').doc(user.uid).set(data);
+    await db.collection('authenticated_users').doc(user.uid).set(data);
   } catch (errorMessage) {
     error('[auth::user::onCreate] error creating user', errorMessage, user, {
       structuredData: true,

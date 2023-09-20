@@ -22,7 +22,7 @@ export const getProfile = async (authData) => {
 
   try {
     const snapshot = await db
-      .collection('submitters')
+      .collection('authenticated_users')
       .doc(authData.uid)
       .get();
 
