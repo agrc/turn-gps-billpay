@@ -20,7 +20,7 @@ export const onCreateUser = v1
   })
   .auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
-    const createUser = (await import('./auth/onCreate')).createUser;
+    const createUser = (await import('./auth/onCreate.js')).createUser;
   
     const result = await createUser(user);
   
@@ -43,7 +43,7 @@ export const getProfile = https.onCall(
     }
 
     debug('[https::getProfile] importing createKey');
-    const getProfile = (await import('./https/getProfile')).getProfile;
+    const getProfile = (await import('./https/getProfile.js')).getProfile;
 
     const result = await getProfile(request.auth);
 
