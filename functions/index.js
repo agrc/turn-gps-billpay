@@ -31,7 +31,7 @@ export const onCreateUser = v1
 
 // functions
 export const getProfile = https.onCall(
-  { cors: [/ut-dts-agrc-turn-gps-dev\.web\.app$/] },
+  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, "/utah\.gov"] }, 
   async (request) => {
     if (request.auth === undefined) {
       debug('[https::getProfile] no auth context');
