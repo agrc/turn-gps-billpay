@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-35](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-34...v1.0.0-35) (2023-09-20)
+
+
+### 🐛 Bug Fixes
+
+* add .js to another import ([58fbd21](https://github.com/agrc/turn-gps-billpay/commit/58fbd212920863e97c18bf11035e03a295874b72))
+
 ## [1.0.0-34](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-33...v1.0.0-34) (2023-09-20)
 
 
