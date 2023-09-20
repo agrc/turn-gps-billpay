@@ -9,7 +9,9 @@ cacheable.servers = [
   '204.113.4.5', // ns2 state of utah
 ];
 
-cacheable.lookupAsync("itdb002gp")
+// const hostname = 'itdb002gp.dts.utah.gov';
+const hostname = 'itdb002gp.utah.utad.state.ut.us';
+cacheable.lookupAsync(hostname)
   .then(response => {
     console.log('itdb002gp', response.address);
   })
