@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-32](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-31...v1.0.0-32) (2023-09-20)
+
+
+### 🐛 Bug Fixes
+
+* validate hostname and use correct collection ([765afe5](https://github.com/agrc/turn-gps-billpay/commit/765afe5529bfa4b1409e2f2930ea5a158d6f15af))
+
 ## [1.0.0-31](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-30...v1.0.0-31) (2023-09-07)
 
 
