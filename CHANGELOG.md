@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-33](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-32...v1.0.0-33) (2023-09-20)
+
+
+### 🐛 Bug Fixes
+
+* update cors for getProfile ([16dd33f](https://github.com/agrc/turn-gps-billpay/commit/16dd33f8bace1be476e8bd5ed9c89bbf824c902a))
+
 ## [1.0.0-32](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-31...v1.0.0-32) (2023-09-20)
 
 
