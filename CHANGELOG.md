@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-36](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-35...v1.0.0-36) (2023-09-20)
+
+
+### 🐛 Bug Fixes
+
+* add correct location for utahid ([d8b1d8b](https://github.com/agrc/turn-gps-billpay/commit/d8b1d8bbed637fb0fa617873bf6a427ecff592a1))
+
 ## [1.0.0-35](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-34...v1.0.0-35) (2023-09-20)
 
 
