@@ -1,23 +1,6 @@
 import sql from 'mssql';
-import CacheableLookup from 'cacheable-lookup';
 
-const cacheable = new CacheableLookup();
-cacheable.servers = [
-  '8.8.8.8', // google
-  '8.8.4.4', // google
-  '204.113.19.5', // ns1 state of utah
-  '204.113.4.5', // ns2 state of utah
-];
-
- const hostname = 'itdb002gp.dts.utah.gov';
 //const hostname = 'itdb002gp.utah.utad.state.ut.us'; //works
-cacheable.lookupAsync(hostname)
-  .then(response => {
-    console.log('itdb002gp', response.address);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
 
 const DB = process.env.database ? JSON.parse(process.env.database) : {};
 const sqlConfig = {

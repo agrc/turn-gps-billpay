@@ -4,9 +4,10 @@ import { getFirestore } from 'firebase-admin/firestore';
 const db = getFirestore();
 export const onCreate = async (user) => {
   info('[auth::user::onCreate] adding user', user, { structuredData: true });
+  const utahIdInfo = user.providerData.length ? user.providerData[0] : {};
 
   const data = {
-    uid: user.uid,
+    uid: utahIdInfo?.uid,
     email: user.email,
     displayName: user.displayName,
     created_at: new Date(),
