@@ -1,3 +1,4 @@
+## with a function
 version: 2
 updates:
   - package-ecosystem: npm
@@ -9,6 +10,9 @@ updates:
         update-types: ['minor', 'patch']
       major-app-dependencies:
         update-types: ['major']
+    commit-message:
+      prefix: deps
+      prefix-development: deps(dev)
   - package-ecosystem: npm
     directory: /functions
     schedule:
@@ -18,10 +22,13 @@ updates:
         update-types: ['minor', 'patch']
       major-function-dependencies:
         update-types: ['major']
+    commit-message:
+      prefix: deps
+      prefix-development: deps(dev)
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
     groups:
       ci-dependencies:
-        dependency-type: 'production'
+        dependency-type: 'production
