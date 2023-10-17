@@ -53,6 +53,20 @@ export const getProfile = https.onCall(
   }
 );
 
+export const paymentCallBack = https.onRequest({ secrets: ["database"] },
+  async (request, response) => {
+
+    debug('[https::paymentCallback] importing createKey');
+    const paymentCallback = (await import('./https/paymentCallback.js')).paymentCallback;
+
+    const result = await paymentCallback(request, response);
+
+    debug('[https::paymentCallback]', result);
+
+    return result;
+  }
+);
+
 export const graphQl = https.onRequest({ secrets: ["database"] },expressServer);
 
 if (process.env.LOCAL) {
