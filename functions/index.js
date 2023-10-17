@@ -56,12 +56,12 @@ export const getProfile = https.onCall(
 export const paymentCallBack = https.onRequest({ secrets: ["database"] },
   async (request, response) => {
 
-    debug('[https::paymentCallback] importing createKey');
-    const paymentCallback = (await import('./https/paymentCallback.js')).paymentCallback;
+    debug('[https::paymentCallBack] importing createKey');
+    const paymentCallBack = (await import('./https/paymentCallBack.js')).paymentCallBack;
 
-    const result = await paymentCallback(request, response);
+    const result = await paymentCallBack(request, response);
 
-    debug('[https::paymentCallback]', result);
+    debug('[https::paymentCallBack]', result);
 
     return result;
   }

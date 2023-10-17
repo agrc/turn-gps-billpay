@@ -19,7 +19,7 @@ const sqlConfig = {
   }
 };
 
-export const paymentCallback = async (request, response) => {
+export const paymentCallBack = async (request, response) => {
   const CAPTURE = 'CAPTURE';
   const REVERSE = 'REVERSE';
 
