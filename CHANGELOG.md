@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-38](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-37...v1.0.0-38) (2023-10-17)
+
+
+### 🐛 Bug Fixes
+
+* rename instances of paymentCallback to paymentCallBack ([09cec14](https://github.com/agrc/turn-gps-billpay/commit/09cec14aee9ca4be0cc147baa543855d98edede7))
+
 ## [1.0.0-37](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-36...v1.0.0-37) (2023-10-17)
 
 
