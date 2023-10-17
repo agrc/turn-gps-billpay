@@ -7,9 +7,10 @@ import { Input } from '../formElements/Inputs.jsx';
 import { Select } from '../formElements/Select.jsx';
 import {registrationSchema} from '../../helpers/schema.mjs';
 import { useEffect, useState } from 'react';
-// import { useFunctions, useUser } from 'reactfire';
+import { useUser } from 'reactfire';
 // eslint-disable-next-line no-unused-vars
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { request, gql } from 'graphql-request'
 import { Button } from '@utahdts/utah-design-system';
 import { Link } from 'react-router-dom';
 import pageUrls from '../../enums/pageUrls';
@@ -20,25 +21,31 @@ const defaultProps = {};
 function Registration() {
 
   // const functions = useFunctions();
-  // const { data } = useUser();
-  // const getRegistration = httpsCallable(functions, 'functions-httpsGetProfile');
+  const { data } = useUser();
+  // const getRolesGraphql = httpsCallable(functions, 'graphQl');
   // const updateRegistration = httpsCallable(functions, 'functions-httpsPostProfile');
 
   // eslint-disable-next-line no-unused-vars
   const queryClient = useQueryClient();
+  
+  const endpoint = 'https://graphql-ueoh6v2sya-uc.a.run.app/';
+  const getRoles = gql`
+   query {
+    getRoles {
+      roleName
+    }
+  }
+  `;
 
-  // const { data: response, status: registrationStatus } = useQuery({
-  //   queryKey: ['registration', data.uid],
-  //   enabled: data?.uid?.length > 0,
-  //   queryFn: getRegistration(),
-  //   placeholderData: {
-  //     data: {
-  //       organization: data?.organization ?? '',
-  //       username: '',
-  //     },
-  //   },
-  //   staleTime: Infinity,
-  // });
+  const { data: response, status: registrationStatus } = useQuery({
+    queryKey: ['roles', data.uid],
+    enabled: data?.uid?.length > 0,
+      queryFn: async () => {
+        const {getRoles: retVal} = await request(endpoint,getRoles);
+        return retVal;
+      },
+    staleTime: Infinity,
+  });
 
   const defaultValues = {
     username: '',
@@ -85,6 +92,10 @@ function Registration() {
   ];
   const [selectedState, setSelectedState] = useState(stateList[0]);
 
+  console.log('registrationStatus', registrationStatus);
+  console.log('data', data);
+  console.log('response', response);
+  
   return (
     <div>
       <div className="home-banner">
