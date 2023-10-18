@@ -3,10 +3,11 @@ import { debug } from 'firebase-functions/logger';
 import * as v1 from "firebase-functions";
 import {https, setGlobalOptions} from 'firebase-functions/v2';
 import {expressServer} from "./https/graphql/server.js";
+import {params} from "firebase-functions";
 
 initializeApp();
 
-const vpc = 'projects/ut-dts-shared-vpc-dev/locations/us-central1/connectors/dts-shared-vpc-connector'
+const vpc = params.defineString("vpc");
 const vpcEgress = 'ALL_TRAFFIC';
 const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gserviceaccount.com';
 setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress });
