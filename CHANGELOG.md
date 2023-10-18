@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-40](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-39...v1.0.0-40) (2023-10-18)
+
+
+### 🐛 Bug Fixes
+
+* use correct VPC variable ([8074e02](https://github.com/agrc/turn-gps-billpay/commit/8074e02ec4b7266615071157dc510e7bce8df268))
+
 ## [1.0.0-39](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-38...v1.0.0-39) (2023-10-18)
 
 
