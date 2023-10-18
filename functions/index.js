@@ -7,7 +7,7 @@ import {params} from "firebase-functions";
 
 initializeApp();
 
-const vpc = params.defineString("vpc");
+const vpc = params.defineString("VPC");
 const vpcEgress = 'ALL_TRAFFIC';
 const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gserviceaccount.com';
 setGlobalOptions({ serviceAccount: serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress });
