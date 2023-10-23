@@ -21,9 +21,9 @@ export const onCreateUser = v1
   })
   .auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
-    const createUser = (await import('./auth/onCreate.js')).createUser;
+    const onCreate = (await import('./auth/onCreate.js')).onCreate;
   
-    const result = await createUser(user);
+    const result = await onCreate(user);
   
     debug('[auth::user::onCreate]', result);
   
