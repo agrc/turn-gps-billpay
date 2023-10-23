@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-41](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-40...v1.0.0-41) (2023-10-23)
+
+
+### 🐛 Bug Fixes
+
+* onCreate and paymentCallBack functions ([81ec2ab](https://github.com/agrc/turn-gps-billpay/commit/81ec2ab7bd12831d83c46b2c7729c70120046f6e))
+
 ## [1.0.0-40](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-39...v1.0.0-40) (2023-10-18)
 
 
