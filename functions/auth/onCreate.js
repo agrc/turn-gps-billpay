@@ -3,11 +3,12 @@ import { getFirestore } from 'firebase-admin/firestore';
 
 const db = getFirestore();
 export const onCreate = async (user) => {
-  info('[auth::user::onCreate] adding user', user, { structuredData: true });
+  info('[auth::user::onCreate] adding user');
   const utahIdInfo = user.providerData.length ? user.providerData[0] : {};
+  info('[auth::user::onCreate] providerData', utahIdInfo, { structuredData: true });
 
   const data = {
-    uid: utahIdInfo?.uid,
+    uid: utahIdInfo?.federatedId,
     email: user.email,
     displayName: user.displayName,
     created_at: new Date(),

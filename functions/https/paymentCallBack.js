@@ -23,7 +23,7 @@ export const paymentCallBack = async (request, response) => {
   const CAPTURE = 'CAPTURE';
   const REVERSE = 'REVERSE';
 
-  if (request.method !== "GET") {
+  if (request.method !== "POST") {
     error("HTTP Method Not Allowed");
     response.send(405, 'HTTP Method ' + request.method + ' not allowed');
   }
