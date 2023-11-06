@@ -5,11 +5,11 @@ import { useQuery } from '@tanstack/react-query';
 const propTypes = {};
 const defaultProps = {};
 function Profile() {
-  
   const functions = useFunctions();
   const getProfile = httpsCallable(functions, 'getProfile');
   const { data: user } = useUser();
-  
+
+  // eslint-disable-next-line no-console
   console.log('user', user);
 
   const uid = user?.uid;
@@ -41,11 +41,11 @@ function Profile() {
           role="presentation"
           aria-hidden="true"
         >
-          <path d="M10.8 2.699v9.45a2.699 2.699 0 005.398 0V5.862a8.101 8.101 0 11-8.423 1.913 2.702 2.702 0 00-3.821-3.821A13.5 13.5 0 1013.499 0 2.699 2.699 0 0010.8 2.699z"></path>
+          <path d="M10.8 2.699v9.45a2.699 2.699 0 005.398 0V5.862a8.101 8.101 0 11-8.423 1.913 2.702 2.702 0 00-3.821-3.821A13.5 13.5 0 1013.499 0 2.699 2.699 0 0010.8 2.699z" />
         </svg>
       </span>
       <div className="flex w-full justify-around">
-          My Profile
+        My Profile
       </div>
     </div>
   );

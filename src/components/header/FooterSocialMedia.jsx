@@ -9,7 +9,6 @@ import '@utahdts/utah-design-system-header/css';
 import '@utahdts/utah-design-system/css/3-generic/normalize.css';
 import IconsWebsite from '../pageElements/IconsWebsite';
 
-
 const propTypes = {};
 const defaultProps = {};
 

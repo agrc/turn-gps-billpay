@@ -35,22 +35,22 @@ const defaultProps = {
  * @returns {JSX.Element}
  */
 function FooterInformationInfo({
-                                       agencyTitleFirstLine,
-                                       agencyTitleSecondLine,
-                                       address,
-                                       email,
-                                       logo,
-                                       phone,
-                                     }) {
+  agencyTitleFirstLine,
+  agencyTitleSecondLine,
+  address,
+  email,
+  logo,
+  phone,
+}) {
   return (
     <>
       <div className="footer-agency-information__image-title-wrapper">
-          <div className="footer-agency-information__title-image">
-            {logo}
-          </div>
-          <div className="footer-agency-information__first-line">
-            {agencyTitleFirstLine}
-          </div>
+        <div className="footer-agency-information__title-image">
+          {logo}
+        </div>
+        <div className="footer-agency-information__first-line">
+          {agencyTitleFirstLine}
+        </div>
       </div>
       <div className="footer-agency-information__title">
         <div className="footer-agency-information__second-line">

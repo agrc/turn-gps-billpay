@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import { setUtahHeaderSettings, sizes } from '@utahdts/utah-design-system-header';
 import identity from 'lodash/identity';
 import { useEffect } from 'react';
@@ -31,18 +32,25 @@ export const mainMenuItems = {
   menuItems: [
     {
       actionUrl: {
-        url: pageUrls.home
+        url: pageUrls.home,
       },
       icon: document.getElementById('home-menu-item-icon-id'),
-      title: 'Home'
+      title: 'Home',
+    },
+    {
+      actionUrl: {
+        url: pageUrls.utahIdProcess,
+      },
+      icon: document.getElementById('home-menu-item-icon-id'),
+      title: 'UtahID Registration Process',
     },
     {
       actionFunctionUrl: {
         url: 'http://turngps.utah.gov',
-        actionFunction: () => window.location = 'http://turngps.utah.gov'
+        actionFunction: () => window.location = 'http://turngps.utah.gov',
       },
-      title: 'turngps.utah.gov'
-    }
+      title: 'turngps.utah.gov',
+    },
   ]
     .filter(identity),
   title: 'Main Menu',

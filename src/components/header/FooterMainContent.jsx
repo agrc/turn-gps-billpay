@@ -30,7 +30,7 @@ function FooterMainContent() {
           agencyTitleFirstLine="Utah Geospatial Resource Center"
           agencyTitleSecondLine="Department of Government Operations"
           email="ugrc@utah.gov"
-          logo={<img src={ logo } alt="UGRC" />}
+          logo={<img src={logo} alt="UGRC" />}
         />
       </FooterAgencyInformationColumn>
 

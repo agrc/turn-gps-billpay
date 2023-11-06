@@ -13,7 +13,9 @@ import pageUrls from '../../enums/pageUrls';
 import AdminLanding from '../pageElements/AdminLanding';
 import { menuSecondary } from './menuSecondary';
 import useCurrentMenuItem from '../../hooks/useCurrentMenuItem';
-
+import Subscription from '../pageElements/Subscription';
+import Payment from '../pageElements/Payment';
+import UtahIdProcess from '../pageElements/UtahIdProcess';
 
 const propTypes = {};
 const defaultProps = {};
@@ -27,37 +29,74 @@ function Routing() {
 
   return (
     <Routes>
-      <Route path={pageUrls.home} element={
-        <MainTemplate
-          content={HomeLanding}
-          contentRef={contentRef}
-          sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
-        />
-      } />
-      <Route path={pageUrls.termsAndConditions} element={
-        <MainTemplate
-          content={TermsConditions}
-          contentRef={contentRef}
-          sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
-        />
-      } />
-      <Route path={pageUrls.registration} element={
-        <MainTemplate
-          content={Registration}
-          contentRef={contentRef}
-          sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
-        />
-      } />
+      <Route
+        path={pageUrls.home}
+        element={(
+          <MainTemplate
+            content={HomeLanding}
+            contentRef={contentRef}
+            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
+          />
+      )}
+      />
+      <Route
+        path={pageUrls.termsAndConditions}
+        element={(
+          <MainTemplate
+            content={TermsConditions}
+            contentRef={contentRef}
+            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
+          />
+      )}
+      />
+      <Route
+        path={pageUrls.registration}
+        element={(
+          <MainTemplate
+            content={Registration}
+            contentRef={contentRef}
+            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
+          />
+      )}
+      />
+      <Route
+        path={pageUrls.subscription}
+        element={(
+          <MainTemplate
+            content={Subscription}
+            contentRef={contentRef}
+            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
+          />
+      )}
+      />
+      <Route
+        path={pageUrls.payment}
+        element={(
+          <MainTemplate
+            content={Payment}
+            contentRef={contentRef}
+            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
+          />
+      )}
+      />
+      <Route
+        path={pageUrls.utahIdProcess}
+        element={(
+          <MainTemplate
+            content={UtahIdProcess}
+            contentRef={contentRef}
+            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
+          />
+      )}
+      />
       {
         user.data
           ? (
-            <>
-              <Route path={pageUrls.admin} element={<AdminLanding />} />
-            </>
+            <Route path={pageUrls.admin} element={<AdminLanding />} />
           )
-          : <Route path='*' element={<Page404 />} />
+          : <Route path="*" element={<Page404 />} />
       }
-      <Route path='*' element={<Page404 />} />
+      <Route path="*" element={<Page404 />} />
     </Routes>
   );
 }

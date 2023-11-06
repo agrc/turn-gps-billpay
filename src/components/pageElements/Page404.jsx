@@ -10,11 +10,11 @@ const defaultProps = {};
 function Page404() {
   return (
     <div>
-      <main className='landing-page-template page-not-found'>
-        <div className='top-banner' />
-        <div className='content-width page-not-found__content'>
+      <main className="landing-page-template page-not-found">
+        <div className="top-banner" />
+        <div className="content-width page-not-found__content">
           <div>
-            <h1 className='mt-spacing'>
+            <h1 className="mt-spacing">
               Page Not Found
             </h1>
             <br />
@@ -27,9 +27,9 @@ function Page404() {
             <p>
               To return to reality you may navigate using the above menu or visit the <Link to={pageUrls.home}>home</Link> page.
             </p>
-            <p className='mb-auto'>
-              <Link to={pageUrls.home} className='button button--primary-color button--solid' style={{ display: 'inline-flex' }}>
-                <span className='button--icon button--icon-left'><span className='utds-icon-before-arrow-left' aria-hidden='true' style={{ fontSize: '.9rem' }} /></span>
+            <p className="mb-auto">
+              <Link to={pageUrls.home} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
+                <span className="button--icon button--icon-left"><span className="utds-icon-before-arrow-left" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
                 Home Page
               </Link>
             </p>
@@ -37,10 +37,10 @@ function Page404() {
         </div>
       </main>
 
-      <footer aria-label='Utah Design System (main footer)'>
+      <footer aria-label="Utah Design System (main footer)">
         <FooterSocialMedia />
         <FooterMainContent />
-        <div id='utah-footer-placeholder' />
+        <div id="utah-footer-placeholder" />
       </footer>
     </div>
   );

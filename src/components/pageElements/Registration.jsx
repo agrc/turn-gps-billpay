@@ -2,100 +2,100 @@ import { useForm } from 'react-hook-form';
 // import { httpsCallable } from 'firebase/functions';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from '@hookform/error-message';
-import ErrorMessageTag from './ErrorMessage.jsx';
-import { Input } from '../formElements/Inputs.jsx';
-import { Select } from '../formElements/Select.jsx';
-import {registrationSchema} from '../../helpers/schema.mjs';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useUser } from 'reactfire';
 // eslint-disable-next-line no-unused-vars
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { request, gql } from 'graphql-request'
-import { Button } from '@utahdts/utah-design-system';
+// import { useQueryClient } from '@tanstack/react-query';
+// import { gql } from 'graphql-request';
+import {
+  Button, Form, Select, SelectOption, TextInput
+} from '@utahdts/utah-design-system';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { registrationSchema } from '../../helpers/schema.mjs';
+import ErrorMessageTag from './ErrorMessage.jsx';
 import pageUrls from '../../enums/pageUrls';
+import RegistrationPropsShape from '../propTypeShapes/RegistrationPropsShape';
 
-const propTypes = {};
+const propTypes = {
+  setState: PropTypes.func.isRequired,
+  state: PropTypes.shape({
+    props: RegistrationPropsShape.isRequired,
+  }).isRequired,
+};
 const defaultProps = {};
 
-function Registration() {
-
-  // const functions = useFunctions();
+function Registration({ setState, state }) {
   const { data } = useUser();
   // const getRolesGraphql = httpsCallable(functions, 'graphQl');
   // const updateRegistration = httpsCallable(functions, 'functions-httpsPostProfile');
 
-  // eslint-disable-next-line no-unused-vars
-  const queryClient = useQueryClient();
-  
-  const endpoint = 'https://graphql-ueoh6v2sya-uc.a.run.app/';
-  const getRoles = gql`
-   query {
-    getRoles {
-      roleName
-    }
-  }
-  `;
+  useEffect(
+    () => {
+      setState((draftState) => {
+        draftState.props.organization = 'ugrc';
+        draftState.props.username = '';
+        draftState.props.password = '';
+        draftState.props.confirmPassword = '';
+        draftState.props.firstName = undefined;
+        draftState.props.lastName = undefined;
+        draftState.props.email = '';
+        draftState.props.address1 = '';
+        draftState.props.address2 = '';
+        draftState.props.city = '';
+        draftState.props.stateCode = 'UT';
+        draftState.props.zipCode = '';
+        draftState.props.phoneNumber = '';
+      });
+    },
+    []
+  );
 
-  const { data: response, status: registrationStatus } = useQuery({
-    queryKey: ['roles', data.uid],
-    enabled: data?.uid?.length > 0,
-      queryFn: async () => {
-        const {getRoles: retVal} = await request(endpoint,getRoles);
-        return retVal;
-      },
-    staleTime: Infinity,
-  });
+  // eslint-disable-next-line no-unused-vars
+  // const queryClient = useQueryClient();
+  //
+  // const endpoint = 'https://graphql-ueoh6v2sya-uc.a.run.app/';
+  // const getRoles = gql`
+  //  query {
+  //   getRoles {
+  //     roleName
+  //   }
+  // }
+  // `;
+
+  // const { data: response, status: registrationStatus } = useQuery({
+  //   queryKey: ['roles', data.uid],
+  //   enabled: data?.uid?.length > 0,
+  //   queryFn: async () => {
+  //     const { getRoles: retVal } = await request(endpoint, getRoles);
+  //     return retVal;
+  //   },
+  //   staleTime: Infinity,
+  // });
 
   const defaultValues = {
     username: '',
     password: '',
   };
-  // eslint-disable-next-line no-unused-vars
-  const { formState, handleSubmit, register, reset, setFocus } =
-    useForm({
-      resolver: yupResolver(registrationSchema),
-      defaultValues,
-    });
-
+  /* eslint-disable no-unused-vars */
+  const {
+    formState, handleSubmit, register, reset, setFocus,
+  } = useForm({
+    resolver: yupResolver(registrationSchema),
+    defaultValues,
+  });
 
   useEffect(() => {
     setFocus('organization');
   }, [setFocus]);
 
-  // const { mutate, status } = useMutation({
-  //   mutationKey: ['update profile', data.uid],
-  //   mutationFn: (data) => updateRegistration(data),
-  //   onSuccess: (response) => {
-  //     reset(response.data);
-  //     queryClient.invalidateQueries({ queryKey: ['registration', data.uid] });
-  //   },
-  //   onError: (error) => {
-  //     console.warn('error', error);
-  //     reset();
-  //   },
-  // });
-
-  // useEffect(() => {
-  //   if (registrationStatus === 'success') {
-  //     reset(response.data);
-  //   }
-  // }, [registrationStatus, reset, response]);
-  //
-  // const onSubmit = (payload) => {
-  //   mutate(payload);
-  // };
-
-  const stateList = [
-    'Utah',
-    'Nevada',
-  ];
-  const [selectedState, setSelectedState] = useState(stateList[0]);
-
-  console.log('registrationStatus', registrationStatus);
+  // eslint-disable-next-line no-console
+  // console.log('registrationStatus', registrationStatus);
+  // eslint-disable-next-line no-console
   console.log('data', data);
-  console.log('response', response);
-  
+  // eslint-disable-next-line no-console
+  // console.log('response', response);
+
   return (
     <div>
       <div className="home-banner">
@@ -107,102 +107,117 @@ function Registration() {
         <p className="lead-in">
           Registration and use of the service is contingent on accepting the Terms and Conditions.
         </p>
-        {/*<form onSubmit={handleSubmit(onSubmit)}>*/}
-        <form>
-          <Input
+        <Form
+          // onSubmit(({ state, validationErrors }) => ... do whatever ...)
+          state={state}
+          setState={setState}
+          className="form--stacked"
+        >
+          <TextInput
+            id="props.organization"
             label="Organization"
-            required={true}
-            {...register('organization')}
+            isRequired
+            className="input--height-small1x"
           />
+
           <ErrorMessage
             errors={formState.errors}
             name="organization"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.username"
             label="Username"
-            required={true}
-            {...register('username')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="username"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.password"
             label="Password"
-            required={true}
-            {...register('password')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="password"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.confirmPassword"
             label="Confirm Password"
-            required={true}
-            {...register('confirmPassword')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="confirmPassword"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.firstName"
             label="First Name"
-            required={true}
-            {...register('firstName')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="firstName"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.lastName"
             label="Last Name"
-            required={true}
-            {...register('lastName')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="lastName"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.email"
             label="Email"
-            required={true}
-            {...register('email')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="email"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.address1"
             label="Address 1"
-            required={true}
-            {...register('address1')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="address1"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.address2"
             label="Address 2"
-            required={false}
-            {...register('address2')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="address2"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.city"
             label="City"
-            required={true}
-            {...register('city')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
@@ -211,28 +226,28 @@ function Registration() {
           />
 
           <div className="flex-1">
-            <Select
-              label="State"
-              options={stateList}
-              value={selectedState}
-              onChange={setSelectedState}
-            ></Select>
+            <Select id="props.stateCode" label="State" className="input--height-small1x">
+              <SelectOption label="Utah" value="UT" />
+              <SelectOption label="Nevada" value="NV" />
+            </Select>
           </div>
 
-          <Input
+          <TextInput
+            id="props.zipCode"
             label="Zip Code"
-            required={true}
-            {...register('zip')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
             name="zip"
             as={ErrorMessageTag}
           />
-          <Input
+          <TextInput
+            id="props.phoneNumber"
             label="Phone Number"
-            required={true}
-            {...register('phoneNumber')}
+            isRequired
+            className="input--height-small1x"
           />
           <ErrorMessage
             errors={formState.errors}
@@ -240,29 +255,22 @@ function Registration() {
             as={ErrorMessageTag}
           />
           <div className="flex">
-            <Link to={pageUrls.termsAndConditions} className='button button--primary-color button--solid' style={{ display: 'inline-flex' }}>
-              <span className='button--icon button--icon-left'><span className='utds-icon-before-arrow-left' aria-hidden='true' style={{ fontSize: '.9rem' }} /></span>
+            <Link to={pageUrls.termsAndConditions} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
+              <span className="button--icon button--icon-left"><span className="utds-icon-before-arrow-left" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
               Back
             </Link>
-            {/*<Button*/}
-            {/*  type="button"*/}
-            {/*  style="secondary"*/}
-            {/*  onClick={() =>*/}
-            {/*    dispatch({ type: 'menu/toggle', payload: 'login' })*/}
-            {/*  }*/}
-            {/*>*/}
-            {/*  Back*/}
-            {/*</Button>*/}
+
             <Button
               appearance="outlined"
               color="primary"
               type="submit"
-              onClick={() => { alert('alert') }}
+              // eslint-disable-next-line no-alert
+              onClick={() => { alert('alert'); }}
             >
               Submit
             </Button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );

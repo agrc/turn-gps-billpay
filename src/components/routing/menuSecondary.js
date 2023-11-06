@@ -8,19 +8,19 @@ export const menuSecondary = {
       id: 'pages__system-information',
       title: 'System Information',
       link: pageUrls.home,
-      parentLinks: [pageUrls.home]
+      parentLinks: [pageUrls.home],
     },
     {
       id: 'pages__terms-conditions',
       title: 'Terms and Conditions',
       link: pageUrls.termsAndConditions,
-      parentLinks: [pageUrls.home]
+      parentLinks: [pageUrls.home],
     },
     {
       id: 'pages__registration',
       title: 'Registration',
       link: pageUrls.registration,
-      parentLinks: [pageUrls.home]
-    }
-  ]
+      parentLinks: [pageUrls.home],
+    },
+  ],
 };

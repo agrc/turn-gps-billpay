@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function Spacer({ className }) {
-  return <div className={className}></div>;
+  return <div className={className} />;
 }
 
 export default Spacer;
