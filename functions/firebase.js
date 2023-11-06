@@ -5,6 +5,7 @@ const setupFirebase = () => {
   try {
     app = JSON.parse(process.env.FIREBASE_CONFIG);
   } catch (error) {
+    /* eslint-disable no-console */
     console.error('This happens in unit tests', error);
   }
 

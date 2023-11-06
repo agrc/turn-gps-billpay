@@ -1,5 +1,6 @@
-import packageJSON from './../../package.json' assert {type: 'json'};
-import {getRoleGroups, getRoles} from "./service/databaseService.js";
+/* eslint-disable no-console */
+import packageJSON from '../../package.json' assert {type: 'json'};
+import { getRoleGroups, getRoles } from '../../db/service/databaseService.js';
 
 const resolverFunctions = {
   Query: {
@@ -7,7 +8,7 @@ const resolverFunctions = {
     version: () => packageJSON.version,
     getRoleGroups: () => getRoleGroups(),
     getRoles: () => getRoles(),
-  }
+  },
 };
 
 export default resolverFunctions;
