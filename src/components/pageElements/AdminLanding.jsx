@@ -1,7 +1,6 @@
 import FooterSocialMedia from '../header/FooterSocialMedia';
 import FooterMainContent from '../header/FooterMainContent';
 
-
 const propTypes = {};
 const defaultProps = {};
 
@@ -12,15 +11,15 @@ function AdminLanding() {
         <h1 className="my-spacing-l text-center">Admin</h1>
 
         <p className="lead-in">
-          Administration Section 
+          Administration Section
         </p>
 
       </div>
-      
-      <footer aria-label='Utah Design System (main footer)'>
+
+      <footer aria-label="Utah Design System (main footer)">
         <FooterSocialMedia />
         <FooterMainContent />
-        <div id='utah-footer-placeholder' />
+        <div id="utah-footer-placeholder" />
       </footer>
 
     </div>

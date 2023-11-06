@@ -24,7 +24,7 @@ function TermsConditions() {
 
         <p className="lead-in">
           Registration and use of the service is contingent on accepting the following Terms and Conditions.
-          <br/>
+          <br />
           By checking the &quot;I Agree&quot; button below, you agree to these Terms and Conditions:
         </p>
 
@@ -39,14 +39,14 @@ function TermsConditions() {
 
         <p><b>By continuing, I am agreeing to the terms and conditions above.</b></p>
 
-        <p className='mb-auto'>
-          <Link to={pageUrls.home} className='button button--primary-color button--solid' style={{ display: 'inline-flex' }}>
-            <span className='button--icon button--icon-left'><span className='utds-icon-before-arrow-left' aria-hidden='true' style={{ fontSize: '.9rem' }} /></span>
+        <p className="mb-auto">
+          <Link to={pageUrls.home} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
+            <span className="button--icon button--icon-left"><span className="utds-icon-before-arrow-left" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
             Back
           </Link>
-          <Link to={pageUrls.registration} className='button button--primary-color button--solid' style={{ display: 'inline-flex' }}>
+          <Link to={pageUrls.registration} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
             I Agree
-            <span className='button--icon button--icon-right'><span className='utds-icon-after-arrow-right' aria-hidden='true' style={{ fontSize: '.9rem' }} /></span>
+            <span className="button--icon button--icon-right"><span className="utds-icon-after-arrow-right" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
           </Link>
         </p>
 

@@ -12,10 +12,9 @@ import { useImmer } from 'use-immer';
  */
 /** @typedef {import ('../../mono-repo-globals/@types/jsdoc.d.js').Collections} Collections */
 
-
 const STRING_LIST_SEPARATOR = '|';
 
-/** 
+/**
  * @param {Collections} collections
  * @returns {string[]}
  */

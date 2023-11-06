@@ -4,15 +4,14 @@ import { useFirebaseApp } from 'reactfire';
 
 /** @typedef {import ('firebase/auth').UserCredential} UserCredential */
 
-
 /** @returns {() => Promise<UserCredential>} */
 export default function useSignInFunc() {
   const oAuthProvider = useMemo(
     () => {
-      const oAuthProvider = new OAuthProvider('oidc.utahid');
-      oAuthProvider.addScope('profile');
-      oAuthProvider.addScope('email');
-      return oAuthProvider;
+      const utahIdProvider = new OAuthProvider('oidc.utahid');
+      utahIdProvider.addScope('profile');
+      utahIdProvider.addScope('email');
+      return utahIdProvider;
     },
     []
   );
