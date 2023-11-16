@@ -4,7 +4,6 @@
 // import ProgressLog from './ProgressLog/ProgressLog';
 import { Link } from 'react-router-dom';
 import pageUrls from '../../enums/pageUrls';
-import Profile from './Profile';
 
 const propTypes = {};
 const defaultProps = {};
@@ -38,7 +37,6 @@ function HomeLanding() {
           processing data, saving you time and money. It is ideal for any application requiring
           reliable, fast, high precision wide area positioning.
         </p>
-        <Profile />
         <p className="mb-auto">
           <Link to={pageUrls.termsAndConditions} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
             Next

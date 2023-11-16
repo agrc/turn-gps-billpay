@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import 'yup-phone-lite';
 
 export const registrationSchema = yup.object().shape({
   organization: yup
@@ -15,17 +16,13 @@ export const registrationSchema = yup.object().shape({
     .label('Username'),
   password: yup
     .string()
-    .notRequired()
+    .required('Password is a required field.')
     .max(250)
-    .nullable()
-    .optional()
     .label('password'),
   confirmPassword: yup
     .string()
-    .notRequired()
     .max(250)
-    .nullable()
-    .optional()
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
     .label('confirmPassword'),
   firstName: yup
     .string()
@@ -41,8 +38,17 @@ export const registrationSchema = yup.object().shape({
     .label('lastName'),
   email: yup
     .string()
+    .email()
     .required('Email is a required field.')
     .typeError('Email is a required field.')
+    .max(250)
+    .label('email'),
+  additionalEmail: yup
+    .string()
+    .email()
+    .notRequired()
+    .nullable()
+    .optional()
     .max(250)
     .label('email'),
   address1: yup
@@ -63,15 +69,19 @@ export const registrationSchema = yup.object().shape({
     .typeError('City is a required field.')
     .max(250)
     .label('city'),
-  state: yup
+  stateCode: yup
     .string()
     .required('State is a required field.')
     .typeError('State is a required field.')
     .max(250)
-    .label('state'),
+    .label('stateCode'),
   zipCode: yup
     .number()
     .required('Zip Code is a required field.')
     .typeError('Zip Code is a required field.')
     .label('zipCode'),
+  phoneNumber: yup
+    .string()
+    .phone('US', 'Please enter a valid phone number')
+    .required('A phone number is required'),
 });

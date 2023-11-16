@@ -6,7 +6,7 @@ import AppContext from './AppContext';
 /** @typedef {import ('../../mono-repo-globals/@types/jsdoc.d.js').AppContextValue} AppContextValue */
 
 const propTypes = {
- children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   formState: PropTypes.shape({
     formId: PropTypes.number.isRequired,
   }),
@@ -30,13 +30,13 @@ const defaultProps = {
 };
 
 function AppContextProvider({
-                              children,
-                              formState,
-                              onChange,
-                              onSubmit,
-                              setState,
-                              state,
-                            }) {
+  children,
+  formState,
+  onChange,
+  onSubmit,
+  setState,
+  state,
+}) {
   const contextState = useMemo(
     () => ({
       formId: formState?.formId,

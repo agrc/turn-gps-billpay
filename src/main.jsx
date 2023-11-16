@@ -10,6 +10,7 @@ import App from './components/app/App.jsx';
 
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider
+    contextSharing
     client={
       new QueryClient({
         defaultOptions: {
