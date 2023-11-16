@@ -10,7 +10,7 @@
     "dev": "cross-env NODE_ENV=development run-p dev:*",
     "dev:firebase": "firebase emulators:start --import .firebase-export --only auth,functions,firestore",
     "save-firebase-state": "firebase emulators:start --import .firebase-export --export-on-exit --only auth,functions,firestore",
-    "debug-firebase": "firebase emulators:start --import .firebase-export --only auth,functions,firestore --inspect-functions",
+    "debug-firebase": "firebase emulators:start --import .firebase-export --only auth,functions,firestore --inspect-functions --debug",
     "dev:vite": "vite",
     "build": "vite build",
     "cleaninstall_win": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/cleaninstall_win.ps1",
@@ -32,10 +32,11 @@
     "@heroicons/react": "2.0.18",
     "@hookform/error-message": "2.0.1",
     "@hookform/resolvers": "3.3.2",
+    "@tanstack/react-form": "0.9.0",
     "@tanstack/react-query": "5.4.3",
     "@tanstack/react-query-devtools": "5.4.3",
     "@utahdts/utah-design-system": "1.9.2",
-    "@utahdts/utah-design-system-header": "1.9.2",
+    "@utahdts/utah-design-system-header": "1.10.0",
     "clsx": "2.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "firebase": "9.23.0",
@@ -52,7 +53,8 @@
     "react-router-dom": "6.18.0",
     "reactfire": "4.2.3",
     "use-immer": "0.9.0",
-    "yup": "1.3.2"
+    "yup": "1.3.2",
+    "yup-phone-lite": "2.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.22.15",

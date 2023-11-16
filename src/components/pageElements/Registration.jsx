@@ -1,100 +1,86 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from 'react-hook-form';
-// import { httpsCallable } from 'firebase/functions';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from '@hookform/error-message';
-import { useEffect } from 'react';
-import { useUser } from 'reactfire';
-// eslint-disable-next-line no-unused-vars
-// import { useQueryClient } from '@tanstack/react-query';
-// import { gql } from 'graphql-request';
-import {
-  Button, Form, Select, SelectOption, TextInput
-} from '@utahdts/utah-design-system';
+import { useEffect, useState } from 'react';
+import { useFunctions, useUser } from 'reactfire';
+import { Button } from '@utahdts/utah-design-system';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { httpsCallable } from 'firebase/functions';
+import { useMutation } from '@tanstack/react-query';
+import { Input } from '../formElements/Inputs.jsx';
 import { registrationSchema } from '../../helpers/schema.mjs';
 import ErrorMessageTag from './ErrorMessage.jsx';
 import pageUrls from '../../enums/pageUrls';
-import RegistrationPropsShape from '../propTypeShapes/RegistrationPropsShape';
 
-const propTypes = {
-  setState: PropTypes.func.isRequired,
-  state: PropTypes.shape({
-    props: RegistrationPropsShape.isRequired,
-  }).isRequired,
-};
-const defaultProps = {};
-
-function Registration({ setState, state }) {
+function Registration() {
   const { data } = useUser();
-  // const getRolesGraphql = httpsCallable(functions, 'graphQl');
-  // const updateRegistration = httpsCallable(functions, 'functions-httpsPostProfile');
+  const functions = useFunctions();
+
+  const createTrimbleUser = httpsCallable(functions, 'createTrimbleUser');
+  // const createUser = async ({ email, password, name, price }) => {
+  //   const response = await createTrimbleUser({
+  //     organization: 'agrc',
+  //     username: 'chwardle3',
+  //     password: 'test',
+  //     email: 'chwardle@utah.gov',
+  //   });
+  //   return response;
+  // };
+
+  const defaultValues = {
+    organization: 'agrc',
+    stateCode: 'UT',
+    username: '',
+    password: '',
+  };
+
+  /* eslint-disable no-unused-vars */
+  const mutation = useMutation({
+    mutationFn: (payload) => createTrimbleUser(payload),
+    onMutate: (variables) => ({ id: 1 }),
+    onError: (error, variables, context) => {
+      // eslint-disable-next-line no-console
+      console.log(`rolling back optimistic update with id ${context.id}`);
+    },
+    onSuccess: (successData, variables, context) => {
+      // Boom baby!
+      // eslint-disable-next-line no-console
+      console.log(`success ${variables}`);
+    },
+    onSettled: (settledData, error, variables, context) => {
+      // Error or success... doesn't matter!
+    },
+  });
+
+  const [state, setState] = useState();
 
   useEffect(
     () => {
-      setState((draftState) => {
-        draftState.props.organization = 'ugrc';
-        draftState.props.username = '';
-        draftState.props.password = '';
-        draftState.props.confirmPassword = '';
-        draftState.props.firstName = undefined;
-        draftState.props.lastName = undefined;
-        draftState.props.email = '';
-        draftState.props.address1 = '';
-        draftState.props.address2 = '';
-        draftState.props.city = '';
-        draftState.props.stateCode = 'UT';
-        draftState.props.zipCode = '';
-        draftState.props.phoneNumber = '';
-      });
+      setState(state);
     },
     []
   );
 
-  // eslint-disable-next-line no-unused-vars
-  // const queryClient = useQueryClient();
-  //
-  // const endpoint = 'https://graphql-ueoh6v2sya-uc.a.run.app/';
-  // const getRoles = gql`
-  //  query {
-  //   getRoles {
-  //     roleName
-  //   }
-  // }
-  // `;
-
-  // const { data: response, status: registrationStatus } = useQuery({
-  //   queryKey: ['roles', data.uid],
-  //   enabled: data?.uid?.length > 0,
-  //   queryFn: async () => {
-  //     const { getRoles: retVal } = await request(endpoint, getRoles);
-  //     return retVal;
-  //   },
-  //   staleTime: Infinity,
-  // });
-
-  const defaultValues = {
-    username: '',
-    password: '',
-  };
-  /* eslint-disable no-unused-vars */
   const {
-    formState, handleSubmit, register, reset, setFocus,
+    formState, register, handleSubmit, setFocus,
   } = useForm({
     resolver: yupResolver(registrationSchema),
     defaultValues,
   });
+
+  const onSubmit = (payload) => {
+    // eslint-disable-next-line no-console
+    console.log('payload', payload);
+    // mutation.mutate(payload);
+  };
 
   useEffect(() => {
     setFocus('organization');
   }, [setFocus]);
 
   // eslint-disable-next-line no-console
-  // console.log('registrationStatus', registrationStatus);
-  // eslint-disable-next-line no-console
   console.log('data', data);
-  // eslint-disable-next-line no-console
-  // console.log('response', response);
 
   return (
     <div>
@@ -107,17 +93,13 @@ function Registration({ setState, state }) {
         <p className="lead-in">
           Registration and use of the service is contingent on accepting the Terms and Conditions.
         </p>
-        <Form
-          // onSubmit(({ state, validationErrors }) => ... do whatever ...)
-          state={state}
-          setState={setState}
-          className="form--stacked"
+        <form
+          className="form form--stacked"
         >
-          <TextInput
-            id="props.organization"
+          <Input
             label="Organization"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('organization')}
           />
 
           <ErrorMessage
@@ -125,99 +107,100 @@ function Registration({ setState, state }) {
             name="organization"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.username"
+          <Input
             label="Username"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('username')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="username"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.password"
+          <Input
             label="Password"
-            isRequired
-            className="input--height-small1x"
+            type="password"
+            required
+            {...register('password')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="password"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.confirmPassword"
+          <Input
             label="Confirm Password"
-            isRequired
-            className="input--height-small1x"
+            type="password"
+            required
+            {...register('confirmPassword')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="confirmPassword"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.firstName"
+          <Input
             label="First Name"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('firstName')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="firstName"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.lastName"
+          <Input
             label="Last Name"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('lastName')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="lastName"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.email"
+          <Input
             label="Email"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('email')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="email"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.address1"
+          <Input
+            label="Additional Email"
+            {...register('additionalEmail')}
+          />
+          <ErrorMessage
+            errors={formState.errors}
+            name="additionalEmail"
+            as={ErrorMessageTag}
+          />
+          <Input
             label="Address 1"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('address1')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="address1"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.address2"
+          <Input
             label="Address 2"
-            isRequired
-            className="input--height-small1x"
+            {...register('address2')}
           />
           <ErrorMessage
             errors={formState.errors}
             name="address2"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.city"
+          <Input
             label="City"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('city')}
           />
           <ErrorMessage
             errors={formState.errors}
@@ -225,29 +208,26 @@ function Registration({ setState, state }) {
             as={ErrorMessageTag}
           />
 
-          <div className="flex-1">
-            <Select id="props.stateCode" label="State" className="input--height-small1x">
-              <SelectOption label="Utah" value="UT" />
-              <SelectOption label="Nevada" value="NV" />
-            </Select>
-          </div>
+          <Input
+            label="State"
+            required
+            {...register('stateCode')}
+          />
 
-          <TextInput
-            id="props.zipCode"
+          <Input
             label="Zip Code"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('zipCode')}
           />
           <ErrorMessage
             errors={formState.errors}
-            name="zip"
+            name="zipCode"
             as={ErrorMessageTag}
           />
-          <TextInput
-            id="props.phoneNumber"
+          <Input
             label="Phone Number"
-            isRequired
-            className="input--height-small1x"
+            required
+            {...register('phoneNumber')}
           />
           <ErrorMessage
             errors={formState.errors}
@@ -264,19 +244,24 @@ function Registration({ setState, state }) {
               appearance="outlined"
               color="primary"
               type="submit"
-              // eslint-disable-next-line no-alert
-              onClick={() => { alert('alert'); }}
+              onClick={handleSubmit((valid) => {
+                // eslint-disable-next-line no-console
+                console.log('valid', valid);
+                }, (invalid) => {
+                // eslint-disable-next-line no-console
+                console.log('invalid', invalid);
+                })}
             >
               Submit
             </Button>
           </div>
-        </Form>
+        </form>
       </div>
     </div>
   );
 }
 
-Registration.propTypes = propTypes;
-Registration.defaultProps = defaultProps;
+// Registration.propTypes = propTypes;
+// Registration.defaultProps = defaultProps;
 
 export default Registration;
