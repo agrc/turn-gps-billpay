@@ -43,7 +43,6 @@ export const getProfile = https.onCall(
       );
     }
 
-    debug('[https::getProfile] importing createKey');
     /* eslint-disable no-shadow */
     const { getProfile } = await import('./https/getProfile.js');
 
@@ -55,10 +54,78 @@ export const getProfile = https.onCall(
   }
 );
 
+export const createTrimbleUser = https.onCall(
+  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/] },
+  async (request) => {
+    if (request.auth === undefined) {
+      debug('[https::createTrimbleUser] no auth context');
+
+      throw new https.HttpsError(
+        https.FunctionsErrorCode.UNAUTHENTICATED,
+        'unauthenticated'
+      );
+    }
+
+   /* eslint-disable no-shadow */
+    const { createTrimbleUser } = await import('./https/createTrimbleUser.js');
+
+    const result = await createTrimbleUser(request);
+
+    debug('[https::createTrimbleUser]', result);
+
+    return result;
+  }
+);
+
+export const getSubscriptions = https.onCall(
+  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/] },
+  async (request) => {
+    if (request.auth === undefined) {
+      debug('[https::getSubscriptions] no auth context');
+
+      throw new https.HttpsError(
+        https.FunctionsErrorCode.UNAUTHENTICATED,
+        'unauthenticated'
+      );
+    }
+
+    /* eslint-disable no-shadow */
+    const { getSubscriptions } = await import('./https/getSubscriptions.js');
+
+    const result = await getSubscriptions(request);
+
+    debug('[https::getSubscriptions]', result);
+
+    return result;
+  }
+);
+
+export const createPayment = https.onCall(
+  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/] },
+  async (request) => {
+    if (request.auth === undefined) {
+      debug('[https::getSubscriptions] no auth context');
+
+      throw new https.HttpsError(
+        https.FunctionsErrorCode.UNAUTHENTICATED,
+        'unauthenticated'
+      );
+    }
+
+    /* eslint-disable no-shadow */
+    const { createPayment } = await import('./https/createPayment.js');
+
+    const result = await createPayment(request);
+
+    debug('[https::createPayment]', result);
+
+    return result;
+  }
+);
+
 export const paymentCallBack = https.onRequest(
   { secrets: ['database'] },
   async (request, response) => {
-    debug('[https::paymentCallBack] importing createKey');
     const { paymentCallBack } = await import('./https/paymentCallBack.js');
 
     const result = await paymentCallBack(request, response);

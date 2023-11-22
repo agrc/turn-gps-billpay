@@ -1,0 +1,3464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="LoginService" targetNamespace="Trimble.IS.AccountingServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="Trimble.IS.AccountingServices" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+    <wsp:Policy wsu:Id="loginServiceEndpoint_policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1"/>
+                <wsaw:UsingAddressing/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsdl:types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="Trimble.IS.AccountingServices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import namespace="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+            <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element name="CreateOrganization">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="longOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateOrganizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateOrganizationResult" type="q1:MembershipCreateStatus" xmlns:q1="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateOrganizationAndReturnID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="longOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateOrganizationAndReturnIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateOrganizationAndReturnIDResult" type="q2:MembershipCreateStatus" xmlns:q2="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateOrganizationWithDealer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="longOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="organizationIdOfDealer" nillable="true" type="xs:int"/>
+                        <xs:element minOccurs="0" name="isDealerOrganization" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateOrganizationWithDealerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateOrganizationWithDealerResult" type="q3:MembershipCreateStatus" xmlns:q3="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteOrganization">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="deleteIfPopulated" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteOrganizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteOrganizationResult" type="q4:MembershipDeleteStatus" xmlns:q4="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteOrganizationById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="deleteIfPopulated" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteOrganizationByIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteOrganizationByIdResult" type="q5:MembershipDeleteStatus" xmlns:q5="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateOrganization">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="shortName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="longName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateOrganizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateOrganizationResult" type="q6:MembershipUpdateStatus" xmlns:q6="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateOrganizationWithDealer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="shortName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="longName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="organizationIdOfDealer" nillable="true" type="xs:int"/>
+                        <xs:element minOccurs="0" name="isDealerOrganization" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateOrganizationWithDealerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateOrganizationWithDealerResult" type="q7:MembershipUpdateStatus" xmlns:q7="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizations">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllOrganizationsResult" nillable="true" type="q8:ArrayOfstring" xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfos">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfosResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllOrganizationInfosResult" nillable="true" type="q9:ArrayOfOrganizationInfo" xmlns:q9="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfosForSubstring">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationNameSubstring" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="searchFields" type="q10:OrganizationSearchFields" xmlns:q10="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfosForSubstringResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllOrganizationInfosForSubstringResult" nillable="true" type="q11:ArrayOfOrganizationInfo" xmlns:q11="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfosForSubstringUpToLimit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationNameSubstring" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="searchFields" type="q12:OrganizationSearchFields" xmlns:q12="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="maxNumberOfOrganizations" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfosForSubstringUpToLimitResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllOrganizationInfosForSubstringUpToLimitResult" nillable="true" type="q13:ArrayOfOrganizationInfo" xmlns:q13="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfosFromDealer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationIdOfDealer" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllOrganizationInfosFromDealerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllOrganizationInfosFromDealerResult" nillable="true" type="q14:ArrayOfOrganizationInfo" xmlns:q14="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllDealerOrganizations">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllDealerOrganizationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllDealerOrganizationsResult" nillable="true" type="q15:ArrayOfOrganizationInfo" xmlns:q15="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetOrganizationInfoById">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetOrganizationInfoByIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetOrganizationInfoByIdResult" nillable="true" type="q16:OrganizationInfo" xmlns:q16="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="q17:UserInfo" xmlns:q17="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="passwordAnswer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateUserResult" type="q18:MembershipCreateStatus" xmlns:q18="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUserAndReturnID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="q19:UserInfo" xmlns:q19="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="passwordAnswer" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUserAndReturnIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateUserAndReturnIDResult" type="q20:MembershipCreateStatus" xmlns:q20="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUserWithoutUserinfoAndReturnID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="primaryLoginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUserWithoutUserinfoAndReturnIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateUserWithoutUserinfoAndReturnIDResult" type="q21:MembershipCreateStatus" xmlns:q21="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="q22:UserInfo" xmlns:q22="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateUserResult" type="q23:MembershipUpdateStatus" xmlns:q23="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteUserResult" type="q24:MembershipDeleteStatus" xmlns:q24="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUnapprovedUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="q25:UnapprovedUserInfo" xmlns:q25="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUnapprovedUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateUnapprovedUserResult" type="q26:MembershipCreateStatus" xmlns:q26="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateUnapprovedUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="q27:UnapprovedUserInfo" xmlns:q27="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateUnapprovedUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateUnapprovedUserResult" type="q28:MembershipUpdateStatus" xmlns:q28="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteUnapprovedUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteUnapprovedUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteUnapprovedUserResult" type="q29:MembershipDeleteStatus" xmlns:q29="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUnapprovedUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUnapprovedUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUnapprovedUserResult" nillable="true" type="q30:UnapprovedUserInfo" xmlns:q30="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUnapprovedUsers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="pageIndex" type="xs:int"/>
+                        <xs:element minOccurs="0" name="pageSize" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUnapprovedUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUnapprovedUsersResult" nillable="true" type="q31:ArrayOfUnapprovedUserInfo" xmlns:q31="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="totalRecords" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUnapprovedUsersCount">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUnapprovedUsersCountResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUnapprovedUsersCountResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetRegisteredUsersCount">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetRegisteredUsersCountResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetRegisteredUsersCountResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetActiveLoginsLast7Days">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetActiveLoginsLast7DaysResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetActiveLoginsLast7DaysResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetConnectedIScopeRovers">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetConnectedIScopeRoversResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetConnectedIScopeRoversResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ApproveUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ApproveUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ApproveUserResult" type="q32:MembershipCreateStatus" xmlns:q32="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ValidateLogin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ValidateLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ValidateLoginResult" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userIsOnline" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserResult" nillable="true" type="q33:UserInfo" xmlns:q33="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserByEmail">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="emailAddress" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserByEmailResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserByEmailResult" nillable="true" type="q34:UserInfo" xmlns:q34="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserFromId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="userIsOnline" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserFromIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserFromIdResult" nillable="true" type="q35:UserInfo" xmlns:q35="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="pageIndex" type="xs:int"/>
+                        <xs:element minOccurs="0" name="pageSize" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllUsersResult" nillable="true" type="q36:ArrayOfUserInfo" xmlns:q36="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="totalRecords" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsersUpToLimit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="maxNumberOfUsers" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsersUpToLimitResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllUsersUpToLimitResult" nillable="true" type="q37:ArrayOfUserInfo" xmlns:q37="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SetLanguageForUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="languageLocale" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SetLanguageForUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="SetLanguageForUserResult" type="q38:MembershipUpdateStatus" xmlns:q38="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsersFromSubstring">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="pageIndex" type="xs:int"/>
+                        <xs:element minOccurs="0" name="pageSize" type="xs:int"/>
+                        <xs:element minOccurs="0" name="userNameSubstring" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="fields" type="q39:UserSearchFields" xmlns:q39="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsersFromSubstringResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllUsersFromSubstringResult" nillable="true" type="q40:ArrayOfUserInfo" xmlns:q40="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="totalRecords" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsersFromSubstringUpToLimit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="pageIndex" type="xs:int"/>
+                        <xs:element minOccurs="0" name="pageSize" type="xs:int"/>
+                        <xs:element minOccurs="0" name="userNameSubstring" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="fields" type="q41:UserSearchFields" xmlns:q41="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="maxNumberOfUsers" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetAllUsersFromSubstringUpToLimitResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetAllUsersFromSubstringUpToLimitResult" nillable="true" type="q42:ArrayOfUserInfo" xmlns:q42="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="totalRecords" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUsersOfAdditionalLoginsSubstringUpToLimit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="additionalLoginNameSubstring" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="maxNumberOfUsers" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUsersOfAdditionalLoginsSubstringUpToLimitResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUsersOfAdditionalLoginsSubstringUpToLimitResult" nillable="true" type="q43:ArrayOfUserInfo" xmlns:q43="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetNumberOfUsersOnline">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetNumberOfUsersOnlineResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetNumberOfUsersOnlineResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SetPassword">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newPassword" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SetPasswordResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="SetPasswordResult" type="q44:MembershipUpdateStatus" xmlns:q44="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UnlockLogin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UnlockLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UnlockLoginResult" type="q45:MembershipUpdateStatus" xmlns:q45="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="LockLogin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="LockLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="LockLoginResult" type="q46:MembershipUpdateStatus" xmlns:q46="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLogin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateLoginResult" type="q47:MembershipCreateStatus" xmlns:q47="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLoginAndReturnID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLoginAndReturnIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateLoginAndReturnIDResult" type="q48:MembershipCreateStatus" xmlns:q48="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="loginId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLoginWithPhoneNumber">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLoginWithPhoneNumberResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateLoginWithPhoneNumberResult" type="q49:MembershipCreateStatus" xmlns:q49="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLoginWithPhoneNumberAndRoles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="roleGroupsForLogin" nillable="true" type="q50:ArrayOfstring" xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLoginWithPhoneNumberAndRolesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateLoginWithPhoneNumberAndRolesResult" type="q51:MembershipCreateStatus" xmlns:q51="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                        <xs:element minOccurs="0" name="loginId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteLogin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteLoginResult" type="q52:MembershipDeleteStatus" xmlns:q52="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UndeleteLogin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UndeleteLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UndeleteLoginResult" type="q53:MembershipCreateStatus" xmlns:q53="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MapLoginIdToUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MapLoginIdToUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="MapLoginIdToUserResult" type="q54:MembershipUpdateStatus" xmlns:q54="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MapLoginToUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MapLoginToUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="MapLoginToUserResult" type="q55:MembershipUpdateStatus" xmlns:q55="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MapUserToOrganization">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MapUserToOrganizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="MapUserToOrganizationResult" type="q56:MembershipUpdateStatus" xmlns:q56="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginsForUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginsForUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLoginsForUserResult" nillable="true" type="q57:ArrayOfLoginInfo" xmlns:q57="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginFromId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginFromIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLoginFromIdResult" nillable="true" type="q58:LoginInfo" xmlns:q58="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginWithOrganization" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLoginInfoResult" nillable="true" type="q59:LoginInfo" xmlns:q59="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginsForSubstring">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="subString" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginsForSubstringResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLoginsForSubstringResult" nillable="true" type="q60:ArrayOfLoginInfo" xmlns:q60="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginsForSubstringUpToLimit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="subString" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="maxNumberOfLogins" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLoginsForSubstringUpToLimitResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLoginsForSubstringUpToLimitResult" nillable="true" type="q61:ArrayOfLoginInfo" xmlns:q61="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserFromLoginId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserFromLoginIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserFromLoginIdResult" nillable="true" type="q62:UserInfo" xmlns:q62="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUsersFromOrganization">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUsersFromOrganizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUsersFromOrganizationResult" nillable="true" type="q63:ArrayOfUserInfo" xmlns:q63="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUsersFromOrganizationUpToLimit">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="maxNumberOfUsers" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUsersFromOrganizationUpToLimitResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUsersFromOrganizationUpToLimitResult" nillable="true" type="q64:ArrayOfUserInfo" xmlns:q64="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLimitedUserInformationFromOrganization">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLimitedUserInformationFromOrganizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLimitedUserInformationFromOrganizationResult" nillable="true" type="q65:ArrayOfUserInfo" xmlns:q65="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetOrganizationIdFromOrganization">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="shortOrganizationName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetOrganizationIdFromOrganizationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetOrganizationIdFromOrganizationResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetShortOrganizationNameFromOrganizationId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="organizationId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetShortOrganizationNameFromOrganizationIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetShortOrganizationNameFromOrganizationIdResult" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateLogin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="loginId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="newLogin" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newPassword" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateLoginResult" type="q66:MembershipUpdateStatus" xmlns:q66="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetActiveUserIdsWithNonExistingOrDeletedPrimaryLoginResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetActiveUserIdsWithNonExistingOrDeletedPrimaryLoginResult" nillable="true" type="q67:ArrayOfint" xmlns:q67="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+            <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+            <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+            <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+            <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+            <xs:element name="byte" nillable="true" type="xs:byte"/>
+            <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+            <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+            <xs:element name="double" nillable="true" type="xs:double"/>
+            <xs:element name="float" nillable="true" type="xs:float"/>
+            <xs:element name="int" nillable="true" type="xs:int"/>
+            <xs:element name="long" nillable="true" type="xs:long"/>
+            <xs:element name="QName" nillable="true" type="xs:QName"/>
+            <xs:element name="short" nillable="true" type="xs:short"/>
+            <xs:element name="string" nillable="true" type="xs:string"/>
+            <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+            <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+            <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+            <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+            <xs:element name="char" nillable="true" type="tns:char"/>
+            <xs:simpleType name="char">
+                <xs:restriction base="xs:int"/>
+            </xs:simpleType>
+            <xs:element name="duration" nillable="true" type="tns:duration"/>
+            <xs:simpleType name="duration">
+                <xs:restriction base="xs:duration">
+                    <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+                    <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+                    <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="guid" nillable="true" type="tns:guid"/>
+            <xs:simpleType name="guid">
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:attribute name="FactoryType" type="xs:QName"/>
+            <xs:attribute name="Id" type="xs:ID"/>
+            <xs:attribute name="Ref" type="xs:IDREF"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData">
+            <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xs:simpleType name="MembershipCreateStatus">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Success"/>
+                    <xs:enumeration value="InvalidPassword">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidEmail">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateEmail">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidUserInfo">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidOrganization">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidLogin">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateLogin">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="OrganizationMismatch">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="OrganizationExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateOrganization">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="OrganizationNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidResource">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateResource">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceExistsAsNonVirtual">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">24</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceExistsAsVirtual">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">25</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">26</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UnitMismatch">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">27</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicatePhoneNumber">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">29</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UnexpectedError">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">31</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateDealerName">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidAdditionalEmail">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">33</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="MembershipCreateStatus" nillable="true" type="tns:MembershipCreateStatus"/>
+            <xs:simpleType name="MembershipDeleteStatus">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Success"/>
+                    <xs:enumeration value="InvalidOrganization"/>
+                    <xs:enumeration value="OrganizationNotFound"/>
+                    <xs:enumeration value="OrganizationExistsAsDeleted"/>
+                    <xs:enumeration value="OrganizationIsPopulated">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UserNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UserExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidLogin">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginIsPrimaryLogin">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="PhoneNumberNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceIsPopulated">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UnexpectedError">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidDealer">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="MembershipDeleteStatus" nillable="true" type="tns:MembershipDeleteStatus"/>
+            <xs:simpleType name="MembershipUpdateStatus">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Success"/>
+                    <xs:enumeration value="InvalidOrganization"/>
+                    <xs:enumeration value="OrganizationNotFound"/>
+                    <xs:enumeration value="OrganizationExistsAsDeleted"/>
+                    <xs:enumeration value="InvalidLogin">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidPassword">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidUser">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UserNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UserExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="LoginIsPrimaryLogin">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicatePhoneNumber">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VirtualResourceNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VirtualResourceExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="VirtualResourceExistsAsNonVirtual">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceExistsAsDeleted">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceExistsAsVirtual">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UnitTypeMismatch">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceNotMappedToVirtualResource">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="ResourceAlreadyMappedToVirtualResource">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="PhoneNumberNotFound">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">24</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateLogin">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">25</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="InvalidDealer">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">26</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="UnexpectedError">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">27</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateEmail">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">28</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="DuplicateOrganization">
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">29</EnumerationValue>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="MembershipUpdateStatus" nillable="true" type="tns:MembershipUpdateStatus"/>
+            <xs:complexType name="ArrayOfOrganizationInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="OrganizationInfo" nillable="true" type="tns:OrganizationInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfOrganizationInfo" nillable="true" type="tns:ArrayOfOrganizationInfo"/>
+            <xs:complexType name="OrganizationInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="m_Description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_IsDealerOrganization" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="m_LongName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_OrganizationId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="m_OrganizationIdOfDealer" nillable="true" type="xs:int"/>
+                    <xs:element minOccurs="0" name="m_ShortName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_ShortNameOfDealer" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="OrganizationInfo" nillable="true" type="tns:OrganizationInfo"/>
+            <xs:simpleType name="OrganizationSearchFields">
+                <xs:list>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="ShortName"/>
+                            <xs:enumeration value="LongName"/>
+                            <xs:enumeration value="Description"/>
+                            <xs:enumeration value="All">
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+                                    </xs:appinfo>
+                                </xs:annotation>
+                            </xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:list>
+            </xs:simpleType>
+            <xs:element name="OrganizationSearchFields" nillable="true" type="tns:OrganizationSearchFields"/>
+            <xs:complexType name="UserInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="AdditionalEmail" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Address3" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="City" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="District" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="PhoneNumberBusiness" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="PhoneNumberHome" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="PhoneNumberMobile" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_AdditionalUserInfo" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_Comment" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_CreationDate" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="m_Email" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_IsApproved" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="m_Language" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_LastActivityDate" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="m_LongOrganizationName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_PrimaryLoginWithOrganization" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_ShortOrganizationName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_UserId" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="UserInfo" nillable="true" type="tns:UserInfo"/>
+            <xs:complexType name="UnapprovedUserInfo">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:UserInfo">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="PhoneNumberTnc" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:element name="UnapprovedUserInfo" nillable="true" type="tns:UnapprovedUserInfo"/>
+            <xs:complexType name="ArrayOfUnapprovedUserInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="UnapprovedUserInfo" nillable="true" type="tns:UnapprovedUserInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfUnapprovedUserInfo" nillable="true" type="tns:ArrayOfUnapprovedUserInfo"/>
+            <xs:complexType name="ArrayOfUserInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="UserInfo" nillable="true" type="tns:UserInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfUserInfo" nillable="true" type="tns:ArrayOfUserInfo"/>
+            <xs:simpleType name="UserSearchFields">
+                <xs:list>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="FirstName"/>
+                            <xs:enumeration value="LastName"/>
+                            <xs:enumeration value="LoginName"/>
+                            <xs:enumeration value="All">
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+                                    </xs:appinfo>
+                                </xs:annotation>
+                            </xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:list>
+            </xs:simpleType>
+            <xs:element name="UserSearchFields" nillable="true" type="tns:UserSearchFields"/>
+            <xs:complexType name="ArrayOfLoginInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="LoginInfo" nillable="true" type="tns:LoginInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfLoginInfo" nillable="true" type="tns:ArrayOfLoginInfo"/>
+            <xs:complexType name="LoginInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="m_IsLockedOut" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="m_LastLockoutDate" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="m_LastLoginDate" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="m_LastPasswordChangedDate" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" name="m_LoginId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="m_LoginWithOrganization" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="m_UserId" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="LoginInfo" nillable="true" type="tns:LoginInfo"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+            <xs:complexType name="ArrayOfstring">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring"/>
+            <xs:complexType name="ArrayOfint">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfint" nillable="true" type="tns:ArrayOfint"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="ILogin_CreateOrganization_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateOrganization_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateOrganizationAndReturnID_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateOrganizationAndReturnID"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateOrganizationAndReturnID_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateOrganizationAndReturnIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateOrganizationWithDealer_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateOrganizationWithDealer"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateOrganizationWithDealer_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateOrganizationWithDealerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteOrganization_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteOrganization_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteOrganizationById_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteOrganizationById"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteOrganizationById_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteOrganizationByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateOrganization_InputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateOrganization_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateOrganizationWithDealer_InputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateOrganizationWithDealer"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateOrganizationWithDealer_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateOrganizationWithDealerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizations_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizations"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizations_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfos_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfos"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfos_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfosResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfosForSubstring_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfosForSubstring"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfosForSubstring_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfosForSubstringResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfosForSubstringUpToLimit_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfosForSubstringUpToLimit"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfosForSubstringUpToLimit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfosForSubstringUpToLimitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfosFromDealer_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfosFromDealer"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllOrganizationInfosFromDealer_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllOrganizationInfosFromDealerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllDealerOrganizations_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllDealerOrganizations"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllDealerOrganizations_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllDealerOrganizationsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetOrganizationInfoById_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetOrganizationInfoById"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetOrganizationInfoById_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetOrganizationInfoByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUserAndReturnID_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUserAndReturnID"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUserAndReturnID_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUserAndReturnIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUserWithoutUserinfoAndReturnID_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUserWithoutUserinfoAndReturnID"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUserWithoutUserinfoAndReturnID_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUserWithoutUserinfoAndReturnIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUnapprovedUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUnapprovedUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateUnapprovedUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUnapprovedUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateUnapprovedUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateUnapprovedUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateUnapprovedUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateUnapprovedUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteUnapprovedUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUnapprovedUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteUnapprovedUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUnapprovedUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUnapprovedUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUnapprovedUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUnapprovedUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUnapprovedUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUnapprovedUsers_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUnapprovedUsers"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUnapprovedUsers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUnapprovedUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUnapprovedUsersCount_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUnapprovedUsersCount"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUnapprovedUsersCount_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUnapprovedUsersCountResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetRegisteredUsersCount_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetRegisteredUsersCount"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetRegisteredUsersCount_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetRegisteredUsersCountResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetActiveLoginsLast7Days_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetActiveLoginsLast7Days"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetActiveLoginsLast7Days_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetActiveLoginsLast7DaysResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetConnectedIScopeRovers_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetConnectedIScopeRovers"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetConnectedIScopeRovers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetConnectedIScopeRoversResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_ApproveUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:ApproveUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_ApproveUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:ApproveUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_ValidateLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:ValidateLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_ValidateLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:ValidateLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUserByEmail_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserByEmail"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUserByEmail_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserByEmailResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUserFromId_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserFromId"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUserFromId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserFromIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsers_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsers"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsersUpToLimit_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsersUpToLimit"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsersUpToLimit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsersUpToLimitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_SetLanguageForUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetLanguageForUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_SetLanguageForUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetLanguageForUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsersFromSubstring_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsersFromSubstring"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsersFromSubstring_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsersFromSubstringResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsersFromSubstringUpToLimit_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsersFromSubstringUpToLimit"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetAllUsersFromSubstringUpToLimit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetAllUsersFromSubstringUpToLimitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUsersOfAdditionalLoginsSubstringUpToLimit_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsersOfAdditionalLoginsSubstringUpToLimit"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUsersOfAdditionalLoginsSubstringUpToLimit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsersOfAdditionalLoginsSubstringUpToLimitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetNumberOfUsersOnline_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetNumberOfUsersOnline"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetNumberOfUsersOnline_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetNumberOfUsersOnlineResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_SetPassword_InputMessage">
+        <wsdl:part name="parameters" element="tns:SetPassword"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_SetPassword_OutputMessage">
+        <wsdl:part name="parameters" element="tns:SetPasswordResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UnlockLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:UnlockLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UnlockLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UnlockLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_LockLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:LockLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_LockLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:LockLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLoginAndReturnID_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLoginAndReturnID"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLoginAndReturnID_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLoginAndReturnIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLoginWithPhoneNumber_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLoginWithPhoneNumber"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLoginWithPhoneNumber_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLoginWithPhoneNumberResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLoginWithPhoneNumberAndRoles_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLoginWithPhoneNumberAndRoles"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_CreateLoginWithPhoneNumberAndRoles_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLoginWithPhoneNumberAndRolesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_DeleteLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UndeleteLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:UndeleteLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UndeleteLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UndeleteLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_MapLoginIdToUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:MapLoginIdToUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_MapLoginIdToUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:MapLoginIdToUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_MapLoginToUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:MapLoginToUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_MapLoginToUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:MapLoginToUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_MapUserToOrganization_InputMessage">
+        <wsdl:part name="parameters" element="tns:MapUserToOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_MapUserToOrganization_OutputMessage">
+        <wsdl:part name="parameters" element="tns:MapUserToOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginsForUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginsForUser"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginsForUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginsForUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginFromId_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginFromId"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginFromId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginFromIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginInfo"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginsForSubstring_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginsForSubstring"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginsForSubstring_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginsForSubstringResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginsForSubstringUpToLimit_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginsForSubstringUpToLimit"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLoginsForSubstringUpToLimit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLoginsForSubstringUpToLimitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUserFromLoginId_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserFromLoginId"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUserFromLoginId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserFromLoginIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUsersFromOrganization_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsersFromOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUsersFromOrganization_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsersFromOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUsersFromOrganizationUpToLimit_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsersFromOrganizationUpToLimit"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetUsersFromOrganizationUpToLimit_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUsersFromOrganizationUpToLimitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLimitedUserInformationFromOrganization_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLimitedUserInformationFromOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetLimitedUserInformationFromOrganization_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLimitedUserInformationFromOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetOrganizationIdFromOrganization_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetOrganizationIdFromOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetOrganizationIdFromOrganization_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetOrganizationIdFromOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetShortOrganizationNameFromOrganizationId_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetShortOrganizationNameFromOrganizationId"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetShortOrganizationNameFromOrganizationId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetShortOrganizationNameFromOrganizationIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_UpdateLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateLoginResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin"/>
+    </wsdl:message>
+    <wsdl:message name="ILogin_GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetActiveUserIdsWithNonExistingOrDeletedPrimaryLoginResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ILogin">
+        <wsdl:operation name="CreateOrganization">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateOrganization" message="tns:ILogin_CreateOrganization_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateOrganizationResponse" message="tns:ILogin_CreateOrganization_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOrganizationAndReturnID">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateOrganizationAndReturnID" message="tns:ILogin_CreateOrganizationAndReturnID_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateOrganizationAndReturnIDResponse" message="tns:ILogin_CreateOrganizationAndReturnID_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOrganizationWithDealer">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateOrganizationWithDealer" message="tns:ILogin_CreateOrganizationWithDealer_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateOrganizationWithDealerResponse" message="tns:ILogin_CreateOrganizationWithDealer_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOrganization">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteOrganization" message="tns:ILogin_DeleteOrganization_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteOrganizationResponse" message="tns:ILogin_DeleteOrganization_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOrganizationById">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteOrganizationById" message="tns:ILogin_DeleteOrganizationById_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteOrganizationByIdResponse" message="tns:ILogin_DeleteOrganizationById_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateOrganization">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateOrganization" message="tns:ILogin_UpdateOrganization_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateOrganizationResponse" message="tns:ILogin_UpdateOrganization_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateOrganizationWithDealer">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateOrganizationWithDealer" message="tns:ILogin_UpdateOrganizationWithDealer_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateOrganizationWithDealerResponse" message="tns:ILogin_UpdateOrganizationWithDealer_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizations">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizations" message="tns:ILogin_GetAllOrganizations_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationsResponse" message="tns:ILogin_GetAllOrganizations_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfos">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfos" message="tns:ILogin_GetAllOrganizationInfos_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosResponse" message="tns:ILogin_GetAllOrganizationInfos_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosForSubstring">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstring" message="tns:ILogin_GetAllOrganizationInfosForSubstring_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstringResponse" message="tns:ILogin_GetAllOrganizationInfosForSubstring_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosForSubstringUpToLimit">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstringUpToLimit" message="tns:ILogin_GetAllOrganizationInfosForSubstringUpToLimit_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstringUpToLimitResponse" message="tns:ILogin_GetAllOrganizationInfosForSubstringUpToLimit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosFromDealer">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosFromDealer" message="tns:ILogin_GetAllOrganizationInfosFromDealer_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosFromDealerResponse" message="tns:ILogin_GetAllOrganizationInfosFromDealer_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllDealerOrganizations">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllDealerOrganizations" message="tns:ILogin_GetAllDealerOrganizations_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllDealerOrganizationsResponse" message="tns:ILogin_GetAllDealerOrganizations_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetOrganizationInfoById">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetOrganizationInfoById" message="tns:ILogin_GetOrganizationInfoById_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetOrganizationInfoByIdResponse" message="tns:ILogin_GetOrganizationInfoById_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUser" message="tns:ILogin_CreateUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUserResponse" message="tns:ILogin_CreateUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUserAndReturnID">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUserAndReturnID" message="tns:ILogin_CreateUserAndReturnID_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUserAndReturnIDResponse" message="tns:ILogin_CreateUserAndReturnID_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUserWithoutUserinfoAndReturnID">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUserWithoutUserinfoAndReturnID" message="tns:ILogin_CreateUserWithoutUserinfoAndReturnID_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUserWithoutUserinfoAndReturnIDResponse" message="tns:ILogin_CreateUserWithoutUserinfoAndReturnID_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateUser" message="tns:ILogin_UpdateUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateUserResponse" message="tns:ILogin_UpdateUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteUser" message="tns:ILogin_DeleteUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteUserResponse" message="tns:ILogin_DeleteUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUnapprovedUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUnapprovedUser" message="tns:ILogin_CreateUnapprovedUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateUnapprovedUserResponse" message="tns:ILogin_CreateUnapprovedUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUnapprovedUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateUnapprovedUser" message="tns:ILogin_UpdateUnapprovedUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateUnapprovedUserResponse" message="tns:ILogin_UpdateUnapprovedUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUnapprovedUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteUnapprovedUser" message="tns:ILogin_DeleteUnapprovedUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteUnapprovedUserResponse" message="tns:ILogin_DeleteUnapprovedUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUser" message="tns:ILogin_GetUnapprovedUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUserResponse" message="tns:ILogin_GetUnapprovedUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUsers">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsers" message="tns:ILogin_GetUnapprovedUsers_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsersResponse" message="tns:ILogin_GetUnapprovedUsers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUsersCount">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsersCount" message="tns:ILogin_GetUnapprovedUsersCount_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsersCountResponse" message="tns:ILogin_GetUnapprovedUsersCount_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetRegisteredUsersCount">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetRegisteredUsersCount" message="tns:ILogin_GetRegisteredUsersCount_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetRegisteredUsersCountResponse" message="tns:ILogin_GetRegisteredUsersCount_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetActiveLoginsLast7Days">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetActiveLoginsLast7Days" message="tns:ILogin_GetActiveLoginsLast7Days_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetActiveLoginsLast7DaysResponse" message="tns:ILogin_GetActiveLoginsLast7Days_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetConnectedIScopeRovers">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetConnectedIScopeRovers" message="tns:ILogin_GetConnectedIScopeRovers_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetConnectedIScopeRoversResponse" message="tns:ILogin_GetConnectedIScopeRovers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="ApproveUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/ApproveUser" message="tns:ILogin_ApproveUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/ApproveUserResponse" message="tns:ILogin_ApproveUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="ValidateLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/ValidateLogin" message="tns:ILogin_ValidateLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/ValidateLoginResponse" message="tns:ILogin_ValidateLogin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUser" message="tns:ILogin_GetUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUserResponse" message="tns:ILogin_GetUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserByEmail">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUserByEmail" message="tns:ILogin_GetUserByEmail_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUserByEmailResponse" message="tns:ILogin_GetUserByEmail_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserFromId">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUserFromId" message="tns:ILogin_GetUserFromId_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUserFromIdResponse" message="tns:ILogin_GetUserFromId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsers">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsers" message="tns:ILogin_GetAllUsers_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsersResponse" message="tns:ILogin_GetAllUsers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersUpToLimit">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsersUpToLimit" message="tns:ILogin_GetAllUsersUpToLimit_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsersUpToLimitResponse" message="tns:ILogin_GetAllUsersUpToLimit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetLanguageForUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/SetLanguageForUser" message="tns:ILogin_SetLanguageForUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/SetLanguageForUserResponse" message="tns:ILogin_SetLanguageForUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersFromSubstring">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstring" message="tns:ILogin_GetAllUsersFromSubstring_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstringResponse" message="tns:ILogin_GetAllUsersFromSubstring_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersFromSubstringUpToLimit">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstringUpToLimit" message="tns:ILogin_GetAllUsersFromSubstringUpToLimit_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstringUpToLimitResponse" message="tns:ILogin_GetAllUsersFromSubstringUpToLimit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersOfAdditionalLoginsSubstringUpToLimit">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUsersOfAdditionalLoginsSubstringUpToLimit" message="tns:ILogin_GetUsersOfAdditionalLoginsSubstringUpToLimit_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUsersOfAdditionalLoginsSubstringUpToLimitResponse" message="tns:ILogin_GetUsersOfAdditionalLoginsSubstringUpToLimit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetNumberOfUsersOnline">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetNumberOfUsersOnline" message="tns:ILogin_GetNumberOfUsersOnline_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetNumberOfUsersOnlineResponse" message="tns:ILogin_GetNumberOfUsersOnline_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="SetPassword">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/SetPassword" message="tns:ILogin_SetPassword_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/SetPasswordResponse" message="tns:ILogin_SetPassword_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UnlockLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/UnlockLogin" message="tns:ILogin_UnlockLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/UnlockLoginResponse" message="tns:ILogin_UnlockLogin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="LockLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/LockLogin" message="tns:ILogin_LockLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/LockLoginResponse" message="tns:ILogin_LockLogin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLogin" message="tns:ILogin_CreateLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLoginResponse" message="tns:ILogin_CreateLogin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginAndReturnID">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLoginAndReturnID" message="tns:ILogin_CreateLoginAndReturnID_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLoginAndReturnIDResponse" message="tns:ILogin_CreateLoginAndReturnID_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginWithPhoneNumber">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumber" message="tns:ILogin_CreateLoginWithPhoneNumber_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumberResponse" message="tns:ILogin_CreateLoginWithPhoneNumber_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginWithPhoneNumberAndRoles">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumberAndRoles" message="tns:ILogin_CreateLoginWithPhoneNumberAndRoles_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumberAndRolesResponse" message="tns:ILogin_CreateLoginWithPhoneNumberAndRoles_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteLogin" message="tns:ILogin_DeleteLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/DeleteLoginResponse" message="tns:ILogin_DeleteLogin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UndeleteLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/UndeleteLogin" message="tns:ILogin_UndeleteLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/UndeleteLoginResponse" message="tns:ILogin_UndeleteLogin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="MapLoginIdToUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/MapLoginIdToUser" message="tns:ILogin_MapLoginIdToUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/MapLoginIdToUserResponse" message="tns:ILogin_MapLoginIdToUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="MapLoginToUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/MapLoginToUser" message="tns:ILogin_MapLoginToUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/MapLoginToUserResponse" message="tns:ILogin_MapLoginToUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="MapUserToOrganization">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/MapUserToOrganization" message="tns:ILogin_MapUserToOrganization_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/MapUserToOrganizationResponse" message="tns:ILogin_MapUserToOrganization_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForUser">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginsForUser" message="tns:ILogin_GetLoginsForUser_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginsForUserResponse" message="tns:ILogin_GetLoginsForUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginFromId">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginFromId" message="tns:ILogin_GetLoginFromId_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginFromIdResponse" message="tns:ILogin_GetLoginFromId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginInfo">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginInfo" message="tns:ILogin_GetLoginInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginInfoResponse" message="tns:ILogin_GetLoginInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForSubstring">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstring" message="tns:ILogin_GetLoginsForSubstring_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstringResponse" message="tns:ILogin_GetLoginsForSubstring_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForSubstringUpToLimit">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstringUpToLimit" message="tns:ILogin_GetLoginsForSubstringUpToLimit_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstringUpToLimitResponse" message="tns:ILogin_GetLoginsForSubstringUpToLimit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserFromLoginId">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUserFromLoginId" message="tns:ILogin_GetUserFromLoginId_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUserFromLoginIdResponse" message="tns:ILogin_GetUserFromLoginId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersFromOrganization">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganization" message="tns:ILogin_GetUsersFromOrganization_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganizationResponse" message="tns:ILogin_GetUsersFromOrganization_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersFromOrganizationUpToLimit">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganizationUpToLimit" message="tns:ILogin_GetUsersFromOrganizationUpToLimit_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganizationUpToLimitResponse" message="tns:ILogin_GetUsersFromOrganizationUpToLimit_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLimitedUserInformationFromOrganization">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLimitedUserInformationFromOrganization" message="tns:ILogin_GetLimitedUserInformationFromOrganization_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetLimitedUserInformationFromOrganizationResponse" message="tns:ILogin_GetLimitedUserInformationFromOrganization_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetOrganizationIdFromOrganization">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetOrganizationIdFromOrganization" message="tns:ILogin_GetOrganizationIdFromOrganization_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetOrganizationIdFromOrganizationResponse" message="tns:ILogin_GetOrganizationIdFromOrganization_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetShortOrganizationNameFromOrganizationId">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetShortOrganizationNameFromOrganizationId" message="tns:ILogin_GetShortOrganizationNameFromOrganizationId_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetShortOrganizationNameFromOrganizationIdResponse" message="tns:ILogin_GetShortOrganizationNameFromOrganizationId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateLogin" message="tns:ILogin_UpdateLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/UpdateLoginResponse" message="tns:ILogin_UpdateLogin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin">
+            <wsdl:input wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin" message="tns:ILogin_GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin_InputMessage"/>
+            <wsdl:output wsaw:Action="Trimble.IS.AccountingServices/ILogin/GetActiveUserIdsWithNonExistingOrDeletedPrimaryLoginResponse" message="tns:ILogin_GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="loginServiceEndpoint" type="tns:ILogin">
+        <wsp:PolicyReference URI="#loginServiceEndpoint_policy"/>
+        <soap12:binding transport="http://schemas.microsoft.com/soap/tcp"/>
+        <wsdl:operation name="CreateOrganization">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateOrganization" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOrganizationAndReturnID">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateOrganizationAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOrganizationWithDealer">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateOrganizationWithDealer" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOrganization">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteOrganization" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOrganizationById">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteOrganizationById" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateOrganization">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateOrganization" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateOrganizationWithDealer">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateOrganizationWithDealer" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizations">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizations" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfos">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfos" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosForSubstring">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstring" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosForSubstringUpToLimit">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosFromDealer">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosFromDealer" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllDealerOrganizations">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllDealerOrganizations" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetOrganizationInfoById">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetOrganizationInfoById" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUserAndReturnID">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUserAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUserWithoutUserinfoAndReturnID">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUserWithoutUserinfoAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUnapprovedUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUnapprovedUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUnapprovedUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUsers">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsers" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUsersCount">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsersCount" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetRegisteredUsersCount">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetRegisteredUsersCount" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetActiveLoginsLast7Days">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetActiveLoginsLast7Days" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetConnectedIScopeRovers">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetConnectedIScopeRovers" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ApproveUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/ApproveUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ValidateLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/ValidateLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserByEmail">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUserByEmail" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserFromId">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUserFromId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsers">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsers" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersUpToLimit">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsersUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SetLanguageForUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/SetLanguageForUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersFromSubstring">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstring" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersFromSubstringUpToLimit">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersOfAdditionalLoginsSubstringUpToLimit">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUsersOfAdditionalLoginsSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetNumberOfUsersOnline">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetNumberOfUsersOnline" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SetPassword">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/SetPassword" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UnlockLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/UnlockLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="LockLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/LockLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginAndReturnID">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLoginAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginWithPhoneNumber">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumber" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginWithPhoneNumberAndRoles">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumberAndRoles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UndeleteLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/UndeleteLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MapLoginIdToUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/MapLoginIdToUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MapLoginToUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/MapLoginToUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MapUserToOrganization">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/MapUserToOrganization" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForUser">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginsForUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginFromId">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginFromId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginInfo">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForSubstring">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstring" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForSubstringUpToLimit">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserFromLoginId">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUserFromLoginId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersFromOrganization">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganization" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersFromOrganizationUpToLimit">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganizationUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLimitedUserInformationFromOrganization">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLimitedUserInformationFromOrganization" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetOrganizationIdFromOrganization">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetOrganizationIdFromOrganization" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetShortOrganizationNameFromOrganizationId">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetShortOrganizationNameFromOrganizationId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin">
+            <soap12:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="BasicHttpBinding_ILogin" type="tns:ILogin">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="CreateOrganization">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateOrganization" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOrganizationAndReturnID">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateOrganizationAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOrganizationWithDealer">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateOrganizationWithDealer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOrganization">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteOrganization" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOrganizationById">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteOrganizationById" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateOrganization">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateOrganization" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateOrganizationWithDealer">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateOrganizationWithDealer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizations">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizations" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfos">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfos" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosForSubstring">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstring" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosForSubstringUpToLimit">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosForSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllOrganizationInfosFromDealer">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllOrganizationInfosFromDealer" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllDealerOrganizations">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllDealerOrganizations" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetOrganizationInfoById">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetOrganizationInfoById" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUserAndReturnID">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUserAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUserWithoutUserinfoAndReturnID">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUserWithoutUserinfoAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUnapprovedUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUnapprovedUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUnapprovedUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUsers">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUnapprovedUsersCount">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUnapprovedUsersCount" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetRegisteredUsersCount">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetRegisteredUsersCount" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetActiveLoginsLast7Days">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetActiveLoginsLast7Days" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetConnectedIScopeRovers">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetConnectedIScopeRovers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ApproveUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/ApproveUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ValidateLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/ValidateLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserByEmail">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUserByEmail" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserFromId">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUserFromId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsers">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersUpToLimit">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsersUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SetLanguageForUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/SetLanguageForUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersFromSubstring">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstring" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllUsersFromSubstringUpToLimit">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetAllUsersFromSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersOfAdditionalLoginsSubstringUpToLimit">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUsersOfAdditionalLoginsSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetNumberOfUsersOnline">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetNumberOfUsersOnline" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SetPassword">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/SetPassword" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UnlockLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/UnlockLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="LockLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/LockLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginAndReturnID">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLoginAndReturnID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginWithPhoneNumber">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumber" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLoginWithPhoneNumberAndRoles">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/CreateLoginWithPhoneNumberAndRoles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/DeleteLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UndeleteLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/UndeleteLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MapLoginIdToUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/MapLoginIdToUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MapLoginToUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/MapLoginToUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MapUserToOrganization">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/MapUserToOrganization" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForUser">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginsForUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginFromId">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginFromId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginInfo">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForSubstring">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstring" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLoginsForSubstringUpToLimit">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLoginsForSubstringUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserFromLoginId">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUserFromLoginId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersFromOrganization">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganization" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUsersFromOrganizationUpToLimit">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetUsersFromOrganizationUpToLimit" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLimitedUserInformationFromOrganization">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetLimitedUserInformationFromOrganization" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetOrganizationIdFromOrganization">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetOrganizationIdFromOrganization" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetShortOrganizationNameFromOrganizationId">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetShortOrganizationNameFromOrganizationId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/UpdateLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin">
+            <soap:operation soapAction="Trimble.IS.AccountingServices/ILogin/GetActiveUserIdsWithNonExistingOrDeletedPrimaryLogin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="LoginService">
+        <wsdl:port name="loginServiceEndpoint" binding="tns:loginServiceEndpoint">
+            <soap12:address location="net.tcp://localhost:31039/Trimble.IS.AccountingServices/LoginService"/>
+            <wsa10:EndpointReference>
+                <wsa10:Address>net.tcp://localhost:31039/Trimble.IS.AccountingServices/LoginService</wsa10:Address>
+            </wsa10:EndpointReference>
+        </wsdl:port>
+        <wsdl:port name="BasicHttpBinding_ILogin" binding="tns:BasicHttpBinding_ILogin">
+            <soap:address location="http://localhost:31040/Trimble.IS.AccountingServices/LoginService/soap"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

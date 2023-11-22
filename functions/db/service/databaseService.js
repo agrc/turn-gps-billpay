@@ -1,7 +1,9 @@
 /* eslint-disable consistent-return */
 import sql from 'mssql';
 import {
-  getRoleGroupsQuery, getRolesQuery, getPaymentRecordQuery, checkTrimbleUserExistsQuery
+  getRoleGroupsQuery, getRolesQuery, getPaymentRecordQuery, checkTrimbleUserExistsQuery, checkTrimbleEmailExistsQuery,
+  checkTrimbleOrgExistsQuery, createTrimbleOrgQuery, updateTrimbleUserQuery, insertTrimbleSubscriptionQuery,
+  selectPrimaryLoginByUserIdQuery, checkTrimbleLoginExistsQuery, getSubscriptionsByEmailQuery, insertOrderQuery, insertOrderItemQuery,
 } from '../queries.js';
 
 // const hostname = 'itdb002gp.utah.utad.state.ut.us'; //works
@@ -25,8 +27,8 @@ export const sqlConfig = {
 
 export const getRoleGroups = async () => {
   try {
-    await sql.connect(sqlConfig);
-    const result = await sql.query(getRoleGroupsQuery);
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.query(getRoleGroupsQuery);
     return result?.recordset;
   } catch (err) {
     /* eslint-disable no-console */
@@ -36,8 +38,8 @@ export const getRoleGroups = async () => {
 
 export const getRoles = async () => {
   try {
-    await sql.connect(sqlConfig);
-    const result = await sql.query(getRolesQuery);
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.query(getRolesQuery);
     return result?.recordset;
   } catch (err) {
     /* eslint-disable no-console */
@@ -47,10 +49,10 @@ export const getRoles = async () => {
 
 export const getPaymentRecord = async (message) => {
   if (message) {
-    await sql.connect(sqlConfig);
-    const request = new sql.Request();
-    request.input('token', sql.VarChar, message);
-    const result = await request.query(getPaymentRecordQuery);
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('token', sql.VarChar, message)
+      .query(getPaymentRecordQuery);
     return result?.recordset;
   }
   return null;
@@ -58,11 +60,168 @@ export const getPaymentRecord = async (message) => {
 
 export const checkTrimbleUserExists = async (email) => {
   if (email) {
-    await sql.connect(sqlConfig);
-    const request = new sql.Request();
-    request.input('email', sql.VarChar, email);
-    const result = await request.query(checkTrimbleUserExistsQuery);
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('email', sql.VarChar, email)
+      .query(checkTrimbleUserExistsQuery);
     return result?.recordset;
+  }
+  return null;
+};
+
+export const checkTrimbleEmailExists = async (email) => {
+  if (email) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('email', sql.VarChar, email)
+      .query(checkTrimbleEmailExistsQuery);
+    return result?.recordset;
+  }
+  return null;
+};
+
+export const checkTrimbleOrgExists = async (orgName) => {
+  if (orgName) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('orgName', sql.VarChar, orgName)
+      .query(checkTrimbleOrgExistsQuery);
+    return result?.recordset ? result.recordset : null;
+  }
+  return null;
+};
+
+export const checkTrimbleLoginExists = async (orgId, username) => {
+  if (orgId && username) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('orgId', sql.Numeric, orgId)
+      .input('username', sql.VarChar, username)
+      .query(checkTrimbleLoginExistsQuery);
+    return result?.recordset ? result.recordset : null;
+  }
+  return null;
+};
+
+export const selectPrimaryLoginByUserId = async (userId) => {
+  if (userId) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('userId', sql.Numeric, userId)
+      .query(selectPrimaryLoginByUserIdQuery);
+    return result?.recordset ? result.recordset : null;
+  }
+  return null;
+};
+
+export const getSubscriptionsByEmail = async (email) => {
+  if (email) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('email', sql.VarChar, email)
+      .query(getSubscriptionsByEmailQuery);
+    return result?.recordset ? result.recordset : null;
+  }
+  return null;
+};
+
+export const createTrimbleOrg = async (orgName) => {
+  if (orgName) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('orgName', sql.VarChar, orgName)
+      .query(createTrimbleOrgQuery);
+    return result?.recordset;
+  }
+  return null;
+};
+
+export const updateTrimbleUser = async (user) => {
+  if (user) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('firstName', sql.VarChar, user.firstName)
+      .input('lastName', sql.VarChar, user.lastName)
+      .input('additionalEmail', sql.VarChar, user.additionalEmail)
+      .input('address1', sql.VarChar, user.address1)
+      .input('address2', sql.VarChar, user.address2)
+      .input('city', sql.VarChar, user.city)
+      .input('stateCode', sql.VarChar, user.stateCode)
+      .input('zipCode', sql.VarChar, user.zipCode.toString())
+      .input('phoneNumber', sql.VarChar, user.phoneNumber)
+      .input('userId', sql.Numeric, user.userId)
+      .query(updateTrimbleUserQuery);
+    return result;
+  }
+  return null;
+};
+
+export const insertTrimbleSubscription = async (subscription) => {
+  if (subscription) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('loginId', sql.Numeric, subscription.loginId)
+      .input('contractId', sql.Numeric, subscription.contractId)
+      .input('orderNumber', sql.VarChar, 'GovPay Renewal')
+      .query(insertTrimbleSubscriptionQuery);
+    return result?.recordset;
+  }
+  return null;
+};
+
+export const insertOrder = async (order) => {
+  if (order) {
+    console.log('order', order);
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('uuid', sql.VarChar, order.uuid)
+      .input('orgId', sql.Numeric, order.orgId)
+      .input('userId', sql.Numeric, order.userId)
+      .input('totalPrice', sql.Int, order.totalPrice)
+      .input('govPayToken', sql.VarChar, order.govPayToken)
+      .query(insertOrderQuery);
+    return result?.recordset;
+  }
+  return null;
+};
+
+export const insertOrderItem = async (item) => {
+  if (item) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('orderId', sql.Numeric, item.orderId)
+      .input('userId', sql.Numeric, item.userId)
+      .input('organizationId', sql.Numeric, item.organizationId)
+      .input('contractId', sql.Numeric, item.contractId)
+      .input('orderItemType', sql.Int, 0)
+      .input('subscriptionId', sql.Numeric, item.subscriptionId)
+      .input('contractPrice', sql.Numeric, item.contractPrice)
+      .query(insertOrderItemQuery);
+    return result?.recordset;
+  }
+  return null;
+};
+
+export const insertTrimbleSubscriptionItem = async (subscriptionId) => {
+  if (subscriptionId) {
+    const values = [
+      [subscriptionId, 2, 0],
+      [subscriptionId, 3, 0],
+      [subscriptionId, 4, 0],
+      [subscriptionId, 5, 0],
+      [subscriptionId, 8, 0],
+    ];
+    const table = new sql.Table('SubscriptionItemPrice');
+    table.create = false;
+    table.columns.add('SubscriptionId', sql.Int, { nullable: false });
+    table.columns.add('ContractItemId', sql.Int, { nullable: false });
+    table.columns.add('Price', sql.Float, { nullable: false });
+    values.forEach((row) => table.rows.add.apply(table.rows, row));
+
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .bulk(table);
+    return result;
   }
   return null;
 };
