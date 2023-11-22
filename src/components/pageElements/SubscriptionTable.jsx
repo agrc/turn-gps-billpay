@@ -14,18 +14,32 @@ import {
   TableWrapper
 } from '@utahdts/utah-design-system';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 const propTypes = {
-  tableData: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.bool])),
+  tableData: PropTypes.arrayOf(
+    PropTypes.shape({
+      subscriptionId: PropTypes.number,
+      loginName: PropTypes.string,
+      email: PropTypes.string,
+      additionalEmail: PropTypes.string,
+      effectiveDate: PropTypes.string,
+      expirationDate: PropTypes.string,
+      orderNumber: PropTypes.string,
+      activated: PropTypes.bool,
+    })
+),
+  setTableData: PropTypes.func,
   type: PropTypes.string.isRequired,
 };
 const defaultProps = {};
-function SubscriptionTable({ tableData, type }) {
-  const [data, setData] = useState(tableData);
+function SubscriptionTable({ tableData, setTableData, type }) {
+  useEffect(() => {
+    setTableData(tableData);
+  }, [tableData]);
 
   return (
-    data?.length
+    tableData?.length
       ? (
         <TableWrapper>
           <Table className="table table--lines-x table--alt table--v-align-center">
@@ -49,7 +63,7 @@ function SubscriptionTable({ tableData, type }) {
               </TableHeadRow>
             </TableHead>
             <TableBody>
-              <TableBodyData records={data} recordIdField="subscriptionId">
+              <TableBodyData records={tableData} recordIdField="subscriptionId">
                 <TableBodyDataRowTemplate>
                   <TableBodyDataCellTemplate recordFieldPath="loginName" />
                   <TableBodyDataCellTemplate recordFieldPath="email" />
@@ -68,7 +82,7 @@ function SubscriptionTable({ tableData, type }) {
                         value={record.activated}
                         onChange={(e) => {
                           e.stopPropagation();
-                          setData(data.map((item) => {
+                          setTableData(tableData.map((item) => {
                             if (item.subscriptionId === record.subscriptionId) {
                               return { ...item, activated: !record.activated };
                             }

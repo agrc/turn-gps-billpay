@@ -1,55 +1,90 @@
 import { useFunctions, useUser } from 'reactfire';
 import { Button } from '@utahdts/utah-design-system';
 import { httpsCallable } from 'firebase/functions';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import SubscriptionTable from './SubscriptionTable';
+import pageUrls from '../../enums/pageUrls';
 
 const propTypes = {};
 const defaultProps = {};
 
-const stateSymbols = [
-  {
-    subscriptionId: 1, loginName: 'casey1', email: 'chwardle@utah.gov', additionalEmail: null, effectiveDate: '2023-12-12', expirationDate: '2024-12-12', orderNumber: 'UII Renewal', activated: true,
-  },
-  {
-    subscriptionId: 2, loginName: 'casey2', email: 'chwardle2@utah.gov', additionalEmail: 'chwardle@utah.gov', effectiveDate: '2023-12-12', expirationDate: '2024-12-12', orderNumber: 'UII Renewal', activated: false,
-  },
-  {
-    subscriptionId: 3, loginName: 'casey3', email: 'chwardle3@utah.gov', additionalEmail: 'chwardle@utah.gov', effectiveDate: '2023-12-12', expirationDate: '2024-12-12', orderNumber: 'UII Renewal', activated: false,
-  },
-];
-
 function Subscription() {
+  const navigate = useNavigate();
   const functions = useFunctions();
-  const createTrimbleUser = httpsCallable(functions, 'createTrimbleUser');
+  const getSubscriptions = httpsCallable(functions, 'getSubscriptions');
+  const createPayment = httpsCallable(functions, 'createPayment');
   const { data: user } = useUser();
-  // eslint-disable-next-line no-console
-  console.log('userdata', user);
+  const [activeList, setActiveList] = useState([]);
+  const [inactiveList, setInactiveList] = useState([]);
+  // // eslint-disable-next-line no-console
+  // console.log('userdata', user);
 
   const uid = user?.uid;
   const isUserAvailable = uid?.length > 0;
-  const { data: response } = useQuery({
-    queryKey: ['email', uid],
+  const buildActiveList = (arrayList) => {
+    if (arrayList?.data?.length) {
+      return arrayList.data.filter((subscription) => subscription.activated);
+    }
+    return null;
+  };
+  const buildInactiveList = (arrayList) => {
+    if (arrayList?.data?.length) {
+      return arrayList.data.filter((subscription) => !subscription.activated);
+    }
+    return null;
+  };
+
+  const { data: response, status: subscriptionStatus } = useQuery({
+    queryKey: ['subscriptions', uid],
     enabled: isUserAvailable,
-    queryFn: createTrimbleUser({
-      organization: 'agrc',
-      username: 'chwardle3',
-      password: 'test',
-      email: 'chwardle@utah.gov',
-    })
-      .then((result) => result)
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(`error: ${JSON.stringify(error)}`);
-      }),
+    queryFn: getSubscriptions,
     staleTime: Infinity,
   });
 
+  /* eslint-disable no-unused-vars */
+  const mutation = useMutation({
+    mutationFn: (payload) => createPayment(payload),
+    onError: (error, variables, context) => {
+      // eslint-disable-next-line no-console
+      console.log(`rolling back optimistic update with id ${context.id}`);
+    },
+    onSuccess: (successData, variables, context) => {
+      // Boom baby!
+      // eslint-disable-next-line no-console
+      console.log(`successVariables ${JSON.stringify(variables)}`);
+      console.log(`successData ${JSON.stringify(successData)}`);
+      window.location.replace(`https://stage.utah.gov/govpay/checkout/order.html?TOKEN=${successData.data}`);
+    },
+
+    onSettled: (settledData, error, variables, context) => {
+      // Error or success... doesn't matter!
+      // setBusy(false);
+    },
+  });
+
+  useEffect(() => {
+    console.log('subscriptionStatus', subscriptionStatus);
+    if (subscriptionStatus === 'success') {
+      setActiveList(buildActiveList(response));
+      setInactiveList(buildInactiveList(response));
+    }
+  }, [subscriptionStatus, response]);
+
+  // // eslint-disable-next-line no-console
+  // console.log('error', error);
+
   // eslint-disable-next-line no-console
-  console.log('response', response);
+  console.log('dataResponse', response);
+
+  const goToRegistration = () => {
+    navigate(pageUrls.registration);
+  };
 
   return (
-    <div>
+    <>
       <div className="home-banner">
         <div className="home-banner__title">TURN<br />GPS</div>
       </div>
@@ -61,25 +96,24 @@ function Subscription() {
             appearance="solid"
             color="primary"
             id="addSubscription"
-            // eslint-disable-next-line no-console
-            onClick={() => { console.log('addSubscription clicked'); }}
+              // eslint-disable-next-line no-console
+            onClick={goToRegistration}
           >
             Add Subscription
           </Button>
         </div>
-
         <div className="mt-spacing-xl">
           <div className="flex justify-between items-center">
             <h3 id="table__active-subscriptions">Active Subscriptions</h3>
           </div>
-          <SubscriptionTable tableData={stateSymbols} type="active" />
+          <SubscriptionTable tableData={activeList} setTableData={setActiveList} type="active" />
         </div>
 
         <div className="mt-spacing-xl">
           <div className="flex justify-between items-center">
             <h3 id="table__active-subscriptions">Pending Subscriptions</h3>
           </div>
-          <SubscriptionTable tableData={stateSymbols} type="pending" />
+          <SubscriptionTable tableData={inactiveList} setTableData={setInactiveList} type="pending" />
         </div>
 
         <div className="flex justify-end mt-spacing-l mb-spacing-l">
@@ -87,15 +121,19 @@ function Subscription() {
             appearance="solid"
             color="primary"
             id="paySubscription"
-            // eslint-disable-next-line no-console
-            onClick={() => { console.log('paySubscription clicked'); }}
+              // eslint-disable-next-line no-console
+            onClick={() => {
+                const filteredList = inactiveList.filter((obj) => obj.activated);
+                console.log('paySubscription clicked', filteredList);
+                mutation.mutate(filteredList);
+              }}
           >
             Pay
           </Button>
         </div>
 
       </div>
-    </div>
+    </>
   );
 }
 

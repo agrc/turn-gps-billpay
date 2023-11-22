@@ -4,19 +4,14 @@ import {
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import { initializeFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 import { getFunctions, connectFunctionsEmulator } from 'firebase/functions';
-import { useImmer } from 'use-immer';
 import Routing from '../routing/Routing';
 import AppContextProvider from '../../contexts/AppContext/AppContextProvider';
 
 export default function App() {
-  // const [state, dispatch] = useImmerReducer(reduce, defaults);
-  // const { setSettings: setUtahHeaderSettings } = useUtahHeaderContext();
-
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp);
   const functions = getFunctions(firebaseApp);
   const { status, data: firestoreInstance } = useInitFirestore(async (firebaseAppSetup) => initializeFirestore(firebaseAppSetup, { }));
-  const [state, setState] = /** @type {typeof useImmer<FormContextState>} */ (useImmer)({});
 
   if (import.meta.env.DEV) {
     // eslint-disable-next-line no-underscore-dangle
@@ -69,7 +64,7 @@ export default function App() {
         <AuthProvider sdk={auth}>
           <FunctionsProvider sdk={functions}>
             <FirestoreProvider sdk={firestoreInstance}>
-              <AppContextProvider setState={setState} state={state}>
+              <AppContextProvider>
                 <div className="utah-design-system">
                   {
                     status === 'loading'
