@@ -110,6 +110,7 @@
         "variables": true,
         "allowNamedExports": false
       }
-    ]
+    ],
+    "prefer-spread": ["off"]
   }
 }
