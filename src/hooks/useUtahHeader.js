@@ -16,45 +16,43 @@ import pageUrls from '../enums/pageUrls';
  * @param {import('react-router-dom').NavigateFunction} navigate
  * @returns {EventAction}
  */
-// function actionFunctionForUrl(url, navigate) {
-//   return (
-//     (e) => {
-//       if (!e.metaKey) {
-//         e.preventDefault();
-//         e.stopPropagation();
-//         navigate(url);
-//       }
-//     }
-//   );
-// }
+function actionFunctionForUrl(url, navigate) {
+  navigate(url);
+}
 
-export const mainMenuItems = {
-  menuItems: [
-    {
-      actionUrl: {
-        url: pageUrls.home,
+export const mainMenuItems = (navigate) => ({
+    menuItems: [
+      {
+        actionFunctionUrl: {
+          url: pageUrls.home,
+          actionFunction: () => {
+            actionFunctionForUrl(pageUrls.home, navigate);
+          },
+        },
+        icon: document.getElementById('home-menu-item-icon-id'),
+        title: 'Home',
       },
-      icon: document.getElementById('home-menu-item-icon-id'),
-      title: 'Home',
-    },
-    {
-      actionUrl: {
-        url: pageUrls.utahIdProcess,
+      {
+        actionFunctionUrl: {
+          url: pageUrls.utahIdProcess,
+          actionFunction: () => {
+            actionFunctionForUrl(pageUrls.utahIdProcess, navigate);
+          },
+        },
+        icon: document.getElementById('home-menu-item-icon-id'),
+        title: 'UtahID Registration Process',
       },
-      icon: document.getElementById('home-menu-item-icon-id'),
-      title: 'UtahID Registration Process',
-    },
-    {
-      actionFunctionUrl: {
-        url: 'http://turngps.utah.gov',
-        actionFunction: () => window.location = 'http://turngps.utah.gov',
+      {
+        actionFunctionUrl: {
+          url: 'http://turngps.utah.gov',
+          actionFunction: () => window.location = 'http://turngps.utah.gov',
+        },
+        title: 'turngps.utah.gov',
       },
-      title: 'turngps.utah.gov',
-    },
-  ]
-    .filter(identity),
-  title: 'Main Menu',
-};
+    ]
+      .filter(identity),
+    title: 'Main Menu',
+  });
 
 /** useUtahHeader */
 export default function useUtahHeader() {
@@ -69,7 +67,7 @@ export default function useUtahHeader() {
   useEffect(
     () => {
       setUtahHeaderSettings({
-        mainMenu: mainMenuItems,
+        mainMenu: mainMenuItems(navigate),
         footer: {
           showHorizontalRule: true,
           domLocationTarget: {

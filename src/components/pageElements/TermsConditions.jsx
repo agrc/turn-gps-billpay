@@ -1,19 +1,22 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
-// import { ExternalLink } from '@utahdts/utah-design-system';
-// import pageUrls from '../routing/pageUrls';
-// import ProgressLog from './ProgressLog/ProgressLog';
-// import IconsWebsite from './IconsWebsite';
-// import layoutScreenshot from '../../../static/images/screenshots/layout.webp';
-// import LightBox from '../lightbox/LightBox';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@utahdts/utah-design-system';
 import pageUrls from '../../enums/pageUrls';
+import useAppContext from '../../contexts/AppContext/useAppContext';
 
 const propTypes = {};
 const defaultProps = {};
 
 function TermsConditions() {
+  const { setAppState } = useAppContext();
+  const navigate = useNavigate();
+  const signAgreement = () => {
+    setAppState((draftAppState) => { draftAppState.hasTermsConditionsAgreed = true; });
+    navigate(pageUrls.registration);
+  };
+
   return (
     <div>
       <div className="home-banner">
@@ -44,10 +47,15 @@ function TermsConditions() {
             <span className="button--icon button--icon-left"><span className="utds-icon-before-arrow-left" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
             Back
           </Link>
-          <Link to={pageUrls.registration} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
+          <Button
+            className="button--primary-color button--solid"
+            type="button"
+            style={{ display: 'inline-flex' }}
+            onClick={signAgreement}
+          >
             I Agree
             <span className="button--icon button--icon-right"><span className="utds-icon-after-arrow-right" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
-          </Link>
+          </Button>
         </p>
 
       </div>

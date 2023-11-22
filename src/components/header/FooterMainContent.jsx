@@ -7,7 +7,7 @@ import {
 } from '@utahdts/utah-design-system';
 import '@utahdts/utah-design-system-header/css';
 import '@utahdts/utah-design-system/css/3-generic/normalize.css';
-import Link from '../formElements/Link';
+import { Link, useNavigate } from 'react-router-dom';
 import FooterInformationInfo from './FooterInformationInfo';
 import logo from '../../static/images/logo.svg';
 import packageJSON from '../../../package.json';
@@ -38,9 +38,9 @@ function FooterMainContent() {
         <div className="footer-agency-information__column-title">Main Menu</div>
         <ul className="footer-agency-information__menu">
           {
-            mainMenuItems?.menuItems?.map((menuItem) => (
+            mainMenuItems(useNavigate())?.menuItems?.map((menuItem) => (
               <li key={`footer-main-menu_${menuItem.title}`}>
-                <Link href={menuItem.actionFunctionUrl?.url || menuItem.actionUrl?.url || '/'}>{menuItem.title}</Link>
+                <Link to={menuItem.actionFunctionUrl?.url || menuItem.actionUrl?.url || '/'}>{menuItem.title}</Link>
               </li>
             ))
           }
