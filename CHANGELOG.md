@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0-42](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-41...v1.0.0-42) (2023-11-16)
+
+
+### 🚀 Features
+
+* add existing user check ([f706be3](https://github.com/agrc/turn-gps-billpay/commit/f706be35ef3296cea9e4d4e966a8d5d2eb881add))
+* stub subscription, payment, utahid process pages ([d8c4b0d](https://github.com/agrc/turn-gps-billpay/commit/d8c4b0d50051e7041fe7bbcb50724cb21a6e89f4))
+
 ## [1.0.0-41](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-40...v1.0.0-41) (2023-10-23)
 
 
