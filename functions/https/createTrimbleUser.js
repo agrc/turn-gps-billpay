@@ -5,7 +5,15 @@ import { WSDL } from 'soap';
 import setupFirebase from '../firebase.js';
 import { axiosConfig, createUserWithoutUserinfoAndReturnIdData, WSDL_CONTENT } from '../soap/soapUtils.js';
 import {
-  checkTrimbleEmailExists, checkTrimbleLoginExists, checkTrimbleOrgExists, createTrimbleOrg, insertTrimbleSubscription, insertTrimbleSubscriptionItem, selectPrimaryLoginByUserId, updateTrimbleUser
+  checkTrimbleEmailExists,
+  checkTrimbleLoginExists,
+  checkTrimbleOrgExists,
+  createTrimbleOrg,
+  insertRoleGroup,
+  insertTrimbleSubscription,
+  insertTrimbleSubscriptionItem,
+  selectPrimaryLoginByUserId,
+  updateTrimbleUser
 } from '../db/service/databaseService.js';
 
 setupFirebase();
@@ -63,9 +71,10 @@ export const createTrimbleUser = async (request) => {
     if (userResult?.rowsAffected?.length) {
       console.log('User successfully updated');
     }
-    // insert 'TNC User' role into LoginsInRoleGroups... maybe after they pay?
     const primaryLoginId = await selectPrimaryLoginByUserId(data.userId);
     const subscriptionData = { contractId: 1, loginId: primaryLoginId[0].loginId };
+    // insert 'TNC User' role into LoginsInRoleGroups
+    await insertRoleGroup(primaryLoginId[0].loginId, 'TNC User');
     const subscriptionId = await insertTrimbleSubscription(subscriptionData);
     await insertTrimbleSubscriptionItem(subscriptionId[0].id);
   } else {
