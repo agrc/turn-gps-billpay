@@ -20,6 +20,11 @@
     "soap": "1.0.0",
     "uuid": "9.0.1"
   },
+  "overrides": {
+    "soap": {
+      "axios": ">=0.25.0"
+    }
+  },
   "engines": {
     "node": "18"
   }
