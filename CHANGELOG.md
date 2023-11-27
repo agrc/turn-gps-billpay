@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-44](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-43...v1.0.0-44) (2023-11-27)
+
+
+### 🐛 Bug Fixes
+
+* override soap/axios dependency ([1ddf91c](https://github.com/agrc/turn-gps-billpay/commit/1ddf91c48aeec8d8e00dadd6ffa8515c4318b461))
+
 ## [1.0.0-43](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-42...v1.0.0-43) (2023-11-27)
 
 
