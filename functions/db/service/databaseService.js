@@ -1,9 +1,9 @@
 /* eslint-disable consistent-return */
 import sql from 'mssql';
 import {
-  getRoleGroupsQuery, getRolesQuery, getPaymentRecordQuery, checkTrimbleUserExistsQuery, checkTrimbleEmailExistsQuery,
-  checkTrimbleOrgExistsQuery, createTrimbleOrgQuery, updateTrimbleUserQuery, insertTrimbleSubscriptionQuery,
-  selectPrimaryLoginByUserIdQuery, checkTrimbleLoginExistsQuery, getSubscriptionsByEmailQuery, insertOrderQuery, insertOrderItemQuery,
+  getRoleGroupsQuery, getRolesQuery, checkTrimbleUserExistsQuery, checkTrimbleEmailExistsQuery, checkTrimbleOrgExistsQuery,
+  createTrimbleOrgQuery, updateTrimbleUserQuery, insertTrimbleSubscriptionQuery, selectPrimaryLoginByUserIdQuery,
+  checkTrimbleLoginExistsQuery, getSubscriptionsByEmailQuery, insertOrderQuery, insertOrderItemQuery, checkOrderExistsQuery, updateOrderQuery, insertRoleGroupQuery,
 } from '../queries.js';
 
 // const hostname = 'itdb002gp.utah.utad.state.ut.us'; //works
@@ -47,12 +47,12 @@ export const getRoles = async () => {
   }
 };
 
-export const getPaymentRecord = async (message) => {
-  if (message) {
+export const checkOrderExists = async (paymentToken) => {
+  if (paymentToken) {
     const pool = await sql.connect(sqlConfig);
     const result = await pool.request()
-      .input('token', sql.VarChar, message)
-      .query(getPaymentRecordQuery);
+      .input('paymentToken', sql.VarChar, paymentToken)
+      .query(checkOrderExistsQuery);
     return result?.recordset;
   }
   return null;
@@ -156,6 +156,17 @@ export const updateTrimbleUser = async (user) => {
   return null;
 };
 
+export const updateOrder = async (order) => {
+  if (order) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('paymentToken', sql.VarChar, order.paymentToken)
+      .query(updateOrderQuery);
+    return result;
+  }
+  return null;
+};
+
 export const insertTrimbleSubscription = async (subscription) => {
   if (subscription) {
     const pool = await sql.connect(sqlConfig);
@@ -202,6 +213,17 @@ export const insertOrderItem = async (item) => {
   return null;
 };
 
+export const insertRoleGroup = async (loginId, roleGroup) => {
+  if (loginId) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('loginId', sql.Numeric, loginId)
+      .input('roleGroup', sql.VarChar, roleGroup)
+      .query(insertRoleGroupQuery);
+    return result?.recordset;
+  }
+  return null;
+};
 export const insertTrimbleSubscriptionItem = async (subscriptionId) => {
   if (subscriptionId) {
     const values = [

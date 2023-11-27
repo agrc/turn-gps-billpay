@@ -1,5 +1,5 @@
 import { error, info } from 'firebase-functions/logger';
-import { getPaymentRecord } from '../db/service/databaseService.js';
+import { checkOrderExists, updateOrder } from '../db/service/databaseService.js';
 
 const parseMessage = (request) => {
   let body = '';
@@ -41,17 +41,25 @@ export const paymentCallBack = async (request, response) => {
   if (request.method !== 'POST') {
     error('HTTP Method Not Allowed');
     response.send(405, `HTTP Method ${request.method} not allowed`);
+    return null;
   }
   const message = parseMessage(request);
   info('message', message);
 
   try {
-    await getPaymentRecord(message);
+    const orderExists = await checkOrderExists(message);
+    if (orderExists[0].orderExists === 1) {
+      // update payment
+      await updateOrder(message); // amount paid? status =1, isCompleted = 1
+
+      // need to send capture or reverse
+      response.status(200).send(CAPTURE);
+      return null;
+    }
   } catch (err) {
     error('database error', err);
-    response.status(200).send(REVERSE);
   }
 
-  // need to send capture or reverse
-  response.status(200).send(CAPTURE);
+  response.status(200).send(REVERSE);
+  return null;
 };
