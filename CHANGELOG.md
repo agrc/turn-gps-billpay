@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.0-43](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-42...v1.0.0-43) (2023-11-27)
+
+
+### 🚀 Features
+
+* add function to create subscriptions & payments ([3ee62bc](https://github.com/agrc/turn-gps-billpay/commit/3ee62bc176f956c0c3bbaa0b3a390aa80262107c))
+* insert role during user creation ([ced898a](https://github.com/agrc/turn-gps-billpay/commit/ced898ab4d7eb8139eb0ebbca31c4eb5a983fd1a))
+
+
+### 🐛 Bug Fixes
+
+* link fixes and cleanup ([e8dd6db](https://github.com/agrc/turn-gps-billpay/commit/e8dd6db547b29a6b479fc11da8fbf9a9f4d11f42))
+
 ## [1.0.0-42](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-41...v1.0.0-42) (2023-11-16)
 
 
