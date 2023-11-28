@@ -84,56 +84,50 @@ function Subscription() {
   };
 
   return (
-    <>
-      <div className="home-banner">
-        <div className="home-banner__title">TURN<br />GPS</div>
+    <div className="content-width m-auto">
+      <h1 className="my-spacing-l text-center">TurnGPS Subscription</h1>
+
+      <div className="flex justify-end mb-spacing-l">
+        <Button
+          appearance="solid"
+          color="primary"
+          id="addSubscription"
+            // eslint-disable-next-line no-console
+          onClick={goToRegistration}
+        >
+          Add Subscription
+        </Button>
       </div>
-      <div className="content-width">
-        <h1 className="my-spacing-l text-center">TurnGPS Subscription</h1>
-
-        <div className="flex justify-end mb-spacing-l">
-          <Button
-            appearance="solid"
-            color="primary"
-            id="addSubscription"
-              // eslint-disable-next-line no-console
-            onClick={goToRegistration}
-          >
-            Add Subscription
-          </Button>
+      <div className="mt-spacing-xl">
+        <div className="flex justify-between items-center">
+          <h3 id="table__active-subscriptions">Active Subscriptions</h3>
         </div>
-        <div className="mt-spacing-xl">
-          <div className="flex justify-between items-center">
-            <h3 id="table__active-subscriptions">Active Subscriptions</h3>
-          </div>
-          <SubscriptionTable tableData={activeList} setTableData={setActiveList} type="active" />
-        </div>
-
-        <div className="mt-spacing-xl">
-          <div className="flex justify-between items-center">
-            <h3 id="table__active-subscriptions">Pending Subscriptions</h3>
-          </div>
-          <SubscriptionTable tableData={inactiveList} setTableData={setInactiveList} type="pending" />
-        </div>
-
-        <div className="flex justify-end mt-spacing-l mb-spacing-l">
-          <Button
-            appearance="solid"
-            color="primary"
-            id="paySubscription"
-              // eslint-disable-next-line no-console
-            onClick={() => {
-                const filteredList = inactiveList.filter((obj) => obj.activated);
-                console.log('paySubscription clicked', filteredList);
-                mutation.mutate(filteredList);
-              }}
-          >
-            Pay
-          </Button>
-        </div>
-
+        <SubscriptionTable tableData={activeList} setTableData={setActiveList} type="active" />
       </div>
-    </>
+
+      <div className="mt-spacing-xl">
+        <div className="flex justify-between items-center">
+          <h3 id="table__active-subscriptions">Pending Subscriptions</h3>
+        </div>
+        <SubscriptionTable tableData={inactiveList} setTableData={setInactiveList} type="pending" />
+      </div>
+
+      <div className="flex justify-end mt-spacing-l mb-spacing-l">
+        <Button
+          appearance="solid"
+          color="primary"
+          id="paySubscription"
+            // eslint-disable-next-line no-console
+          onClick={() => {
+              const filteredList = inactiveList.filter((obj) => obj.activated);
+              console.log('paySubscription clicked', filteredList);
+              mutation.mutate(filteredList);
+            }}
+        >
+          Pay
+        </Button>
+      </div>
+    </div>
   );
 }
 

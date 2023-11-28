@@ -1,0 +1,48 @@
+#registration {
+  max-width: 491px;
+
+  .input-wrapper {
+    &__error-message {
+      font-weight: bolder;
+    }
+  }
+}
+
+input[type="password"] {
+  color: var(--gray-color);
+  min-height: var(--form-ele-medium);
+  border-radius: var(--radius-small);
+  box-sizing: border-box;
+  border: 1px solid var(--gray-color);
+  width: 100%;
+  padding: 0 var(--spacing-xs);
+
+  box-shadow: var(--hover-gray-color) 0 0 0 0;
+  transition: box-shadow var(--timing-xquick) ease-in-out;
+
+  &:hover {
+    box-shadow: var(--hover-gray-color) 0 0 0 5px;
+    border-color: black;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--form-ele-color);
+    outline-offset: 2px;
+    transition: none;
+  }
+
+  &:disabled {
+    background-color: var(--disabled-gray);
+    cursor: not-allowed;
+  }
+
+  &[aria-invalid="true"] {
+    border: 2px solid var(--danger-color)
+  }
+
+  &.text-input {
+    &--clear-icon-visible {
+      padding: 0 var(--spacing-xl) 0 var(--spacing-xs);
+    }
+  }
+}
