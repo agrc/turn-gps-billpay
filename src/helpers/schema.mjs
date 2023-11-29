@@ -22,7 +22,7 @@ export const registrationSchema = yup.object().shape({
   confirmPassword: yup
     .string()
     .max(250)
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .oneOf([yup.ref('password'), null], 'Passwords must match.')
     .label('confirmPassword'),
   firstName: yup
     .string()
@@ -82,6 +82,6 @@ export const registrationSchema = yup.object().shape({
     .label('zipCode'),
   phoneNumber: yup
     .string()
-    .phone('US', 'Please enter a valid phone number')
-    .required('A phone number is required'),
+    .phone('US', 'Please enter a valid phone number.')
+    .required('A phone number is required.'),
 });

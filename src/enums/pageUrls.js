@@ -1,6 +1,5 @@
 export default {
   home: '/',
-  termsAndConditions: '/termsAndConditions',
   registration: '/registration',
   subscription: '/subscription',
   payment: '/payment',

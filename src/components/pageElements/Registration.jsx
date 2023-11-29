@@ -78,19 +78,21 @@ function Registration() {
   return (
   hasTermsConditionsAgreed
     ? (
-      <div>
+      <div className="landing-page-template mb-spacing-xl">
         <div className="home-banner">
           <div className="home-banner__title">TURN<br />GPS</div>
         </div>
         <div className="content-width">
           <h1 className="my-spacing-l text-center">TurnGPS Registration</h1>
 
-          <p className="lead-in">
+          <p className="lead-in text-center">
             Registration and use of the service is contingent on accepting the Terms and Conditions.
           </p>
           <form
-            className="form form--stacked"
+            className="form form--stacked m-auto"
+            id="registration"
           >
+            <h4>Account</h4>
             <Input
               label="Organization"
               required
@@ -134,6 +136,8 @@ function Registration() {
               name="confirmPassword"
               as={ErrorMessageTag}
             />
+
+            <h4 className="mt-spacing-xl">Personal Information</h4>
             <Input
               label="First Name"
               required
@@ -173,6 +177,8 @@ function Registration() {
               name="additionalEmail"
               as={ErrorMessageTag}
             />
+
+            <h4 className="mt-spacing-xl">Contact Information</h4>
             <Input
               label="Address 1"
               required
@@ -229,8 +235,8 @@ function Registration() {
               name="phoneNumber"
               as={ErrorMessageTag}
             />
-            <div className="flex">
-              <Link to={pageUrls.termsAndConditions} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
+            <div className="flex gap-l justify-center mt-spacing-xl">
+              <Link to={pageUrls.home} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
                 <span className="button--icon button--icon-left"><span className="utds-icon-before-arrow-left" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
                 Back
               </Link>
@@ -254,7 +260,7 @@ function Registration() {
         {busy && <Spinner id="spinner-registration-id" className="spinner spinner--indeterminate fullscreen" />}
       </div>
 )
-    : <Navigate to={pageUrls.termsAndConditions} />
+    : <Navigate to={pageUrls.home} />
   );
 }
 
