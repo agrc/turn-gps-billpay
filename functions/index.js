@@ -46,11 +46,7 @@ export const getProfile = https.onCall(
     /* eslint-disable no-shadow */
     const { getProfile } = await import('./https/getProfile.js');
 
-    const result = await getProfile(request.auth);
-
-    debug('[https::getProfile]', result);
-
-    return result;
+    return getProfile(request.auth);
   }
 );
 
