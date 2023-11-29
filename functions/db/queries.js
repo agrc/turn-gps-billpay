@@ -70,6 +70,12 @@ export const getSubscriptionsByEmailQuery = 'SELECT '
 + 'and subscription.ExpirationDateUtc >= CURRENT_TIMESTAMP '
 + 'order by subscription.LoginId, subscription.SubscriptionId';
 
+export const getTrimbleProfileByEmailQuery = 'SELECT '
+  + 'org.ShortName as organization, FirstName as firstName, LastName as lastName, email, Address as address1, City as city, District as stateCode, ZipCode as zipCode, PhoneNumberMobile as phoneNumber '
+  + `FROM ${schema}.[dbo].[Users] users `
+  + `LEFT OUTER JOIN ${schema}.[dbo].[Organizations] org on (users.OrganizationId = org.OrganizationId) `
+  + 'WHERE Email = @email';
+
 export const createTrimbleOrgQuery = 'INSERT INTO '
   + `${schema}.[dbo].[Organizations] `
   + '(ShortName, LongName, Description, Deleted, IsDealerOrganization) '
