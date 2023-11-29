@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Accordion, Button } from '@utahdts/utah-design-system';
 import pageUrls from '../../enums/pageUrls';
 import useAppContext from '../../contexts/AppContext/useAppContext';
+import HomeSubscriptionButton from './HomeSubscriptionButton';
 
 const propTypes = {};
 const defaultProps = {};
@@ -47,6 +48,7 @@ function HomeLanding() {
           reliable, fast, high precision wide area positioning.
         </p>
         <p className="mb-auto text-center">
+          <HomeSubscriptionButton />
           <a href="#terms" className="button button--primary-color button--solid button--large" style={{ display: 'inline-flex' }}>
             Start Registration
             <span className="button--icon button--icon-right"><span className="utds-icon-after-arrow-down" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
