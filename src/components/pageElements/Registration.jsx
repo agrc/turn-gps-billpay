@@ -7,7 +7,7 @@ import { useFunctions, useUser } from 'reactfire';
 import { Button, Spinner } from '@utahdts/utah-design-system';
 import { Link, Navigate } from 'react-router-dom';
 import { httpsCallable } from 'firebase/functions';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Input } from '../formElements/Inputs.jsx';
 import { registrationSchema } from '../../helpers/schema.mjs';
 import ErrorMessageTag from './ErrorMessage.jsx';
@@ -16,19 +16,22 @@ import useAppContext from '../../contexts/AppContext/useAppContext';
 
 function Registration() {
   const { appState: { hasTermsConditionsAgreed } } = useAppContext();
-  const { data } = useUser();
+  const { data: user } = useUser();
   const functions = useFunctions();
   const createTrimbleUser = httpsCallable(functions, 'createTrimbleUser');
+  const getProfile = httpsCallable(functions, 'getProfile');
 
   const [state, setState] = useState();
   const [busy, setBusy] = useState(false);
 
-  const defaultValues = {
-    organization: 'agrc',
-    stateCode: 'UT',
-    username: '',
-    password: '',
-  };
+  const uid = user?.uid;
+  const isUserAvailable = uid?.length > 0;
+  const { data: defaultValues, status: profileStatus } = useQuery({
+    queryKey: ['profile', uid],
+    enabled: isUserAvailable,
+    queryFn: getProfile,
+    staleTime: Infinity,
+  });
 
   /* eslint-disable no-unused-vars */
   const mutation = useMutation({
@@ -57,11 +60,17 @@ function Registration() {
   );
 
   const {
-    formState, register, handleSubmit, setFocus,
+    formState, register, handleSubmit, setFocus, reset,
   } = useForm({
     resolver: yupResolver(registrationSchema),
-    defaultValues,
   });
+
+  useEffect(() => {
+    console.log('profileStatus', profileStatus);
+    if (profileStatus === 'success') {
+      reset(defaultValues?.data);
+    }
+  }, [profileStatus, defaultValues]);
 
   const onSubmit = (payload) => {
     setBusy(true);
@@ -73,7 +82,10 @@ function Registration() {
   }, [setFocus]);
 
   // eslint-disable-next-line no-console
-  console.log('data', data);
+  console.log('user data', user);
+
+  // eslint-disable-next-line no-console
+  console.log('user default values', defaultValues?.data);
 
   return (
   hasTermsConditionsAgreed
@@ -237,7 +249,9 @@ function Registration() {
             />
             <div className="flex gap-l justify-center mt-spacing-xl">
               <Link to={pageUrls.home} className="button button--primary-color button--solid" style={{ display: 'inline-flex' }}>
-                <span className="button--icon button--icon-left"><span className="utds-icon-before-arrow-left" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
+                <span className="button--icon button--icon-left">
+                  <span className="utds-icon-before-arrow-left" aria-hidden="true" style={{ fontSize: '.9rem' }} />
+                </span>{' '}
                 Back
               </Link>
 
