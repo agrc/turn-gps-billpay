@@ -1,3 +1,4 @@
+import { ExternalLink } from '@utahdts/utah-design-system';
 import signInImage from '../../static/images/sign-in-button.png';
 import utahIdCreateAccountImage from '../../static/images/utahid-create-account.png';
 
@@ -6,7 +7,7 @@ const defaultProps = {};
 
 function UtahIdProcess() {
   return (
-    <div>
+    <div className="landing-page-template">
       <div className="home-banner">
         <div className="home-banner__title">TURN<br />GPS</div>
       </div>
@@ -19,22 +20,19 @@ function UtahIdProcess() {
           Creating the necessary accounts to access the TurnGPS bill pay system requires one simple step.
         </p>
 
-        <div className="content-width mt-spacing-l">
-          <h1 className="my-spacing-l text-center">Get a UtahID Account</h1>
+        <div className="mt-spacing-l">
+          <h2 className="my-spacing-l">Get a UtahID Account</h2>
 
           <p className="lead-in">
-            First, you will need to <a href="https://id.utah.gov/create?goto=https://turngps.utah.gov" target="_blank" rel="noreferrer">create a UtahID account</a> {' '}
-            by going to <a href="https://id.utah.gov/create?goto=https://turngps.utah.gov" target="_blank" rel="noreferrer">id.utah.gov</a>.
-          </p>
-          <h2 className="my-spacing-l text-center">OR</h2>
-          <p className="lead-in">
-            Click on the UtahID Sign In Button
+            First, you will need to create a UtahID account{' '}
+            by going to <ExternalLink href="https://id.utah.gov/create?goto=https://turngps.utah.gov">id.utah.gov</ExternalLink>{' '}
+            or by clicking on the &ldquo;UtahID Sign In&rdquo; button in the header.
           </p>
           <p className="lead-in">
             <img src={signInImage} alt="Sign In button example" />
           </p>
           <p className="lead-in">
-            Then select the &quot;Create an Account&quot; link under the &quot;SIGN IN&quot; button.
+            Then select the &quot;Create an Account&quot; under the &quot;SIGN IN&quot; button.
           </p>
           <p className="lead-in">
             <img src={utahIdCreateAccountImage} alt="UtahID create account example" />

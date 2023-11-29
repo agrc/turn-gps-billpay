@@ -1,18 +1,14 @@
 import { useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useUser } from 'reactfire';
-import { VerticalMenu } from '@utahdts/utah-design-system';
 
 import HomeLanding from '../pageElements/HomeLanding';
 import Page404 from '../pageElements/Page404';
-import TermsConditions from '../pageElements/TermsConditions';
 import MainTemplate from '../pageElements/MainTemplate';
 import Registration from '../pageElements/Registration';
 import useUtahHeader from '../../hooks/useUtahHeader';
 import pageUrls from '../../enums/pageUrls';
 import AdminLanding from '../pageElements/AdminLanding';
-import { menuSecondary } from './menuSecondary';
-import useCurrentMenuItem from '../../hooks/useCurrentMenuItem';
 import Subscription from '../pageElements/Subscription';
 import Payment from '../pageElements/Payment';
 import UtahIdProcess from '../pageElements/UtahIdProcess';
@@ -24,8 +20,6 @@ function Routing() {
   useUtahHeader();
   const user = useUser();
   const contentRef = useRef();
-  const currentMenuItem = useCurrentMenuItem(Object.values(menuSecondary));
-  const menu = [menuSecondary];
 
   return (
     <Routes>
@@ -35,17 +29,6 @@ function Routing() {
           <MainTemplate
             content={HomeLanding}
             contentRef={contentRef}
-            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
-          />
-      )}
-      />
-      <Route
-        path={pageUrls.termsAndConditions}
-        element={(
-          <MainTemplate
-            content={TermsConditions}
-            contentRef={contentRef}
-            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
           />
       )}
       />
@@ -55,7 +38,6 @@ function Routing() {
           <MainTemplate
             content={Registration}
             contentRef={contentRef}
-            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
           />
       )}
       />
@@ -65,7 +47,6 @@ function Routing() {
           <MainTemplate
             content={Subscription}
             contentRef={contentRef}
-            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
           />
       )}
       />
@@ -75,7 +56,6 @@ function Routing() {
           <MainTemplate
             content={Payment}
             contentRef={contentRef}
-            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
           />
       )}
       />
@@ -85,7 +65,6 @@ function Routing() {
           <MainTemplate
             content={UtahIdProcess}
             contentRef={contentRef}
-            sidePanelLeftContent={<VerticalMenu currentMenuItem={currentMenuItem} menus={menu} />}
           />
       )}
       />

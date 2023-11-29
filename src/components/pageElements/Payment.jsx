@@ -10,18 +10,12 @@ function Payment() {
   console.log('userdata', data);
 
   return (
-    <div>
-      <div className="home-banner">
-        <div className="home-banner__title">TURN<br />GPS</div>
-      </div>
-      <div className="content-width">
-        <h1 className="my-spacing-l text-center">TurnGPS Payment</h1>
+    <div className="content-width m-auto">
+      <h1 className="my-spacing-l text-center">TurnGPS Payment</h1>
 
-        <p className="lead-in">
-          Payment Callback
-        </p>
-
-      </div>
+      <p className="lead-in">
+        Payment Callback
+      </p>
     </div>
   );
 }
