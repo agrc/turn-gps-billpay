@@ -20,7 +20,21 @@ function actionFunctionForUrl(url, navigate) {
   navigate(url);
 }
 
-export const mainMenuItems = (navigate) => ({
+export const authMenuItems = (hasUser, navigate) => (
+  hasUser
+  ? {
+    actionFunctionUrl: {
+      url: pageUrls.subscription,
+      actionFunction: () => {
+        actionFunctionForUrl(pageUrls.subscription, navigate);
+      },
+    },
+    icon: document.getElementById('home-menu-item-icon-id'),
+    title: 'Subscriptions',
+  }
+  : null
+);
+export const mainMenuItems = (hasUser, navigate) => ({
     menuItems: [
       {
         actionFunctionUrl: {
@@ -42,6 +56,7 @@ export const mainMenuItems = (navigate) => ({
         icon: document.getElementById('home-menu-item-icon-id'),
         title: 'UtahID Registration Process',
       },
+      authMenuItems(hasUser, navigate),
       {
         actionFunctionUrl: {
           url: 'http://turngps.utah.gov',
@@ -67,7 +82,7 @@ export default function useUtahHeader() {
   useEffect(
     () => {
       setUtahHeaderSettings({
-        mainMenu: mainMenuItems(navigate),
+        mainMenu: mainMenuItems(hasUser, navigate),
         footer: {
           showHorizontalRule: true,
           domLocationTarget: {
