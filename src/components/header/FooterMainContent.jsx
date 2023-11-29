@@ -8,6 +8,7 @@ import {
 import '@utahdts/utah-design-system-header/css';
 import '@utahdts/utah-design-system/css/3-generic/normalize.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from 'reactfire';
 import FooterInformationInfo from './FooterInformationInfo';
 import logo from '../../static/images/logo.svg';
 import packageJSON from '../../../package.json';
@@ -17,6 +18,9 @@ const propTypes = {};
 const defaultProps = {};
 
 function FooterMainContent() {
+  const user = useUser();
+  const hasUser = !!user.data;
+
   return (
     <FooterAgencyInformation>
       <FooterAgencyInformationColumn>
@@ -38,7 +42,7 @@ function FooterMainContent() {
         <div className="footer-agency-information__column-title">Main Menu</div>
         <ul className="footer-agency-information__menu">
           {
-            mainMenuItems(useNavigate())?.menuItems?.map((menuItem) => (
+            mainMenuItems(hasUser, useNavigate())?.menuItems?.map((menuItem) => (
               <li key={`footer-main-menu_${menuItem.title}`}>
                 <Link to={menuItem.actionFunctionUrl?.url || menuItem.actionUrl?.url || '/'}>{menuItem.title}</Link>
               </li>
