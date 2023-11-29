@@ -3,7 +3,7 @@ import sql from 'mssql';
 import {
   getRoleGroupsQuery, getRolesQuery, checkTrimbleUserExistsQuery, checkTrimbleEmailExistsQuery, checkTrimbleOrgExistsQuery,
   createTrimbleOrgQuery, updateTrimbleUserQuery, insertTrimbleSubscriptionQuery, selectPrimaryLoginByUserIdQuery,
-  checkTrimbleLoginExistsQuery, getSubscriptionsByEmailQuery, insertOrderQuery, insertOrderItemQuery, checkOrderExistsQuery, updateOrderQuery, insertRoleGroupQuery,
+  checkTrimbleLoginExistsQuery, getSubscriptionsByEmailQuery, insertOrderQuery, insertOrderItemQuery, checkOrderExistsQuery, updateOrderQuery, insertRoleGroupQuery, getTrimbleProfileByEmailQuery,
 } from '../queries.js';
 
 // const hostname = 'itdb002gp.utah.utad.state.ut.us'; //works
@@ -120,6 +120,17 @@ export const getSubscriptionsByEmail = async (email) => {
     const result = await pool.request()
       .input('email', sql.VarChar, email)
       .query(getSubscriptionsByEmailQuery);
+    return result?.recordset ? result.recordset : null;
+  }
+  return null;
+};
+
+export const getTrimbleProfileByEmail = async (email) => {
+  if (email) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('email', sql.VarChar, email)
+      .query(getTrimbleProfileByEmailQuery);
     return result?.recordset ? result.recordset : null;
   }
   return null;
