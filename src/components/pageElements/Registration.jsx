@@ -13,6 +13,7 @@ import { registrationSchema } from '../../helpers/schema.mjs';
 import ErrorMessageTag from './ErrorMessage.jsx';
 import pageUrls from '../../enums/pageUrls';
 import useAppContext from '../../contexts/AppContext/useAppContext';
+import InfoBanner from './InfoBanner';
 
 function Registration() {
   const { appState: { hasTermsConditionsAgreed } } = useAppContext();
@@ -95,11 +96,14 @@ function Registration() {
           <div className="home-banner__title">TURN<br />GPS</div>
         </div>
         <div className="content-width">
-          <h1 className="my-spacing-l text-center">TurnGPS Registration</h1>
+          <h1 className="my-spacing-l text-center">Registration</h1>
 
           <p className="lead-in text-center">
             Registration and use of the service is contingent on accepting the Terms and Conditions.
           </p>
+
+          <InfoBanner />
+
           <form
             className="form form--stacked m-auto"
             id="registration"
@@ -259,6 +263,7 @@ function Registration() {
                 appearance="outlined"
                 color="primary"
                 type="submit"
+                isDisabled={!isUserAvailable}
                 onClick={handleSubmit((valid) => {
                 onSubmit(valid);
                 }, (invalid) => {

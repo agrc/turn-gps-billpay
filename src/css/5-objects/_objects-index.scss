@@ -2,3 +2,23 @@
 ############     _objects-index.scss      ############
 containers and general design patterns, 2up, 3up, layout grids, etc.
 */
+
+.info-banner {
+  color: var(--secondary-color-dark);
+  background-color:var(--secondary-color-light);
+  border-color: var(--gray-border);
+  position: relative;
+  padding: 20px 16px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  width: fit-content;
+  
+  & .info-icon {
+    color: var(--warning-color);
+    margin-right: 12px;
+    vertical-align: text-bottom;
+    display: inline-block;
+    fill: currentColor;
+  }
+}
