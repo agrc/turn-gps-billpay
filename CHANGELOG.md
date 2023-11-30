@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-46](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-45...v1.0.0-46) (2023-11-30)
+
+
+### 🚀 Features
+
+* add spinner while loading subscriptions ([a771329](https://github.com/agrc/turn-gps-billpay/commit/a7713293575cff66ca4580b8f1ed9b46298950e5))
+
 ## [1.0.0-45](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-44...v1.0.0-45) (2023-11-30)
 
 
