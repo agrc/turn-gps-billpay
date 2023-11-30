@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-45](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-44...v1.0.0-45) (2023-11-30)
+
+
+### 🐛 Bug Fixes
+
+* remove unused files ([ea36027](https://github.com/agrc/turn-gps-billpay/commit/ea360270de79726a2c5ce7a64e98a79f520773d6))
+
 ## [1.0.0-44](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-43...v1.0.0-44) (2023-11-27)
 
 
