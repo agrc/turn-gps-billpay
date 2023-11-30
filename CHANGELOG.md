@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-48](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-47...v1.0.0-48) (2023-11-30)
+
+
+### 🐛 Bug Fixes
+
+* fix function cors options ([beb78e5](https://github.com/agrc/turn-gps-billpay/commit/beb78e583f5518b8d7145a0dcc759a96259c8994))
+
 ## [1.0.0-47](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-46...v1.0.0-47) (2023-11-30)
 
 
