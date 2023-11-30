@@ -7,11 +7,13 @@ import { useEffect, useState } from 'react';
 
 import SubscriptionTable from './SubscriptionTable';
 import pageUrls from '../../enums/pageUrls';
+import useAppContext from '../../contexts/AppContext/useAppContext';
 
 const propTypes = {};
 const defaultProps = {};
 
 function Subscription() {
+  const { setAppState } = useAppContext();
   const navigate = useNavigate();
   const functions = useFunctions();
   const getSubscriptions = httpsCallable(functions, 'getSubscriptions');
@@ -82,11 +84,12 @@ function Subscription() {
   const queryStatus = () => (isFetching ? 'fetching' : subscriptionStatus);
 
   const goToRegistration = () => {
+    setAppState((draftAppState) => { draftAppState.hasTermsConditionsAgreed = true; });
     navigate(pageUrls.registration);
   };
 
   return (
-    <div className="content-width m-auto">
+    <div className="m-spacing-xl">
       <h1 className="my-spacing-l text-center">TurnGPS Subscription</h1>
 
       <div className="flex justify-end mb-spacing-l">
@@ -129,12 +132,14 @@ function Subscription() {
           appearance="solid"
           color="primary"
           id="paySubscription"
+          isDisabled={!inactiveList.filter((obj) => obj.activated).length}
             // eslint-disable-next-line no-console
           onClick={() => {
               const filteredList = inactiveList.filter((obj) => obj.activated);
               console.log('paySubscription clicked', filteredList);
               mutation.mutate(filteredList);
             }}
+          iconRight={<span className="utds-icon-after-external-link" aria-hidden="true" />}
         >
           Pay
         </Button>

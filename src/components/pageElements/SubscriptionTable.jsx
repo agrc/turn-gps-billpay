@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import {
-  Icons,
   Spinner,
   Switch,
   Table,
@@ -33,7 +32,7 @@ const propTypes = {
 ),
   setTableData: PropTypes.func,
   lookupStatus: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 const defaultProps = {};
 function SubscriptionTable({
@@ -45,7 +44,7 @@ function SubscriptionTable({
 
   const mainTable = () => (
     <TableWrapper>
-      <Table className="table table--lines-x table--alt table--v-align-center">
+      <Table className="table table--subscriptions table--lines-x table--alt table--v-align-center full-width">
         <TableHead>
           <TableSortingRules defaultValue="loginName">
             <TableSortingRule a11yLabel="Login Name" recordFieldPath="loginName" />
@@ -94,7 +93,6 @@ function SubscriptionTable({
                           }}
                           size="medium"
                           width={25}
-                          sliderChildren={Icons.IconCheck()}
                         />
                       )
                     }
