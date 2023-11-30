@@ -47,7 +47,7 @@ function HomeLanding() {
           processing data, saving you time and money. It is ideal for any application requiring
           reliable, fast, high precision wide area positioning.
         </p>
-        <p className="mb-auto text-center">
+        <p className="flex justify-center">
           <HomeSubscriptionButton />
           <a href="#terms" className="button button--primary-color button--solid button--large" style={{ display: 'inline-flex' }}>
             Start Registration
