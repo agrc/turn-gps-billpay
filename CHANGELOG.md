@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.0-47](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-46...v1.0.0-47) (2023-11-30)
+
+
+### 🚀 Features
+
+* prevent registration submission from unauthenticated users ([9227291](https://github.com/agrc/turn-gps-billpay/commit/9227291ed9ab67f287387270bb32564d150ebbd9))
+
+
+### 🐛 Bug Fixes
+
+* isDisabled on subscription pay button ([ccf09cf](https://github.com/agrc/turn-gps-billpay/commit/ccf09cf300b3f0f0196d29119b1e9f7ca2ff9800))
+* set function secrets in global options ([23a9a84](https://github.com/agrc/turn-gps-billpay/commit/23a9a8492a6bbc4af86b9c92c16f229fb7cb4614))
+
 ## [1.0.0-46](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-45...v1.0.0-46) (2023-11-30)
 
 
