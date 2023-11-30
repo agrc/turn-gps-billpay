@@ -10,7 +10,8 @@ initializeApp();
 const vpc = params.defineString('VPC');
 const vpcEgress = 'ALL_TRAFFIC';
 const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gserviceaccount.com';
-setGlobalOptions({ serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress });
+const secrets = ['database'];
+setGlobalOptions({ serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress, secrets: secrets });
 
 // auth
 export const onCreateUser = v1
@@ -18,6 +19,7 @@ export const onCreateUser = v1
     vpcConnector: vpc,
     vpcConnectorEgressSettings: vpcEgress,
     serviceAccount,
+    secrets: ['database'] 
   })
   .auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
@@ -120,7 +122,6 @@ export const createPayment = https.onCall(
 );
 
 export const paymentCallBack = https.onRequest(
-  { secrets: ['database'] },
   async (request, response) => {
     const { paymentCallBack } = await import('./https/paymentCallBack.js');
 
@@ -132,7 +133,7 @@ export const paymentCallBack = https.onRequest(
   }
 );
 
-export const graphQl = https.onRequest({ secrets: ['database'] }, expressServer);
+export const graphQl = https.onRequest(expressServer);
 
 if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
