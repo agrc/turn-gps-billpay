@@ -37,7 +37,7 @@ function Subscription() {
     return null;
   };
 
-  const { data: response, status: subscriptionStatus } = useQuery({
+  const { data: response, status: subscriptionStatus, isFetching } = useQuery({
     queryKey: ['subscriptions', uid],
     enabled: isUserAvailable,
     queryFn: getSubscriptions,
@@ -79,6 +79,8 @@ function Subscription() {
   // eslint-disable-next-line no-console
   console.log('dataResponse', response);
 
+  const queryStatus = () => (isFetching ? 'fetching' : subscriptionStatus);
+
   const goToRegistration = () => {
     navigate(pageUrls.registration);
   };
@@ -102,14 +104,24 @@ function Subscription() {
         <div className="flex justify-between items-center">
           <h3 id="table__active-subscriptions">Active Subscriptions</h3>
         </div>
-        <SubscriptionTable tableData={activeList} setTableData={setActiveList} type="active" />
+        <SubscriptionTable
+          tableData={activeList}
+          setTableData={setActiveList}
+          lookupStatus={queryStatus()}
+          usertype="active"
+        />
       </div>
 
       <div className="mt-spacing-xl">
         <div className="flex justify-between items-center">
           <h3 id="table__active-subscriptions">Pending Subscriptions</h3>
         </div>
-        <SubscriptionTable tableData={inactiveList} setTableData={setInactiveList} type="pending" />
+        <SubscriptionTable
+          tableData={inactiveList}
+          setTableData={setInactiveList}
+          lookupStatus={queryStatus()}
+          type="pending"
+        />
       </div>
 
       <div className="flex justify-end mt-spacing-l mb-spacing-l">
