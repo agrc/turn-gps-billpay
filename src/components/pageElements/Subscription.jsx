@@ -132,11 +132,9 @@ function Subscription() {
           appearance="solid"
           color="primary"
           id="paySubscription"
-          isDisabled={!inactiveList.filter((obj) => obj.activated).length}
-            // eslint-disable-next-line no-console
+          isDisabled={!inactiveList?.filter((obj) => obj.activated).length}
           onClick={() => {
               const filteredList = inactiveList.filter((obj) => obj.activated);
-              console.log('paySubscription clicked', filteredList);
               mutation.mutate(filteredList);
             }}
           iconRight={<span className="utds-icon-after-external-link" aria-hidden="true" />}
