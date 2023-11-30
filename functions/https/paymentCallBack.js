@@ -2,36 +2,20 @@ import { error, info } from 'firebase-functions/logger';
 import { checkOrderExists, updateOrder } from '../db/service/databaseService.js';
 
 const parseMessage = (request) => {
-  let body = '';
+  let body = {};
   switch (request.get('content-type')) {
-    // '{"token":"token_xxx"}'
     case 'application/json':
-      ({ body } = request.body);
-      break;
-
-    // 'token_xxx', stored in a Buffer
-    case 'application/octet-stream':
-      body = request.body.toString(); // Convert buffer to a string
-      break;
-
-    // 'token_xxx'
+    case 'application/x-www-form-urlencoded':
+      return request.body;
     case 'text/plain':
       body = request.body;
-      break;
-
-    // 'token=token_xxx' in the body
-    case 'application/x-www-form-urlencoded':
-      ({ body } = request.body);
-      break;
+      const response = `{"token": "${body}"}`;
+      return JSON.parse(response);
     default:
       info('Unknown type', request.get('content-type'));
   }
 
-  // Create response
-  const response = `{"value": "${body}"}`;
-
-  // Parse the response as JSON then return
-  return JSON.parse(response);
+return body;
 };
 
 export const paymentCallBack = async (request, response) => {
@@ -46,20 +30,22 @@ export const paymentCallBack = async (request, response) => {
   const message = parseMessage(request);
   info('message', message);
 
-  try {
-    const orderExists = await checkOrderExists(message);
-    if (orderExists[0].orderExists === 1) {
-      // update payment
-      await updateOrder(message); // amount paid? status =1, isCompleted = 1
+  if (message?.token) {
+    console.log('token', message.token);
+    try {
+      const orderExists = await checkOrderExists(message.token);
+      if (orderExists[0].orderExists === 1) {
+        // update payment
+        await updateOrder(message.token); // amount paid? status =1, isCompleted = 1
 
-      // need to send capture or reverse
-      response.status(200).send(CAPTURE);
-      return null;
+        // need to send capture or reverse
+        response.status(200).send(CAPTURE);
+        return null;
+      }
+    } catch (err) {
+      error('database error', err);
     }
-  } catch (err) {
-    error('database error', err);
   }
-
   response.status(200).send(REVERSE);
   return null;
 };

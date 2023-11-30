@@ -11,6 +11,8 @@ const vpc = params.defineString('VPC');
 const vpcEgress = 'ALL_TRAFFIC';
 const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gserviceaccount.com';
 const secrets = ['database'];
+const corsOptions = [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/];
+
 setGlobalOptions({ serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress, secrets: secrets });
 
 // auth
@@ -34,7 +36,7 @@ export const onCreateUser = v1
 
 // functions
 export const getProfile = https.onCall(
-  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, '/utah.gov'] },
+  { cors: corsOptions },
   async (request) => {
     if (request.auth === undefined) {
       debug('[https::getProfile] no auth context');
@@ -53,7 +55,7 @@ export const getProfile = https.onCall(
 );
 
 export const createTrimbleUser = https.onCall(
-  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/] },
+  { cors: corsOptions },
   async (request) => {
     if (request.auth === undefined) {
       debug('[https::createTrimbleUser] no auth context');
@@ -76,7 +78,7 @@ export const createTrimbleUser = https.onCall(
 );
 
 export const getSubscriptions = https.onCall(
-  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/] },
+  { cors: corsOptions },
   async (request) => {
     if (request.auth === undefined) {
       debug('[https::getSubscriptions] no auth context');
@@ -99,7 +101,7 @@ export const getSubscriptions = https.onCall(
 );
 
 export const createPayment = https.onCall(
-  { cors: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/] },
+  { cors: corsOptions },
   async (request) => {
     if (request.auth === undefined) {
       debug('[https::getSubscriptions] no auth context');
