@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0-50](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-49...v1.0.0-50) (2023-12-04)
+
+
+### 🐛 Bug Fixes
+
+* fix order exists query syntax ([c77c918](https://github.com/agrc/turn-gps-billpay/commit/c77c918e700276757c0921995e635454434611dd))
+* handle array correctly ([aa76519](https://github.com/agrc/turn-gps-billpay/commit/aa76519e5d8203a6e19ed19420f543466196f3ab))
+
 ## [1.0.0-49](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-48...v1.0.0-49) (2023-12-04)
 
 
