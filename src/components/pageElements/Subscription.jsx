@@ -133,6 +133,7 @@ function Subscription() {
           color="primary"
           id="paySubscription"
           isDisabled={!inactiveList?.filter((obj) => obj.activated).length}
+          isBusy={mutation.status === 'pending'}
           onClick={() => {
               const filteredList = inactiveList.filter((obj) => obj.activated);
               mutation.mutate(filteredList);
