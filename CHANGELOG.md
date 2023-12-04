@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0-49](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-48...v1.0.0-49) (2023-12-04)
+
+
+### 🚀 Features
+
+* add buttton spinner while redirecting to payment page ([1561517](https://github.com/agrc/turn-gps-billpay/commit/1561517f6fce0b92f7694e4e864bd91d775631ed))
+* update order after govpay approval ([4a5a411](https://github.com/agrc/turn-gps-billpay/commit/4a5a411170c73a939a2b99ce26a3a401702149e0))
+
 ## [1.0.0-48](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-47...v1.0.0-48) (2023-11-30)
 
 
