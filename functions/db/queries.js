@@ -4,7 +4,7 @@ const schema = !process.env.LOCALMSSQL && process.env.GCLOUD_PROJECT.includes('d
 
 export const getRolesQuery = `select roleName, description from ${schema}.[dbo].[Roles]`;
 
-export const checkOrderExistsQuery = 'select count(*) as orderExists '
+export const checkOrderExistsQuery = 'select ID ad orderId '
 + `from ${schema}.[dbo].[ECommerceOrders] `
 + 'where paymentToken = @paymentToken';
 
@@ -92,9 +92,9 @@ export const insertOrderQuery = 'INSERT INTO '
 
 export const insertOrderItemQuery = 'INSERT INTO '
   + `${schema}.[dbo].[ECommerceOrderItems] `
-  + '(OrderID, UserID, OrganizationID, ContractID, OrderItemType, RenewalOfSubscriptionID, AmountMoney) '
+  + '(OrderID, UserID, OrganizationID, ContractID, Name, Description, OrderItemType, RenewalOfSubscriptionID, AmountMoney) '
   + 'VALUES '
-  + '(@orderId, @userId, @organizationId, @contractId, 0, @subscriptionId, @contractPrice); '
+  + '(@orderId, @userId, @organizationId, @contractId, @loginName, @contractName, 0, @subscriptionId, @contractPrice); '
   + 'SELECT SCOPE_IDENTITY() AS id;';
 
 export const insertRoleGroupQuery = 'INSERT INTO '
@@ -119,9 +119,19 @@ export const updateTrimbleUserQuery = 'UPDATE '
 
 export const updateOrderQuery = 'UPDATE '
   + `${schema}.[dbo].[ECommerceOrders] `
-  + 'set ? '
+  + 'set StatusMessage = @paymentMethod, '
+  + 'IsCompleted = 1 '
   + 'WHERE '
   + 'PaymentToken = @paymentToken';
+
+export const updateSubscriptionQuery = 'UPDATE '
+  + `${schema}.[dbo].[Subscriptions] `
+  + 'set Activated = 1 '
+  + 'WHERE '
+  + 'SubscriptionId in ( '
+  + 'select RenewalOfSubscriptionID '
+  + `from ${schema}.[dbo].[ECommerceOrderItems] `
+  + 'where OrderID = @orderId )';
 
 export const insertTrimbleSubscriptionQuery = 'INSERT INTO '
   + `${schema}.[dbo].[Subscriptions] `
