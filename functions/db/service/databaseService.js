@@ -1,9 +1,24 @@
 /* eslint-disable consistent-return */
 import sql from 'mssql';
 import {
-  getRoleGroupsQuery, getRolesQuery, checkTrimbleUserExistsQuery, checkTrimbleEmailExistsQuery, checkTrimbleOrgExistsQuery,
-  createTrimbleOrgQuery, updateTrimbleUserQuery, insertTrimbleSubscriptionQuery, selectPrimaryLoginByUserIdQuery,
-  checkTrimbleLoginExistsQuery, getSubscriptionsByEmailQuery, insertOrderQuery, insertOrderItemQuery, checkOrderExistsQuery, updateOrderQuery, insertRoleGroupQuery, getTrimbleProfileByEmailQuery,
+  getRoleGroupsQuery,
+  getRolesQuery,
+  checkTrimbleUserExistsQuery,
+  checkTrimbleEmailExistsQuery,
+  checkTrimbleOrgExistsQuery,
+  createTrimbleOrgQuery,
+  updateTrimbleUserQuery,
+  insertTrimbleSubscriptionQuery,
+  selectPrimaryLoginByUserIdQuery,
+  checkTrimbleLoginExistsQuery,
+  getSubscriptionsByEmailQuery,
+  insertOrderQuery,
+  insertOrderItemQuery,
+  checkOrderExistsQuery,
+  updateOrderQuery,
+  insertRoleGroupQuery,
+  getTrimbleProfileByEmailQuery,
+  updateSubscriptionQuery,
 } from '../queries.js';
 
 // const hostname = 'itdb002gp.utah.utad.state.ut.us'; //works
@@ -167,12 +182,24 @@ export const updateTrimbleUser = async (user) => {
   return null;
 };
 
-export const updateOrder = async (order) => {
-  if (order) {
+export const updateOrder = async (paymentToken, paymentMethod) => {
+  if (paymentToken) {
     const pool = await sql.connect(sqlConfig);
     const result = await pool.request()
-      .input('paymentToken', sql.VarChar, order.paymentToken)
+      .input('paymentToken', sql.VarChar, paymentToken)
+      .input('paymentMethod', sql.VarChar, paymentMethod)
       .query(updateOrderQuery);
+    return result;
+  }
+  return null;
+};
+
+export const updateSubscription = async (orderId) => {
+  if (orderId) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('orderId', sql.Int, orderId)
+      .query(updateSubscriptionQuery);
     return result;
   }
   return null;
@@ -218,6 +245,8 @@ export const insertOrderItem = async (item) => {
       .input('orderItemType', sql.Int, 0)
       .input('subscriptionId', sql.Numeric, item.subscriptionId)
       .input('contractPrice', sql.Numeric, item.contractPrice)
+      .input('loginName', sql.VarChar, item.loginName)
+      .input('contractName', sql.VarChar, item.contractName)
       .query(insertOrderItemQuery);
     return result?.recordset;
   }
