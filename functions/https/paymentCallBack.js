@@ -29,15 +29,14 @@ export const paymentCallBack = async (request, response) => {
   const message = parseMessage(request);
   info('message', message);
   if (message?.TOKEN) {
-    console.log('token', message.TOKEN);
     try {
-      const orderExists = await checkOrderExists(message.TOKEN);
-      if (orderExists) {
-        const { orderId } = orderExists[0];
+      const orderExistsArray = await checkOrderExists(message.TOKEN);
+      if (orderExistsArray?.length) {
+        const [order] = orderExistsArray;
         // update payment
         await updateOrder(message.TOKEN, message.PAYMENT_METHOD);
         // update subscriptions
-        await updateSubscription(orderId);
+        await updateSubscription(order.orderId);
 
         // need to send capture or reverse
         response.status(200).send(CAPTURE);
