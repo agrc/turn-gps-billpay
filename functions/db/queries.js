@@ -4,7 +4,7 @@ const schema = !process.env.LOCALMSSQL && process.env.GCLOUD_PROJECT.includes('d
 
 export const getRolesQuery = `select roleName, description from ${schema}.[dbo].[Roles]`;
 
-export const checkOrderExistsQuery = 'select ID ad orderId '
+export const checkOrderExistsQuery = 'select ID as orderId '
 + `from ${schema}.[dbo].[ECommerceOrders] `
 + 'where paymentToken = @paymentToken';
 
