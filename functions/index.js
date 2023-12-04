@@ -13,7 +13,9 @@ const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gse
 const secrets = ['database'];
 const corsOptions = [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/];
 
-setGlobalOptions({ serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress, secrets: secrets });
+setGlobalOptions({
+ serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress, secrets,
+});
 
 // auth
 export const onCreateUser = v1
@@ -21,7 +23,7 @@ export const onCreateUser = v1
     vpcConnector: vpc,
     vpcConnectorEgressSettings: vpcEgress,
     serviceAccount,
-    secrets: ['database'] 
+    secrets: ['database'],
   })
   .auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');

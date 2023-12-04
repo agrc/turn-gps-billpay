@@ -1,5 +1,5 @@
 import { error, info } from 'firebase-functions/logger';
-import { checkOrderExists, updateOrder } from '../db/service/databaseService.js';
+import { checkOrderExists, updateOrder, updateSubscription } from '../db/service/databaseService.js';
 
 const parseMessage = (request) => {
   let body = {};
@@ -9,8 +9,7 @@ const parseMessage = (request) => {
       return request.body;
     case 'text/plain':
       body = request.body;
-      const response = `{"token": "${body}"}`;
-      return JSON.parse(response);
+      return JSON.parse(`{"TOKEN": "${body}"}`);
     default:
       info('Unknown type', request.get('content-type'));
   }
@@ -29,14 +28,16 @@ export const paymentCallBack = async (request, response) => {
   }
   const message = parseMessage(request);
   info('message', message);
-
-  if (message?.token) {
-    console.log('token', message.token);
+  if (message?.TOKEN) {
+    console.log('token', message.TOKEN);
     try {
-      const orderExists = await checkOrderExists(message.token);
-      if (orderExists[0].orderExists === 1) {
+      const orderExists = await checkOrderExists(message.TOKEN);
+      if (orderExists) {
+        const { orderId } = orderExists[0];
         // update payment
-        await updateOrder(message.token); // amount paid? status =1, isCompleted = 1
+        await updateOrder(message.TOKEN, message.PAYMENT_METHOD);
+        // update subscriptions
+        await updateSubscription(orderId);
 
         // need to send capture or reverse
         response.status(200).send(CAPTURE);
