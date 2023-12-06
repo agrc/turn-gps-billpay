@@ -41,7 +41,7 @@ export const createTrimbleUser = async (request) => {
   try {
     const organization = await checkTrimbleOrgExists(data.organization);
     info('[createTrimbleUser :: orgExists]', organization);
-    if (organization && organization.length) {
+    if (organization?.length) {
       const loginExists = await checkTrimbleLoginExists(organization[0].OrganizationId, data.username);
       if (loginExists[0].loginExists === 1) {
         data.username = `${data.username}-${Date.now()}`;
