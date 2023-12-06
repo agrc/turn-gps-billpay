@@ -98,7 +98,7 @@ export const insertOrderItemQuery = 'INSERT INTO '
   + 'SELECT SCOPE_IDENTITY() AS id;';
 
 export const insertRoleGroupQuery = 'INSERT INTO '
-  + `${schema}.[dbo].[LoginsInRoleGroup] `
+  + `${schema}.[dbo].[LoginsInRoleGroups] `
   + '(LoginId, RoleGroup) '
   + 'VALUES '
   + '(@loginId, @roleGroup)';
