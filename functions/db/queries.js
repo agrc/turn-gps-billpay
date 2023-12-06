@@ -126,7 +126,8 @@ export const updateOrderQuery = 'UPDATE '
 
 export const updateSubscriptionQuery = 'UPDATE '
   + `${schema}.[dbo].[Subscriptions] `
-  + 'set Activated = 1 '
+  + 'set Activated = 1, '
+  + 'PurchaseDateUtc = GETUTCDATE() '
   + 'WHERE '
   + 'SubscriptionId in ( '
   + 'select RenewalOfSubscriptionID '
