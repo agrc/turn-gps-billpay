@@ -13,11 +13,6 @@ export const axiosConfig = {
   },
 };
 
-// "loginWithOrganization": "ugrc/chwardle2",
-// "organizationId": 2,
-// "password": "test",
-// "primaryLoginWithOrganization": "ugrc/chwardle2",
-// "email": "chwardle@utah.gov",
 export const createUserWithoutUserinfoAndReturnIdData = (userObj) => `<?xml version="1.0" encoding="utf-8"?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     <SOAP-ENV:Header/>
