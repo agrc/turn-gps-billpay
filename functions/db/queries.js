@@ -1,6 +1,5 @@
-const prodSchema = '[TPPDBAccounting]';
-const devSchema = '[TPPDB3Accounting]';
-const schema = !process.env.LOCALMSSQL && process.env.GCLOUD_PROJECT.includes('dev') ? devSchema : prodSchema;
+const DB = process.env.database ? JSON.parse(process.env.database) : {};
+const schema = `[${DB.name}]`;
 
 export const getRolesQuery = `select roleName, description from ${schema}.[dbo].[Roles]`;
 

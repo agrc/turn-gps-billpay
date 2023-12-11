@@ -19,11 +19,7 @@ export default function useSignInFunc() {
   const auth = getAuth(app);
 
   return useCallback(
-    () => signInWithPopup(auth, oAuthProvider)
-      .then((result) => {
-        // eslint-disable-next-line no-console
-        console.log('lookup user or update user', result);
-      }),
+    () => signInWithPopup(auth, oAuthProvider),
     [auth, oAuthProvider]
   );
 }

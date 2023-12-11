@@ -21,8 +21,6 @@ import {
   updateSubscriptionQuery,
 } from '../queries.js';
 
-// const hostname = 'itdb002gp.utah.utad.state.ut.us'; //works
-
 const DB = process.env.database ? JSON.parse(process.env.database) : {};
 export const sqlConfig = {
   user: DB.user,

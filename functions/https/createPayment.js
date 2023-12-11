@@ -4,10 +4,7 @@ import { auth, https, logger } from 'firebase-functions/v1';
 import { v4 as uuidv4 } from 'uuid';
 import { error, info } from 'firebase-functions/logger';
 import axios from 'axios';
-import setupFirebase from '../firebase.js';
 import { insertOrder, insertOrderItem } from '../db/service/databaseService.js';
-
-setupFirebase();
 
 function convertJsonToFormData(dataObj) {
   const formData = new FormData();
@@ -49,10 +46,15 @@ export const createPayment = async (request) => {
   }
   logger.info('authData email', request.auth.token.email);
   const { data } = request;
-  logger.info('data', data);
 
   const orderNumber = uuidv4();
-  const govPayResult = await govPayPostCall(request.data, orderNumber);
+  // const GOVPAY = process.env.database ? JSON.parse(process.env.govpay) : {};
+  // const apiKey = GOVPAY.apiKey;
+  // const url = `${GOVPAY.url}createOrder.html`;
+  const apiKey = 'tngps_user';
+  const url = 'https://stage.utah.gov/govpay/checkout/createOrder.html';
+
+  const govPayResult = await govPayPostCall(apiKey, url, request.data, orderNumber);
   if (govPayResult?.status === 200) {
     const orderToken = govPayResult?.data;
     console.log('orderToken', orderToken);
@@ -64,19 +66,13 @@ export const createPayment = async (request) => {
     const orderId = orderResult[0].id;
     await insertOrderItemsAsync(data, orderId);
 
-    return orderToken;
+    return `https://stage.utah.gov/govpay/checkout/order.html?TOKEN=${orderToken}`;
   }
   error('[createPayment :: govPayPostCall]', govPayResult);
   throw new https.HttpsError('internal', `${govPayResult.status} : ${govPayResult.statusText}`);
 };
 
-async function govPayPostCall(requestData, orderNumber) {
-  // prod api_key ?
-  // prod https://secure.utah.gov/govpay
-  const apiKey = 'tngps_user';
-  const url = 'https://stage.utah.gov/govpay/checkout/createOrder.html';
-  // const url = 'https://stage.utah.gov/govpay/checkout/order.html?TOKEN=3AAYF0YRD0YYZS05SU9QOBKN00GEWCRH';
-
+async function govPayPostCall(apiKey, url, requestData, orderNumber) {
   const orderObj = {
     API_KEY: apiKey,
     ORDER_NUMBER: orderNumber,
@@ -92,8 +88,6 @@ async function govPayPostCall(requestData, orderNumber) {
   }, {});
 
   const newObj = { ...jsonOrderObj, ...orderObj };
-  console.log('userObj', newObj);
-
   const formData = convertJsonToFormData(newObj);
 
   return axios.post(url, formData);
