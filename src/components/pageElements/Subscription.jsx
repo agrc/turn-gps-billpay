@@ -21,8 +21,6 @@ function Subscription() {
   const { data: user } = useUser();
   const [activeList, setActiveList] = useState([]);
   const [inactiveList, setInactiveList] = useState([]);
-  // // eslint-disable-next-line no-console
-  // console.log('userdata', user);
 
   const uid = user?.uid;
   const isUserAvailable = uid?.length > 0;
@@ -51,14 +49,10 @@ function Subscription() {
     mutationFn: (payload) => createPayment(payload),
     onError: (error, variables, context) => {
       // eslint-disable-next-line no-console
-      console.log(`rolling back optimistic update with id ${context.id}`);
+      console.error(`rolling back optimistic update with id ${context.id}`);
     },
     onSuccess: (successData, variables, context) => {
-      // Boom baby!
-      // eslint-disable-next-line no-console
-      console.log(`successVariables ${JSON.stringify(variables)}`);
-      console.log(`successData ${JSON.stringify(successData)}`);
-      window.location.replace(`https://stage.utah.gov/govpay/checkout/order.html?TOKEN=${successData.data}`);
+      window.location.replace(successData.data);
     },
 
     onSettled: (settledData, error, variables, context) => {
@@ -68,18 +62,11 @@ function Subscription() {
   });
 
   useEffect(() => {
-    console.log('subscriptionStatus', subscriptionStatus);
     if (subscriptionStatus === 'success') {
       setActiveList(buildActiveList(response));
       setInactiveList(buildInactiveList(response));
     }
   }, [subscriptionStatus, response]);
-
-  // // eslint-disable-next-line no-console
-  // console.log('error', error);
-
-  // eslint-disable-next-line no-console
-  console.log('dataResponse', response);
 
   const queryStatus = () => (isFetching ? 'fetching' : subscriptionStatus);
 

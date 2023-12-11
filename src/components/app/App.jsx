@@ -22,7 +22,7 @@ export default function App() {
         });
       } catch {
         // eslint-disable-next-line no-console
-        console.log('auth emulator already connected');
+        console.warn('auth emulator already connected');
       }
       if (typeof window !== 'undefined') {
         // eslint-disable-next-line no-underscore-dangle
@@ -35,7 +35,7 @@ export default function App() {
         connectFunctionsEmulator(functions, 'localhost', 5001);
       } catch {
         // eslint-disable-next-line no-console
-        console.log('functions emulator already connected');
+        console.warn('functions emulator already connected');
       }
       if (typeof window !== 'undefined') {
         // eslint-disable-next-line no-underscore-dangle
@@ -49,7 +49,7 @@ export default function App() {
         connectFirestoreEmulator(firestoreInstance, 'localhost', 8080);
       } catch {
         // eslint-disable-next-line no-console
-        console.log('firestore emulator already connected');
+        console.warn('firestore emulator already connected');
       }
       if (typeof window !== 'undefined') {
         // eslint-disable-next-line no-underscore-dangle

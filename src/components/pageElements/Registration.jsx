@@ -39,13 +39,10 @@ function Registration() {
     mutationFn: (payload) => createTrimbleUser(payload),
     onError: (error, variables, context) => {
       // eslint-disable-next-line no-console
-      console.log(`rolling back optimistic update with id ${context.id}`);
+      console.error(`rolling back optimistic update with id ${context.id}`);
     },
     onSuccess: (successData, variables, context) => {
       // Boom baby!
-      // eslint-disable-next-line no-console
-      console.log(`successVariables ${JSON.stringify(variables)}`);
-      console.log(`successData ${JSON.stringify(successData)}`);
     },
     onSettled: (settledData, error, variables, context) => {
       // Error or success... doesn't matter!
@@ -67,7 +64,6 @@ function Registration() {
   });
 
   useEffect(() => {
-    console.log('profileStatus', profileStatus);
     if (profileStatus === 'success') {
       reset(defaultValues?.data);
     }
@@ -81,12 +77,6 @@ function Registration() {
   useEffect(() => {
     setFocus('organization');
   }, [setFocus]);
-
-  // eslint-disable-next-line no-console
-  console.log('user data', user);
-
-  // eslint-disable-next-line no-console
-  console.log('user default values', defaultValues?.data);
 
   return (
   hasTermsConditionsAgreed
@@ -267,8 +257,7 @@ function Registration() {
                 onClick={handleSubmit((valid) => {
                 onSubmit(valid);
                 }, (invalid) => {
-                // eslint-disable-next-line no-console
-                console.log('invalid', invalid);
+                  // invalid
                 })}
               >
                 Submit
