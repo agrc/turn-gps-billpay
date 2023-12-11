@@ -10,7 +10,6 @@ import useUtahHeader from '../../hooks/useUtahHeader';
 import pageUrls from '../../enums/pageUrls';
 import AdminLanding from '../pageElements/AdminLanding';
 import Subscription from '../pageElements/Subscription';
-import Payment from '../pageElements/Payment';
 import UtahIdProcess from '../pageElements/UtahIdProcess';
 
 const propTypes = {};
@@ -46,15 +45,6 @@ function Routing() {
         element={(
           <MainTemplate
             content={Subscription}
-            contentRef={contentRef}
-          />
-      )}
-      />
-      <Route
-        path={pageUrls.payment}
-        element={(
-          <MainTemplate
-            content={Payment}
             contentRef={contentRef}
           />
       )}
