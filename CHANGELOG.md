@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0-51](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-50...v1.0.0-51) (2023-12-11)
+
+
+### 🐛 Bug Fixes
+
+* set actual purchase date after payment ([f5e052a](https://github.com/agrc/turn-gps-billpay/commit/f5e052a52f968ac925f60f0ec1d3265756da68ca))
+* update table name in sql ([2a4e590](https://github.com/agrc/turn-gps-billpay/commit/2a4e590ea6805cc4f53f6683bf3334fd7bcf3c39))
+
 ## [1.0.0-50](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-49...v1.0.0-50) (2023-12-04)
 
 
