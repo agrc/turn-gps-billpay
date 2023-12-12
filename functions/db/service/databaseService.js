@@ -21,12 +21,12 @@ import {
   updateSubscriptionQuery,
 } from '../queries.js';
 
-const DB = process.env.database ? JSON.parse(process.env.database) : {};
+const DB = process.env.secrets ? JSON.parse(process.env.secrets) : {database:{}};
 export const sqlConfig = {
-  user: DB.user,
-  password: DB.password,
-  database: DB.name,
-  server: DB.server,
+  user: DB.database.user,
+  password: DB.database.password,
+  database: DB.database.name,
+  server: DB.database.server,
   pool: {
     max: 10,
     min: 0,

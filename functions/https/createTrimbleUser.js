@@ -96,9 +96,8 @@ async function buildSoapData(organization, data) {
 }
 
 async function trimblePostCall(requestData) {
-  // const TRIMBLE = process.env.database ? JSON.parse(process.env.trimble) : {};
-  // const url = TRIMBLE.url;
-  const url = 'http://turngps.dev.utah.gov:31040/Trimble.IS.AccountingServices/LoginService/soap';
+  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : {trimble:{}};
+  const url = SECRETS.trimble.url;
   const wsdl = new WSDL(WSDL_CONTENT, null, {});
 
   const userObj = {
