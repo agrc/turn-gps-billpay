@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-55](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-54...v1.0.0-55) (2023-12-12)
+
+
+### 🐛 Bug Fixes
+
+* pass secret to deploy action ([24b7d2d](https://github.com/agrc/turn-gps-billpay/commit/24b7d2d7d67e012dd3db088f26f9f23cec2e28d9))
+
 ## [1.0.0-54](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-53...v1.0.0-54) (2023-12-12)
 
 
