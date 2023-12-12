@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-52](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-51...v1.0.0-52) (2023-12-12)
+
+
+### 🐛 Bug Fixes
+
+* reference environment variables from secrets ([9f07e9a](https://github.com/agrc/turn-gps-billpay/commit/9f07e9a70373cc6fbe5f963e446ae109ce2bf82c))
+
 ## [1.0.0-51](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-50...v1.0.0-51) (2023-12-11)
 
 
