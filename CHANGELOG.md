@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-54](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-53...v1.0.0-54) (2023-12-12)
+
+
+### 🐛 Bug Fixes
+
+* update ci to create .env ([33f602f](https://github.com/agrc/turn-gps-billpay/commit/33f602f438da9d427de4a864d1c74d723c27006f))
+
 ## [1.0.0-53](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-52...v1.0.0-53) (2023-12-12)
 
 
