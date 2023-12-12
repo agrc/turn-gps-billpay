@@ -48,11 +48,9 @@ export const createPayment = async (request) => {
   const { data } = request;
 
   const orderNumber = uuidv4();
-  // const GOVPAY = process.env.database ? JSON.parse(process.env.govpay) : {};
-  // const apiKey = GOVPAY.apiKey;
-  // const url = `${GOVPAY.url}createOrder.html`;
-  const apiKey = 'tngps_user';
-  const url = 'https://stage.utah.gov/govpay/checkout/createOrder.html';
+  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : {govpay:{}};
+  const apiKey = SECRETS.govpay.apiKey;
+  const url = `${SECRETS.govpay.url}createOrder.html`;
 
   const govPayResult = await govPayPostCall(apiKey, url, request.data, orderNumber);
   if (govPayResult?.status === 200) {
@@ -66,7 +64,7 @@ export const createPayment = async (request) => {
     const orderId = orderResult[0].id;
     await insertOrderItemsAsync(data, orderId);
 
-    return `https://stage.utah.gov/govpay/checkout/order.html?TOKEN=${orderToken}`;
+    return `${SECRETS.govpay.url}order.html?TOKEN=${orderToken}`;
   }
   error('[createPayment :: govPayPostCall]', govPayResult);
   throw new https.HttpsError('internal', `${govPayResult.status} : ${govPayResult.statusText}`);
