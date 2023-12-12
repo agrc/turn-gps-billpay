@@ -1,5 +1,5 @@
-const DB = process.env.database ? JSON.parse(process.env.database) : {};
-const schema = `[${DB.name}]`;
+const DB = process.env.secrets ? JSON.parse(process.env.secrets) : {database:{}};
+const schema = `[${DB.database.name}]`;
 
 export const getRolesQuery = `select roleName, description from ${schema}.[dbo].[Roles]`;
 
