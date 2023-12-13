@@ -96,7 +96,7 @@ async function buildSoapData(organization, data) {
 }
 
 async function trimblePostCall(requestData) {
-  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : {trimble:{}};
+  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : { trimble: {} };
   const url = SECRETS.trimble.url;
   const wsdl = new WSDL(WSDL_CONTENT, null, {});
 
