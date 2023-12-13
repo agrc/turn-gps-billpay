@@ -14,6 +14,7 @@ export const Input = forwardRef(
       step,
       min,
       max,
+      autoComplete,
       onChange,
       onBlur,
     },
@@ -33,6 +34,7 @@ export const Input = forwardRef(
           step={type === 'number' ? step : null}
           min={type === 'number' ? min : null}
           max={type === 'number' ? max : null}
+          autoComplete={autoComplete || 'off'}
           defaultValue={value}
           placeholder={placeholder}
           onChange={onChange}
@@ -82,6 +84,7 @@ Input.propTypes = {
   step: PropTypes.string,
   min: PropTypes.string,
   max: PropTypes.string,
+  autoComplete: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
 };
