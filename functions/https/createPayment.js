@@ -48,7 +48,7 @@ export const createPayment = async (request) => {
   const { data } = request;
 
   const orderNumber = uuidv4();
-  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : {govpay:{}};
+  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : { govpay: {} };
   const apiKey = SECRETS.govpay.apiKey;
   const url = `${SECRETS.govpay.url}createOrder.html`;
 
