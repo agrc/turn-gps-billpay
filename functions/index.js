@@ -23,7 +23,7 @@ export const onCreateUser = v1
     vpcConnector: vpc,
     vpcConnectorEgressSettings: vpcEgress,
     serviceAccount,
-    secrets: secrets,
+    secrets,
   })
   .auth.user().onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');

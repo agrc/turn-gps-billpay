@@ -21,7 +21,7 @@ import {
   updateSubscriptionQuery,
 } from '../queries.js';
 
-const DB = process.env.secrets ? JSON.parse(process.env.secrets) : {database:{}};
+const DB = process.env.secrets ? JSON.parse(process.env.secrets) : { database: {} };
 export const sqlConfig = {
   user: DB.database.user,
   password: DB.database.password,
