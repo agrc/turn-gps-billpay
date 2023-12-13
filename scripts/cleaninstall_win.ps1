@@ -12,18 +12,18 @@ if (Test-Path ./node_modules) {
 npm install
 "End npm install"
 
-if (Test-Path ../function/package-lock.json) {
-    Remove-Item ../function/package-lock.json -Force -ErrorAction Ignore
-    "Removing ../function/package-lock.json"
+if (Test-Path ../functions/package-lock.json) {
+    Remove-Item ../functions/package-lock.json -Force -ErrorAction Ignore
+    "Removing ../functions/package-lock.json"
 }
 
-if (Test-Path ../function/node_modules) {
-    Remove-Item ../function/node_modules -Recurse -Force -ErrorAction Ignore
-    "Removing ../function/node_modules"
+if (Test-Path ../functions/node_modules) {
+    Remove-Item ../functions/node_modules -Recurse -Force -ErrorAction Ignore
+    "Removing ../functions/node_modules"
 }
 
-cd ../function
-"cd ../function"
+cd ../functions
+"cd ../functions"
 "Begin npm install"
 npm install
 "End npm install"
