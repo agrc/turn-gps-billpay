@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-56](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-55...v1.0.0-56) (2023-12-13)
+
+
+### 🚀 Features
+
+* add autocomplete to inputs ([cc57a1c](https://github.com/agrc/turn-gps-billpay/commit/cc57a1c92d3cc4044186dd4daf2d273f75e710ae))
+
 ## [1.0.0-55](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-54...v1.0.0-55) (2023-12-12)
 
 
