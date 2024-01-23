@@ -1,14 +1,16 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 import PropTypes from 'prop-types';
-import { RefShape } from '@utahdts/utah-design-system';
 import { useImmer } from 'use-immer';
 import FooterSocialMedia from '../header/FooterSocialMedia';
 import FooterMainContent from '../header/FooterMainContent';
 
 const propTypes = {
   content: PropTypes.func.isRequired,
-  contentRef: RefShape.isRequired,
+  contentRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]).isRequired,
 };
 const defaultProps = {};
 
