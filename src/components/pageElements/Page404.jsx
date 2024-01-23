@@ -11,7 +11,9 @@ function Page404() {
   return (
     <div>
       <main className="landing-page-template page-not-found">
-        <div className="top-banner" />
+        <div className="top-banner">
+          <div className="banner-layer-right" />
+        </div>
         <div className="content-width page-not-found__content">
           <div>
             <h1 className="mt-spacing">
