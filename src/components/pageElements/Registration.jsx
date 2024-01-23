@@ -83,7 +83,10 @@ function Registration() {
     ? (
       <div className="landing-page-template mb-spacing-xl">
         <div className="home-banner">
-          <div className="home-banner__title">TURN<br />GPS</div>
+          <div className="banner-layer-right" />
+          <div className="banner-layer-left">
+            <div className="home-banner__title">TURN<br />GPS</div>
+          </div>
         </div>
         <div className="content-width">
           <h1 className="my-spacing-l text-center">Registration</h1>
@@ -255,7 +258,7 @@ function Registration() {
                 type="submit"
                 isDisabled={!isUserAvailable}
                 onClick={handleSubmit((valid) => {
-                onSubmit(valid);
+                  onSubmit(valid);
                 }, (invalid) => {
                   // invalid
                 })}
@@ -267,7 +270,7 @@ function Registration() {
         </div>
         {busy && <Spinner id="spinner-registration-id" className="spinner spinner--indeterminate fullscreen" />}
       </div>
-)
+    )
     : <Navigate to={pageUrls.home} />
   );
 }

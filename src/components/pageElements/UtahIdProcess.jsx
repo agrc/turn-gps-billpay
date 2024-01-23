@@ -9,7 +9,10 @@ function UtahIdProcess() {
   return (
     <div className="landing-page-template">
       <div className="home-banner">
-        <div className="home-banner__title">TURN<br />GPS</div>
+        <div className="banner-layer-right" />
+        <div className="banner-layer-left">
+          <div className="home-banner__title">TURN<br />GPS</div>
+        </div>
       </div>
       <div className="content-width">
         <h1 className="my-spacing-l text-center">TurnGPS UtahID Registration Process</h1>
