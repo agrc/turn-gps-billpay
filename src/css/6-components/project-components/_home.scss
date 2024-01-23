@@ -1,8 +1,19 @@
 @use "@utahdts/utah-design-system/css/index.scss" as media-size-vars;
 
+.banner-layer-right {
+  background: linear-gradient(to right,var(--primary-color), var(--secondary-color) );
+  opacity: .6;
+  width: 100%;
+}
+
+.banner-layer-left {
+  background: linear-gradient(to left,var(--primary-color), var(--secondary-color) );
+  opacity: .6;
+}
+
 .home-banner {
   width: 100%;
-  background: url('../static/images/kevin-quezada-Z8Ybwv9_v8M-unsplash.webp') no-repeat 100% center;
+  background: url('../static/images/banner.webp') no-repeat 100% center;
   background-size: cover;
   display: flex;
   justify-content: flex-end;
