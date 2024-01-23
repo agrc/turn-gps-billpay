@@ -2,7 +2,7 @@ name: Push Events
 on:
   push:
     branches:
-      - main_not_yet
+      - main
       - dev
 
 permissions:
@@ -14,7 +14,7 @@ permissions:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-  
+
 jobs:
   release-please:
     name: Create release
