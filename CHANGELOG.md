@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0-57](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-56...v1.0.0-57) (2024-01-23)
+
+
+### 🚀 Features
+
+* add new banner and css ([d09b9c1](https://github.com/agrc/turn-gps-billpay/commit/d09b9c11048ef862de54a0d81dc27f8c4d5728a8))
+
 ## [1.0.0-56](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0-55...v1.0.0-56) (2023-12-13)
 
 
