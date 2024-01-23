@@ -49,7 +49,7 @@ export const createPayment = async (request) => {
 
   const orderNumber = uuidv4();
   const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : { govpay: {} };
-  const apiKey = SECRETS.govpay.apiKey;
+  const { apiKey } = SECRETS.govpay;
   const url = `${SECRETS.govpay.url}createOrder.html`;
 
   const govPayResult = await govPayPostCall(apiKey, url, request.data, orderNumber);
