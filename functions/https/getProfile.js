@@ -31,12 +31,12 @@ export const getProfile = async (authData) => {
       info('[https::getProfile] trimbleUserExists', profile.trimbleUser);
       return profile.trimbleUser;
     }
-      const trimbleUserArray = await getTrimbleProfileByEmail(authData.token.email);
-      if (trimbleUserArray?.length) {
-        const [trimbleUser] = trimbleUserArray;
-        await userRef.update({ trimbleUser });
-        return trimbleUser;
-      }
+    const trimbleUserArray = await getTrimbleProfileByEmail(authData.token.email);
+    if (trimbleUserArray?.length) {
+      const [trimbleUser] = trimbleUserArray;
+      await userRef.update({ trimbleUser });
+      return trimbleUser;
+    }
   } catch (errorMessage) {
     error('error querying profile', errorMessage, authData, {
       structuredData: true,

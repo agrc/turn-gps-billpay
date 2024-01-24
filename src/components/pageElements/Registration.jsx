@@ -275,7 +275,4 @@ function Registration() {
   );
 }
 
-// Registration.propTypes = propTypes;
-// Registration.defaultProps = defaultProps;
-
 export default Registration;

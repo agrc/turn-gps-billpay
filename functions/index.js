@@ -11,10 +11,10 @@ const vpc = params.defineString('VPC');
 const vpcEgress = 'ALL_TRAFFIC';
 const serviceAccount = 'firebase-function-v2-sa@ut-dts-agrc-turn-gps-dev.iam.gserviceaccount.com';
 const secrets = ['secrets'];
-const corsOptions = [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /utah\.gov/];
+const corsOptions = [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /ut-dts-agrc-turn-gps-prod\.firebaseapp\.com$/, /utah\.gov/];
 
 setGlobalOptions({
- serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress, secrets,
+  serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress, secrets,
 });
 
 // auth
@@ -68,7 +68,7 @@ export const createTrimbleUser = https.onCall(
       );
     }
 
-   /* eslint-disable no-shadow */
+    /* eslint-disable no-shadow */
     const { createTrimbleUser } = await import('./https/createTrimbleUser.js');
 
     const result = await createTrimbleUser(request);

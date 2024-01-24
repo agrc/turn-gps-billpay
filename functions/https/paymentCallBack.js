@@ -14,7 +14,7 @@ const parseMessage = (request) => {
       info('Unknown type', request.get('content-type'));
   }
 
-return body;
+  return body;
 };
 
 export const paymentCallBack = async (request, response) => {
