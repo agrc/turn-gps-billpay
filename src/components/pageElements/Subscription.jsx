@@ -116,9 +116,9 @@ function Subscription() {
           isDisabled={!inactiveList?.filter((obj) => obj.activated).length}
           isBusy={mutation.status === 'pending'}
           onClick={() => {
-              const filteredList = inactiveList.filter((obj) => obj.activated);
-              mutation.mutate(filteredList);
-            }}
+            const filteredList = inactiveList.filter((obj) => obj.activated);
+            mutation.mutate(filteredList);
+          }}
           iconRight={<span className="utds-icon-after-external-link" aria-hidden="true" />}
         >
           Pay

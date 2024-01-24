@@ -29,14 +29,14 @@ const propTypes = {
       orderNumber: PropTypes.string,
       activated: PropTypes.bool,
     })
-),
+  ),
   setTableData: PropTypes.func,
   lookupStatus: PropTypes.string,
   type: PropTypes.string,
 };
 const defaultProps = {};
 function SubscriptionTable({
- tableData, setTableData, lookupStatus, type,
+  tableData, setTableData, lookupStatus, type,
 }) {
   useEffect(() => {
     setTableData(tableData);
@@ -104,18 +104,18 @@ function SubscriptionTable({
         </TableBody>
       </Table>
     </TableWrapper>
-);
+  );
 
-    switch (lookupStatus) {
-      case 'fetching': return <Spinner />;
-      default: return (
-        tableData?.length
-          ? (
-            mainTable()
-          )
-          : <p>No {type} subscriptions...</p>
-      );
-    }
+  switch (lookupStatus) {
+    case 'fetching': return <Spinner />;
+    default: return (
+      tableData?.length
+        ? (
+          mainTable()
+        )
+        : <p>No {type} subscriptions...</p>
+    );
+  }
 }
 
 SubscriptionTable.propTypes = propTypes;
