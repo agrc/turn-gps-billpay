@@ -54,11 +54,6 @@ function Subscription() {
     onSuccess: (successData, variables, context) => {
       window.location.replace(successData.data);
     },
-
-    onSettled: (settledData, error, variables, context) => {
-      // Error or success... doesn't matter!
-      // setBusy(false);
-    },
   });
 
   useEffect(() => {
@@ -84,7 +79,6 @@ function Subscription() {
           appearance="solid"
           color="primary"
           id="addSubscription"
-            // eslint-disable-next-line no-console
           onClick={goToRegistration}
         >
           Add Subscription

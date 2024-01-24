@@ -62,6 +62,7 @@ async function parseSoapResult(soapResult, trimbleResult, data) {
     // update user
     const userResult = await updateTrimbleUser(data);
     if (userResult?.rowsAffected?.length) {
+      // eslint-disable-next-line no-console
       console.log('User successfully updated');
     }
     const primaryLoginId = await selectPrimaryLoginByUserId(data.userId);

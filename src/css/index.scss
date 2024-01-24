@@ -1,12 +1,6 @@
 
-// normalize.css
-// @include meta.load-css("./3-generic/normalize.css");
-
 // variables and settings
 @import "./1-settings/settings-index";
-
-// mixins, functions
-@import "./2-tools/tools-index";
 
 // css resets, etc.
 @import "./3-generic/generic-index";
@@ -27,7 +21,4 @@
 // overall theme options for the above
 @import "./8-super/super-index";
 
-// test css, temporary css,
-// this css should eventually be categorized above
-@import "./9-tip/tip-index";
 

@@ -28,7 +28,7 @@ function UtahIdProcess() {
 
           <p className="lead-in">
             First, you will need to create a UtahID account{' '}
-            by going to <ExternalLink href="https://id.utah.gov/create?goto=https://turngps.utah.gov">id.utah.gov</ExternalLink>{' '}
+            by going to <ExternalLink href="https://id.utah.gov/create?goto=https://gps-billpay.utah.gov">id.utah.gov</ExternalLink>{' '}
             or by clicking on the &ldquo;UtahID Sign In&rdquo; button in the header.
           </p>
           <p className="lead-in">

@@ -55,7 +55,6 @@ export const createPayment = async (request) => {
   const govPayResult = await govPayPostCall(apiKey, url, request.data, orderNumber);
   if (govPayResult?.status === 200) {
     const orderToken = govPayResult?.data;
-    console.log('orderToken', orderToken);
 
     // insert order
     const orderResult = await insertOrder(buildOrder(data, orderNumber, orderToken));

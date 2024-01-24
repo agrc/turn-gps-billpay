@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
-// import pageUrls from '../routing/pageUrls';
-// import ProgressLog from './ProgressLog/ProgressLog';
 import { useNavigate } from 'react-router-dom';
 import { Accordion, Button } from '@utahdts/utah-design-system';
 import pageUrls from '../../enums/pageUrls';

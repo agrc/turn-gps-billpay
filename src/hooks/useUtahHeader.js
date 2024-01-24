@@ -22,52 +22,52 @@ function actionFunctionForUrl(url, navigate) {
 
 export const authMenuItems = (hasUser, navigate) => (
   hasUser
-  ? {
-    actionFunctionUrl: {
-      url: pageUrls.subscription,
-      actionFunction: () => {
-        actionFunctionForUrl(pageUrls.subscription, navigate);
+    ? {
+      actionFunctionUrl: {
+        url: pageUrls.subscription,
+        actionFunction: () => {
+          actionFunctionForUrl(pageUrls.subscription, navigate);
+        },
       },
-    },
-    icon: document.getElementById('home-menu-item-icon-id'),
-    title: 'Subscriptions',
-  }
-  : null
+      icon: document.getElementById('home-menu-item-icon-id'),
+      title: 'Subscriptions',
+    }
+    : null
 );
 export const mainMenuItems = (hasUser, navigate) => ({
-    menuItems: [
-      {
-        actionFunctionUrl: {
-          url: pageUrls.home,
-          actionFunction: () => {
-            actionFunctionForUrl(pageUrls.home, navigate);
-          },
+  menuItems: [
+    {
+      actionFunctionUrl: {
+        url: pageUrls.home,
+        actionFunction: () => {
+          actionFunctionForUrl(pageUrls.home, navigate);
         },
-        icon: document.getElementById('home-menu-item-icon-id'),
-        title: 'Home',
       },
-      {
-        actionFunctionUrl: {
-          url: pageUrls.utahIdProcess,
-          actionFunction: () => {
-            actionFunctionForUrl(pageUrls.utahIdProcess, navigate);
-          },
+      icon: document.getElementById('home-menu-item-icon-id'),
+      title: 'Home',
+    },
+    {
+      actionFunctionUrl: {
+        url: pageUrls.utahIdProcess,
+        actionFunction: () => {
+          actionFunctionForUrl(pageUrls.utahIdProcess, navigate);
         },
-        icon: document.getElementById('home-menu-item-icon-id'),
-        title: 'UtahID Registration Process',
       },
-      authMenuItems(hasUser, navigate),
-      {
-        actionFunctionUrl: {
-          url: 'http://turngps.utah.gov',
-          actionFunction: () => window.location = 'http://turngps.utah.gov',
-        },
-        title: 'turngps.utah.gov',
+      icon: document.getElementById('home-menu-item-icon-id'),
+      title: 'UtahID Registration Process',
+    },
+    authMenuItems(hasUser, navigate),
+    {
+      actionFunctionUrl: {
+        url: 'http://turngps.utah.gov',
+        actionFunction: () => window.location = 'http://turngps.utah.gov',
       },
-    ]
-      .filter(identity),
-    title: 'Main Menu',
-  });
+      title: 'turngps.utah.gov',
+    },
+  ]
+    .filter(identity),
+  title: 'Main Menu',
+});
 
 /** useUtahHeader */
 export default function useUtahHeader() {
