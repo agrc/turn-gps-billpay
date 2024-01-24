@@ -25,7 +25,7 @@ export const Input = forwardRef(
       <Label htmlFor={name} required={required}>
         {label ?? name}
       </Label>
-        )}
+      )}
       <div className="text-input__inner-wrapper">
         <input
           name={name}
@@ -46,7 +46,7 @@ export const Input = forwardRef(
         />
       </div>
     </div>
-    )
+  )
 );
 Input.displayName = 'Input';
 Input.propTypes = {
@@ -101,7 +101,7 @@ Input.defaultProps = {
 };
 
 export function Label({
- children, htmlFor, required, className,
+  children, htmlFor, required, className,
 }) {
   return (
     <label id={`label.${htmlFor}`} htmlFor={htmlFor} className={className}>
