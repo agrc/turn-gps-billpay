@@ -4,7 +4,6 @@ import { getRoleGroups, getRoles } from '../../db/service/databaseService.js';
 
 const resolverFunctions = {
   Query: {
-    hello: () => 'world',
     version: () => packageJSON.version,
     getRoleGroups: () => getRoleGroups(),
     getRoles: () => getRoles(),

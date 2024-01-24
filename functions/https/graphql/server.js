@@ -9,9 +9,8 @@ export const expressServer = express();
 export const apolloServer = new ApolloServer({
   typeDefs: schema,
   resolvers,
-  // Enable graphiql gui
-  introspection: true,
-  playground: true,
+  introspection: process.env.NODE_ENV !== 'production',
+  playground: process.env.NODE_ENV !== 'production',
 });
 
 apolloServer.start().then(() => apolloServer.applyMiddleware({ app: expressServer, path: '/', cors: true }));

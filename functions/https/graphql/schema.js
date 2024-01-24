@@ -13,8 +13,6 @@ const schema = gql`
   }
   
   type Query {
-    "A simple type for getting started!"
-    hello: String
     version: String
     getRoleGroups: [RoleGroups]
     getRoles: [Roles]
