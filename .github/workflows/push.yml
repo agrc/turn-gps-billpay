@@ -50,7 +50,7 @@ jobs:
           identity-provider: ${{ secrets.IDENTITY_PROVIDER }}
           service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
           project-id: ${{ secrets.PROJECT_ID }}
-          prebuild-command: touch ./functions/.env && echo VPC=$VPC >> ./functions/.env
+          prebuild-command: touch ./functions/.env && echo VPC=$VPC >> ./functions/.env && echo PROJECT_ID=${{ inputs.project-id }} >> ./functions/.env
           build-command: npm run build
         env:
           VITE_FIREBASE_API_KEY: ${{ vars.VITE_FIREBASE_API_KEY }}
