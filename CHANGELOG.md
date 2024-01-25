@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1-3](https://github.com/agrc/turn-gps-billpay/compare/v1.0.1-2...v1.0.1-3) (2024-01-25)
+
+
+### 🐛 Bug Fixes
+
+* update function init to use default project_id ([05b1070](https://github.com/agrc/turn-gps-billpay/commit/05b1070e73b040d50d2e015340eda52764ade931))
+
 ## [1.0.1-2](https://github.com/agrc/turn-gps-billpay/compare/v1.0.1-1...v1.0.1-2) (2024-01-25)
 
 
