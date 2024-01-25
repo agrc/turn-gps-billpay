@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.1](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0...v1.0.1) (2024-01-25)
+
+
+### 🐛 Bug Fixes
+
+* update function init to use default project_id ([6140469](https://github.com/agrc/turn-gps-billpay/commit/6140469cfdd95df02b30a98942578bf72df2dd69))
+* update prebuild-command for prod deploy ([f806c2c](https://github.com/agrc/turn-gps-billpay/commit/f806c2c9f6aac450065707c8cfe0568b058b647f))
+* update prebuild-command to use GCP_PROJECT variable ([7db78dc](https://github.com/agrc/turn-gps-billpay/commit/7db78dc2d1f603b71b04b31b34c59753441b2605))
+* update prebuild-command to use GCP_PROJECT variable again ([2f35d6b](https://github.com/agrc/turn-gps-billpay/commit/2f35d6b59601978e3fdebaa08ff27e96071729da))
+* update prebuild-command variable ([61f8f07](https://github.com/agrc/turn-gps-billpay/commit/61f8f0716daa350b3ba95e986d88b36b8241e81a))
+
 ## [1.0.1-4](https://github.com/agrc/turn-gps-billpay/compare/v1.0.1-3...v1.0.1-4) (2024-01-25)
 
 
