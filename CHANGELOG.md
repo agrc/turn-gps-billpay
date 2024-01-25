@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1-4](https://github.com/agrc/turn-gps-billpay/compare/v1.0.1-3...v1.0.1-4) (2024-01-25)
+
+
+### 🐛 Bug Fixes
+
+* update prebuild-command to use GCP_PROJECT variable again ([d2eeb89](https://github.com/agrc/turn-gps-billpay/commit/d2eeb8976acf1b5b8ca813484414d86c67ce84f7))
+
 ## [1.0.1-3](https://github.com/agrc/turn-gps-billpay/compare/v1.0.1-2...v1.0.1-3) (2024-01-25)
 
 
