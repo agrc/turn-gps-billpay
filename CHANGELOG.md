@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1-0](https://github.com/agrc/turn-gps-billpay/compare/v1.0.0...v1.0.1-0) (2024-01-25)
+
+
+### 🐛 Bug Fixes
+
+* update prebuild-command for prod deploy ([d1acd3c](https://github.com/agrc/turn-gps-billpay/commit/d1acd3c923fe012cfa92231e628cc173f34fd062))
+
 ## 1.0.0 (2024-01-24)
 
 
