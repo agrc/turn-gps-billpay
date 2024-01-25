@@ -85,7 +85,7 @@ jobs:
           service-now-password: ${{ secrets.SN_PASSWORD }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           build-command: npm run build
-          prebuild-command: touch ./functions/.env && echo VPC=$VPC >> ./functions/.env
+          prebuild-command: touch ./functions/.env && echo VPC=$VPC >> ./functions/.env && echo PROJECT_ID=${{ inputs.project-id }} >> ./functions/.env
         env:
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
           VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
