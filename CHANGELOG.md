@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/agrc/turn-gps-billpay/compare/v1.0.2...v1.0.3) (2024-01-31)
+
+
+### 🐛 Bug Fixes
+
+* onCreate providerData difference between dev/prod ([757eb4d](https://github.com/agrc/turn-gps-billpay/commit/757eb4d2081e4c88f88be9c0d01c91f286de615b))
+
 ## [1.0.3-1](https://github.com/agrc/turn-gps-billpay/compare/v1.0.2...v1.0.3-1) (2024-01-31)
 
 
