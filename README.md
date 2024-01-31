@@ -33,6 +33,9 @@ SECRETS='{"govpay": {"apiKey": "xxx", "url":"xxx"},
 "trimble": {"url": "xxx"}, 
 "database": {"server": "xxx", "user": "xxx", "password": "xxx" , "name": "xxx"}}'
 
+### Initial setup steps
+See [google doc](https://docs.google.com/document/d/14j7817psXXKBa9vGuP0nd6bKcxYuDeeCdYWES7kQ65Y/edit?usp=sharing)
+
 ### Run locally
 
 1. `npm install`
