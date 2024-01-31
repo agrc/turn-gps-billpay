@@ -20,7 +20,7 @@ export const onCreate = async (user) => {
   }
 
   const data = {
-    uid: utahIdInfo?.federatedId,
+    uid: utahIdInfo?.federatedId || utahIdInfo?.uid,
     email: user.email,
     displayName: user.displayName,
     trimbleUser: existingUser,
