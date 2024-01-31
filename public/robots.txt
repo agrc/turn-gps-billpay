@@ -5,4 +5,4 @@ User-agent: *
 Allow: *
 Crawl-delay: 1
 
-Sitemap: https://gps-billpay.utah.gov/sitemap.xml
+Sitemap: https://turngps-billpay.ugrc.utah.gov/sitemap.xml

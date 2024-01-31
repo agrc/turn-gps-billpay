@@ -68,7 +68,7 @@ jobs:
     needs: release-please
     environment:
       name: prod
-      url: https://gps-billpay.utah.gov
+      url: https://turngps-billpay.ugrc.utah.gov
     if: github.ref_name == 'main' && needs.release-please.outputs.release_created
 
     steps:
