@@ -12,10 +12,16 @@ const schema = gql`
     description: String
   }
   
+  type Exists {
+    loginExists: Int
+  }
+  
   type Query {
     version: String
     getRoleGroups: [RoleGroups]
     getRoles: [Roles]
+    checkLoginExists(orgName: String, loginName:String): Exists
+  }
   }
 `;
 

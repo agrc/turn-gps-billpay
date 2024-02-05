@@ -19,6 +19,7 @@ import {
   insertRoleGroupQuery,
   getTrimbleProfileByEmailQuery,
   updateSubscriptionQuery,
+  checkTrimbleLoginExistsByOrgNameQuery,
 } from '../queries.js';
 
 const DB = process.env.secrets ? JSON.parse(process.env.secrets) : { database: {} };
@@ -112,6 +113,18 @@ export const checkTrimbleLoginExists = async (orgId, username) => {
       .input('username', sql.VarChar, username)
       .query(checkTrimbleLoginExistsQuery);
     return result?.recordset ? result.recordset : null;
+  }
+  return null;
+};
+
+export const checkTrimbleLoginExistsByOrgName = async (variables) => {
+  if (variables) {
+    const pool = await sql.connect(sqlConfig);
+    const result = await pool.request()
+      .input('orgName', sql.VarChar, variables?.orgName)
+      .input('username', sql.VarChar, variables?.loginName)
+      .query(checkTrimbleLoginExistsByOrgNameQuery);
+    return result?.recordset ? result.recordset[0] : null;
   }
   return null;
 };

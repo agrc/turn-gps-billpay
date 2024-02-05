@@ -32,6 +32,15 @@ export const checkTrimbleLoginExistsQuery = 'SELECT count(*) as loginExists '
   + 'and logins.OrganizationId = @orgId '
   + 'and logins.Deleted = 0';
 
+export const checkTrimbleLoginExistsByOrgNameQuery = 'SELECT count(*) as loginExists '
+  + `FROM ${schema}.[dbo].[Logins] logins `
+  + 'WHERE logins.OrganizationId = ( '
+  + 'SELECT OrganizationId '
+  + `FROM ${schema}.[dbo].[Organizations] `
+  + 'WHERE upper(ShortName) = upper( @orgName ) '
+  + ') '
+  + 'and upper(logins.LoginName) = upper( @username ) '
+  + 'and logins.Deleted = 0';
 export const selectPrimaryLoginByUserIdQuery = 'SELECT users.PrimaryLogin as loginId '
   + `FROM ${schema}.[dbo].[Users] users `
   + 'WHERE users.UserId = @userId';
