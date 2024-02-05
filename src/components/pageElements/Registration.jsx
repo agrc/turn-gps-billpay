@@ -22,8 +22,8 @@ function Registration() {
   const createTrimbleUser = httpsCallable(functions, 'createTrimbleUser');
   const getProfile = httpsCallable(functions, 'getProfile');
 
-  const [state, setState] = useState();
   const [busy, setBusy] = useState(false);
+  const [yupSchema, setYupSchema] = useState({});
 
   const uid = user?.uid;
   const isUserAvailable = uid?.length > 0;
@@ -52,7 +52,11 @@ function Registration() {
 
   useEffect(
     () => {
-      setState(state);
+      user?.getIdToken()
+        .then((idToken) => {
+          const strIdToken = idToken.replace(/\n|\r/g, '');
+          setYupSchema(registrationSchema(strIdToken));
+        });
     },
     []
   );
@@ -60,7 +64,7 @@ function Registration() {
   const {
     formState, register, handleSubmit, setFocus, reset,
   } = useForm({
-    resolver: yupResolver(registrationSchema),
+    resolver: yupResolver(yupSchema),
   });
 
   useEffect(() => {
