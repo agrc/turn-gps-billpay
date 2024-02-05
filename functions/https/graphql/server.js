@@ -2,6 +2,8 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import 'dotenv/config';
 
+import cors from 'cors';
+import { getAuth } from 'firebase-admin/auth';
 import schema from './schema.js';
 import resolvers from './resolvers.js';
 

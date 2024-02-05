@@ -22,7 +22,6 @@ const schema = gql`
     getRoles: [Roles]
     checkLoginExists(orgName: String, loginName:String): Exists
   }
-  }
 `;
 
 export default schema;

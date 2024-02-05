@@ -22,7 +22,6 @@ function Registration() {
   const createTrimbleUser = httpsCallable(functions, 'createTrimbleUser');
   const getProfile = httpsCallable(functions, 'getProfile');
 
-  const [state, setState] = useState();
   const [busy, setBusy] = useState(false);
   const [yupSchema, setYupSchema] = useState({});
 
@@ -56,7 +55,6 @@ function Registration() {
       user?.getIdToken()
         .then((idToken) => {
           const strIdToken = idToken.replace(/\n|\r/g, '');
-          console.log('token', strIdToken);
           setYupSchema(registrationSchema(strIdToken));
         });
     },
