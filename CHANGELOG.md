@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0-0](https://github.com/agrc/turn-gps-billpay/compare/v1.0.3...v1.1.0-0) (2024-02-05)
+
+
+### 🚀 Features
+
+* add validation to check login unique ([#79](https://github.com/agrc/turn-gps-billpay/issues/79)) ([f726055](https://github.com/agrc/turn-gps-billpay/commit/f726055ea6ae425fa027ab8b55fe7e740139ecaa))
+
 ## [1.0.3](https://github.com/agrc/turn-gps-billpay/compare/v1.0.2...v1.0.3) (2024-01-31)
 
 
