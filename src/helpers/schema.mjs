@@ -1,7 +1,8 @@
 import * as yup from 'yup';
 import 'yup-phone-lite';
+import { checkUsernameUnique } from './gql.js';
 
-export const registrationSchema = yup.object().shape({
+export const registrationSchema = (idToken) => yup.object().shape({
   organization: yup
     .string()
     .required('Organization is a required field.')
@@ -13,7 +14,12 @@ export const registrationSchema = yup.object().shape({
     .required('Username is a required field.')
     .typeError('Username is a required field.')
     .max(250)
-    .label('Username'),
+    .label('Username')
+    .test(
+      'checkUsernameUnique',
+      'This username is already registered.',
+      (value, context) => checkUsernameUnique(idToken, context.parent.organization, value)
+    ),
   password: yup
     .string()
     .required('Password is a required field.')
