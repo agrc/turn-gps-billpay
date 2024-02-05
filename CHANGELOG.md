@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0-1](https://github.com/agrc/turn-gps-billpay/compare/v1.1.0-0...v1.1.0-1) (2024-02-05)
+
+
+### 🐛 Bug Fixes
+
+* add cors config to graphql ([a5ad4b8](https://github.com/agrc/turn-gps-billpay/commit/a5ad4b8f3ca56a1a5cb2a3e33acdf96b332c6eca))
+
 ## [1.1.0-0](https://github.com/agrc/turn-gps-billpay/compare/v1.0.3...v1.1.0-0) (2024-02-05)
 
 
