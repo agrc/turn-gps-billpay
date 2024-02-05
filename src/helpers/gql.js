@@ -1,4 +1,8 @@
-const url = 'http://127.0.0.1:5001/ut-dts-agrc-turn-gps-dev/us-central1/graphQl';
+const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
+let url = `https://us-central1-${projectId}.cloudfunctions.net/graphQl`;
+if (import.meta.env.DEV) {
+  url = `http://127.0.0.1:5001/${projectId}/us-central1/graphQl`;
+}
 
 export async function checkUsernameUnique(idToken, organization, username) {
   const results = await fetch(url, {
