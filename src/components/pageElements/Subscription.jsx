@@ -1,8 +1,8 @@
 import { useFunctions, useUser } from 'reactfire';
 import { Button } from '@utahdts/utah-design-system';
 import { httpsCallable } from 'firebase/functions';
-import { useQuery, useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import SubscriptionTable from './SubscriptionTable';
@@ -15,6 +15,8 @@ const defaultProps = {};
 function Subscription() {
   const { setAppState } = useAppContext();
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryClient = useQueryClient();
   const functions = useFunctions();
   const getSubscriptions = httpsCallable(functions, 'getSubscriptions');
   const createPayment = httpsCallable(functions, 'createPayment');
@@ -55,6 +57,13 @@ function Subscription() {
       window.location.replace(successData.data);
     },
   });
+
+  useEffect(() => {
+    const from = location.state?.from?.pathname;
+    if (from === '/registration') {
+      queryClient.invalidateQueries({ queryKey: ['subscriptions'] }).then();
+    }
+  }, []);
 
   useEffect(() => {
     if (subscriptionStatus === 'success') {

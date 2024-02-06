@@ -21,6 +21,8 @@ function Registration() {
   const { appState: { hasTermsConditionsAgreed } } = useAppContext();
   const { data: user } = useUser();
   const functions = useFunctions();
+  const navigate = useNavigate();
+  const location = useLocation();
   const createTrimbleUser = httpsCallable(functions, 'createTrimbleUser');
   const getProfile = httpsCallable(functions, 'getProfile');
 
@@ -44,7 +46,7 @@ function Registration() {
       console.error(`rolling back optimistic update with id ${context.id}`);
     },
     onSuccess: (successData, variables, context) => {
-      // Boom baby!
+      navigate(pageUrls.subscription, { state: { from: location } });
     },
     onSettled: (settledData, error, variables, context) => {
       // Error or success... doesn't matter!
