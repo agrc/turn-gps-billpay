@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0-2](https://github.com/agrc/turn-gps-billpay/compare/v1.1.0-1...v1.1.0-2) (2024-02-06)
+
+
+### 🐛 Bug Fixes
+
+* disable submit button if busy ([a6a9c98](https://github.com/agrc/turn-gps-billpay/commit/a6a9c98803d3d6eaa750c660527ee1537228fbcd))
+* redirect to subscription after registration submit ([24e49d2](https://github.com/agrc/turn-gps-billpay/commit/24e49d213975301f417e36ec78ace4cab4e9e161))
+
 ## [1.1.0-1](https://github.com/agrc/turn-gps-billpay/compare/v1.1.0-0...v1.1.0-1) (2024-02-05)
 
 
