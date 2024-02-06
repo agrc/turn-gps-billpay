@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/agrc/turn-gps-billpay/compare/v1.0.3...v1.1.0) (2024-02-06)
+
+
+### 🚀 Features
+
+* add validation to check login unique ([#79](https://github.com/agrc/turn-gps-billpay/issues/79)) ([3a7a70c](https://github.com/agrc/turn-gps-billpay/commit/3a7a70ca273f522b62b7e0ca00874369e9040aca))
+
+
+### 🐛 Bug Fixes
+
+* add cors config to graphql ([7a8b39b](https://github.com/agrc/turn-gps-billpay/commit/7a8b39b7ff8710ba67b55cc7ec10cbee39b21cec))
+* disable submit button if busy ([2e5a08c](https://github.com/agrc/turn-gps-billpay/commit/2e5a08c92289118ef5b4a9e66d6acb94a775fe55))
+* redirect to subscription after registration submit ([c904a97](https://github.com/agrc/turn-gps-billpay/commit/c904a97b6b00f5d775e283ddf3062cb15ab3b557))
+
 ## [1.1.0-2](https://github.com/agrc/turn-gps-billpay/compare/v1.1.0-1...v1.1.0-2) (2024-02-06)
 
 
