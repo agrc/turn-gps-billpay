@@ -10,9 +10,9 @@ import resolvers from './resolvers.js';
 const corsOptions = {
   origin: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /ut-dts-agrc-turn-gps-prod\.firebaseapp\.com$/, /utah\.gov$/],
   credentials: true,
-  methods: "GET,HEAD,OPTIONS,POST",
+  methods: 'GET,HEAD,OPTIONS,POST',
   preflightContinue: false,
-  optionsSuccessStatus: 204
+  optionsSuccessStatus: 204,
 };
 
 const CorsMiddleware = cors(corsOptions);
