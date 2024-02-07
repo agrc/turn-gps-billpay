@@ -1,10 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-restricted-syntax */
 import { auth, https, logger } from 'firebase-functions/v1';
-import { v4 as uuidv4 } from 'uuid';
 import { error, info } from 'firebase-functions/logger';
 import axios from 'axios';
-import { insertOrder, insertOrderItem } from '../db/service/databaseService.js';
+import { getNextOrderNumber, insertOrder, insertOrderItem } from '../db/service/databaseService.js';
 
 function convertJsonToFormData(dataObj) {
   const formData = new FormData();
@@ -15,10 +14,10 @@ function convertJsonToFormData(dataObj) {
   return formData;
 }
 
-function buildOrder(data, uuid, govPayToken) {
+function buildOrder(data, orderNumber, govPayToken) {
   const totalPrice = data.reduce((accumulator, currentValue) => accumulator + currentValue.contractPrice, 0);
   return {
-    uuid,
+    orderNumber,
     orgId: data[0].organizationId,
     userId: data[0].userId, // maybe use the auth users userid
     totalPrice,
@@ -47,7 +46,8 @@ export const createPayment = async (request) => {
   logger.info('authData email', request.auth.token.email);
   const { data } = request;
 
-  const orderNumber = uuidv4();
+  const nextOrderResult = await getNextOrderNumber();
+  const { orderNumber } = nextOrderResult[0];
   const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : { govpay: {} };
   const { apiKey } = SECRETS.govpay;
   const url = `${SECRETS.govpay.url}createOrder.html`;

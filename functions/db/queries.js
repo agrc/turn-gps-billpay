@@ -95,7 +95,7 @@ export const insertOrderQuery = 'INSERT INTO '
   + `${schema}.[dbo].[ECommerceOrders] `
   + '(OrderUUID, OrganizationID, CreatedDateUtc, CreatedByUserID, Status, IsCompleted, AmountMoney, PaymentToken) '
   + 'VALUES '
-  + '(@uuid, @orgId, GETUTCDATE(), @userId, 0, 0, @totalPrice, @govPayToken); '
+  + '(@orderNumber, @orgId, GETUTCDATE(), @userId, 0, 0, @totalPrice, @govPayToken); '
   + 'SELECT SCOPE_IDENTITY() AS id;';
 
 export const insertOrderItemQuery = 'INSERT INTO '
@@ -155,3 +155,6 @@ export const getRoleGroupsQuery = 'select roleGroups.RoleGroup '
   + `LEFT OUTER JOIN ${schema}.[dbo].[LoginsInRoleGroups] roleGroups ON (logins.LoginId = roleGroups.LoginId) `
   + 'where users.Deleted = 0 '
   + 'and users.Email = @email';
+
+export const getNextOrderNumberQuery = 'SELECT NEXT VALUE FOR '
+  + `${schema}.[dbo].[ECommerceSequence] AS orderNumber `;
