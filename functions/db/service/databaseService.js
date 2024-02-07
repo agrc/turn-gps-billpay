@@ -20,6 +20,7 @@ import {
   getTrimbleProfileByEmailQuery,
   updateSubscriptionQuery,
   checkTrimbleLoginExistsByOrgNameQuery,
+  getNextOrderNumberQuery,
 } from '../queries.js';
 
 const DB = process.env.secrets ? JSON.parse(process.env.secrets) : { database: {} };
@@ -234,7 +235,7 @@ export const insertOrder = async (order) => {
     console.log('order', order);
     const pool = await sql.connect(sqlConfig);
     const result = await pool.request()
-      .input('uuid', sql.VarChar, order.uuid)
+      .input('orderNumber', sql.Numeric, order.orderNumber)
       .input('orgId', sql.Numeric, order.orgId)
       .input('userId', sql.Numeric, order.userId)
       .input('totalPrice', sql.Int, order.totalPrice)
@@ -297,4 +298,11 @@ export const insertTrimbleSubscriptionItem = async (subscriptionId) => {
     return result;
   }
   return null;
+};
+
+export const getNextOrderNumber = async () => {
+  const pool = await sql.connect(sqlConfig);
+  const result = await pool.request()
+    .query(getNextOrderNumberQuery);
+  return result?.recordset ? result.recordset : null;
 };
