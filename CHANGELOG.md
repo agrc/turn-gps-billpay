@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1-0](https://github.com/agrc/turn-gps-billpay/compare/v1.1.0...v1.1.1-0) (2024-02-08)
+
+
+### 🐛 Bug Fixes
+
+* remove uuid and use int sequence for orders ([a6f18bf](https://github.com/agrc/turn-gps-billpay/commit/a6f18bf6504cc21010d0c5f8692bdb54b2d535be))
+
 ## [1.1.0](https://github.com/agrc/turn-gps-billpay/compare/v1.0.3...v1.1.0) (2024-02-06)
 
 
