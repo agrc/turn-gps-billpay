@@ -132,7 +132,7 @@ export const paymentCallBack = https.onRequest(
 
     const result = await paymentCallBack(request, response);
 
-    debug('[https::paymentCallBack]', result);
+    debug('[https::paymentCallBack : result]', result);
 
     return result;
   }

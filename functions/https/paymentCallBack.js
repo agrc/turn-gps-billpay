@@ -27,7 +27,7 @@ export const paymentCallBack = async (request, response) => {
     return null;
   }
   const message = parseMessage(request);
-  info('message', message);
+  info('GovPay POST Payload', message);
   if (message?.TOKEN) {
     try {
       const orderExistsArray = await checkOrderExists(message.TOKEN);
@@ -40,12 +40,12 @@ export const paymentCallBack = async (request, response) => {
 
         // need to send capture or reverse
         response.status(200).send(CAPTURE);
-        return null;
+        return CAPTURE;
       }
     } catch (err) {
       error('database error', err);
     }
   }
   response.status(200).send(REVERSE);
-  return null;
+  return REVERSE;
 };
