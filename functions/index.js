@@ -107,7 +107,7 @@ export const createPayment = https.onCall(
   { cors: corsOptions },
   async (request) => {
     if (request.auth === undefined) {
-      debug('[https::getSubscriptions] no auth context');
+      debug('[https::createPayment] no auth context');
 
       throw new https.HttpsError(
         https.FunctionsErrorCode.UNAUTHENTICATED,
