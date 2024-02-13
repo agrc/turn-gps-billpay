@@ -51,6 +51,7 @@ export const getSubscriptionsByEmailQuery = 'SELECT '
   + ',contracts.ContractName as contractName '
   + ',contractItems.Price as contractPrice '
   + ',login.OrganizationId as organizationId '
+  + ',orgs.ShortName as organizationName '
   + ',login.UserId as userId '
   + ',login.LoginName as loginName '
   + ',users.Email as email '
@@ -62,6 +63,7 @@ export const getSubscriptionsByEmailQuery = 'SELECT '
   + `FROM ${schema}.[dbo].[Subscriptions] subscription `
   + `LEFT OUTER JOIN ${schema}.[dbo].[Logins] login on (subscription.LoginId = login.LoginId) `
   + `LEFT OUTER JOIN ${schema}.[dbo].[Users] users on (login.UserId = users.UserId) `
+  + `LEFT OUTER JOIN ${schema}.[dbo].[Organizations] orgs on (login.OrganizationId = orgs.OrganizationId) `
   + `LEFT OUTER JOIN ${schema}.[dbo].[Contracts] contracts on (subscription.ContractId = contracts.ContractId) `
   + `LEFT OUTER JOIN ${schema}.[dbo].[ContractItems] contractItems on (subscription.ContractId = contractItems.ContractId and contractItems.Priority = 0) `
   + 'WHERE subscription.LoginId in ( '
