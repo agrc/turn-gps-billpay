@@ -77,8 +77,8 @@ async function govPayPostCall(apiKey, url, requestData, orderNumber) {
 
   const jsonOrderObj = requestData.reduce((accumulator, currentValue, index) => {
     const count = index + 1;
-    accumulator[`ITEM_${count}`] = currentValue.loginName;
-    accumulator[`ITEM_DESC_${count}`] = currentValue.contractName;
+    accumulator[`ITEM_${count}`] = `${currentValue.loginName} login renewal`;
+    accumulator[`ITEM_DESC_${count}`] = `Trimble ${currentValue.contractName} renewal for ${currentValue.organizationName}/${currentValue.loginName}`;
     accumulator[`ITEM_AMT_${count}`] = currentValue.contractPrice;
     accumulator[`ITEM_QTY_${count}`] = 1;
     return accumulator;
