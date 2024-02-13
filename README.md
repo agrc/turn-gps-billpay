@@ -36,6 +36,16 @@ SECRETS='{"govpay": {"apiKey": "xxx", "url":"xxx"},
 ### Initial setup steps
 See [google doc](https://docs.google.com/document/d/14j7817psXXKBa9vGuP0nd6bKcxYuDeeCdYWES7kQ65Y/edit?usp=sharing)
 
+### Govpay / FINET / DTS Billing 
+
+- This app sends order number, item name and description to GovPay
+- The user makes a payment to GovPay
+- GovPay sends export to DTS billing
+- DTS billing reconciles the item name or description to a vendor in FINET
+  - FINET State Warehouse "Vendor_Customer" table, Legal_Name or Company_Name
+- This app/trimble has an organization and login name
+- The "Customer Name" DTS billing refers to is the organization name not login name
+
 ### Run locally
 
 1. `npm install`
