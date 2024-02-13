@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/agrc/turn-gps-billpay/compare/v1.1.1...v1.1.2) (2024-02-13)
+
+
+### 🐛 Bug Fixes
+
+* include org name in item description ([ee231dd](https://github.com/agrc/turn-gps-billpay/commit/ee231dd20711e97479ee7d105e6b3433651e4d16))
+
 ## [1.1.2-0](https://github.com/agrc/turn-gps-billpay/compare/v1.1.1...v1.1.2-0) (2024-02-13)
 
 
