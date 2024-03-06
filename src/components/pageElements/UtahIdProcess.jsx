@@ -40,6 +40,14 @@ function UtahIdProcess() {
           <p className="lead-in">
             <img src={utahIdCreateAccountImage} alt="UtahID create account example" />
           </p>
+          <p className="flex justify-center">
+            <ExternalLink
+              className="button button--primary-color mr-spacing-xl button--large"
+              href="https://youtu.be/T4Q2eqrrbXQ"
+            >
+              Additional Registration Instructions
+            </ExternalLink>
+          </p>
         </div>
 
       </div>
