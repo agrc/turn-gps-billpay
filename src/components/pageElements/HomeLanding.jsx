@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 import { useNavigate } from 'react-router-dom';
-import { Accordion, Button } from '@utahdts/utah-design-system';
+import { Accordion, Button, ExternalLink } from '@utahdts/utah-design-system';
 import pageUrls from '../../enums/pageUrls';
 import useAppContext from '../../contexts/AppContext/useAppContext';
 import HomeSubscriptionButton from './HomeSubscriptionButton';
@@ -34,7 +34,7 @@ function HomeLanding() {
 
         <p className="lead-in">
           GPS users that have equipment capable of connecting to the internet via a cellular modem
-          using NTRIP can connect to TurnGPS by creating a UtahlD account and purchasing a 1 year
+          using NTRIP can connect to TurnGPS by creating a UtahID account and purchasing a 1 year
           subscription.
         </p>
 
@@ -50,6 +50,14 @@ function HomeLanding() {
         </p>
         <p className="flex justify-center">
           <HomeSubscriptionButton />
+        </p>
+        <p className="flex justify-center">
+          <ExternalLink
+            className="button button--primary-color mr-spacing-xl button--large"
+            href="https://youtu.be/T4Q2eqrrbXQ"
+          >
+            Registration Instructions
+          </ExternalLink>
           <a href="#terms" className="button button--primary-color button--solid button--large" style={{ display: 'inline-flex' }}>
             Start Registration
             <span className="button--icon button--icon-right"><span className="utds-icon-after-arrow-down" aria-hidden="true" style={{ fontSize: '.9rem' }} /></span>
