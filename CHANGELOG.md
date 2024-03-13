@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/agrc/turn-gps-billpay/compare/v1.1.2...v1.2.0) (2024-03-13)
+
+
+### 🚀 Features
+
+* add registration youtube link ([6740689](https://github.com/agrc/turn-gps-billpay/commit/6740689cd64faa7daa54f9b0d526f0fd9d61e078))
+
 ## [1.2.0-0](https://github.com/agrc/turn-gps-billpay/compare/v1.1.2...v1.2.0-0) (2024-03-06)
 
 
