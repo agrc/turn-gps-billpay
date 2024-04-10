@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useImmer } from 'use-immer';
 import AppContext from './AppContext';
 
