@@ -39,7 +39,11 @@ function Subscription() {
     return null;
   };
 
-  const { data: response, status: subscriptionStatus, isFetching } = useQuery({
+  const {
+    data: response,
+    status: subscriptionStatus,
+    isFetching,
+  } = useQuery({
     queryKey: ['subscriptions', uid],
     enabled: isUserAvailable,
     queryFn: getSubscriptions,
@@ -75,7 +79,9 @@ function Subscription() {
   const queryStatus = () => (isFetching ? 'fetching' : subscriptionStatus);
 
   const goToRegistration = () => {
-    setAppState((draftAppState) => { draftAppState.hasTermsConditionsAgreed = true; });
+    setAppState((draftAppState) => {
+      draftAppState.hasTermsConditionsAgreed = true;
+    });
     navigate(pageUrls.registration);
   };
 
@@ -128,7 +134,12 @@ function Subscription() {
             const filteredList = inactiveList.filter((obj) => obj.activated);
             mutation.mutate(filteredList);
           }}
-          iconRight={<span className="utds-icon-after-external-link" aria-hidden="true" />}
+          iconRight={
+            <span
+              className="utds-icon-after-external-link"
+              aria-hidden="true"
+            />
+          }
         >
           Pay
         </Button>

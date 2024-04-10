@@ -1,14 +1,22 @@
-@use "@utahdts/utah-design-system/css/index.scss" as media-size-vars;
+@use '@utahdts/utah-design-system/css/index.scss' as media-size-vars;
 
 .banner-layer-right {
-  background: linear-gradient(to right,var(--primary-color), var(--secondary-color) );
-  opacity: .6;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  opacity: 0.6;
   width: 100%;
 }
 
 .banner-layer-left {
-  background: linear-gradient(to left,var(--primary-color), var(--secondary-color) );
-  opacity: .6;
+  background: linear-gradient(
+    to left,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  opacity: 0.6;
 }
 
 .home-banner {
@@ -20,9 +28,9 @@
 
   &__title {
     color: white;
-	  background: rgba(0,0,0,0.7);
-	  backdrop-filter: blur(30px) brightness(1);
-	  -webkit-backdrop-filter: blur(16px) brightness(1.5);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(30px) brightness(1);
+    -webkit-backdrop-filter: blur(16px) brightness(1.5);
     font-size: var(--font-size-6xl);
     font-weight: bold;
     width: 230px;
@@ -32,7 +40,6 @@
     line-height: 1.2;
     text-align: right;
   }
-
 }
 .home-page {
   &__card-grid {

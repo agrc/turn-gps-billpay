@@ -12,10 +12,17 @@ const vpcEgress = 'ALL_TRAFFIC';
 const projectId = params.defineString('PROJECT_ID');
 const serviceAccount = `firebase-function-v2-sa@${projectId.value()}.iam.gserviceaccount.com`;
 const secrets = ['secrets'];
-const corsOptions = [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /ut-dts-agrc-turn-gps-prod\.firebaseapp\.com$/, /utah\.gov/];
+const corsOptions = [
+  /ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/,
+  /ut-dts-agrc-turn-gps-prod\.firebaseapp\.com$/,
+  /utah\.gov/,
+];
 
 setGlobalOptions({
-  serviceAccount, vpcConnector: vpc, vpcConnectorEgressSettings: vpcEgress, secrets,
+  serviceAccount,
+  vpcConnector: vpc,
+  vpcConnectorEgressSettings: vpcEgress,
+  secrets,
 });
 
 // auth
@@ -26,7 +33,8 @@ export const onCreateUser = v1
     serviceAccount,
     secrets,
   })
-  .auth.user().onCreate(async (user) => {
+  .auth.user()
+  .onCreate(async (user) => {
     debug('[auth::user::onCreate] importing createUser');
     const { onCreate } = await import('./auth/onCreate.js');
 
@@ -46,7 +54,7 @@ export const getProfile = https.onCall(
 
       throw new https.HttpsError(
         https.FunctionsErrorCode.UNAUTHENTICATED,
-        'unauthenticated'
+        'unauthenticated',
       );
     }
 
@@ -54,7 +62,7 @@ export const getProfile = https.onCall(
     const { getProfile } = await import('./https/getProfile.js');
 
     return getProfile(request.auth);
-  }
+  },
 );
 
 export const createTrimbleUser = https.onCall(
@@ -65,7 +73,7 @@ export const createTrimbleUser = https.onCall(
 
       throw new https.HttpsError(
         https.FunctionsErrorCode.UNAUTHENTICATED,
-        'unauthenticated'
+        'unauthenticated',
       );
     }
 
@@ -77,7 +85,7 @@ export const createTrimbleUser = https.onCall(
     debug('[https::createTrimbleUser]', result);
 
     return result;
-  }
+  },
 );
 
 export const getSubscriptions = https.onCall(
@@ -88,7 +96,7 @@ export const getSubscriptions = https.onCall(
 
       throw new https.HttpsError(
         https.FunctionsErrorCode.UNAUTHENTICATED,
-        'unauthenticated'
+        'unauthenticated',
       );
     }
 
@@ -100,7 +108,7 @@ export const getSubscriptions = https.onCall(
     debug('[https::getSubscriptions]', result);
 
     return result;
-  }
+  },
 );
 
 export const createPayment = https.onCall(
@@ -111,7 +119,7 @@ export const createPayment = https.onCall(
 
       throw new https.HttpsError(
         https.FunctionsErrorCode.UNAUTHENTICATED,
-        'unauthenticated'
+        'unauthenticated',
       );
     }
 
@@ -123,20 +131,18 @@ export const createPayment = https.onCall(
     debug('[https::createPayment]', result);
 
     return result;
-  }
+  },
 );
 
-export const paymentCallBack = https.onRequest(
-  async (request, response) => {
-    const { paymentCallBack } = await import('./https/paymentCallBack.js');
+export const paymentCallBack = https.onRequest(async (request, response) => {
+  const { paymentCallBack } = await import('./https/paymentCallBack.js');
 
-    const result = await paymentCallBack(request, response);
+  const result = await paymentCallBack(request, response);
 
-    debug('[https::paymentCallBack : result]', result);
+  debug('[https::paymentCallBack : result]', result);
 
-    return result;
-  }
-);
+  return result;
+});
 
 export const graphQl = https.onRequest(expressServer);
 
@@ -144,5 +150,7 @@ if (process.env.LOCAL) {
   const port = process.env.PORT || process.env.GRAPHQL_PORT;
   expressServer.listen(port);
   /* eslint-disable no-console */
-  console.log('🚀🙂😀😃 Server is running on: '`http://localhost:${process.env.GRAPHQL_PORT}`);
+  console.log(
+    '🚀🙂😀😃 Server is running on: '`http://localhost:${process.env.GRAPHQL_PORT}`,
+  );
 }

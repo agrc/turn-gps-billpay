@@ -23,15 +23,11 @@ function flattenChildren(parent) {
  * @returns {WebsiteMainMenu | WebsiteMainMenuItem | undefined} the matching menu item or `undefined` if not found
  */
 function findMenuItemInMenusByPathname({ menus, pathname }) {
-  return (
-    /** @type {(WebsiteMainMenuItem)[]} */ (
-      (menus || []).map((menu) => (
-        (menu?.menuItems || []).map(flattenChildren)
-      ))
-        .flat(Infinity)
-    )
-      .find((menuItem) => menuItem.link === pathname)
-  );
+  return /** @type {(WebsiteMainMenuItem)[]} */ (
+    (menus || [])
+      .map((menu) => (menu?.menuItems || []).map(flattenChildren))
+      .flat(Infinity)
+  ).find((menuItem) => menuItem.link === pathname);
 }
 
 export default findMenuItemInMenusByPathname;

@@ -8,12 +8,15 @@ export const WSDL_CONTENT = fs.readFileSync(fullPath, 'utf-8');
 
 export const axiosConfig = {
   headers: {
-    SOAPAction: 'Trimble.IS.AccountingServices/ILogin/CreateUserWithoutUserinfoAndReturnID',
+    SOAPAction:
+      'Trimble.IS.AccountingServices/ILogin/CreateUserWithoutUserinfoAndReturnID',
     'Content-Type': 'text/xml; charset=utf-8',
   },
 };
 
-export const createUserWithoutUserinfoAndReturnIdData = (userObj) => `<?xml version="1.0" encoding="utf-8"?>
+export const createUserWithoutUserinfoAndReturnIdData = (
+  userObj,
+) => `<?xml version="1.0" encoding="utf-8"?>
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
     <SOAP-ENV:Header/>
     <SOAP-ENV:Body>

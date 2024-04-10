@@ -10,20 +10,20 @@ const propTypes = { children: PropTypes.node.isRequired };
 const defaultProps = {};
 
 function AppContextProvider({ children }) {
-  const [appState, setAppState] = useImmer(() => ({ hasTermsConditionsAgreed: false }));
+  const [appState, setAppState] = useImmer(() => ({
+    hasTermsConditionsAgreed: false,
+  }));
   const contextState = useMemo(
     () => ({
       // app state
       appState,
       setAppState,
     }),
-    [appState, setAppState]
+    [appState, setAppState],
   );
 
   return (
-    <AppContext.Provider value={contextState}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextState}>{children}</AppContext.Provider>
   );
 }
 AppContextProvider.propTypes = propTypes;

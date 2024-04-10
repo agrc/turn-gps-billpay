@@ -39,5 +39,5 @@ createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </FirebaseAppProvider>
     </StrictMode>
-  </QueryClientProvider>
+  </QueryClientProvider>,
 );

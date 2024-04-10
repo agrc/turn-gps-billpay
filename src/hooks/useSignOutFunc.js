@@ -11,11 +11,12 @@ export default function useSignOutFunc() {
   const auth = getAuth(app);
 
   return useCallback(
-    () => (
+    () =>
       // signOut only signs out of firebase, but not UtahId, so sign out of both firebase AND utahId
-      signOut(auth)
-        .then(() => window.location = `https://id.utah.gov/logout?goto=${window.location}`)
-    ),
-    [auth]
+      signOut(auth).then(
+        () =>
+          (window.location = `https://id.utah.gov/logout?goto=${window.location}`),
+      ),
+    [auth],
   );
 }

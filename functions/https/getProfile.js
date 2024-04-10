@@ -21,9 +21,7 @@ export const getProfile = async (authData) => {
   };
 
   try {
-    const userRef = db
-      .collection('authenticated_users')
-      .doc(authData.uid);
+    const userRef = db.collection('authenticated_users').doc(authData.uid);
     const doc = await userRef.get();
 
     profile = doc.data();
@@ -31,7 +29,9 @@ export const getProfile = async (authData) => {
       info('[https::getProfile] trimbleUserExists', profile.trimbleUser);
       return profile.trimbleUser;
     }
-    const trimbleUserArray = await getTrimbleProfileByEmail(authData.token.email);
+    const trimbleUserArray = await getTrimbleProfileByEmail(
+      authData.token.email,
+    );
     if (trimbleUserArray?.length) {
       const [trimbleUser] = trimbleUserArray;
       await userRef.update({ trimbleUser });
@@ -50,7 +50,7 @@ export const getProfile = async (authData) => {
 
     throw new https.HttpsError(
       'failed-precondition',
-      'profile has not been written yet'
+      'profile has not been written yet',
     );
   }
 

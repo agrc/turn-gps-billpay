@@ -1,4 +1,4 @@
-@use "@utahdts/utah-design-system/css/index.scss" as class-vars;
+@use '@utahdts/utah-design-system/css/index.scss' as class-vars;
 
 #{class-vars.$base-class} {
   .footer-agency-information {
@@ -10,11 +10,10 @@
     &__title-image {
       max-width: 150px;
       padding-right: 5px;
-      &>img {
+      & > img {
         width: auto;
         height: 50px;
       }
     }
   }
 }
-

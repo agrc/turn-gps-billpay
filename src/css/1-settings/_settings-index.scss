@@ -4,17 +4,17 @@ variables and settings
 */
 
 :root .utah-design-system {
-  --primary-color: #4D2A54;
-  --primary-color-dark: #321B36;
-  --primary-color-light: #EFE4F1;
+  --primary-color: #4d2a54;
+  --primary-color-dark: #321b36;
+  --primary-color-light: #efe4f1;
   --gray-on-primary-color: #474747;
-  --secondary-color: #4D7B8D;
+  --secondary-color: #4d7b8d;
   --secondary-color-dark: #243942;
-  --secondary-color-light: #E5EDF1;
+  --secondary-color-light: #e5edf1;
   --gray-on-secondary-color: #474747;
-  --accent-color: #EACA00;
+  --accent-color: #eaca00;
   --accent-color-dark: #664700;
-  --accent-color-light: #FFF7C2;
+  --accent-color-light: #fff7c2;
   --gray-on-accent-color: #474747;
 
   --main-width: 700px;
@@ -30,18 +30,18 @@ variables and settings
   margin-bottom: 0;
   font-size: 3em;
   font-weight: bold;
-  line-height: .8;
+  line-height: 0.8;
   color: #fff;
   text-align: left;
-  letter-spacing: .2em;
+  letter-spacing: 0.2em;
 }
 
 .logo-text > span {
   display: block;
   position: relative;
   top: -88px;
-  left: 40px ;
-  font-size: .5em;
+  left: 40px;
+  font-size: 0.5em;
   font-weight: normal;
   letter-spacing: normal;
 }

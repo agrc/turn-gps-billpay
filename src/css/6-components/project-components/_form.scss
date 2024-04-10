@@ -8,7 +8,7 @@
   }
 }
 
-input[type="password"] {
+input[type='password'] {
   color: var(--gray-color);
   min-height: var(--form-ele-medium);
   border-radius: var(--radius-small);
@@ -36,8 +36,8 @@ input[type="password"] {
     cursor: not-allowed;
   }
 
-  &[aria-invalid="true"] {
-    border: 2px solid var(--danger-color)
+  &[aria-invalid='true'] {
+    border: 2px solid var(--danger-color);
   }
 
   &.text-input {

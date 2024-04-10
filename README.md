@@ -23,20 +23,23 @@ SQLServer
 ### .env and .secret
 
 #### Root directory
+
 Add .env using [.env.template](.env.template) as a template
 
 #### functions directory
+
 Add .env.local using [.env.local.template](functions/.env.local.template) as a template
 
 Add .secret.local file with this template
-SECRETS='{"govpay": {"apiKey": "xxx", "url":"xxx"}, 
-"trimble": {"url": "xxx"}, 
+SECRETS='{"govpay": {"apiKey": "xxx", "url":"xxx"},
+"trimble": {"url": "xxx"},
 "database": {"server": "xxx", "user": "xxx", "password": "xxx" , "name": "xxx"}}'
 
 ### Initial setup steps
+
 See [google doc](https://docs.google.com/document/d/14j7817psXXKBa9vGuP0nd6bKcxYuDeeCdYWES7kQ65Y/edit?usp=sharing)
 
-### Govpay / FINET / DTS Billing 
+### Govpay / FINET / DTS Billing
 
 - This app sends order number, item name and description to GovPay
 - The user makes a payment to GovPay

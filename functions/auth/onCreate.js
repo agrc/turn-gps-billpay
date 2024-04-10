@@ -6,7 +6,9 @@ const db = getFirestore();
 export const onCreate = async (user) => {
   info('[auth::user::onCreate] adding user');
   const utahIdInfo = user.providerData.length ? user.providerData[0] : {};
-  info('[auth::user::onCreate] providerData', utahIdInfo, { structuredData: true });
+  info('[auth::user::onCreate] providerData', utahIdInfo, {
+    structuredData: true,
+  });
 
   let existingUser = {};
   try {

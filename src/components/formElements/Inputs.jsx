@@ -18,13 +18,13 @@ export const Input = forwardRef(
       onChange,
       onBlur,
     },
-    ref
+    ref,
   ) => (
     <div className="input-wrapper input-wrapper--text-input">
       {label !== false && (
-      <Label htmlFor={name} required={required}>
-        {label ?? name}
-      </Label>
+        <Label htmlFor={name} required={required}>
+          {label ?? name}
+        </Label>
       )}
       <div className="text-input__inner-wrapper">
         <input
@@ -46,7 +46,7 @@ export const Input = forwardRef(
         />
       </div>
     </div>
-  )
+  ),
 );
 Input.displayName = 'Input';
 Input.propTypes = {
@@ -100,13 +100,15 @@ Input.defaultProps = {
   step: '1',
 };
 
-export function Label({
-  children, htmlFor, required, className,
-}) {
+export function Label({ children, htmlFor, required, className }) {
   return (
     <label id={`label.${htmlFor}`} htmlFor={htmlFor} className={className}>
       {children}
-      {required && <span className="required-star" aria-hidden="true">*</span>}
+      {required && (
+        <span className="required-star" aria-hidden="true">
+          *
+        </span>
+      )}
     </label>
   );
 }

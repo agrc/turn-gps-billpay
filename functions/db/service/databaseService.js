@@ -23,7 +23,9 @@ import {
   getNextOrderNumberQuery,
 } from '../queries.js';
 
-const DB = process.env.secrets ? JSON.parse(process.env.secrets) : { database: {} };
+const DB = process.env.secrets
+  ? JSON.parse(process.env.secrets)
+  : { database: {} };
 export const sqlConfig = {
   user: DB.database.user,
   password: DB.database.password,
@@ -65,7 +67,8 @@ export const getRoles = async () => {
 export const checkOrderExists = async (paymentToken) => {
   if (paymentToken) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('paymentToken', sql.VarChar, paymentToken)
       .query(checkOrderExistsQuery);
     return result?.recordset;
@@ -76,7 +79,8 @@ export const checkOrderExists = async (paymentToken) => {
 export const checkTrimbleUserExists = async (email) => {
   if (email) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('email', sql.VarChar, email)
       .query(checkTrimbleUserExistsQuery);
     return result?.recordset;
@@ -87,7 +91,8 @@ export const checkTrimbleUserExists = async (email) => {
 export const checkTrimbleEmailExists = async (email) => {
   if (email) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('email', sql.VarChar, email)
       .query(checkTrimbleEmailExistsQuery);
     return result?.recordset;
@@ -98,7 +103,8 @@ export const checkTrimbleEmailExists = async (email) => {
 export const checkTrimbleOrgExists = async (orgName) => {
   if (orgName) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('orgName', sql.VarChar, orgName)
       .query(checkTrimbleOrgExistsQuery);
     return result?.recordset ? result.recordset : null;
@@ -109,7 +115,8 @@ export const checkTrimbleOrgExists = async (orgName) => {
 export const checkTrimbleLoginExists = async (orgId, username) => {
   if (orgId && username) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('orgId', sql.Numeric, orgId)
       .input('username', sql.VarChar, username)
       .query(checkTrimbleLoginExistsQuery);
@@ -121,7 +128,8 @@ export const checkTrimbleLoginExists = async (orgId, username) => {
 export const checkTrimbleLoginExistsByOrgName = async (variables) => {
   if (variables) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('orgName', sql.VarChar, variables?.orgName)
       .input('username', sql.VarChar, variables?.loginName)
       .query(checkTrimbleLoginExistsByOrgNameQuery);
@@ -133,7 +141,8 @@ export const checkTrimbleLoginExistsByOrgName = async (variables) => {
 export const selectPrimaryLoginByUserId = async (userId) => {
   if (userId) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('userId', sql.Numeric, userId)
       .query(selectPrimaryLoginByUserIdQuery);
     return result?.recordset ? result.recordset : null;
@@ -144,7 +153,8 @@ export const selectPrimaryLoginByUserId = async (userId) => {
 export const getSubscriptionsByEmail = async (email) => {
   if (email) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('email', sql.VarChar, email)
       .query(getSubscriptionsByEmailQuery);
     return result?.recordset ? result.recordset : null;
@@ -155,7 +165,8 @@ export const getSubscriptionsByEmail = async (email) => {
 export const getTrimbleProfileByEmail = async (email) => {
   if (email) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('email', sql.VarChar, email)
       .query(getTrimbleProfileByEmailQuery);
     return result?.recordset ? result.recordset : null;
@@ -166,7 +177,8 @@ export const getTrimbleProfileByEmail = async (email) => {
 export const createTrimbleOrg = async (orgName) => {
   if (orgName) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('orgName', sql.VarChar, orgName)
       .query(createTrimbleOrgQuery);
     return result?.recordset;
@@ -177,7 +189,8 @@ export const createTrimbleOrg = async (orgName) => {
 export const updateTrimbleUser = async (user) => {
   if (user) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('firstName', sql.VarChar, user.firstName)
       .input('lastName', sql.VarChar, user.lastName)
       .input('additionalEmail', sql.VarChar, user.additionalEmail)
@@ -197,7 +210,8 @@ export const updateTrimbleUser = async (user) => {
 export const updateOrder = async (paymentToken, paymentMethod) => {
   if (paymentToken) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('paymentToken', sql.VarChar, paymentToken)
       .input('paymentMethod', sql.VarChar, paymentMethod)
       .query(updateOrderQuery);
@@ -209,7 +223,8 @@ export const updateOrder = async (paymentToken, paymentMethod) => {
 export const updateSubscription = async (orderId) => {
   if (orderId) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('orderId', sql.Int, orderId)
       .query(updateSubscriptionQuery);
     return result;
@@ -220,7 +235,8 @@ export const updateSubscription = async (orderId) => {
 export const insertTrimbleSubscription = async (subscription) => {
   if (subscription) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('loginId', sql.Numeric, subscription.loginId)
       .input('contractId', sql.Numeric, subscription.contractId)
       .input('orderNumber', sql.VarChar, 'GovPay Renewal')
@@ -234,7 +250,8 @@ export const insertOrder = async (order) => {
   if (order) {
     console.log('order', order);
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('orderNumber', sql.Numeric, order.orderNumber)
       .input('orgId', sql.Numeric, order.orgId)
       .input('userId', sql.Numeric, order.userId)
@@ -249,7 +266,8 @@ export const insertOrder = async (order) => {
 export const insertOrderItem = async (item) => {
   if (item) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('orderId', sql.Numeric, item.orderId)
       .input('userId', sql.Numeric, item.userId)
       .input('organizationId', sql.Numeric, item.organizationId)
@@ -268,7 +286,8 @@ export const insertOrderItem = async (item) => {
 export const insertRoleGroup = async (loginId, roleGroup) => {
   if (loginId) {
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
+    const result = await pool
+      .request()
       .input('loginId', sql.Numeric, loginId)
       .input('roleGroup', sql.VarChar, roleGroup)
       .query(insertRoleGroupQuery);
@@ -293,8 +312,7 @@ export const insertTrimbleSubscriptionItem = async (subscriptionId) => {
     values.forEach((row) => table.rows.add.apply(table.rows, row));
 
     const pool = await sql.connect(sqlConfig);
-    const result = await pool.request()
-      .bulk(table);
+    const result = await pool.request().bulk(table);
     return result;
   }
   return null;
@@ -302,7 +320,6 @@ export const insertTrimbleSubscriptionItem = async (subscriptionId) => {
 
 export const getNextOrderNumber = async () => {
   const pool = await sql.connect(sqlConfig);
-  const result = await pool.request()
-    .query(getNextOrderNumberQuery);
+  const result = await pool.request().query(getNextOrderNumberQuery);
   return result?.recordset ? result.recordset : null;
 };
