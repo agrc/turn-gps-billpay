@@ -40,36 +40,56 @@ function FooterMainContent() {
       <FooterAgencyInformationColumn>
         <div className="footer-agency-information__column-title">Main Menu</div>
         <ul className="footer-agency-information__menu">
-          {
-            mainMenuItems(hasUser, useNavigate())?.menuItems?.map((menuItem) => (
-              <li key={`footer-main-menu_${menuItem.title}`}>
-                <Link to={menuItem.actionFunctionUrl?.url || menuItem.actionUrl?.url || '/'}>{menuItem.title}</Link>
-              </li>
-            ))
-          }
+          {mainMenuItems(hasUser, useNavigate())?.menuItems?.map((menuItem) => (
+            <li key={`footer-main-menu_${menuItem.title}`}>
+              <Link
+                to={
+                  menuItem.actionFunctionUrl?.url ||
+                  menuItem.actionUrl?.url ||
+                  '/'
+                }
+              >
+                {menuItem.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </FooterAgencyInformationColumn>
 
       <FooterAgencyInformationColumn>
-        <div className="footer-agency-information__column-title">Helpful Links</div>
+        <div className="footer-agency-information__column-title">
+          Helpful Links
+        </div>
         <ul className="footer-agency-information__menu">
           <li>
-            <ExternalLink href="https://gis.utah.gov/about/contact/">UGRC Contacts</ExternalLink>
+            <ExternalLink href="https://gis.utah.gov/contact/">
+              UGRC Contacts
+            </ExternalLink>
           </li>
           <li>
-            <ExternalLink href="https://gis.utah.gov/about/mission/">UGRC Mission</ExternalLink>
+            <ExternalLink href="https://gis.utah.gov/about/">
+              UGRC Mission
+            </ExternalLink>
           </li>
           <li>
-            <ExternalLink href="https://gis.utah.gov/about/code/">GIS-related Utah Statute</ExternalLink>
+            <ExternalLink href="https://gis.utah.gov/about/code/">
+              GIS-related Utah Statute
+            </ExternalLink>
           </li>
           <li>
-            <ExternalLink href="https://gis.utah.gov/about/policy/">UGRC Policies</ExternalLink>
+            <ExternalLink href="https://gis.utah.gov/documentation/policy/">
+              UGRC Policies
+            </ExternalLink>
           </li>
           <li>
-            <ExternalLink href="https://gis.utah.gov/about/media/">UGRC Media Resources</ExternalLink>
+            <ExternalLink href="https://gis.utah.gov/about/media/">
+              UGRC Media Resources
+            </ExternalLink>
           </li>
           <li>
-            <ExternalLink href="https://gis.utah.gov/about/visiting-agrc/">UGRC Directions and Parking</ExternalLink>
+            <ExternalLink href="https://gis.utah.gov/contact/visiting/">
+              UGRC Directions and Parking
+            </ExternalLink>
           </li>
         </ul>
       </FooterAgencyInformationColumn>
