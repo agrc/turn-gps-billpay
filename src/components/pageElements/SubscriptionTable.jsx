@@ -39,7 +39,7 @@ const defaultProps = {};
 function SubscriptionTable({ tableData, setTableData, lookupStatus, type }) {
   useEffect(() => {
     setTableData(tableData);
-  }, [tableData]);
+  }, [setTableData, tableData]);
 
   const mainTable = () => (
     <TableWrapper>
