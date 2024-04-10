@@ -44,9 +44,9 @@ function FooterMainContent() {
             <li key={`footer-main-menu_${menuItem.title}`}>
               <Link
                 to={
-                  menuItem.actionFunctionUrl?.url ||
-                  menuItem.actionUrl?.url ||
-                  '/'
+                  menuItem.actionFunctionUrl?.url
+                  || menuItem.actionUrl?.url
+                  || '/'
                 }
               >
                 {menuItem.title}
