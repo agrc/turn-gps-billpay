@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.1-0...v1.2.1-1) (2024-04-10)
+
+
+### 🐛 Bug Fixes
+
+* correct effect linting errors ([2c13221](https://github.com/agrc/turn-gps-billpay/commit/2c13221d563176757bdbfa334cb033d8dd884af3))
+
 ## [1.2.1-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.0...v1.2.1-0) (2024-04-10)
 
 
