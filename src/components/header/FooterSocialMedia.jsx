@@ -1,10 +1,7 @@
 // @ts-check
 // @ts-ignore
 // eslint-disable-next-line
-import {
-  FooterSocialMediaBar,
-  Icons,
-} from '@utahdts/utah-design-system';
+import { FooterSocialMediaBar, Icons } from '@utahdts/utah-design-system';
 import '@utahdts/utah-design-system-header/css';
 import IconsWebsite from '../pageElements/IconsWebsite';
 
@@ -39,7 +36,9 @@ function FooterSocialMedia() {
         rel="noreferrer"
       >
         {IconsWebsite.IconTwitter()}
-        <span className="visually-hidden">UGRC Twitter, opens in a new tab</span>
+        <span className="visually-hidden">
+          UGRC Twitter, opens in a new tab
+        </span>
       </a>
       <a
         href="https://facebook.com/UtahAGRC"
@@ -48,16 +47,20 @@ function FooterSocialMedia() {
         rel="noreferrer"
       >
         {IconsWebsite.IconFacebook()}
-        <span className="visually-hidden">UGRC Facebook, opens in a new tab</span>
+        <span className="visually-hidden">
+          UGRC Facebook, opens in a new tab
+        </span>
       </a>
       <a
-        href="https://vimeo.com/utahagrc"
+        href="https://www.youtube.com/@therealUGRC"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
       >
-        {IconsWebsite.IconVimeo()}
-        <span className="visually-hidden">UGRC Vimeo, opens in a new tab</span>
+        {IconsWebsite.IconYouTube()}
+        <span className="visually-hidden">
+          UGRC Youtube, opens in a new tab
+        </span>
       </a>
       <a
         href="https://utahgeospatialpodcast.buzzsprout.com/"
@@ -66,7 +69,9 @@ function FooterSocialMedia() {
         rel="noreferrer"
       >
         {IconsWebsite.IconPodcast()}
-        <span className="visually-hidden">UGRC Podcast, opens in a new tab</span>
+        <span className="visually-hidden">
+          UGRC Podcast, opens in a new tab
+        </span>
       </a>
     </FooterSocialMediaBar>
   );
