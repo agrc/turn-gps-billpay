@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.2.1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.0...v1.2.1) (2024-04-10)
+
+
+### 🐛 Bug Fixes
+
+* correct effect linting errors ([c4350c9](https://github.com/agrc/turn-gps-billpay/commit/c4350c99dff654a4fa5f53e61b9d614f0898dd88))
+* update links to new website pages ([fd6b1c0](https://github.com/agrc/turn-gps-billpay/commit/fd6b1c0996d5134b21af3b3c6268f9a8ff06f484)), closes [#102](https://github.com/agrc/turn-gps-billpay/issues/102)
+
+
+### 🌲 Dependencies
+
+* q4 updates ([e09c720](https://github.com/agrc/turn-gps-billpay/commit/e09c72071c5f74c6351690123906bb15dd10794a))
+
+
+### 🎨 Design Improvements
+
+* update icons for x and youtube ([25e1024](https://github.com/agrc/turn-gps-billpay/commit/25e102416b1dfb01001ee0bc8108229271896bc0))
+
 ## [1.2.1-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.1-0...v1.2.1-1) (2024-04-10)
 
 
