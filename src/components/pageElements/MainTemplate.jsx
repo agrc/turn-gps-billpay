@@ -16,7 +16,7 @@ const defaultProps = {};
 
 function MainTemplate({ content: Content, contentRef }) {
   const [state, setState] = useImmer({
-    props: ({}),
+    props: {},
   });
 
   return (

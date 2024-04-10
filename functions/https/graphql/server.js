@@ -8,7 +8,11 @@ import schema from './schema.js';
 import resolvers from './resolvers.js';
 
 const corsOptions = {
-  origin: [/ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/, /ut-dts-agrc-turn-gps-prod\.firebaseapp\.com$/, /utah\.gov$/],
+  origin: [
+    /ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/,
+    /ut-dts-agrc-turn-gps-prod\.firebaseapp\.com$/,
+    /utah\.gov$/,
+  ],
   credentials: true,
   methods: 'GET,HEAD,OPTIONS,POST',
   preflightContinue: false,
@@ -37,4 +41,12 @@ export const apolloServer = new ApolloServer({
   playground: process.env.NODE_ENV !== 'production',
 });
 
-apolloServer.start().then(() => apolloServer.applyMiddleware({ app: expressServer, path: '/', cors: false }));
+apolloServer
+  .start()
+  .then(() =>
+    apolloServer.applyMiddleware({
+      app: expressServer,
+      path: '/',
+      cors: false,
+    }),
+  );

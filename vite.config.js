@@ -9,12 +9,18 @@ export default defineConfig({
     devSourcemap: true,
   },
   plugins: [
-    react(), 
-    eslintPlugin(), 
+    react(),
+    eslintPlugin(),
     loadVersion(),
     mkcert({
       force: true,
-      hosts: ['*.utah.gov', '*.local.utah.gov', '127.0.0.1', 'localhost', '::1'],
+      hosts: [
+        '*.utah.gov',
+        '*.local.utah.gov',
+        '127.0.0.1',
+        'localhost',
+        '::1',
+      ],
     }),
   ],
   // server: {

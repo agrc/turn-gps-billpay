@@ -9,18 +9,14 @@ function HomeSubscriptionButton() {
   const user = useUser();
   const hasUser = !!user.data;
 
-  return (
-    hasUser
-      ? (
-        <Link
-          className="button button--primary-color mr-spacing-xl button--large"
-          to={pageUrls.subscription}
-        >
-          View Subscriptions
-        </Link>
-      )
-      : null
-  );
+  return hasUser ? (
+    <Link
+      className="button button--primary-color mr-spacing-xl button--large"
+      to={pageUrls.subscription}
+    >
+      View Subscriptions
+    </Link>
+  ) : null;
 }
 
 HomeSubscriptionButton.propTypes = propTypes;

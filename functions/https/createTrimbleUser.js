@@ -4,7 +4,11 @@ import { error, info } from 'firebase-functions/logger';
 import axios from 'axios';
 import { WSDL } from 'soap';
 import setupFirebase from '../firebase.js';
-import { axiosConfig, createUserWithoutUserinfoAndReturnIdData, WSDL_CONTENT } from '../soap/soapUtils.js';
+import {
+  axiosConfig,
+  createUserWithoutUserinfoAndReturnIdData,
+  WSDL_CONTENT,
+} from '../soap/soapUtils.js';
 import {
   checkTrimbleEmailExists,
   checkTrimbleLoginExists,
@@ -14,7 +18,7 @@ import {
   insertTrimbleSubscription,
   insertTrimbleSubscriptionItem,
   selectPrimaryLoginByUserId,
-  updateTrimbleUser
+  updateTrimbleUser,
 } from '../db/service/databaseService.js';
 
 setupFirebase();
@@ -32,7 +36,9 @@ export const createTrimbleUser = async (request) => {
     const emailExists = await checkTrimbleEmailExists(data.email);
     info('[createTrimbleUser :: emailExists]', emailExists);
     if (emailExists[0].emailExists === 1) {
-      data.additionalEmail = [data.additionalEmail, request.auth.token.email].filter((str) => str).join(',');
+      data.additionalEmail = [data.additionalEmail, request.auth.token.email]
+        .filter((str) => str)
+        .join(',');
       data.email = `${data.email}-${Date.now()}`;
     }
   } catch (err) {
@@ -48,7 +54,9 @@ export const createTrimbleUser = async (request) => {
   }
 
   const trimbleResult = await trimblePostCall(request.data);
-  const soapResult = trimbleResult?.Body?.CreateUserWithoutUserinfoAndReturnIDResponse?.CreateUserWithoutUserinfoAndReturnIDResult;
+  const soapResult =
+    trimbleResult?.Body?.CreateUserWithoutUserinfoAndReturnIDResponse
+      ?.CreateUserWithoutUserinfoAndReturnIDResult;
   await parseSoapResult(soapResult, trimbleResult, data);
   return 'ok';
 };
@@ -58,7 +66,8 @@ async function parseSoapResult(soapResult, trimbleResult, data) {
   const MAIN_CONTRACT = 1;
   if (soapResult && soapResult === 'Success') {
     // more stuff
-    data.userId = trimbleResult?.Body?.CreateUserWithoutUserinfoAndReturnIDResponse?.userId;
+    data.userId =
+      trimbleResult?.Body?.CreateUserWithoutUserinfoAndReturnIDResponse?.userId;
     // update user
     const userResult = await updateTrimbleUser(data);
     if (userResult?.rowsAffected?.length) {
@@ -69,7 +78,10 @@ async function parseSoapResult(soapResult, trimbleResult, data) {
 
     await insertRoleGroup(primaryLoginId[0].loginId, ROLE_GROUP);
 
-    const subscriptionData = { contractId: MAIN_CONTRACT, loginId: primaryLoginId[0].loginId };
+    const subscriptionData = {
+      contractId: MAIN_CONTRACT,
+      loginId: primaryLoginId[0].loginId,
+    };
     const subscriptionId = await insertTrimbleSubscription(subscriptionData);
     await insertTrimbleSubscriptionItem(subscriptionId[0].id);
   } else {
@@ -79,7 +91,10 @@ async function parseSoapResult(soapResult, trimbleResult, data) {
 
 async function buildSoapData(organization, data) {
   if (organization?.length) {
-    const loginExists = await checkTrimbleLoginExists(organization[0].OrganizationId, data.username);
+    const loginExists = await checkTrimbleLoginExists(
+      organization[0].OrganizationId,
+      data.username,
+    );
     if (loginExists[0].loginExists === 1) {
       data.username = `${data.username}-${Date.now()}`;
     }
@@ -97,7 +112,9 @@ async function buildSoapData(organization, data) {
 }
 
 async function trimblePostCall(requestData) {
-  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : { trimble: {} };
+  const SECRETS = process.env.secrets
+    ? JSON.parse(process.env.secrets)
+    : { trimble: {} };
   const { url } = SECRETS.trimble;
   const wsdl = new WSDL(WSDL_CONTENT, null, {});
 

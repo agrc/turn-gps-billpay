@@ -45,9 +45,7 @@ function FooterInformationInfo({
   return (
     <>
       <div className="footer-agency-information__image-title-wrapper">
-        <div className="footer-agency-information__title-image">
-          {logo}
-        </div>
+        <div className="footer-agency-information__title-image">{logo}</div>
         <div className="footer-agency-information__first-line">
           {agencyTitleFirstLine}
         </div>
@@ -59,17 +57,18 @@ function FooterInformationInfo({
       </div>
 
       <div className="footer-agency-information__address">
-        <span className="footer-agency-information__address-street-address-1">{address.streetAddress1}</span><br />
-        {
-          address.streetAddress2
-            ? (
-              <>
-                <span className="footer-agency-information__address-street-address-2">{address.streetAddress2}</span>
-                <br />
-              </>
-            )
-            : undefined
-        }
+        <span className="footer-agency-information__address-street-address-1">
+          {address.streetAddress1}
+        </span>
+        <br />
+        {address.streetAddress2 ? (
+          <>
+            <span className="footer-agency-information__address-street-address-2">
+              {address.streetAddress2}
+            </span>
+            <br />
+          </>
+        ) : undefined}
         <span className="footer-agency-information__address-city-state-zip">
           {address.city}, {address.state} {address.zipCode}
         </span>

@@ -24,47 +24,31 @@ function Routing() {
     <Routes>
       <Route
         path={pageUrls.home}
-        element={(
-          <MainTemplate
-            content={HomeLanding}
-            contentRef={contentRef}
-          />
-      )}
+        element={<MainTemplate content={HomeLanding} contentRef={contentRef} />}
       />
       <Route
         path={pageUrls.registration}
-        element={(
-          <MainTemplate
-            content={Registration}
-            contentRef={contentRef}
-          />
-      )}
+        element={
+          <MainTemplate content={Registration} contentRef={contentRef} />
+        }
       />
       <Route
         path={pageUrls.subscription}
-        element={(
-          <MainTemplate
-            content={Subscription}
-            contentRef={contentRef}
-          />
-      )}
+        element={
+          <MainTemplate content={Subscription} contentRef={contentRef} />
+        }
       />
       <Route
         path={pageUrls.utahIdProcess}
-        element={(
-          <MainTemplate
-            content={UtahIdProcess}
-            contentRef={contentRef}
-          />
-      )}
+        element={
+          <MainTemplate content={UtahIdProcess} contentRef={contentRef} />
+        }
       />
-      {
-        user.data
-          ? (
-            <Route path={pageUrls.admin} element={<AdminLanding />} />
-          )
-          : <Route path="*" element={<Page404 />} />
-      }
+      {user.data ? (
+        <Route path={pageUrls.admin} element={<AdminLanding />} />
+      ) : (
+        <Route path="*" element={<Page404 />} />
+      )}
       <Route path="*" element={<Page404 />} />
     </Routes>
   );

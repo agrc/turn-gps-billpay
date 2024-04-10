@@ -3,7 +3,11 @@
 import { auth, https, logger } from 'firebase-functions/v1';
 import { error, info } from 'firebase-functions/logger';
 import axios from 'axios';
-import { getNextOrderNumber, insertOrder, insertOrderItem } from '../db/service/databaseService.js';
+import {
+  getNextOrderNumber,
+  insertOrder,
+  insertOrderItem,
+} from '../db/service/databaseService.js';
 
 function convertJsonToFormData(dataObj) {
   const formData = new FormData();
@@ -15,7 +19,10 @@ function convertJsonToFormData(dataObj) {
 }
 
 function buildOrder(data, orderNumber, govPayToken) {
-  const totalPrice = data.reduce((accumulator, currentValue) => accumulator + currentValue.contractPrice, 0);
+  const totalPrice = data.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.contractPrice,
+    0,
+  );
   return {
     orderNumber,
     orgId: data[0].organizationId,
@@ -48,16 +55,25 @@ export const createPayment = async (request) => {
 
   const nextOrderResult = await getNextOrderNumber();
   const { orderNumber } = nextOrderResult[0];
-  const SECRETS = process.env.secrets ? JSON.parse(process.env.secrets) : { govpay: {} };
+  const SECRETS = process.env.secrets
+    ? JSON.parse(process.env.secrets)
+    : { govpay: {} };
   const { apiKey } = SECRETS.govpay;
   const url = `${SECRETS.govpay.url}createOrder.html`;
 
-  const govPayResult = await govPayPostCall(apiKey, url, request.data, orderNumber);
+  const govPayResult = await govPayPostCall(
+    apiKey,
+    url,
+    request.data,
+    orderNumber,
+  );
   if (govPayResult?.status === 200) {
     const orderToken = govPayResult?.data;
 
     // insert order
-    const orderResult = await insertOrder(buildOrder(data, orderNumber, orderToken));
+    const orderResult = await insertOrder(
+      buildOrder(data, orderNumber, orderToken),
+    );
 
     // insert order items
     const orderId = orderResult[0].id;
@@ -66,7 +82,10 @@ export const createPayment = async (request) => {
     return `${SECRETS.govpay.url}order.html?TOKEN=${orderToken}`;
   }
   error('[createPayment :: govPayPostCall]', govPayResult);
-  throw new https.HttpsError('internal', `${govPayResult.status} : ${govPayResult.statusText}`);
+  throw new https.HttpsError(
+    'internal',
+    `${govPayResult.status} : ${govPayResult.statusText}`,
+  );
 };
 
 async function govPayPostCall(apiKey, url, requestData, orderNumber) {
@@ -75,14 +94,18 @@ async function govPayPostCall(apiKey, url, requestData, orderNumber) {
     ORDER_NUMBER: orderNumber,
   };
 
-  const jsonOrderObj = requestData.reduce((accumulator, currentValue, index) => {
-    const count = index + 1;
-    accumulator[`ITEM_${count}`] = `${currentValue.loginName} login renewal`;
-    accumulator[`ITEM_DESC_${count}`] = `Trimble ${currentValue.contractName} renewal for ${currentValue.organizationName}/${currentValue.loginName}`;
-    accumulator[`ITEM_AMT_${count}`] = currentValue.contractPrice;
-    accumulator[`ITEM_QTY_${count}`] = 1;
-    return accumulator;
-  }, {});
+  const jsonOrderObj = requestData.reduce(
+    (accumulator, currentValue, index) => {
+      const count = index + 1;
+      accumulator[`ITEM_${count}`] = `${currentValue.loginName} login renewal`;
+      accumulator[`ITEM_DESC_${count}`] =
+        `Trimble ${currentValue.contractName} renewal for ${currentValue.organizationName}/${currentValue.loginName}`;
+      accumulator[`ITEM_AMT_${count}`] = currentValue.contractPrice;
+      accumulator[`ITEM_QTY_${count}`] = 1;
+      return accumulator;
+    },
+    {},
+  );
 
   const newObj = { ...jsonOrderObj, ...orderObj };
   const formData = convertJsonToFormData(newObj);

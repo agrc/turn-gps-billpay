@@ -1,8 +1,15 @@
 import {
-  AuthProvider, FirestoreProvider, FunctionsProvider, useFirebaseApp, useInitFirestore
+  AuthProvider,
+  FirestoreProvider,
+  FunctionsProvider,
+  useFirebaseApp,
+  useInitFirestore,
 } from 'reactfire';
 import { getAuth, connectAuthEmulator } from 'firebase/auth';
-import { initializeFirestore, connectFirestoreEmulator } from 'firebase/firestore';
+import {
+  initializeFirestore,
+  connectFirestoreEmulator,
+} from 'firebase/firestore';
 import { getFunctions, connectFunctionsEmulator } from 'firebase/functions';
 import Routing from '../routing/Routing';
 import AppContextProvider from '../../contexts/AppContext/AppContextProvider';
@@ -11,7 +18,9 @@ export default function App() {
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp);
   const functions = getFunctions(firebaseApp);
-  const { status, data: firestoreInstance } = useInitFirestore(async (firebaseAppSetup) => initializeFirestore(firebaseAppSetup, { }));
+  const { status, data: firestoreInstance } = useInitFirestore(
+    async (firebaseAppSetup) => initializeFirestore(firebaseAppSetup, {}),
+  );
 
   if (import.meta.env.DEV) {
     // eslint-disable-next-line no-underscore-dangle
@@ -58,25 +67,19 @@ export default function App() {
     }
   }
 
-  return (
-    firestoreInstance
-      ? (
-        <AuthProvider sdk={auth}>
-          <FunctionsProvider sdk={functions}>
-            <FirestoreProvider sdk={firestoreInstance}>
-              <AppContextProvider>
-                <div className="utah-design-system">
-                  {
-                    status === 'loading'
-                      ? <p>Loading...</p>
-                      : <Routing />
-                  }
-                </div>
-              </AppContextProvider>
-            </FirestoreProvider>
-          </FunctionsProvider>
-        </AuthProvider>
-      )
-      : <p>Loading</p>
+  return firestoreInstance ? (
+    <AuthProvider sdk={auth}>
+      <FunctionsProvider sdk={functions}>
+        <FirestoreProvider sdk={firestoreInstance}>
+          <AppContextProvider>
+            <div className="utah-design-system">
+              {status === 'loading' ? <p>Loading...</p> : <Routing />}
+            </div>
+          </AppContextProvider>
+        </FirestoreProvider>
+      </FunctionsProvider>
+    </AuthProvider>
+  ) : (
+    <p>Loading</p>
   );
 }

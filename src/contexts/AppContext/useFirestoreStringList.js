@@ -25,34 +25,33 @@ export default function useFirestoreStringList(collections) {
   const firestore = useFirestore();
   const recordCollection = collection(firestore, collections);
   const deployQuery = query(recordCollection, orderBy('index', 'asc'));
-  const { data } = /** @type {typeof useFirestoreCollectionData<StringListRecord>} */ (useFirestoreCollectionData)(deployQuery, { idField: 'id' });
+  const { data } =
+    /** @type {typeof useFirestoreCollectionData<StringListRecord>} */ (
+      useFirestoreCollectionData
+    )(deployQuery, { idField: 'id' });
 
-  const [stringList, setStringList] = /** @type {typeof useImmer<string[]>} */ (useImmer)([]);
+  const [stringList, setStringList] = /** @type {typeof useImmer<string[]>} */ (
+    useImmer
+  )([]);
 
   const sortedStringList = useMemo(
-    () => (
-      [...stringList || []]
+    () =>
+      [...(stringList || [])]
         .map((s) => [s, s.toLowerCase()])
         .sort(([, s1], [, s2]) => s1.localeCompare(s2))
-        .map(([s]) => s)
-    ),
-    [stringList]
+        .map(([s]) => s),
+    [stringList],
   );
 
-  useEffect(
-    () => {
-      if (data?.length) {
-        const strings = (
-          (data || [])
-            .map((stringListRecord) => stringListRecord.stringList)
-            .join('')
-            .split(STRING_LIST_SEPARATOR)
-        );
-        setStringList(strings);
-      }
-    },
-    [data, setStringList]
-  );
+  useEffect(() => {
+    if (data?.length) {
+      const strings = (data || [])
+        .map((stringListRecord) => stringListRecord.stringList)
+        .join('')
+        .split(STRING_LIST_SEPARATOR);
+      setStringList(strings);
+    }
+  }, [data, setStringList]);
 
   return sortedStringList;
 }

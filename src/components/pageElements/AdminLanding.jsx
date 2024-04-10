@@ -10,10 +10,7 @@ function AdminLanding() {
       <div className="content-width">
         <h1 className="my-spacing-l text-center">Admin</h1>
 
-        <p className="lead-in">
-          Administration Section
-        </p>
-
+        <p className="lead-in">Administration Section</p>
       </div>
 
       <footer aria-label="Utah Design System (main footer)">
@@ -21,7 +18,6 @@ function AdminLanding() {
         <FooterMainContent />
         <div id="utah-footer-placeholder" />
       </footer>
-
     </div>
   );
 }

@@ -1,5 +1,9 @@
 import { error, info } from 'firebase-functions/logger';
-import { checkOrderExists, updateOrder, updateSubscription } from '../db/service/databaseService.js';
+import {
+  checkOrderExists,
+  updateOrder,
+  updateSubscription,
+} from '../db/service/databaseService.js';
 
 const parseMessage = (request) => {
   let body = {};

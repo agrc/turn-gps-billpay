@@ -3,14 +3,14 @@ PRINT SCSS
  */
 
 @media print {
-
   @page {
     size: 8.5in 11in;
-    margin: .5in;
+    margin: 0.5in;
   }
 
-  html, body {
-    font-family: "Source Sans Pro", sans-serif;
+  html,
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 8pt;
     height: auto;
     color: #000000;

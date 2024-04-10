@@ -18,6 +18,6 @@ export default function useCurrentMenuItem(menus) {
 
   return useMemo(
     () => findMenuItemInMenusByPathname({ menus, pathname }),
-    [menus, pathname]
+    [menus, pathname],
   );
 }

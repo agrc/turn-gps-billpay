@@ -10,7 +10,9 @@ export const getSubscriptions = async (request) => {
   logger.info('authData email', request.auth.token.email);
 
   try {
-    const subscriptions = await getSubscriptionsByEmail(request.auth.token.email);
+    const subscriptions = await getSubscriptionsByEmail(
+      request.auth.token.email,
+    );
     info('[getSubscriptions :: getSubscriptionsByEmail]', subscriptions);
     return subscriptions;
   } catch (err) {
