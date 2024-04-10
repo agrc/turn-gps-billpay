@@ -3,6 +3,7 @@
     "firestore",
     "Geospatial",
     "hookform",
+    "immer",
     "reactfire",
     "tanstack",
     "Taylorsville",
