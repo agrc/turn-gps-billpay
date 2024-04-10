@@ -58,17 +58,33 @@ function Registration() {
       const strIdToken = idToken.replace(/\n|\r/g, '');
       setYupSchema(registrationSchema(strIdToken));
     });
-  }, []);
+  }, [user]);
 
   const { formState, register, handleSubmit, setFocus, reset } = useForm({
     resolver: yupResolver(yupSchema),
+    defaultValues: {
+      organization: '',
+      username: '',
+      password: '',
+      confirmPassword: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      additionalEmail: '',
+      address1: '',
+      address2: '',
+      city: '',
+      stateCode: '',
+      zipCode: '',
+      phoneNumber: '',
+    },
   });
 
   useEffect(() => {
     if (profileStatus === 'success') {
       reset(defaultValues?.data);
     }
-  }, [profileStatus, defaultValues]);
+  }, [profileStatus, defaultValues, reset]);
 
   const onSubmit = (payload) => {
     setBusy(true);
