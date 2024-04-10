@@ -67,7 +67,7 @@ function Subscription() {
     if (from === '/registration') {
       queryClient.invalidateQueries({ queryKey: ['subscriptions'] }).then();
     }
-  }, []);
+  }, [location.state?.from?.pathname, queryClient]);
 
   useEffect(() => {
     if (subscriptionStatus === 'success') {
