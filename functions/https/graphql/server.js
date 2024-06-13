@@ -41,12 +41,10 @@ export const apolloServer = new ApolloServer({
   playground: process.env.NODE_ENV !== 'production',
 });
 
-apolloServer
-  .start()
-  .then(() =>
-    apolloServer.applyMiddleware({
-      app: expressServer,
-      path: '/',
-      cors: false,
-    }),
-  );
+apolloServer.start().then(() =>
+  apolloServer.applyMiddleware({
+    app: expressServer,
+    path: '/',
+    cors: false,
+  }),
+);
