@@ -1,7 +1,6 @@
 // @ts-check
 // @ts-ignore
-// eslint-disable-next-line
-import { FooterSocialMediaBar, Icons } from '@utahdts/utah-design-system';
+import { FooterSocialMediaBar } from '@utahdts/utah-design-system';
 import '@utahdts/utah-design-system-header/css';
 import IconsWebsite from '../pageElements/IconsWebsite';
 
@@ -17,7 +16,7 @@ function FooterSocialMedia() {
         target="_blank"
         rel="noreferrer"
       >
-        {Icons.IconEnvelope()}
+        <span className="utds-icon-before-mail" aria-hidden="true" />
         <span className="visually-hidden">Email us, opens in a new tab</span>
       </a>
       <a
@@ -26,7 +25,7 @@ function FooterSocialMedia() {
         target="_blank"
         rel="noreferrer"
       >
-        {Icons.IconGitHub()}
+        {IconsWebsite.IconGitHub()}
         <span className="visually-hidden">UGRC GitHub, opens in a new tab</span>
       </a>
       <a
