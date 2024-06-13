@@ -35,7 +35,7 @@ const propTypes = {
   lookupStatus: PropTypes.string,
   type: PropTypes.string,
 };
-const defaultProps = {};
+
 function SubscriptionTable({ tableData, setTableData, lookupStatus, type }) {
   useEffect(() => {
     setTableData(tableData);
@@ -149,6 +149,5 @@ function SubscriptionTable({ tableData, setTableData, lookupStatus, type }) {
 }
 
 SubscriptionTable.propTypes = propTypes;
-SubscriptionTable.defaultProps = defaultProps;
 
 export default SubscriptionTable;

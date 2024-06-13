@@ -4,9 +4,6 @@ import { FooterSocialMediaBar } from '@utahdts/utah-design-system';
 import '@utahdts/utah-design-system-header/css';
 import IconsWebsite from '../pageElements/IconsWebsite';
 
-const propTypes = {};
-const defaultProps = {};
-
 function FooterSocialMedia() {
   return (
     <FooterSocialMediaBar title="Connect with us">
@@ -75,8 +72,5 @@ function FooterSocialMedia() {
     </FooterSocialMediaBar>
   );
 }
-
-FooterSocialMedia.propTypes = propTypes;
-FooterSocialMedia.defaultProps = defaultProps;
 
 export default FooterSocialMedia;

@@ -4,7 +4,6 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
 };
-const defaultProps = {};
 
 function Link({ children, href, ...rest }) {
   return (
@@ -15,6 +14,5 @@ function Link({ children, href, ...rest }) {
 }
 
 Link.propTypes = propTypes;
-Link.defaultProps = defaultProps;
 
 export default Link;

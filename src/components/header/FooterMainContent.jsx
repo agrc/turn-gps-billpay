@@ -13,9 +13,6 @@ import logo from '../../static/images/logo.svg';
 import packageJSON from '../../../package.json';
 import { mainMenuItems } from '../../hooks/useUtahHeader';
 
-const propTypes = {};
-const defaultProps = {};
-
 function FooterMainContent() {
   const user = useUser();
   const hasUser = !!user.data;
@@ -100,8 +97,5 @@ function FooterMainContent() {
     </FooterAgencyInformation>
   );
 }
-
-FooterMainContent.propTypes = propTypes;
-FooterMainContent.defaultProps = defaultProps;
 
 export default FooterMainContent;

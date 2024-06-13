@@ -2,9 +2,6 @@ import { ExternalLink } from '@utahdts/utah-design-system';
 import signInImage from '../../static/images/sign-in-button.png';
 import utahIdCreateAccountImage from '../../static/images/utahid-create-account.png';
 
-const propTypes = {};
-const defaultProps = {};
-
 function UtahIdProcess() {
   return (
     <div className="landing-page-template">
@@ -67,8 +64,5 @@ function UtahIdProcess() {
     </div>
   );
 }
-
-UtahIdProcess.propTypes = propTypes;
-UtahIdProcess.defaultProps = defaultProps;
 
 export default UtahIdProcess;

@@ -5,13 +5,13 @@ export const Input = forwardRef(
   (
     {
       name,
-      type,
+      type = 'text',
       value,
       label,
-      required,
+      required = false,
       placeholder,
       className,
-      step,
+      step = '1',
       min,
       max,
       autoComplete,
@@ -87,17 +87,6 @@ Input.propTypes = {
   autoComplete: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
-};
-
-Input.defaultProps = {
-  name: null,
-  type: 'text',
-  label: undefined,
-  required: false,
-  value: null,
-  placeholder: null,
-  className: null,
-  step: '1',
 };
 
 export function Label({ children, htmlFor, required, className }) {

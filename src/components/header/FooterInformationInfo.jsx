@@ -20,9 +20,6 @@ const propTypes = {
   logo: PropTypes.node.isRequired,
   phone: PropTypes.string,
 };
-const defaultProps = {
-  phone: null,
-};
 
 /**
  * @param {Object} props
@@ -88,6 +85,5 @@ function FooterInformationInfo({
 }
 
 FooterInformationInfo.propTypes = propTypes;
-FooterInformationInfo.defaultProps = defaultProps;
 
 export default FooterInformationInfo;

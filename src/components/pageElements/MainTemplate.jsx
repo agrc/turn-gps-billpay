@@ -12,7 +12,6 @@ const propTypes = {
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]).isRequired,
 };
-const defaultProps = {};
 
 function MainTemplate({ content: Content, contentRef }) {
   const [state, setState] = useImmer({
@@ -38,6 +37,5 @@ function MainTemplate({ content: Content, contentRef }) {
 }
 
 MainTemplate.propTypes = propTypes;
-MainTemplate.defaultProps = defaultProps;
 
 export default MainTemplate;
