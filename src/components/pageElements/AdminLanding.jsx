@@ -1,9 +1,6 @@
 import FooterSocialMedia from '../header/FooterSocialMedia';
 import FooterMainContent from '../header/FooterMainContent';
 
-const propTypes = {};
-const defaultProps = {};
-
 function AdminLanding() {
   return (
     <div>
@@ -21,8 +18,5 @@ function AdminLanding() {
     </div>
   );
 }
-
-AdminLanding.propTypes = propTypes;
-AdminLanding.defaultProps = defaultProps;
 
 export default AdminLanding;

@@ -1,8 +1,5 @@
 import { useUser } from 'reactfire';
 
-const propTypes = {};
-const defaultProps = {};
-
 function InfoBanner() {
   const user = useUser();
   const hasUser = !!user.data;
@@ -30,8 +27,5 @@ function InfoBanner() {
     </div>
   ) : null;
 }
-
-InfoBanner.propTypes = propTypes;
-InfoBanner.defaultProps = defaultProps;
 
 export default InfoBanner;

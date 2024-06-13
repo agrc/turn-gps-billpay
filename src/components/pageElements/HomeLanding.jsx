@@ -6,9 +6,6 @@ import pageUrls from '../../enums/pageUrls';
 import useAppContext from '../../contexts/AppContext/useAppContext';
 import HomeSubscriptionButton from './HomeSubscriptionButton';
 
-const propTypes = {};
-const defaultProps = {};
-
 function HomeLanding() {
   const { setAppState } = useAppContext();
   const navigate = useNavigate();
@@ -209,8 +206,5 @@ function HomeLanding() {
     </div>
   );
 }
-
-HomeLanding.propTypes = propTypes;
-HomeLanding.defaultProps = defaultProps;
 
 export default HomeLanding;

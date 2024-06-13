@@ -7,8 +7,6 @@ import AppContext from './AppContext';
 
 const propTypes = { children: PropTypes.node.isRequired };
 
-const defaultProps = {};
-
 function AppContextProvider({ children }) {
   const [appState, setAppState] = useImmer(() => ({
     hasTermsConditionsAgreed: false,
@@ -27,6 +25,5 @@ function AppContextProvider({ children }) {
   );
 }
 AppContextProvider.propTypes = propTypes;
-AppContextProvider.defaultProps = defaultProps;
 
 export default AppContextProvider;

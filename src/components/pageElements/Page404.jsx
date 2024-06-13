@@ -4,9 +4,6 @@ import pageUrls from '../../enums/pageUrls';
 import FooterSocialMedia from '../header/FooterSocialMedia';
 import FooterMainContent from '../header/FooterMainContent';
 
-const propTypes = {};
-const defaultProps = {};
-
 function Page404() {
   return (
     <div>
@@ -59,8 +56,5 @@ function Page404() {
     </div>
   );
 }
-
-Page404.propTypes = propTypes;
-Page404.defaultProps = defaultProps;
 
 export default Page404;

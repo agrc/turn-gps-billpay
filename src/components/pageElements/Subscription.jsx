@@ -9,9 +9,6 @@ import SubscriptionTable from './SubscriptionTable';
 import pageUrls from '../../enums/pageUrls';
 import useAppContext from '../../contexts/AppContext/useAppContext';
 
-const propTypes = {};
-const defaultProps = {};
-
 function Subscription() {
   const { setAppState } = useAppContext();
   const navigate = useNavigate();
@@ -147,8 +144,5 @@ function Subscription() {
     </div>
   );
 }
-
-Subscription.propTypes = propTypes;
-Subscription.defaultProps = defaultProps;
 
 export default Subscription;

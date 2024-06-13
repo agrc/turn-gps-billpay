@@ -12,9 +12,6 @@ import AdminLanding from '../pageElements/AdminLanding';
 import Subscription from '../pageElements/Subscription';
 import UtahIdProcess from '../pageElements/UtahIdProcess';
 
-const propTypes = {};
-const defaultProps = {};
-
 function Routing() {
   useUtahHeader();
   const user = useUser();
@@ -53,8 +50,5 @@ function Routing() {
     </Routes>
   );
 }
-
-Routing.propTypes = propTypes;
-Routing.defaultProps = defaultProps;
 
 export default Routing;
