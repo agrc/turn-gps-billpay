@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.2](https://github.com/agrc/turn-gps-billpay/compare/v1.2.1...v1.2.2) (2024-07-09)
+
+
+### Dependencies
+
+* Q1 safe package updates ([17a8d0d](https://github.com/agrc/turn-gps-billpay/commit/17a8d0dc9834426691ef16d4ff929d4fc6339387))
+* q4 package updates ([a86ebb2](https://github.com/agrc/turn-gps-billpay/commit/a86ebb2bffd01f081e8ea8c86bab0b7821586eae))
+
+
+### Styles
+
+* prettier ([ad3df39](https://github.com/agrc/turn-gps-billpay/commit/ad3df39d4c68dbdc180bd8bd820403987f1879e9))
+
 ## [1.2.2-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.1...v1.2.2-0) (2024-06-13)
 
 
