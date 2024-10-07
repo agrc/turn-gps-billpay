@@ -31,4 +31,4 @@ updates:
       interval: monthly
     groups:
       ci-dependencies:
-        dependency-type: 'production
+        dependency-type: 'production'
