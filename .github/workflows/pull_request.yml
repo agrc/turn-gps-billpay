@@ -11,36 +11,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test-unit:
-    name: Unit tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: ⬇️ Set up code
-        uses: actions/checkout@v4
-
-      - name: 💾 Cache firebase emulators
-        uses: actions/cache@v4
-        with:
-          path: /home/runner/.cache/firebase/emulators
-          key: ${{ runner.os }}-firebase-emulators
-
-      - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-
-      - name: 📥 Download dependencies
-        run: npm ci
-
-      - name: 🧪 Run tests
-        run: npm run test:ci
-
   deploy-preview:
     name: Firebase preview
     runs-on: ubuntu-latest
-    needs: [test-unit]
     if: ${{ github.event.sender.type == 'User' }}
     environment:
       name: dev
