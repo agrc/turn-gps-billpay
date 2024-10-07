@@ -24,9 +24,7 @@
     "fb:serve": "cross-env NODE_ENV=development firebase emulators:start --only functions",
     "fb:deploy": "firebase deploy --only functions",
     "graphql": "node functions/index.js",
-    "test": "vitest --silent --coverage --ui --open --passWithNoTests",
-    "test:ci": "npm run test",
-    "coverage": "vitest run --coverage"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@hookform/error-message": "2.0.1",
@@ -55,8 +53,6 @@
     "@types/react": "18.3.11",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react-swc": "3.7.1",
-    "@vitest/coverage-v8": "2.1.2",
-    "@vitest/ui": "2.1.2",
     "cross-env": "7.0.3",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
@@ -75,8 +71,7 @@
     "vite": "5.4.8",
     "vite-plugin-eslint": "1.8.1",
     "vite-plugin-mkcert": "1.17.6",
-    "vite-plugin-package-version": "1.1.0",
-    "vitest": "2.1.2"
+    "vite-plugin-package-version": "1.1.0"
   },
   "eslintConfig": {
     "env": {
