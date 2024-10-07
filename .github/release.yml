@@ -74,7 +74,6 @@ jobs:
 notify:
   name: Notifications
   runs-on: ubuntu-latest
-  if: github.event.release.prerelease == false
   needs: [deploy-prod]
   permissions:
     contents: read
