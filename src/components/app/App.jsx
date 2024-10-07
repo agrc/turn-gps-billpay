@@ -72,7 +72,10 @@ export default function App() {
       <FunctionsProvider sdk={functions}>
         <FirestoreProvider sdk={firestoreInstance}>
           <AppContextProvider>
-            <div className="utah-design-system">
+            <div
+              className="utah-design-system"
+              style={{ backgroundColor: 'white' }}
+            >
               {status === 'loading' ? <p>Loading...</p> : <Routing />}
             </div>
           </AppContextProvider>
