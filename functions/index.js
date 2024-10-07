@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase-admin/app';
 import { debug } from 'firebase-functions/logger';
-import * as v1 from 'firebase-functions';
+import * as v1 from 'firebase-functions/v1';
 import { https, setGlobalOptions } from 'firebase-functions/v2';
 import { params } from 'firebase-functions';
 import { expressServer } from './https/graphql/server.js';
