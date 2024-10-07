@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.3](https://github.com/agrc/turn-gps-billpay/compare/v1.2.2...v1.2.3) (2024-10-07)
+
+
+### Dependencies
+
+* FY25 Q2 dependency updates 🌲 ([1ebb678](https://github.com/agrc/turn-gps-billpay/commit/1ebb67840e04615e2c4fd94bd2e8ed4b0c0a1bd4))
+
+
+### Styles
+
+* update to add white bg uds no longer sets ([f2a9e1e](https://github.com/agrc/turn-gps-billpay/commit/f2a9e1ea76701f7f2cef3f3bcfeaef1d4b0d8428))
+
 ## [1.2.3-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.2...v1.2.3-0) (2024-10-07)
 
 
