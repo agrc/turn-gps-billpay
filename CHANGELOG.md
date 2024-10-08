@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/agrc/turn-gps-billpay/compare/v1.2.4...v1.2.5) (2024-10-08)
+
+
+### Bug Fixes
+
+* correct ci syntax ([b3c18bb](https://github.com/agrc/turn-gps-billpay/commit/b3c18bb581af05446c527a0724214e62412d1c9d))
+
 ## [1.2.4](https://github.com/agrc/turn-gps-billpay/compare/v1.2.3...v1.2.4) (2024-10-08)
 
 
