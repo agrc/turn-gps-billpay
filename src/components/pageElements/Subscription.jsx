@@ -2,7 +2,7 @@ import { useFunctions, useUser } from 'reactfire';
 import { Button } from '@utahdts/utah-design-system';
 import { httpsCallable } from 'firebase/functions';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 
 import SubscriptionTable from './SubscriptionTable';

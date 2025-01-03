@@ -5,7 +5,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useEffect, useState } from 'react';
 import { useFunctions, useUser } from 'reactfire';
 import { Button, Spinner } from '@utahdts/utah-design-system';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { httpsCallable } from 'firebase/functions';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Input } from '../formElements/Inputs.jsx';

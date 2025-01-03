@@ -5,7 +5,7 @@ import {
 } from '@utahdts/utah-design-system-header';
 import identity from 'lodash/identity';
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
 import { useUser } from 'reactfire';
 import useSignInFunc from './useSignInFunc';
 import useSignOutFunc from './useSignOutFunc';
@@ -16,7 +16,7 @@ import pageUrls from '../enums/pageUrls';
 
 /**
  * @param {string} url
- * @param {import('react-router-dom').NavigateFunction} navigate
+ * @param {import('react-router').NavigateFunction} navigate
  * @returns {EventAction}
  */
 function actionFunctionForUrl(url, navigate) {

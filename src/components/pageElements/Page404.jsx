@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import pageUrls from '../../enums/pageUrls';
 import FooterSocialMedia from '../header/FooterSocialMedia';
 import FooterMainContent from '../header/FooterMainContent';

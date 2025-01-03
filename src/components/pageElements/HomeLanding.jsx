@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { Accordion, Button, ExternalLink } from '@utahdts/utah-design-system';
 import pageUrls from '../../enums/pageUrls';
 import useAppContext from '../../contexts/AppContext/useAppContext';

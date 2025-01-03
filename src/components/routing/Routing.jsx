@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 import { useUser } from 'reactfire';
 
 import HomeLanding from '../pageElements/HomeLanding';

@@ -1,6 +1,6 @@
 // @ts-check
 import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import findMenuItemInMenusByPathname from './findMenuItemInMenusByPathname';
 
 /** @typedef {import ('../../typedefs.d.js').WebsiteMainMenu} WebsiteMainMenu */

@@ -6,7 +6,7 @@ import {
   FooterAgencyInformationColumn,
 } from '@utahdts/utah-design-system';
 import '@utahdts/utah-design-system-header/css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { useUser } from 'reactfire';
 import FooterInformationInfo from './FooterInformationInfo';
 import logo from '../../static/images/logo.svg';
