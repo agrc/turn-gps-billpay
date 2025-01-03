@@ -83,6 +83,9 @@ export default function useUtahHeader() {
   useEffect(() => {
     setUtahHeaderSettings({
       mainMenu: mainMenuItems(hasUser, navigate),
+      titleFunction: (e) => {
+        e.preventDefault();
+      },
       footer: {
         showHorizontalRule: true,
         domLocationTarget: {
