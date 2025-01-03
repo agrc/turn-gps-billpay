@@ -1,5 +1,7 @@
 {
   "cSpell.words": [
+    "agrc",
+    "billpay",
     "firestore",
     "Geospatial",
     "hookform",
@@ -8,6 +10,7 @@
     "tanstack",
     "Taylorsville",
     "Trimble",
-    "UGRC"
+    "UGRC",
+    "VITE"
   ]
 }
