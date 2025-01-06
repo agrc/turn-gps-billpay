@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { FirebaseAppProvider } from 'reactfire';
-import '@utahdts/utah-design-system-header/css';
 import './css/index.scss';
 import App from './components/app/App.jsx';
 
