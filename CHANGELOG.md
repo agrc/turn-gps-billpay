@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.6](https://github.com/agrc/turn-gps-billpay/compare/v1.2.5...v1.2.6) (2025-01-06)
+
+
+### Dependencies
+
+* bump the safe-app-dependencies group with 18 updates ([5d72f90](https://github.com/agrc/turn-gps-billpay/commit/5d72f90390446def1884c2532d7d675a68516e46))
+* bump the safe-function-dependencies group across 1 directory with 5 updates ([826cc73](https://github.com/agrc/turn-gps-billpay/commit/826cc73b06ad6fab1b4a00ad04868b445aa37886))
+* fy25 q3 package updates ([a7f2c07](https://github.com/agrc/turn-gps-billpay/commit/a7f2c0734d4566b45a28cf6f6071d7fc47e8c477))
+
 ## [1.2.5](https://github.com/agrc/turn-gps-billpay/compare/v1.2.4...v1.2.5) (2024-10-08)
 
 
