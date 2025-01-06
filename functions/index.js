@@ -147,10 +147,7 @@ export const paymentCallBack = https.onRequest(async (request, response) => {
 export const graphQl = https.onRequest(expressServer);
 
 if (process.env.LOCAL) {
-  const port = process.env.PORT || process.env.GRAPHQL_PORT;
+  const port = process.env.GRAPHQL_PORT || process.env.PORT;
   expressServer.listen(port);
-  /* eslint-disable no-console */
-  console.log(
-    '🚀🙂😀😃 Server is running on: '`http://localhost:${process.env.GRAPHQL_PORT}`,
-  );
+  debug(`🚀🙂😀😃 Server is running locally on: http://localhost:${port}`);
 }
