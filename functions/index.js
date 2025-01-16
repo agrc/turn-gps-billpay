@@ -11,7 +11,7 @@ const vpc = params.defineString('VPC');
 const vpcEgress = 'ALL_TRAFFIC';
 const projectId = params.defineString('PROJECT_ID');
 const serviceAccount = `firebase-function-v2-sa@${projectId.value()}.iam.gserviceaccount.com`;
-const secrets = ['secrets'];
+const secrets = ['SECRETS'];
 const corsOptions = [
   /ut-dts-agrc-turn-gps-dev\.firebaseapp\.com$/,
   /ut-dts-agrc-turn-gps-prod\.firebaseapp\.com$/,
