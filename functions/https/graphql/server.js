@@ -1,11 +1,18 @@
-import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
-import 'dotenv/config';
-
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
+import 'dotenv/config';
+import express from 'express';
+import fs from 'fs';
+import { GraphQLError } from 'graphql';
 import { getAuth } from 'firebase-admin/auth';
-import schema from './schema.js';
+import path from 'path';
 import resolvers from './resolvers.js';
+import { fileURLToPath } from 'url';
+
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+const typeDefs = fs.readFileSync(path.join(dirname, '/schema.graphql')).toString('utf-8');
 
 const corsOptions = {
   origin: [
@@ -19,32 +26,47 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-const CorsMiddleware = cors(corsOptions);
-const authMiddleware = (request, response, next) => {
-  const token = request.get('authorization');
-  if (token) {
-    getAuth()
-      .verifyIdToken(token.replace('Bearer ', ''))
-      .then(() => next())
-      .catch(() => response.status(401).end());
-  } else {
-    response.status(401).end();
+const graphqlAuthError = {
+  extensions: {
+    code: 'UNAUTHENTICATED',
+    http: {status: 401},
   }
 };
 
+const authMiddleware = {
+  context: (
+    async ({ req }) => {
+      const token = req.headers.authorization || '';
+      if (token) {
+        try {
+          const decodedToken = await getAuth().verifyIdToken(token.replace('Bearer ', ''));
+          return { user: decodedToken };
+        } catch (error) {
+          throw new GraphQLError('User is not authenticated', graphqlAuthError);
+        }
+      }
+      throw new Error('No token provided');
+    }),
+};
+
 export const expressServer = express();
-expressServer.use(CorsMiddleware, authMiddleware);
+
 export const apolloServer = new ApolloServer({
-  typeDefs: schema,
+  typeDefs,
   resolvers,
   introspection: process.env.NODE_ENV !== 'production',
   playground: process.env.NODE_ENV !== 'production',
 });
 
-apolloServer.start().then(() =>
-  apolloServer.applyMiddleware({
-    app: expressServer,
-    path: '/',
-    cors: false,
-  }),
-);
+apolloServer.start()
+  .then(() => {
+    expressServer.use(
+      '/',
+      cors(corsOptions),
+      express.json(),
+      expressMiddleware(apolloServer, authMiddleware)
+    );
+  })
+  .catch((error) => {
+    console.error('Error starting Apollo Server:', error);
+  });
