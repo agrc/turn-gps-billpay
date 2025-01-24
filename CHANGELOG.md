@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/agrc/turn-gps-billpay/compare/v1.2.6...v1.2.7) (2025-01-24)
+
+
+### Bug Fixes
+
+* upgrade apollo prevent DoS issue ([#140](https://github.com/agrc/turn-gps-billpay/issues/140)) ([3a92185](https://github.com/agrc/turn-gps-billpay/commit/3a92185df71d86562af62bc47837ab1030a8821b))
+
 ## [1.2.7-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.7-0...v1.2.7-1) (2025-01-24)
 
 
