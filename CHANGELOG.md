@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.2.7-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.7-0...v1.2.7-1) (2025-01-24)
+
+
+### Bug Fixes
+
+* lowercase secret name ([07f576f](https://github.com/agrc/turn-gps-billpay/commit/07f576ff8727061e0fbe516a21144832a79a2581))
+
+## [1.2.7-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.7-0...v1.2.7-1) (2025-01-24)
+
+
+### Bug Fixes
+
+* lowercase secret name ([07f576f](https://github.com/agrc/turn-gps-billpay/commit/07f576ff8727061e0fbe516a21144832a79a2581))
+
+## [1.2.7-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.6...v1.2.7-0) (2025-01-24)
+
+
+### Bug Fixes
+
+* upgrade apollo prevent DoS issue ([75c71be](https://github.com/agrc/turn-gps-billpay/commit/75c71bea9c4a8180705c9dfed3e10ae138778f52))
+
 ## [1.2.6](https://github.com/agrc/turn-gps-billpay/compare/v1.2.5...v1.2.6) (2025-01-06)
 
 
