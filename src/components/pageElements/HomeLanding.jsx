@@ -29,7 +29,7 @@ function HomeLanding() {
         </div>
       </div>
       <div className="content-width mb-spacing-xl">
-        <h1 className="my-spacing-l text-center">Welcome to Turn GPS</h1>
+        <h1 className="my-spacing-l text-center">Welcome to TURN GPS</h1>
 
         <p className="lead-in">
           This is The Utah Reference Network (TURN GPS) running on the Trimble
@@ -38,7 +38,7 @@ function HomeLanding() {
 
         <p className="lead-in">
           GPS users that have equipment capable of connecting to the internet
-          via a cellular modem using NTRIP can connect to TurnGPS by creating a
+          via a cellular modem using NTRIP can connect to TURN GPS by creating a
           UtahID account and purchasing a 1 year subscription.
         </p>
 
