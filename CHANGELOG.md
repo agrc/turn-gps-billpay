@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.8](https://github.com/agrc/turn-gps-billpay/compare/v1.2.7...v1.2.8) (2025-04-15)
+
+
+### Bug Fixes
+
+* correct product name ([cfe7529](https://github.com/agrc/turn-gps-billpay/commit/cfe7529d02a8b707211beb0b1f81d92c0151571c))
+* update support email address ([fe5ed6f](https://github.com/agrc/turn-gps-billpay/commit/fe5ed6fafb10ee49f7a6b4695c7c6e9721cb1591))
+
 ## [1.2.7](https://github.com/agrc/turn-gps-billpay/compare/v1.2.6...v1.2.7) (2025-01-24)
 
 
