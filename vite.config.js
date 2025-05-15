@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import eslintPlugin from 'vite-plugin-eslint';
 import mkcert from 'vite-plugin-mkcert';
 import loadVersion from 'vite-plugin-package-version';
 
@@ -10,7 +9,6 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    eslintPlugin(),
     loadVersion(),
     mkcert({
       force: true,
