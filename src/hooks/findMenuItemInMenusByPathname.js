@@ -7,11 +7,7 @@
  * @returns {(WebsiteMainMenu | WebsiteMainMenuItem)[]}
  */
 function flattenChildren(parent) {
-  return [
-    parent,
-    // @ts-ignore
-    ...(parent?.children?.map(flattenChildren) || []),
-  ];
+  return [parent, ...(parent?.children?.map(flattenChildren) || [])];
 }
 
 /**

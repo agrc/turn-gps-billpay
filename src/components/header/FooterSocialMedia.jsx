@@ -1,5 +1,4 @@
 // @ts-check
-// @ts-ignore
 import { FooterSocialMediaBar } from '@utahdts/utah-design-system';
 import '@utahdts/utah-design-system-header/css';
 import IconsWebsite from '../pageElements/IconsWebsite';
