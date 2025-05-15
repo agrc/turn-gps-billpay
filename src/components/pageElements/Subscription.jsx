@@ -1,4 +1,7 @@
-import { useFunctions, useUser } from 'reactfire';
+import {
+  useFirebaseAuth,
+  useFirebaseFunctions,
+} from '@ugrc/utah-design-system';
 import { Button } from '@utahdts/utah-design-system';
 import { httpsCallable } from 'firebase/functions';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -14,14 +17,14 @@ function Subscription() {
   const navigate = useNavigate();
   const location = useLocation();
   const queryClient = useQueryClient();
-  const functions = useFunctions();
+  const { functions } = useFirebaseFunctions();
   const getSubscriptions = httpsCallable(functions, 'getSubscriptions');
   const createPayment = httpsCallable(functions, 'createPayment');
-  const { data: user } = useUser();
+  const { currentUser } = useFirebaseAuth();
   const [activeList, setActiveList] = useState([]);
   const [inactiveList, setInactiveList] = useState([]);
 
-  const uid = user?.uid;
+  const uid = currentUser?.uid;
   const isUserAvailable = uid?.length > 0;
   const buildActiveList = (arrayList) => {
     if (arrayList?.data?.length) {
@@ -47,14 +50,12 @@ function Subscription() {
     staleTime: Infinity,
   });
 
-  /* eslint-disable no-unused-vars */
   const mutation = useMutation({
     mutationFn: (payload) => createPayment(payload),
-    onError: (error, variables, context) => {
-      // eslint-disable-next-line no-console
+    onError: (_, __, context) => {
       console.error(`rolling back optimistic update with id ${context.id}`);
     },
-    onSuccess: (successData, variables, context) => {
+    onSuccess: (successData) => {
       window.location.replace(successData.data);
     },
   });

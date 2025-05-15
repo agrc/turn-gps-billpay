@@ -3,9 +3,20 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { FirebaseAppProvider } from 'reactfire';
-import './css/index.scss';
+import {
+  FirebaseAppProvider,
+  FirestoreProvider,
+  FirebaseAuthProvider,
+  FirebaseFunctionsProvider,
+} from '@ugrc/utah-design-system';
+import { OAuthProvider } from 'firebase/auth';
 import App from './components/app/App.jsx';
+
+import './css/index.scss';
+
+const utahIdProvider = new OAuthProvider('oidc.utahid');
+utahIdProvider.addScope('profile');
+utahIdProvider.addScope('email');
 
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider
@@ -22,7 +33,7 @@ createRoot(document.getElementById('root')).render(
   >
     <StrictMode>
       <FirebaseAppProvider
-        firebaseConfig={{
+        config={{
           apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
           authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
           databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
@@ -32,10 +43,16 @@ createRoot(document.getElementById('root')).render(
           appId: import.meta.env.VITE_FIREBASE_APPID,
         }}
       >
-        <BrowserRouter>
-          <App />
-          <ReactQueryDevtools />
-        </BrowserRouter>
+        <FirebaseAuthProvider provider={utahIdProvider}>
+          <FirebaseFunctionsProvider>
+            <FirestoreProvider>
+              <BrowserRouter>
+                <App />
+                <ReactQueryDevtools />
+              </BrowserRouter>
+            </FirestoreProvider>
+          </FirebaseFunctionsProvider>
+        </FirebaseAuthProvider>
       </FirebaseAppProvider>
     </StrictMode>
   </QueryClientProvider>,

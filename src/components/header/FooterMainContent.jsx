@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-
 import {
   ExternalLink,
   FooterAgencyInformation,
@@ -7,15 +5,14 @@ import {
 } from '@utahdts/utah-design-system';
 import '@utahdts/utah-design-system-header/css';
 import { Link, useNavigate } from 'react-router';
-import { useUser } from 'reactfire';
+import { useFirebaseAuth } from '@ugrc/utah-design-system';
 import FooterInformationInfo from './FooterInformationInfo';
 import logo from '../../static/images/logo.svg';
 import packageJSON from '../../../package.json';
 import { mainMenuItems } from '../../hooks/useUtahHeader';
 
 function FooterMainContent() {
-  const user = useUser();
-  const hasUser = !!user.data;
+  const { currentUser, ready } = useFirebaseAuth();
 
   return (
     <FooterAgencyInformation>
@@ -37,19 +34,21 @@ function FooterMainContent() {
       <FooterAgencyInformationColumn>
         <div className="footer-agency-information__column-title">Main Menu</div>
         <ul className="footer-agency-information__menu">
-          {mainMenuItems(hasUser, useNavigate())?.menuItems?.map((menuItem) => (
-            <li key={`footer-main-menu_${menuItem.title}`}>
-              <Link
-                to={
-                  menuItem.actionFunctionUrl?.url ||
-                  menuItem.actionUrl?.url ||
-                  '/'
-                }
-              >
-                {menuItem.title}
-              </Link>
-            </li>
-          ))}
+          {mainMenuItems(ready && currentUser, useNavigate())?.menuItems?.map(
+            (menuItem) => (
+              <li key={`footer-main-menu_${menuItem.title}`}>
+                <Link
+                  to={
+                    menuItem.actionFunctionUrl?.url ||
+                    menuItem.actionUrl?.url ||
+                    '/'
+                  }
+                >
+                  {menuItem.title}
+                </Link>
+              </li>
+            ),
+          )}
         </ul>
       </FooterAgencyInformationColumn>
 

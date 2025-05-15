@@ -1,10 +1,9 @@
-import { useUser } from 'reactfire';
+import { useFirebaseAuth } from '@ugrc/utah-design-system';
 
 function InfoBanner() {
-  const user = useUser();
-  const hasUser = !!user.data;
+  const { currentUser, ready } = useFirebaseAuth();
 
-  return !hasUser ? (
+  return ready && !currentUser ? (
     <div className="info-banner m-auto">
       <svg
         className="info-icon"
