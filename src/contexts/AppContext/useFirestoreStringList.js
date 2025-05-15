@@ -1,6 +1,6 @@
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useEffect, useMemo } from 'react';
-import { useFirestore, useFirestoreCollectionData } from 'reactfire';
+import { useFirestore } from '@ugrc/utah-design-system';
 import { useImmer } from 'use-immer';
 
 /**
@@ -25,10 +25,19 @@ export default function useFirestoreStringList(collections) {
   const firestore = useFirestore();
   const recordCollection = collection(firestore, collections);
   const deployQuery = query(recordCollection, orderBy('index', 'asc'));
-  const { data } =
-    /** @type {typeof useFirestoreCollectionData<StringListRecord>} */ (
-      useFirestoreCollectionData
-    )(deployQuery, { idField: 'id' });
+  const [data, setData] = useImmer([]);
+
+  useEffect(() => {
+    const unsubscribe = deployQuery.onSnapshot((snapshot) => {
+      const records = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setData(records);
+    });
+
+    return () => unsubscribe();
+  }, [deployQuery, setData]);
 
   const [stringList, setStringList] = /** @type {typeof useImmer<string[]>} */ (
     useImmer
