@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Route, Routes } from 'react-router';
-import { useUser } from 'reactfire';
+import { useFirebaseAuth } from '@ugrc/utah-design-system';
 
 import HomeLanding from '../pageElements/HomeLanding';
 import Page404 from '../pageElements/Page404';
@@ -14,7 +14,7 @@ import UtahIdProcess from '../pageElements/UtahIdProcess';
 
 function Routing() {
   useUtahHeader();
-  const user = useUser();
+  const { currentUser, ready } = useFirebaseAuth();
   const contentRef = useRef();
 
   return (
@@ -41,7 +41,7 @@ function Routing() {
           <MainTemplate content={UtahIdProcess} contentRef={contentRef} />
         }
       />
-      {user.data ? (
+      {ready && currentUser ? (
         <Route path={pageUrls.admin} element={<AdminLanding />} />
       ) : (
         <Route path="*" element={<Page404 />} />

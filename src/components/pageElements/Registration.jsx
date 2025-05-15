@@ -1,9 +1,11 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from '@hookform/error-message';
 import { useEffect, useState } from 'react';
-import { useFunctions, useUser } from 'reactfire';
+import {
+  useFirebaseAuth,
+  useFirebaseFunctions,
+} from '@ugrc/utah-design-system';
 import { Button, Spinner } from '@utahdts/utah-design-system';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router';
 import { httpsCallable } from 'firebase/functions';
@@ -19,8 +21,8 @@ function Registration() {
   const {
     appState: { hasTermsConditionsAgreed },
   } = useAppContext();
-  const { data: user } = useUser();
-  const functions = useFunctions();
+  const { ready, currentUser } = useFirebaseAuth();
+  const { functions } = useFirebaseFunctions();
   const navigate = useNavigate();
   const location = useLocation();
   const createTrimbleUser = httpsCallable(functions, 'createTrimbleUser');
@@ -29,11 +31,12 @@ function Registration() {
   const [busy, setBusy] = useState(false);
   const [yupSchema, setYupSchema] = useState({});
 
-  const uid = user?.uid;
+  const uid = currentUser?.uid;
   const isUserAvailable = uid?.length > 0;
+
   const { data: defaultValues, status: profileStatus } = useQuery({
-    queryKey: ['profile', uid],
-    enabled: isUserAvailable,
+    queryKey: ['profile', ready, uid],
+    enabled: ready && isUserAvailable,
     queryFn: getProfile,
     staleTime: Infinity,
   });
@@ -41,8 +44,7 @@ function Registration() {
   const mutation = useMutation({
     mutationFn: (payload) => createTrimbleUser(payload),
     onError: (_, __, context) => {
-      // eslint-disable-next-line no-console
-      console.error(`rolling back optimistic update with id ${context.id}`);
+      console.error(`rolling back optimistic update with id ${context}`);
     },
     onSuccess: () => {
       navigate(pageUrls.subscription, { state: { from: location } });
@@ -54,11 +56,11 @@ function Registration() {
   });
 
   useEffect(() => {
-    user?.getIdToken().then((idToken) => {
+    currentUser?.getIdToken().then((idToken) => {
       const strIdToken = idToken.replace(/\n|\r/g, '');
       setYupSchema(registrationSchema(strIdToken));
     });
-  }, [user]);
+  }, [currentUser]);
 
   const { formState, register, handleSubmit, setFocus, reset } = useForm({
     resolver: yupResolver(yupSchema),

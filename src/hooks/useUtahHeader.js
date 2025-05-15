@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 import {
   setUtahHeaderSettings,
   sizes,
@@ -6,9 +5,7 @@ import {
 import identity from 'lodash/identity';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { useUser } from 'reactfire';
-import useSignInFunc from './useSignInFunc';
-import useSignOutFunc from './useSignOutFunc';
+import { useFirebaseAuth } from '@ugrc/utah-design-system';
 import logo from '../static/images/turn_logo.svg';
 import pageUrls from '../enums/pageUrls';
 
@@ -73,12 +70,10 @@ export const mainMenuItems = (hasUser, navigate) => ({
 /** useUtahHeader */
 export default function useUtahHeader() {
   const navigate = useNavigate();
-  const user = useUser();
   const location = useLocation();
-  const signOut = useSignOutFunc();
-  const signIn = useSignInFunc();
+  const { ready, currentUser, login, logout } = useFirebaseAuth();
 
-  const hasUser = !!user.data;
+  const hasUser = ready && currentUser;
 
   useEffect(() => {
     setUtahHeaderSettings({
@@ -104,15 +99,22 @@ export default function useUtahHeader() {
       title: 'TURN GPS Bill Pay',
       titleURL: '/',
       utahId: {
-        onSignIn: signIn,
-        onSignOut: signOut,
+        onSignIn: login,
+        onSignOut: logout,
         currentUser: hasUser
           ? {
               authenticated: true,
-              first: user?.data?.displayName?.split(' ')?.[0] || '',
+              first: currentUser?.displayName?.split(' ')?.[0] || '',
             }
           : null,
       },
     });
-  }, [navigate, hasUser, user, location.pathname, signIn, signOut]);
+  }, [
+    navigate,
+    hasUser,
+    location.pathname,
+    login,
+    logout,
+    currentUser?.displayName,
+  ]);
 }
