@@ -25,15 +25,13 @@ function FooterSocialMedia() {
         <span className="visually-hidden">UGRC GitHub, opens in a new tab</span>
       </a>
       <a
-        href="https://twitter.com/MapUtah"
+        href="https://x.com/MapUtah"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
       >
         {IconsWebsite.IconTwitter()}
-        <span className="visually-hidden">
-          UGRC Twitter, opens in a new tab
-        </span>
+        <span className="visually-hidden">UGRC X, opens in a new tab</span>
       </a>
       <a
         href="https://facebook.com/UtahAGRC"
@@ -44,6 +42,17 @@ function FooterSocialMedia() {
         {IconsWebsite.IconFacebook()}
         <span className="visually-hidden">
           UGRC Facebook, opens in a new tab
+        </span>
+      </a>
+      <a
+        href="https://instagram.com/ugrc.gis"
+        className="icon-link"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {IconsWebsite.IconInstagram()}
+        <span className="visually-hidden">
+          UGRC Instagram, opens in a new tabq
         </span>
       </a>
       <a
