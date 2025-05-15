@@ -18,9 +18,8 @@
     "eslint": "npx eslint .",
     "postinstall": "cd functions && npm install",
     "preview": "vite preview",
-    "lint": "eslint ./ --ext .js,.mjs,.jsx --ignore-path ./.eslintignore",
-    "lint:fix": "eslint ./ --ext .js,.mjs,.jsx --quiet --fix --ignore-path ./.eslintignore",
     "format": "prettier . --write",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "fb:serve": "cross-env NODE_ENV=development firebase emulators:start --only functions",
     "fb:deploy": "firebase deploy --only functions",
     "graphql": "node functions/index.js",
@@ -28,89 +27,45 @@
   },
   "dependencies": {
     "@hookform/error-message": "2.0.1",
-    "@hookform/resolvers": "3.9.1",
-    "@tanstack/react-query": "5.62.11",
-    "@tanstack/react-query-devtools": "5.62.11",
-    "@utahdts/utah-design-system": "3.0.3",
-    "@utahdts/utah-design-system-header": "3.0.3",
-    "firebase": "^9.23.0",
-    "firebase-admin": "13.0.2",
+    "@hookform/resolvers": "5.0.1",
+    "@tanstack/react-query": "5.76.1",
+    "@tanstack/react-query-devtools": "5.76.1",
+    "@ugrc/utah-design-system": "^1.27.1",
+    "@utahdts/utah-design-system": "3.0.5",
+    "@utahdts/utah-design-system-header": "3.0.5",
+    "firebase": "^11.7.3",
+    "firebase-admin": "13.4.0",
     "lodash": "4.17.21",
     "prop-types": "15.8.1",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-hook-form": "7.54.2",
-    "react-router": "^7.1.1",
-    "reactfire": "4.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "7.56.3",
+    "react-router": "^7.6.0",
     "use-immer": "0.11.0",
     "yup": "1.6.1",
     "yup-phone-lite": "2.0.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.25.9",
-    "@babel/plugin-syntax-import-assertions": "7.26.0",
-    "@babel/preset-react": "7.26.3",
-    "@types/react": "18.3.11",
-    "@types/react-dom": "18.3.0",
-    "@vitejs/plugin-react-swc": "3.7.2",
+    "@babel/eslint-parser": "7.27.1",
+    "@babel/plugin-syntax-import-assertions": "7.27.1",
+    "@babel/preset-react": "7.27.1",
+    "@types/react": "19.1.4",
+    "@types/react-dom": "19.1.5",
+    "@ugrc/eslint-config": "^1.2.2",
+    "@vitejs/plugin-react-swc": "3.9.0",
     "concurrently": "^9.1.2",
     "cross-env": "7.0.3",
-    "eslint": "8.56.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.2.1",
-    "eslint-plugin-react": "7.37.3",
-    "eslint-plugin-react-hooks": "5.1.0",
-    "eslint-plugin-react-refresh": "0.4.16",
-    "firebase-tools": "13.29.1",
-    "lint-staged": "15.3.0",
-    "prettier": "3.4.2",
+    "eslint": "9.26.0",
+    "firebase-tools": "14.3.1",
+    "lint-staged": "16.0.0",
+    "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-packagejson": "^2.5.6",
-    "sass": "1.83.0",
-    "vite": "6.0.7",
-    "vite-plugin-eslint": "1.8.1",
-    "vite-plugin-mkcert": "1.17.6",
+    "prettier-plugin-packagejson": "^2.5.13",
+    "sass": "1.88.0",
+    "vite": "6.3.5",
+    "vite-plugin-mkcert": "1.17.8",
     "vite-plugin-package-version": "1.1.0",
-    "wait-on": "^8.0.1"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true,
-      "node": true,
-      "jest": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:react/jsx-runtime",
-      "plugin:react-hooks/recommended",
-      "plugin:jsx-a11y/recommended",
-      "prettier"
-    ],
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 12,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react",
-      "prettier",
-      "jsx-a11y",
-      "react-hooks",
-      "react-refresh"
-    ],
-    "rules": {
-      "react-refresh/only-export-components": "warn"
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    }
+    "wait-on": "^8.0.3"
   },
   "prettier": {
     "singleQuote": true,
