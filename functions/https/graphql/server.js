@@ -12,7 +12,9 @@ import { fileURLToPath } from 'url';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
-const typeDefs = fs.readFileSync(path.join(dirname, '/schema.graphql')).toString('utf-8');
+const typeDefs = fs
+  .readFileSync(path.join(dirname, '/schema.graphql'))
+  .toString('utf-8');
 
 const corsOptions = {
   origin: [
@@ -29,24 +31,25 @@ const corsOptions = {
 const graphqlAuthError = {
   extensions: {
     code: 'UNAUTHENTICATED',
-    http: {status: 401},
-  }
+    http: { status: 401 },
+  },
 };
 
 const authMiddleware = {
-  context: (
-    async ({ req }) => {
-      const token = req.headers.authorization || '';
-      if (token) {
-        try {
-          const decodedToken = await getAuth().verifyIdToken(token.replace('Bearer ', ''));
-          return { user: decodedToken };
-        } catch (error) {
-          throw new GraphQLError('User is not authenticated', graphqlAuthError);
-        }
+  context: async ({ req }) => {
+    const token = req.headers.authorization || '';
+    if (token) {
+      try {
+        const decodedToken = await getAuth().verifyIdToken(
+          token.replace('Bearer ', ''),
+        );
+        return { user: decodedToken };
+      } catch {
+        throw new GraphQLError('User is not authenticated', graphqlAuthError);
       }
-      throw new Error('No token provided');
-    }),
+    }
+    throw new Error('No token provided');
+  },
 };
 
 export const expressServer = express();
@@ -58,13 +61,14 @@ export const apolloServer = new ApolloServer({
   playground: process.env.NODE_ENV !== 'production',
 });
 
-apolloServer.start()
+apolloServer
+  .start()
   .then(() => {
     expressServer.use(
       '/',
       cors(corsOptions),
       express.json(),
-      expressMiddleware(apolloServer, authMiddleware)
+      expressMiddleware(apolloServer, authMiddleware),
     );
   })
   .catch((error) => {

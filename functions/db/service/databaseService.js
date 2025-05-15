@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import sql from 'mssql';
 import {
   getRoleGroupsQuery,
@@ -48,7 +47,6 @@ export const getRoleGroups = async () => {
     const result = await pool.query(getRoleGroupsQuery);
     return result?.recordset;
   } catch (err) {
-    /* eslint-disable no-console */
     console.error(err);
   }
 };
@@ -59,7 +57,6 @@ export const getRoles = async () => {
     const result = await pool.query(getRolesQuery);
     return result?.recordset;
   } catch (err) {
-    /* eslint-disable no-console */
     console.error(err);
   }
 };

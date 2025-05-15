@@ -58,10 +58,9 @@ export const getProfile = https.onCall(
       );
     }
 
-    /* eslint-disable no-shadow */
-    const { getProfile } = await import('./https/getProfile.js');
+    const { getProfile: handle } = await import('./https/getProfile.js');
 
-    return getProfile(request.auth);
+    return handle(request.auth);
   },
 );
 
@@ -77,10 +76,11 @@ export const createTrimbleUser = https.onCall(
       );
     }
 
-    /* eslint-disable no-shadow */
-    const { createTrimbleUser } = await import('./https/createTrimbleUser.js');
+    const { createTrimbleUser: handle } = await import(
+      './https/createTrimbleUser.js'
+    );
 
-    const result = await createTrimbleUser(request);
+    const result = await handle(request);
 
     debug('[https::createTrimbleUser]', result);
 
@@ -100,10 +100,11 @@ export const getSubscriptions = https.onCall(
       );
     }
 
-    /* eslint-disable no-shadow */
-    const { getSubscriptions } = await import('./https/getSubscriptions.js');
+    const { getSubscriptions: handle } = await import(
+      './https/getSubscriptions.js'
+    );
 
-    const result = await getSubscriptions(request);
+    const result = await handle(request);
 
     debug('[https::getSubscriptions]', result);
 
@@ -123,10 +124,9 @@ export const createPayment = https.onCall(
       );
     }
 
-    /* eslint-disable no-shadow */
-    const { createPayment } = await import('./https/createPayment.js');
+    const { createPayment: handle } = await import('./https/createPayment.js');
 
-    const result = await createPayment(request);
+    const result = await handle(request);
 
     debug('[https::createPayment]', result);
 
@@ -146,8 +146,8 @@ export const paymentCallBack = https.onRequest(async (request, response) => {
 
 export const graphQl = https.onRequest(expressServer);
 
-if (process.env.LOCAL) {
-  const port = process.env.GRAPHQL_PORT || process.env.PORT;
-  expressServer.listen(port);
-  debug(`🚀🙂😀😃 Server is running locally on: http://localhost:${port}`);
-}
+// if (process.env.LOCAL) {
+//   const port = process.env.GRAPHQL_PORT || process.env.PORT;
+//   expressServer.listen(port);
+//   debug(`🚀🙂😀😃 Server is running locally on: http://localhost:${port}`);
+// }

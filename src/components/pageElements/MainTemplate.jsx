@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable max-len */
 import PropTypes from 'prop-types';
 import { useImmer } from 'use-immer';
 import FooterSocialMedia from '../header/FooterSocialMedia';

@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-restricted-syntax */
 import { auth, https, logger } from 'firebase-functions/v1';
 import { error, info } from 'firebase-functions/logger';
 import axios from 'axios';
