@@ -4,6 +4,7 @@ import { https, setGlobalOptions } from 'firebase-functions/v2';
 import { params } from 'firebase-functions';
 import { expressServer } from './https/graphql/server.js';
 import { beforeUserCreated } from 'firebase-functions/v2/identity';
+import * as v1 from 'firebase-functions/v1';
 
 initializeApp();
 
@@ -24,6 +25,25 @@ setGlobalOptions({
   vpcConnectorEgressSettings: vpcEgress,
   secrets,
 });
+
+export const onCreateUser = v1
+  .runWith({
+    vpcConnector: vpc,
+    vpcConnectorEgressSettings: vpcEgress,
+    serviceAccount,
+    secrets,
+  })
+  .auth.user()
+  .onCreate(async (user) => {
+    debug('[auth::user::onCreate] importing createUser');
+    const { onCreate } = await import('./auth/onCreate.js');
+
+    const result = await onCreate(user);
+
+    debug('[auth::user::onCreate]', result);
+
+    return result;
+  });
 
 // auth
 export const onBeforeUserCreated = beforeUserCreated(
