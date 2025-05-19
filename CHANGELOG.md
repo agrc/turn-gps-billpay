@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.10](https://github.com/agrc/turn-gps-billpay/compare/v1.2.9...v1.2.10) (2025-05-19)
+
+
+### Bug Fixes
+
+* **api:** remove v1 account creation function ([e35c34c](https://github.com/agrc/turn-gps-billpay/commit/e35c34c3f5c18fd4d49b3908898cfd7acde45c2b))
+
+
+### Dependencies
+
+* bump the safe-app-dependencies group across 1 directory with 4 updates ([6cefbee](https://github.com/agrc/turn-gps-billpay/commit/6cefbee9e77bf5f2d699c8c967c200b33edae177))
+
 ## [1.2.9](https://github.com/agrc/turn-gps-billpay/compare/v1.2.8...v1.2.9) (2025-05-19)
 
 
