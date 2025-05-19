@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.9](https://github.com/agrc/turn-gps-billpay/compare/v1.2.8...v1.2.9) (2025-05-19)
+
+
+### Bug Fixes
+
+* **api:** bring back v1 function for migration purposes ([9f56add](https://github.com/agrc/turn-gps-billpay/commit/9f56addd2525da1a6e410d8a9a83d5584de9c6d2))
+
 ## [1.2.8](https://github.com/agrc/turn-gps-billpay/compare/v1.2.7...v1.2.8) (2025-05-19)
 
 
