@@ -15,7 +15,6 @@
     "dev:vite": "vite",
     "build": "vite build",
     "cleaninstall_win": "@powershell -NoProfile -ExecutionPolicy Unrestricted -Command ./scripts/cleaninstall_win.ps1",
-    "eslint": "npx eslint .",
     "postinstall": "cd functions && npm install",
     "preview": "vite preview",
     "format": "prettier . --write",
