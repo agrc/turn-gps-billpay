@@ -144,6 +144,18 @@ export const paymentCallBack = https.onRequest(async (request, response) => {
   return result;
 });
 
+export const syncTrimbleUsers = https.onRequest(async (request, response) => {
+  const { syncTrimbleUsers: handle } = await import(
+    './https/syncTrimbleUsers.js'
+  );
+
+  const result = await handle(request, response);
+
+  debug('[https::syncTrimbleUsers : result]', result.length);
+
+  response.status(200).send({ inserted: result.length });
+});
+
 export const graphQl = https.onRequest(expressServer);
 
 // if (process.env.LOCAL) {
