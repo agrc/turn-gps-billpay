@@ -181,3 +181,23 @@ export const getRoleGroupsQuery =
 export const getNextOrderNumberQuery =
   'SELECT NEXT VALUE FOR ' +
   `${schema}.[dbo].[ECommerceSequence] AS orderNumber `;
+
+export const emailQuery = `
+SELECT Email, AdditionalEmail
+FROM Users
+WHERE UserID IN (
+--Find all the Users that belong to the found LoginIds
+SELECT UserId
+FROM Logins
+WHERE LoginId IN (
+--SELECT The subscriptions which expire after today and are valid before today and are activated
+--Extract the LoginId FROM the subscriptions
+--Distinct ensures that a login is only found once
+SELECT Distinct LoginId
+FROM Subscriptions
+WHERE ExpirationDateUtc > GETUTCDATE()
+AND
+EffectiveDateUtc <= GETUTCDATE()
+AND
+Activated = 1 ))
+`;

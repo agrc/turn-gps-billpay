@@ -20,6 +20,7 @@ import {
   updateSubscriptionQuery,
   checkTrimbleLoginExistsByOrgNameQuery,
   getNextOrderNumberQuery,
+  emailQuery,
 } from '../queries.js';
 
 const DB = process.env.secrets
@@ -292,6 +293,7 @@ export const insertRoleGroup = async (loginId, roleGroup) => {
   }
   return null;
 };
+
 export const insertTrimbleSubscriptionItem = async (subscriptionId) => {
   if (subscriptionId) {
     const values = [
@@ -318,5 +320,12 @@ export const insertTrimbleSubscriptionItem = async (subscriptionId) => {
 export const getNextOrderNumber = async () => {
   const pool = await sql.connect(sqlConfig);
   const result = await pool.request().query(getNextOrderNumberQuery);
+  return result?.recordset ? result.recordset : null;
+};
+
+export const selectActiveSubscriptions = async () => {
+  const pool = await sql.connect(sqlConfig);
+  const result = await pool.request().query(emailQuery);
+
   return result?.recordset ? result.recordset : null;
 };
