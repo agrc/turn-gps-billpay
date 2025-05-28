@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.11-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.10...v1.2.11-0) (2025-05-28)
+
+
+### Features
+
+* **api:** create function to sync active accounts with sendgrid marketing ([404242c](https://github.com/agrc/turn-gps-billpay/commit/404242caf8878f70653cd07ab3f2b7371a1e0887))
+
 ## [1.2.10](https://github.com/agrc/turn-gps-billpay/compare/v1.2.9...v1.2.10) (2025-05-19)
 
 
