@@ -69,6 +69,31 @@ jobs:
           VITE_FIREBASE_APPID: ${{ vars.VITE_FIREBASE_APPID }}
           VPC: ${{ secrets.VPC }}
 
+      - name: 🗝️ Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ inputs.identity_provider }}
+          service_account: ${{ inputs.service_account_email }}
+          token_format: 'access_token'
+
+      - name: ☁️ Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: 🕰️ Create Cloud Scheduler
+        shell: bash
+        run: |
+          for i in $(gcloud scheduler jobs list --location=us-central1 --uri); do
+            gcloud scheduler jobs delete $i --quiet
+          done
+          gcloud scheduler jobs create http contact-sync-schedule \
+            --description="Trigger the TURN GPS contact sync bot once a day in the evening" \
+            --schedule="0 18 * * *" \
+            --time-zone=America/Denver \
+            --location=us-central1 \
+            --uri="https://us-central1-${{ inputs.project_id }}.cloudfunctions.net/syncTrimbleUsers" \
+            --oauth-service-account-email=scheduler-sa@${{ inputs.project_id }}.iam.gserviceaccount.com
+
   notify:
     name: Notifications
     runs-on: ubuntu-latest
