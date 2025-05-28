@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.11-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.11-0...v1.2.11-1) (2025-05-28)
+
+
+### Bug Fixes
+
+* **api:** keep function private ([727b7cc](https://github.com/agrc/turn-gps-billpay/commit/727b7ccb05ca15f2d1de9759c2d8d22899107502))
+
 ## [1.2.11-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.10...v1.2.11-0) (2025-05-28)
 
 
