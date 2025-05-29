@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.12-2](https://github.com/agrc/turn-gps-billpay/compare/v1.2.12-1...v1.2.12-2) (2025-05-29)
+
+
+### Bug Fixes
+
+* generate correct token type for functions ([a1adf21](https://github.com/agrc/turn-gps-billpay/commit/a1adf21bff388a573f6a277274608986e4b20a15))
+
 ## [1.2.12-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.12-0...v1.2.12-1) (2025-05-29)
 
 
