@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.12-1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.12-0...v1.2.12-1) (2025-05-29)
+
+
+### Bug Fixes
+
+* correct cloud scheduler syntax ([0ff8f5e](https://github.com/agrc/turn-gps-billpay/commit/0ff8f5e30264a4da334c1d0966efd0584718532d))
+
 ## [1.2.12-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.11...v1.2.12-0) (2025-05-29)
 
 
