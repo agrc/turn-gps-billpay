@@ -50,8 +50,8 @@ jobs:
             --schedule="0 18 * * *" \
             --time-zone=America/Denver \
             --location=us-central1 \
-            --uri="https://us-central1-${{ inputs.project_id }}.cloudfunctions.net/syncTrimbleUsers" \
-            --oauth-service-account-email=scheduler-sa@${{ inputs.project_id }}.iam.gserviceaccount.com
+            --uri="https://us-central1-${{ secrets.PROJECT_ID }}.cloudfunctions.net/syncTrimbleUsers" \
+            --oauth-service-account-email=scheduler-sa@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
 
       - name: 🙅 Pause Scheduler Job
         shell: bash
@@ -105,8 +105,8 @@ jobs:
             --schedule="0 18 * * *" \
             --time-zone=America/Denver \
             --location=us-central1 \
-            --uri="https://us-central1-${{ inputs.project_id }}.cloudfunctions.net/syncTrimbleUsers" \
-            --oauth-service-account-email=scheduler-sa@${{ inputs.project_id }}.iam.gserviceaccount.com
+            --uri="https://us-central1-${{ secrets.PROJECT_ID }}.cloudfunctions.net/syncTrimbleUsers" \
+            --oauth-service-account-email=scheduler-sa@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
 
   notify:
     name: Notifications
