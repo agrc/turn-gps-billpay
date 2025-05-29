@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.12](https://github.com/agrc/turn-gps-billpay/compare/v1.2.11...v1.2.12) (2025-05-29)
+
+
+### Bug Fixes
+
+* correct cloud scheduler syntax ([685ed3b](https://github.com/agrc/turn-gps-billpay/commit/685ed3b7d374e0f5b0298b6b9076e336df814394))
+* generate correct token type for functions ([2e3c7ab](https://github.com/agrc/turn-gps-billpay/commit/2e3c7ab4ba785c7a99e99e7873e567b216e1e730))
+* remove duplicate authentication step ([dffa858](https://github.com/agrc/turn-gps-billpay/commit/dffa8586223e2b8d01699cf136a7a9e27d604323))
+
 ## [1.2.12-2](https://github.com/agrc/turn-gps-billpay/compare/v1.2.12-1...v1.2.12-2) (2025-05-29)
 
 
