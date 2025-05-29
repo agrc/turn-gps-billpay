@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.12-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.11...v1.2.12-0) (2025-05-29)
+
+
+### Bug Fixes
+
+* remove duplicate authentication step ([84f0add](https://github.com/agrc/turn-gps-billpay/commit/84f0add57246f666b727ce6c5d89239d339742d1))
+
 ## [1.2.11](https://github.com/agrc/turn-gps-billpay/compare/v1.2.10...v1.2.11) (2025-05-29)
 
 
