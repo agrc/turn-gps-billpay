@@ -108,7 +108,7 @@ jobs:
             --location=us-central1 \
             --http-method=GET \
             --uri="https://us-central1-${{ secrets.PROJECT_ID }}.cloudfunctions.net/syncTrimbleUsers" \
-            --oauth-service-account-email=scheduler-sa@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
+            --oidc-service-account-email=scheduler-sa@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
 
   notify:
     name: Notifications
