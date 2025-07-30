@@ -2,7 +2,7 @@
   "functions": {
     "source": "functions",
     "codebase": "default",
-    "runtime": "nodejs20",
+    "runtime": "nodejs22",
     "ignore": [
       ".emulator-data",
       ".git",
@@ -26,7 +26,11 @@
   },
   "hosting": {
     "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "/robots.txt",
