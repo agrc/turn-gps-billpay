@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@apollo/server": "4.12.1",
-    "@as-integrations/express5": "^1.1.1",
+    "@as-integrations/express5": "^1.1.2",
     "@sendgrid/client": "^8.1.5",
     "axios": "1.10.0",
     "cors": "2.8.5",
