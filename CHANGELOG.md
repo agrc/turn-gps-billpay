@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.14-0...v1.3.0-0) (2025-07-30)
+
+
+### Features
+
+* update to LTS function runtime ([fc0c0d1](https://github.com/agrc/turn-gps-billpay/commit/fc0c0d1185d3d0ca2ac54a31be55eacff06453a2))
+
 ## [1.2.14-0](https://github.com/agrc/turn-gps-billpay/compare/v1.2.13...v1.2.14-0) (2025-07-30)
 
 
