@@ -39,7 +39,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "7.60.0",
-    "react-router": "^7.6.3",
+    "react-router": "^7.7.0",
     "use-immer": "0.11.0",
     "yup": "1.6.1",
     "yup-phone-lite": "2.0.1"
@@ -51,11 +51,11 @@
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@ugrc/eslint-config": "^1.2.3",
-    "@vitejs/plugin-react-swc": "3.10.2",
+    "@vitejs/plugin-react-swc": "3.11.0",
     "concurrently": "^9.2.0",
     "cross-env": "7.0.3",
     "eslint": "9.26.0",
-    "firebase-tools": "14.10.1",
+    "firebase-tools": "14.11.0",
     "lint-staged": "16.1.2",
     "prettier": "3.6.2",
     "prettier-plugin-organize-imports": "^4.1.0",
@@ -64,7 +64,7 @@
     "vite": "6.3.5",
     "vite-plugin-mkcert": "1.17.8",
     "vite-plugin-package-version": "1.1.0",
-    "wait-on": "^8.0.3"
+    "wait-on": "^8.0.4"
   },
   "prettier": {
     "singleQuote": true,
