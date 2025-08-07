@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.2.14](https://github.com/agrc/turn-gps-billpay/compare/v1.2.13...v1.2.14) (2025-08-07)
+
+
+### Features
+
+* update to LTS function runtime ([4874337](https://github.com/agrc/turn-gps-billpay/commit/4874337d7e46cd1a0972f14691efee412b1e0416))
+
+
+### Dependencies
+
+* bump @as-integrations/express5 ([0a3d6e4](https://github.com/agrc/turn-gps-billpay/commit/0a3d6e4ad44a0185318447483df9afa1bc15ade0))
+* bump the major-app-dependencies group across 1 directory with 4 updates ([628f6ff](https://github.com/agrc/turn-gps-billpay/commit/628f6ff0ccfe59102c6ec1d78255331050b70254))
+* bump the npm_and_yarn group in /functions with 1 update ([0b2508b](https://github.com/agrc/turn-gps-billpay/commit/0b2508b470a6b954f9130e2616ad1e25b78e43ff))
+* bump the npm_and_yarn group with 3 updates ([46570d6](https://github.com/agrc/turn-gps-billpay/commit/46570d65a51259632632d0c09400d4d49ec1ebe4))
+* bump the safe-app-dependencies group across 1 directory with 15 updates ([52304e6](https://github.com/agrc/turn-gps-billpay/commit/52304e671de1fc269192da30cef00345890a658e))
+* bump the safe-app-dependencies group with 4 updates ([604f0fa](https://github.com/agrc/turn-gps-billpay/commit/604f0fadb0770b459ce1c0fe554914ba38edcab8))
+* bump the safe-function-dependencies group across 1 directory with 5 updates ([1d6abcc](https://github.com/agrc/turn-gps-billpay/commit/1d6abcca8c6885f66e61ec694967719285a12b1d))
+* **functions:** update deps to force new build ([efbcab8](https://github.com/agrc/turn-gps-billpay/commit/efbcab8719463db24b2d14d68170034bc05d1cd3))
+* update [@ugrc](https://github.com/ugrc) packages and audit fix ([84e1f44](https://github.com/agrc/turn-gps-billpay/commit/84e1f444b455a42b949dfaf00b3f6429b451c169))
+
 ## [1.3.0-rc.1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.14-0...v1.3.0-rc.1) (2025-08-07)
 
 
