@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/turn-gps-billpay-function",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "license": "MIT",
   "author": "",
@@ -13,7 +13,7 @@
     "@apollo/server": "4.12.1",
     "@as-integrations/express5": "^1.1.2",
     "@sendgrid/client": "^8.1.5",
-    "axios": "1.10.0",
+    "axios": "1.11.0",
     "cors": "2.8.5",
     "dotenv": "16.6.1",
     "email-validator": "^2.0.4",
@@ -22,7 +22,7 @@
     "firebase-functions": "6.4.0",
     "graphql": "16.11.0",
     "mssql": "11.0.1",
-    "soap": "1.1.12"
+    "soap": "1.2.1"
   },
   "overrides": {
     "soap": {
