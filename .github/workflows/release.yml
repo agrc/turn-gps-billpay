@@ -37,7 +37,7 @@ jobs:
           VPC: ${{ secrets.VPC }}
 
       - name: ☁️ Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
 
       - name: 🕰️ Create Cloud Scheduler
         shell: bash
@@ -93,7 +93,7 @@ jobs:
           VPC: ${{ secrets.VPC }}
 
       - name: ☁️ Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@v3
 
       - name: 🕰️ Create Cloud Scheduler
         shell: bash
