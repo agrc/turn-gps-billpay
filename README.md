@@ -1,6 +1,6 @@
 # TURN GPS Bill Pay
 
-[![Push Events](https://github.com/agrc/turn-gps-billpay/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/turn-gps-billpay/actions/workflows/push.yml)
+[![Release Events](https://github.com/agrc/turn-gps-billpay/actions/workflows/release.yml/badge.svg)](https://github.com/agrc/turn-gps-billpay/actions/workflows/release.yml)
 
 ## What is TURN GPS Bill Pay
 
