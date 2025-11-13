@@ -1,0 +1,17 @@
+packages:
+  - functions
+
+ignoredBuiltDependencies:
+  - '@vaadin/vaadin-usage-statistics'
+
+onlyBuiltDependencies:
+  - '@apollo/protobufjs'
+  - '@firebase/util'
+  - '@parcel/watcher'
+  - '@swc/core'
+  - esbuild
+  - protobufjs
+  - re2
+
+overrides:
+  '@eslint/plugin-kit@<0.3.4': '>=0.3.4'

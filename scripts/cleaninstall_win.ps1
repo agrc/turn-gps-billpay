@@ -9,7 +9,7 @@ if (Test-Path ./node_modules) {
 }
 
 "Begin npm install"
-npm install
+pnpm install
 "End npm install"
 
 if (Test-Path ../functions/package-lock.json) {
@@ -25,5 +25,5 @@ if (Test-Path ../functions/node_modules) {
 cd ../functions
 "cd ../functions"
 "Begin npm install"
-npm install
+pnpm install
 "End npm install"

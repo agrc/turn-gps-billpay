@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "license": "MIT",
-  "author": "",
+  "author": "DTS and UGRC",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "express": "5.1.0",
     "firebase-admin": "13.5.0",
     "firebase-functions": "6.6.0",
-    "graphql": "16.11.0",
+    "graphql": "16.12.0",
     "mssql": "11.0.1",
     "soap": "1.6.0"
   },
