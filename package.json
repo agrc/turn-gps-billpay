@@ -33,7 +33,7 @@
     "@utahdts/utah-design-system-header": "4.2.1",
     "firebase": "^12.5.0",
     "firebase-admin": "13.6.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "prop-types": "15.8.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
