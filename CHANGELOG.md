@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.16](https://github.com/agrc/turn-gps-billpay/compare/v1.2.15...v1.2.16) (2026-02-13)
+
+
+### Dependencies
+
+* bump @apollo/server from 5.1.0 to 5.4.0 in /functions ([0b4eae0](https://github.com/agrc/turn-gps-billpay/commit/0b4eae08aa3dbac0d8d1204c1da7d01568779a78))
+* bump axios from 1.13.2 to 1.13.5 in /functions ([63a829e](https://github.com/agrc/turn-gps-billpay/commit/63a829e2a918220f35e70bca35dece27e8e7e695))
+* bump the safe-app-dependencies group with 22 updates ([0dc962f](https://github.com/agrc/turn-gps-billpay/commit/0dc962f5bd77e645aad8ae61f8023ad4d58032be))
+* **dev:** bump the major-app-dependencies group across 1 directory with 2 updates ([3d03371](https://github.com/agrc/turn-gps-billpay/commit/3d03371fea6e27f00a2d22edec90af6a7451241c))
+* fy26 q3 dependency updates ([51156a3](https://github.com/agrc/turn-gps-billpay/commit/51156a3502e2e526e295738498d63a80b9c40688))
+
+
+### Documentation
+
+* add attribution ([5130a39](https://github.com/agrc/turn-gps-billpay/commit/5130a3944c4902c5b2c14748657f24bbd1c44288))
+
 ## [1.2.15](https://github.com/agrc/turn-gps-billpay/compare/v1.2.14...v1.2.15) (2025-11-17)
 
 
