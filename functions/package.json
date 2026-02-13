@@ -13,7 +13,7 @@
     "@apollo/server": "5.2.0",
     "@as-integrations/express5": "^1.1.2",
     "@sendgrid/client": "^8.1.6",
-    "axios": "1.13.2",
+    "axios": "1.13.5",
     "cors": "2.8.5",
     "dotenv": "17.2.3",
     "email-validator": "^2.0.4",
