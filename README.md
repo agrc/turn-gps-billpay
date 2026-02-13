@@ -55,3 +55,7 @@ See [google doc](https://docs.google.com/document/d/14j7817psXXKBa9vGuP0nd6bKcxY
 1. `firebase login`
 1. `pnpm run dev`
 1. Once everything is loaded, navigate to `http://localhost:5173/`
+
+## Attribution
+
+This project was developed with the assistance of [GitHub Copilot](https://github.com/features/copilot).
