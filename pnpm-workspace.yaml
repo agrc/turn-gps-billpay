@@ -14,4 +14,19 @@ onlyBuiltDependencies:
   - re2
 
 overrides:
+  '@apollo/server@>=5.0.0 <5.4.0': '>=5.4.0'
   '@eslint/plugin-kit@<0.3.4': '>=0.3.4'
+  '@isaacs/brace-expansion@<=5.0.0': '>=5.0.1'
+  '@modelcontextprotocol/sdk@<1.24.0': '>=1.24.0'
+  '@modelcontextprotocol/sdk@<1.25.2': '>=1.25.2'
+  '@modelcontextprotocol/sdk@>=1.10.0 <=1.25.3': '>=1.26.0'
+  axios@<=1.13.4: '>=1.13.5'
+  diff@>=4.0.0 <4.0.4: '>=4.0.4'
+  hono@<4.11.4: '>=4.11.4'
+  hono@<4.11.7: '>=4.11.7'
+  lodash-es@>=4.0.0 <=4.17.22: '>=4.17.23'
+  qs@>=6.7.0 <=6.14.1: '>=6.14.2'
+  storybook@>=9.0.0 <9.1.17: '>=9.1.17'
+  tar@<7.5.7: '>=7.5.7'
+  tar@<=7.5.2: '>=7.5.3'
+  tar@<=7.5.3: '>=7.5.4'
