@@ -53,8 +53,8 @@ See [google doc](https://docs.google.com/document/d/14j7817psXXKBa9vGuP0nd6bKcxY
 
 1. `pnpm install`
 1. `firebase login`
-1. `pnpm run dev`
-1. Once everything is loaded, navigate to `http://localhost:5173/`
+1. `pnpm start`
+1. Once everything is loaded, navigate to `https://localhost:5173/`
 
 ## Attribution
 
