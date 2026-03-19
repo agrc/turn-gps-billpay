@@ -94,7 +94,7 @@ function HomeLanding() {
 
           <Accordion
             headerContent="View Terms and Conditions"
-            headingLevel={3}
+            headingLevel={2}
             headerClassName="button button--solid"
             className="mb-spacing-l home-page--accordion-small"
             isOpen
