@@ -56,7 +56,7 @@ function FooterSocialMedia() {
         className="icon-link"
         target="_blank"
         rel="noreferrer"
-        aria-label="UGRC Youtube, opens in a new tab"
+        aria-label="UGRC YouTube, opens in a new tab"
       >
         {IconsWebsite.IconYouTube()}
       </a>
