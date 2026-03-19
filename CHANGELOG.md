@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.17](https://github.com/agrc/turn-gps-billpay/compare/v1.2.16...v1.2.17) (2026-03-19)
+
+
+### Bug Fixes
+
+* **a11y:** fix contrast errors and skipped header level ([3ff86ef](https://github.com/agrc/turn-gps-billpay/commit/3ff86ef64e2e10d5389437b8645959c2adc381b3))
+
+
+### Dependencies
+
+* bump npm dependencies 🌲 ([e09074d](https://github.com/agrc/turn-gps-billpay/commit/e09074dbbe2ccca7a641e04e3f8c80d982b4ce87))
+
 ## [1.2.16](https://github.com/agrc/turn-gps-billpay/compare/v1.2.15...v1.2.16) (2026-02-13)
 
 
