@@ -11,71 +11,63 @@ function FooterSocialMedia() {
         className="icon-link"
         target="_blank"
         rel="noreferrer"
+        aria-label="Email us, opens in a new tab"
       >
         <span className="utds-icon-before-mail" aria-hidden="true" />
-        <span className="visually-hidden">Email us, opens in a new tab</span>
       </a>
       <a
         href="https://github.com/agrc"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
+        aria-label="UGRC GitHub, opens in a new tab"
       >
         {IconsWebsite.IconGitHub()}
-        <span className="visually-hidden">UGRC GitHub, opens in a new tab</span>
       </a>
       <a
         href="https://x.com/MapUtah"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
+        aria-label="UGRC X, opens in a new tab"
       >
         {IconsWebsite.IconTwitter()}
-        <span className="visually-hidden">UGRC X, opens in a new tab</span>
       </a>
       <a
         href="https://facebook.com/UtahAGRC"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
+        aria-label="UGRC Facebook, opens in a new tab"
       >
         {IconsWebsite.IconFacebook()}
-        <span className="visually-hidden">
-          UGRC Facebook, opens in a new tab
-        </span>
       </a>
       <a
         href="https://instagram.com/ugrc.gis"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
+        aria-label="UGRC Instagram, opens in a new tab"
       >
         {IconsWebsite.IconInstagram()}
-        <span className="visually-hidden">
-          UGRC Instagram, opens in a new tabq
-        </span>
       </a>
       <a
         href="https://www.youtube.com/@therealUGRC"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
+        aria-label="UGRC Youtube, opens in a new tab"
       >
         {IconsWebsite.IconYouTube()}
-        <span className="visually-hidden">
-          UGRC Youtube, opens in a new tab
-        </span>
       </a>
       <a
         href="https://utahgeospatialpodcast.buzzsprout.com/"
         className="icon-link"
         target="_blank"
         rel="noreferrer"
+        aria-label="UGRC Podcast, opens in a new tab"
       >
         {IconsWebsite.IconPodcast()}
-        <span className="visually-hidden">
-          UGRC Podcast, opens in a new tab
-        </span>
       </a>
     </FooterSocialMediaBar>
   );
