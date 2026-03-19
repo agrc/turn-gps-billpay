@@ -11,7 +11,7 @@ function FooterSocialMedia() {
         className="icon-link"
         target="_blank"
         rel="noreferrer"
-        aria-label="Email us, opens in a new tab"
+        aria-label="Email UGRC (opens your email app)"
       >
         <span className="utds-icon-before-mail" aria-hidden="true" />
       </a>
