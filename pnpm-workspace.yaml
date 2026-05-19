@@ -1,6 +1,11 @@
 packages:
   - functions
 
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+minimumReleaseAgeExclude:
+  - '@ugrc/*'
+
 ignoredBuiltDependencies:
   - '@vaadin/vaadin-usage-statistics'
 

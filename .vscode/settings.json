@@ -6,6 +6,7 @@
     "Geospatial",
     "hookform",
     "immer",
+    "prebuild",
     "reactfire",
     "sendgrid",
     "tanstack",
