@@ -300,10 +300,10 @@ function safeLogValue(value) {
 function redactSensitiveValue(key, value) {
   const sensitiveKeys = [
     'password',
-    'apiKey',
+    'apikey',
     'authorization',
     'token',
-    'confirmPassword',
+    'confirmpassword',
   ];
 
   if (sensitiveKeys.includes(key.toLowerCase())) {
