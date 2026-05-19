@@ -228,11 +228,6 @@ async function trimblePostCall(requestData) {
 
     return wsdl.xmlToObject(response.data);
   } catch (err) {
-    logError('trimblePostCall', err, {
-      requestData: safeLogValue(requestData),
-      hasUrl: Boolean(url),
-    });
-
     throw err;
   }
 }
