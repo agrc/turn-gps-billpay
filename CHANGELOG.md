@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.18](https://github.com/agrc/turn-gps-billpay/compare/v1.2.17...v1.2.18) (2026-05-19)
+
+
+### Bug Fixes
+
+* **functions:** add better error handling and logging to createTrimbleUser ([768ea7c](https://github.com/agrc/turn-gps-billpay/commit/768ea7c311d531712541b1aa4aacc1eb507eb6c2)), closes [#243](https://github.com/agrc/turn-gps-billpay/issues/243)
+
 ## [1.2.17](https://github.com/agrc/turn-gps-billpay/compare/v1.2.16...v1.2.17) (2026-03-19)
 
 
