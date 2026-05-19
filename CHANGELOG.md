@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.19](https://github.com/agrc/turn-gps-billpay/compare/v1.2.18...v1.2.19) (2026-05-19)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([ce3de7b](https://github.com/agrc/turn-gps-billpay/commit/ce3de7be977a2436e6af75edece70d245b237a78))
+* update deps to help with build ([9c7eb2a](https://github.com/agrc/turn-gps-billpay/commit/9c7eb2a82eb6479779f416223b68f015cd6f5cfa))
+
 ## [1.2.18](https://github.com/agrc/turn-gps-billpay/compare/v1.2.17...v1.2.18) (2026-05-19)
 
 
