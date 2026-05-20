@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.20-rc.1](https://github.com/agrc/turn-gps-billpay/compare/v1.2.19...v1.2.20-rc.1) (2026-05-20)
+
+
+### Bug Fixes
+
+* bump package causing duplicate firebase instances ([081e62d](https://github.com/agrc/turn-gps-billpay/commit/081e62d3bbe7abb92e9fb336c499678e65e50e86))
+* Escape special characters in SOAP request ([8c5eeca](https://github.com/agrc/turn-gps-billpay/commit/8c5eeca6105b9efdf00e02b2c0a7ff22ebc6a165))
+
 ## [1.2.19](https://github.com/agrc/turn-gps-billpay/compare/v1.2.18...v1.2.19) (2026-05-19)
 
 
