@@ -14,6 +14,14 @@ export const axiosConfig = {
   },
 };
 
+const escapeXml = (value) =>
+  String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;');
+
 export const createUserWithoutUserinfoAndReturnIdData = (
   userObj,
 ) => `<?xml version="1.0" encoding="utf-8"?>
@@ -21,11 +29,11 @@ export const createUserWithoutUserinfoAndReturnIdData = (
     <SOAP-ENV:Header/>
     <SOAP-ENV:Body>
         <ns3:CreateUserWithoutUserinfoAndReturnID xmlns:ns2="http://schemas.datacontract.org/2004/07/Trimble.IS.AccountingData" xmlns:ns3="Trimble.IS.AccountingServices">
-            <ns3:loginWithOrganization>${userObj.loginWithOrganization}</ns3:loginWithOrganization>
-            <ns3:organizationId>${userObj.organizationId}</ns3:organizationId>
-            <ns3:password>${userObj.password}</ns3:password>
-            <ns3:primaryLoginWithOrganization>${userObj.primaryLoginWithOrganization}</ns3:primaryLoginWithOrganization>
-            <ns3:email>${userObj.email}</ns3:email>
+            <ns3:loginWithOrganization>${escapeXml(userObj.loginWithOrganization)}</ns3:loginWithOrganization>
+            <ns3:organizationId>${escapeXml(userObj.organizationId)}</ns3:organizationId>
+            <ns3:password>${escapeXml(userObj.password)}</ns3:password>
+            <ns3:primaryLoginWithOrganization>${escapeXml(userObj.primaryLoginWithOrganization)}</ns3:primaryLoginWithOrganization>
+            <ns3:email>${escapeXml(userObj.email)}</ns3:email>
         </ns3:CreateUserWithoutUserinfoAndReturnID>
     </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>`;
