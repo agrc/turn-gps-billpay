@@ -109,7 +109,7 @@ export const createTrimbleUser = async (request) => {
 };
 
 async function parseSoapResult(soapResult, trimbleResult, data) {
-  const ROLE_GROUP = 'TNC user';
+  const ROLE_GROUP = 'TNC User';
   const MAIN_CONTRACT = 1;
   if (soapResult && soapResult === 'Success') {
     // more stuff
