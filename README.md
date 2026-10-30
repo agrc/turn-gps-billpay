@@ -2,6 +2,9 @@
 
 [![Release Events](https://github.com/agrc/turn-gps-billpay/actions/workflows/release.yml/badge.svg)](https://github.com/agrc/turn-gps-billpay/actions/workflows/release.yml)
 
+Production: <https://turngps-billpay.ugrc.utah.gov/>  
+Test: <https://gps-billpay.dev.utah.gov/>
+
 ## What is TURN GPS Bill Pay
 
 Runs on the Trimble Pivot Platform
