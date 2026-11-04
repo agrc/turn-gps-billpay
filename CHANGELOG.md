@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.22](https://github.com/agrc/turn-gps-billpay/compare/v1.2.21...v1.2.22) (2026-11-04)
+
+
+### Bug Fixes
+
+* refresh lock file ([a9b3b37](https://github.com/agrc/turn-gps-billpay/commit/a9b3b3701b8b1ab6e2fee2c5d6f73bd39e4ad07f))
+
 ## [1.2.21](https://github.com/agrc/turn-gps-billpay/compare/v1.2.20...v1.2.21) (2026-11-03)
 
 
