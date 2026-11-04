@@ -50,18 +50,6 @@ minimumReleaseAgeExclude:
   - ws@8.20.1
   - protobufjs@7.5.8
 
-ignoredBuiltDependencies:
-  - '@vaadin/vaadin-usage-statistics'
-
-onlyBuiltDependencies:
-  - '@apollo/protobufjs'
-  - '@firebase/util'
-  - '@parcel/watcher'
-  - '@swc/core'
-  - esbuild
-  - protobufjs
-  - re2
-
 allowBuilds:
   '@apollo/protobufjs': true
   '@firebase/util': true
